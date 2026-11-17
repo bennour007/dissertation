@@ -202,8 +202,10 @@ By reducing many-body relationships to independent two-body terms, linear aggreg
 Empirically, prediction models that capture many-product interactions substantially outperform density-based predictions, suggesting that linear aggregation loses significant information [@albora2023product].
 
 **Noise compounds through aggregation.**
-The dimensional mismatch and spurious associations affecting pairwise co-occurrence estimates do not disappear when aggregated into relatedness density--they compound.
-Summing noisy pairwise values produces a noisy aggregate.
+The dimensional mismatch and spurious associations affecting pairwise co-occurrence estimates do not disappear when aggregated into relatedness density.
+Aggregation in itself is not the problem: summing many independent, unbiased errors would reduce noise, because the errors would partly cancel.
+The pairwise estimates, however, are neither independent nor unbiased: the nested structure of the region–technology matrix and the mismatch between the number of technologies and the number of regions bias them in the same direction and correlate them with one another.
+Under these conditions the errors do not cancel, and the aggregate inherits their structure rather than averaging it away.
 The normalisation by total relatedness provides some correction but cannot recover signal that was lost at the pairwise level.
 For regions with portfolios concentrated in rare technologies, where pairwise estimates are least reliable, relatedness density inherits and potentially amplifies these estimation problems.
 
@@ -358,6 +360,8 @@ Bootstrap sampling and random feature selection reduce the correlation $\rho_h$ 
 $$\text{Var}(\bar{h}) = \rho_h\sigma^2 + \frac{1-\rho_h}{B}\sigma^2$$ {#eq-rf-variance}
 
 As $B$ increases and $\rho_h$ decreases, ensemble variance diminishes while maintaining the low bias of flexible tree models.
+This is consistent with our critique of relatedness density (@sec-meth-density-limits): @eq-rf-variance shows that averaging reduces variance only to the extent that the averaged errors are weakly correlated.
+Bootstrap sampling and random feature selection are designed to decorrelate the trees, whereas the pairwise relatedness values summed in density are correlated and biased by construction.
 
 Feature importance quantifies each predictor's contribution by aggregating Gini impurity reductions (mean decrease in impurity):
 
