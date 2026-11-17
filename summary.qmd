@@ -28,31 +28,54 @@ First, a falsifiable and testable measure of feasibility, second, leveraging alr
 We adopted this framework as a direct response to the gaps in the literature which constitutes our main methodological contribution.
 However, this methodology is not without limitation itself. 
 
-In fact, @pinheiro2025 acknowledged the merits of this framework with a clear factual scepticism regarding the performance of these machine learning models.
-The problem she mentions is related mainly to false negative predictions, which are the result of the unbalanced data itself (few regions with observed specialisation, the majority of the outcome is 0).
-Although this is a well merited criticism, it still can be addressed in future iterations with different training strategies (using synthetic minority oversampling technique or SMOTE) or with innovative machine learning modeling algorithms (causal random forest as an potential candidate).
-Moreover as we've shown in the comparative example in chapter 3, FITS produce a much more stable prediction than conventional technology space, the merits of that is our main motivation for this adoption.
+We group the limitations of this work by topic; several are first introduced in Chapter 3, where the corresponding choice is made.
 
-However, the most interesting criticism here from @pinheiro2025---which transcends our approach and target the literature in general---is the use of the Revealed Comparative Advantage index as a stepping stone to compare regional patterns of specialisation.
+**Data.**
+A criticism from @pinheiro2025 that concerns the literature in general, not only our approach, is the use of the Revealed Comparative Advantage index as a stepping stone to compare regional patterns of specialisation.
 The author argue that this index is not necessarily adequate for application in (sparse) patents data because then its interpretation is flawed as it assumes bi-directional flows.
 We agree with this assessment and acknowledge that further attention is needed. 
 
+Two further limits concern the patent data themselves: knowledge that is not patented, and differences between countries in how much firms patent, remain outside the measure (@sec-meth-data).
+The results also come from European NUTS2 regions: the hypotheses are general claims, but the evidence comes from this setting.
 
-There are two critical cases in our opinion regarding our methodology, the first is the training validation and the second is the resulting FITS network.
-With machine learning algorithms in general, a validation process is needed to avoid over fitting.
-This is usually conducted with specific tuning and hyper parametrisation protocols.
-In this regard, our validation approach was less rigorous than a full grid search and cross-validation protocol, since we applied a fixed set of hyperparameters derived from a stratified sample of four technologies rather than tuning each model independently, however, we justify it via two arguments.
-First, the complete process with grid search, tuning, and cross validation was not omitted on purpose but because of the computational burden.
-For that, we needed to sacrifice rigorous specification for feasibility.
-Second, @albora2023product benchmark their training strategy with and without tuning and they reported that even with default parameters, the random forest algorithms is a better predictor of future specialisation/diversification patterns than relatedness, raw RCA measure, etc. Their results in this context show that with cross validation the performance of the models does increase but even without it, random forest's performance remains superior to the benchmark.  
-
-The second problem here is that FITS provides an asymmetric adjacency matrix.
+**Measurement.**
+FITS provides an asymmetric adjacency matrix.
 In our case we normalise the weights within each model, so that the incoming edges of every target technology sum to one: the importances of the technologies that point to a focal technology are made comparable.
 When the network is undirected, as in the conventional technology space, the direction of normalisation is immaterial because the matrix is symmetric.
 In a directed network it is not: the outgoing edges of a technology, which measure how much it predicts others, are not normalised and sum to different totals across technologies.
 Measures built on outgoing weights (out-strength, and outgoing embeddedness in the coherence construction) therefore partly reflect this asymmetry of scale.
 This was not an issue addressed in @fessina2024identifying where the focus was instead to have a falsifiable framework for the technology space.
 This limitation in our work calls for extra attention to find methods  in the literature that could address this but was beyond the main scope of this dissertation. 
+
+In the coherence construction, embeddedness is averaged over existing links only, so it reflects the intensity rather than the breadth of a technology's links to an industry, and both regional averages are simple means (@sec-meth-coherence).
+
+Another point concerns the network metrics.
+This is the question of the data itself that we used for the network metrics and their interaction with coherence.
+Our main network structure identifiers are eigenvector and betweenness centrality.
+We assume that the first captures prestigious position and we consider the metric a proxy to the Key enabling technology role while for the latter we assume it to proxy General purpose technology roles.
+This is in accordance with the framing and classification in @antonietti2021going. 
+
+In our context, betweenness centrality is theoretically a justifiable proxy, technologies with high betweenness centrality in our FITS network are nodes where many of the shortest paths between other nodes pass through in both directions.
+These technologies links different technological areas and thus can be considered as general purpose.
+However, we can't confidently say the same for our interpretation of eigenvector centrality.
+Because technologies with high eigenvector centrality, are those that are well connected to other technologies that are also well connected.
+A more appropriate interpretation here would have been foundational role.
+The distinction and interpretation of these roles is not as clear as we intended it to be, and it's a major flaw of our framing which we acknowledge and will address in future work.
+This however doesn't systematically affect the core agenda we subscribe to nor the general ideas we've portrayed evidence for, network structures---regardless of the interpretation---have a sizeable contribution to region diversification. 
+
+**Modelling.**
+@pinheiro2025 acknowledges the merits of this framework but is sceptical about the performance of these machine learning models.
+The problem she mentions is related mainly to false negative predictions, which are the result of the unbalanced data itself (few regions with observed specialisation, the majority of the outcome is 0).
+Although this is a well merited criticism, it still can be addressed in future iterations with different training strategies (using synthetic minority oversampling technique or SMOTE) or with innovative machine learning modeling algorithms (causal random forest as an potential candidate).
+Moreover as we've shown in the comparative example in chapter 3, FITS produce a much more stable prediction than conventional technology space, the merits of that is our main motivation for this adoption.
+
+A critical point regarding our methodology is the training validation.
+With machine learning algorithms in general, a validation process is needed to avoid over fitting.
+This is usually conducted with specific tuning and hyper parametrisation protocols.
+In this regard, our validation approach was less rigorous than a full grid search and cross-validation protocol, since we applied a fixed set of hyperparameters derived from a stratified sample of four technologies rather than tuning each model independently, however, we justify it via two arguments.
+First, the complete process with grid search, tuning, and cross validation was not omitted on purpose but because of the computational burden.
+For that, we needed to sacrifice rigorous specification for feasibility.
+Second, @albora2023product benchmark their training strategy with and without tuning and they reported that even with default parameters, the random forest algorithms is a better predictor of future specialisation/diversification patterns than relatedness, raw RCA measure, etc. Their results in this context show that with cross validation the performance of the models does increase but even without it, random forest's performance remains superior to the benchmark.  
 
 On another note, in previous related work, @hsin2026regional discuss other areas of limitation to the FITS network approach.
 One of the issues here is that the time horizon $\delta$ is relatively arbitrary.
@@ -70,12 +93,6 @@ In their work, the authors formalise a dynamic graph model that essentially pred
 Although this aligns relatively with known graph theory ideas, their assessment depends heavily on the symmetric activity space and its structure and orientation.
 Regardless, @alshamsi2018optimal's approach could be beneficial to address the time horizon limitation, and could result is a richer more granular contextualisation of the FITS network and regional technological potential.
 
-The empirical design in our work also has its own share of limitations.
-Our assessment posits that the regional technological potential is a proxy for diversification feasibility.
-However, there's no clear indication in the literature that such framing is adequate since we are the first to adopt it.
-This is to say that potential might need to be assessed with a different interpretation than the one we adopted.
-Moreover, using network metrics of the technologies could have been better addressed with random graph models or other alternatives designed for this topic, but in our assessment, this was beyond the scope of the dissertation and thus we settled on a simpler approach. 
-
 This work's main limitation is that we don't provide evidence of causality due to the endogeneity problem.
 Specifically mechanical circularity: coherence is built from the same lagged portfolio information that the Random Forest uses to generate potential.
 Within a given region–year, a technology with higher coherence will tend to resemble the portfolio patterns the RF associates with entry, which can inflate the coherence–potential link.
@@ -87,21 +104,17 @@ This is a limitation that we will address in future iterations as it remains the
 
 Another issue here is that including the national ecosystem variables as predictors could have been more informative had we included and interaction term, but then the complexity of the interpretation forced us to not go in that direction for now, although with a country level analysis this can be addressed properly but we decided to leave that out for the purposes of this work.
 
+These and the other limits of the Random Forest models are discussed in @sec-meth-rf-limits.
 
+**Scope.**
+The empirical design in our work also has its own share of limitations.
+Our assessment posits that the regional technological potential is a proxy for diversification feasibility.
+However, there's no clear indication in the literature that such framing is adequate since we are the first to adopt it.
+This is to say that potential might need to be assessed with a different interpretation than the one we adopted.
+Moreover, using network metrics of the technologies could have been better addressed with random graph models or other alternatives designed for this topic, but in our assessment, this was beyond the scope of the dissertation and thus we settled on a simpler approach. 
 
-Building on that, there's another area that's extremely important to address here.
-This is the question of the data itself that we used for the network metrics and their interaction with coherence.
-Our main network structure identifiers are eigenvector and betweenness centrality.
-We assume that the first captures prestigious position and we consider the metric a proxy to the Key enabling technology role while for the latter we assume it to proxy General purpose technology roles.
-This is in accordance with the framing and classification in @antonietti2021going. 
+Finally, the models learn from observed entries, not attempts, so feasibility and frequency remain partly mixed (@sec-meth-rf-limits).
 
-In our context, betweenness centrality is theoretically a justifiable proxy, technologies with high betweenness centrality in our FITS network are nodes where many of the shortest paths between other nodes pass through in both directions.
-These technologies links different technological areas and thus can be considered as general purpose.
-However, we can't confidently say the same for our interpretation of eigenvector centrality.
-Because technologies with high eigenvector centrality, are those that are well connected to other technologies that are also well connected.
-A more appropriate interpretation here would have been foundational role.
-The distinction and interpretation of these roles is not as clear as we intended it to be, and it's a major flaw of our framing which we acknowledge and will address in future work.
-This however doesn't systematically affect the core agenda we subscribe to nor the general ideas we've portrayed evidence for, network structures---regardless of the interpretation---have a sizeable contribution to region diversification. 
  
 ### On the results {#sec-sum-results}
 
