@@ -144,6 +144,8 @@ The findings should therefore be read as evidence from this setting rather than 
 
 ### RQ1: Is regional technological potential at least as informative as relatedness density in predicting technology entry? {#sec-intro-rq1}
 
+Relatedness density is the standard predictor of entry, but its construction has been questioned (@sec-lit-relatedness); we ask whether a portfolio-based measure is at least as informative.
+
 
 **H1:** Regional technological potential is at least as informative as relatedness density in predicting technology entry. 
 
@@ -152,6 +154,7 @@ The findings should therefore be read as evidence from this setting rather than 
 
 Technologies occupy structurally distinct positions in the capability network, bridging and enabling roles imply different relationships to diversification feasibility.
 We ask whether these structural roles predict how feasible it is for regions to diversify into them.
+Symmetric measures cannot distinguish such roles (@sec-lit-network).
 
 **H2a:** Technologies with a bridging role are positively associated with regional technological potential, meaning that bridge technologies represent more accessible diversification pathways for regions.
 
@@ -163,6 +166,7 @@ We ask whether these structural roles predict how feasible it is for regions to 
 
 The value of a technology's structural position may depend on whether the region's portfolio is aligned with the industrial level capabilities that position implies.
 We ask whether coherence moderates the relationship between network position and potential, and whether this moderation operates differently for bridging and enabling technologies.
+Why alignment may matter, and why existing coherence measures do not settle the question, is discussed in @sec-lit-coherence.
 
 **H3a:** Industrial alignment (coherence) between a region and a technology is associated with higher regional technological potential.
 
@@ -175,6 +179,7 @@ We ask whether coherence moderates the relationship between network position and
 ### RQ4: Do national ecosystem characteristics explain variation in regional technological potential beyond dyadic portfolio mechanisms? {#sec-intro-rq4}
 
 Portfolio configuration describes the endogenous opportunity structure of a region, but whether those opportunities are realised may depend on enabling conditions at the national level.
+Research on innovation systems and entrepreneurial ecosystems suggests that they may (@sec-lit-national).
 
  **H4:** National entrepreneurial ecosystem characteristics shape regional technological potential beyond what dyadic portfolio and network mechanisms account for. Meaning that the national institutional and market context is an independent layer of the feasibility landscape. 
 
@@ -183,6 +188,7 @@ Portfolio configuration describes the endogenous opportunity structure of a regi
 ### RQ5: How do aggregate portfolio characteristics and spatial interdependence structure regional potential at the portfolio level? {#sec-intro-rq5}
 
 Moving from the technology–region dyad to the regional portfolio as a whole, we ask whether the aggregate composition of a region's portfolio predicts average regional potential, and whether this relationship operates through spatial interdependence with neighbouring regions.
+Spatial interdependence is a recognised but neglected dimension of evolutionary regional research (@sec-lit-spatial).
 
  **H5a:** Regions with higher average potential tend to neighbour other high-potential regions, meaning that regional feasibility landscapes are spatially interdependent rather than locally contained.
 
