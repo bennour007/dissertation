@@ -469,17 +469,20 @@ $$W_{t \to t'} = \frac{I_{t'}(t)}{\sum_{s \neq t'} I_{t'}(s)}$$ {#eq-fits-weight
 so that $\sum_{t \neq t'} W_{t \to t'} = 1$ for every target technology $t'$: the incoming weights of a technology are the shares of its model's total importance.
 Outgoing weights are not constrained to sum to one.
 
-
-
+Because the weights are feature importances, an edge $t \to t'$ records a predictive relationship: specialisation in $t$ helps predict later specialisation in $t'$.
+It does not show that $t'$ depends on $t$.
+Two properties of impurity-based importance also matter for how the edges are read.
+First, the importance is shared out unevenly among correlated predictors, as technologies in the same IPC section often are: the technology chosen first for a split takes up importance that its neighbours would otherwise receive, so a weak edge may reflect this masking rather than the absence of a relationship.
+Second, the importances are less reliable in models that predict poorly, typically those for rare technologies.
 
 The defining property of FITS is asymmetry: $W_{t \to t'} \neq W_{t' \to t}$ in general.
-This asymmetry captures hierarchical technological dependencies invisible to symmetric measures:
+This asymmetry captures directed predictive relationships that symmetric measures cannot represent:
 
--   $W_{t \to t'} \gg W_{t' \to t}$: Technology $t$ is a prerequisite or enabler for $t'$. Expertise in $t$ predicts future development of $t'$, but not vice versa. This pattern identifies foundational technologies and developmental sequences.
+-   $W_{t \to t'} \gg W_{t' \to t}$: specialisation in $t$ predicts later specialisation in $t'$, but not the reverse. This is the pattern expected if $t$ acts as a prerequisite or enabler for $t'$, and it points to candidate foundational technologies and developmental sequences.
 
 -   $W_{t \to t'} \approx W_{t' \to t}$: Technologies are complementary peers with mutual predictive relationships. This can indicate shared capability requirements or co-evolution.
 
--   $W_{t \to t'} \ll W_{t' \to t}$: Technology $t'$ enables $t$, this reverses the first hierarchical relationship.
+-   $W_{t \to t'} \ll W_{t' \to t}$: the reverse pattern, with $t'$ predicting $t$.
 
 
 The contrast between relatedness and FITS is sharpest when examining specific technologies.
