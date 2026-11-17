@@ -46,7 +46,11 @@ First, the complete process with grid search, tuning, and cross validation was n
 For that, we needed to sacrifice rigorous specification for feasibility.
 Second, @albora2023product benchmark their training strategy with and without tuning and they reported that even with default parameters, the random forest algorithms is a better predictor of future specialisation/diversification patterns than relatedness, raw RCA measure, etc. Their results in this context show that with cross validation the performance of the models does increase but even without it, random forest's performance remains superior to the benchmark.  
 
-The second problem here that FITS provides an asymmetric adjacency matrix, in our case we normalise once over the outgoing edges (column standardisation) because these are the technologies that contribute or point to a focal technology so their importance metrics need to be comparable, when the network is undirected as in the conventional case of technology space, the direction of normalisation is not problematic because the matrix is symmetric, but in our case this can be flawed as the incoming direction is not similarly normalised.
+The second problem here is that FITS provides an asymmetric adjacency matrix.
+In our case we normalise the weights within each model, so that the incoming edges of every target technology sum to one: the importances of the technologies that point to a focal technology are made comparable.
+When the network is undirected, as in the conventional technology space, the direction of normalisation is immaterial because the matrix is symmetric.
+In a directed network it is not: the outgoing edges of a technology, which measure how much it predicts others, are not normalised and sum to different totals across technologies.
+Measures built on outgoing weights (out-strength, and outgoing embeddedness in the coherence construction) therefore partly reflect this asymmetry of scale.
 This was not an issue addressed in @fessina2024identifying where the focus was instead to have a falsifiable framework for the technology space.
 This limitation in our work calls for extra attention to find methods  in the literature that could address this but was beyond the main scope of this dissertation. 
 
