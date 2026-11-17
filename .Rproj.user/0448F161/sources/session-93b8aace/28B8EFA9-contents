@@ -1,0 +1,756 @@
+
+
+#' Generate summary statistics table
+#' 
+#' @param data Data frame to summarize
+#' @param cols Columns to summarize (default: all numeric)
+#' @return modelsummary table
+summary_table <- function(data, cols = NULL) {
+  
+  # If no columns specified, use all numeric
+  if (is.null(cols)) {
+    cols <- data %>% 
+      dplyr::select(dplyr::where(is.numeric)) %>% 
+      names()
+  }
+  
+  cols2 <- cols[cols != "entry"]
+  cols2 <- cols2[cols2 != "patent_count"]
+  
+  dat <- data %>% 
+    group_by(year) %>% 
+    mutate(
+      across(cols2, ~ scale(.x)[,1])
+    ) %>% 
+    ungroup()
+  # Create summary table
+  modelsummary::datasummary_skim(
+    # formula = as.formula(paste("(", paste(cols, collapse = " + "), ") ~ Mean + SD + Min + Max + N")),
+    data = dat %>% dplyr::select(dplyr::all_of(cols)),
+    title = "Summary Statistics",
+    output = "gt", fmt = modelsummary::fmt_decimal(digits = 2),
+    # type = "numeric",  # Explicit type
+    histogram = FALSE  # Disable histograms (requires tinytable)
+  )
+}
+
+#' Create regional-year level panel from disaggregated data
+#'
+#' @param data Input data frame (dis_reg_data format)
+#' @param problematic_techs Vector of technology codes to exclude
+#' @param threshold Optional threshold for reg_potential calculation
+#' @param group_by_country Logical, whether to include country in grouping
+#' @return A data frame aggregated to region-year level
+create_regional_panel <- function(data, 
+                                  problematic_techs = NULL, 
+                                  threshold = NULL,
+                                  group_by_country = FALSE) {
+  
+  # Set default for problematic techs if not provided
+  if (is.null(problematic_techs)) {
+    prob_tech <- c()  # Empty vector as default
+  } else {
+    prob_tech <- problematic_techs
+  }
+  
+  # Prepare grouping variables
+  group_vars <- c("region", "year")
+  if (group_by_country) {
+    group_vars <- c(group_vars, "country")
+  }
+  
+  # Aggregate data
+  regional_panel <- data %>%
+    # Filter out problematic technologies
+    filter(!(tech %in% prob_tech)) %>% 
+    # Ensure region is character
+    mutate(region = as.character(region)) %>% 
+    
+    # Group by appropriate variables
+    group_by(across(all_of(group_vars))) %>%
+    
+    # Calculate summary statistics
+    summarise(
+      # Outcome variables
+      reg_pred = mean(pred1, na.rm = TRUE),
+      reg_potential = mean(potential, na.rm = TRUE),
+      patent_count = sum(patent_n, na.rm = TRUE),
+      
+      # Portfolio characteristics
+      # Portfolio characteristics
+      n_techs = n_distinct(tech[patent_n > 0]),
+      n_specialized = sum(rca >= 1, na.rm = TRUE),
+      diversity0 = case_when(
+        n_techs == 0 ~ 0,  # No technologies = zero diversity
+        n_techs == 1 ~ 0,  # One technology = zero diversity
+        TRUE ~ {
+          # Shannon entropy: -sum(p * log(p))
+          p <- 1 / n_techs
+          -n_techs * p * log(p)  # Simplified: all proportions equal
+        }
+      ),
+      diversity = case_when(
+        n_techs <= 1 ~ 0,
+        sum(patent_n[patent_n > 0], na.rm = TRUE) == 0 ~ 0,  # Handle zero total patents
+        TRUE ~ {
+          patent_counts <- patent_n[patent_n > 0]
+          total_patents <- sum(patent_counts, na.rm = TRUE)
+          
+          if (total_patents == 0) {
+            0
+          } else {
+            props <- patent_counts / total_patents
+            -sum(props * log(props), na.rm = TRUE)
+          }
+        }
+      ),
+      avg_dist = mean(rawdist, na.rm = TRUE ),
+      avg_coherence = mean(coherence, na.rm = TRUE),
+      reg_comp = first(reg_comp),
+      avg_tech_comp = mean(tech_comp, na.rm = T),
+      entry_rate = mean(entry, na.rm = T),
+      avg_rd = mean(relatedness_density, na.rm = T),
+      # Network aggregates
+      avg_betweenness = mean(betweenness[patent_n > 0], na.rm = TRUE),
+      avg_eigenvector = mean(eigenvector[patent_n > 0], na.rm = TRUE),
+      avg_auth = mean(authority[patent_n > 0], na.rm = TRUE),
+      avg_hub = mean(hub[patent_n > 0], na.rm = TRUE),
+      # Medians for specialized techs
+      # med_betweenness_spec = median(betweenness[rca_bin >= 1], na.rm = TRUE),
+      # med_eigenvector_spec = median(eigenvector[rca_bin >= 1], na.rm = TRUE),
+      # med_auth_spec = median(authority[rca_bin >= 1], na.rm = TRUE),
+      # med_hub_spec = median(hub[rca_bin >= 1], na.rm = TRUE),
+      # 
+      # # Medians for existing techs (with patents)
+      # med_betweenness_exist = median(betweenness[patent_n > 0], na.rm = TRUE),
+      # med_eigenvector_exist = median(eigenvector[patent_n > 0], na.rm = TRUE),
+      # med_auth_exist = median(authority[patent_n > 0], na.rm = TRUE),
+      # med_hub_exist = median(hub[patent_n > 0], na.rm = TRUE),
+      # 
+      # # GPT/KET: % portfolio above median - SPECIALIZED
+      # pct_high_between_spec = mean(betweenness[rca_bin >= 1] > med_betweenness_spec, na.rm = TRUE),
+      # pct_high_eigen_spec = mean(eigenvector[rca_bin >= 1] > med_eigenvector_spec, na.rm = TRUE),
+      # pct_high_auth_spec = mean(authority[rca_bin >= 1] > med_auth_spec, na.rm = TRUE),
+      # pct_high_hub_spec = mean(hub[rca_bin >= 1] > med_hub_spec, na.rm = TRUE),
+      # 
+      # # GPT/KET: % portfolio above median - EXISTING
+      # pct_high_between_exist = mean(betweenness[patent_n > 0] > med_betweenness_exist, na.rm = TRUE),
+      # pct_high_eigen_exist = mean(eigenvector[patent_n > 0] > med_eigenvector_exist, na.rm = TRUE),
+      # pct_high_auth_exist = mean(authority[patent_n > 0] > med_auth_exist, na.rm = TRUE),
+      # pct_high_hub_exist = mean(hub[patent_n > 0] > med_hub_exist, na.rm = TRUE),
+      # 
+      # 
+      .groups = "drop"
+    ) %>%
+    
+    # Replace NaN/NA with 0 for all numeric columns
+    mutate(
+      across(
+        where(is.numeric),
+        ~ ifelse((is.nan(.x) | is.na(.x)), 0, .x)
+      ),
+      across(
+        c(
+          "reg_potential", "n_techs", "diversity",
+          "avg_coherence", "avg_betweenness", "avg_eigenvector",
+          "entry_rate", "avg_rd", "reg_comp"
+        ),
+        ~ scale(.x)[,1], .names = "{.col}"
+      )
+    ) %>% 
+    
+    # Arrange output
+    arrange(across(all_of(group_vars)))
+  
+  return(regional_panel)
+}
+
+
+#' Join regional panel with sf geometries
+#'
+#' @param sf_data sf object with geometries
+#' @param panel_data Regional panel data
+#' @return sf object with panel data attached
+join_panel_with_sf <- function(sf_data, panel_data) {
+  
+  sf_data %>%
+    dplyr::left_join(
+      panel_data,
+      by = c("NUTS_ID" = "region")
+    )
+}
+
+
+#' Create an sf object for regions from Eurostat geospatial data
+#'
+#' @param regional_panel A data frame containing regional panel data
+#' @param region_col Name of the column containing region identifiers (default: "region")
+#' @param year Year of the NUTS classification to use (default: 2021)
+#' @param nuts_level NUTS level to retrieve ("0", "1", "2", "3", or "all")
+#' @param resolution Geospatial resolution ("01" = 1:1M, "03" = 1:3M, etc.)
+#' @param crs Coordinate reference system to use (default: "EPSG:4326")
+#'
+#' @return An sf object containing geometries for the specified regions
+#' @export
+#'
+#' @examples
+#' \dontrun{
+#'   regions_sf <- create_regions_sf(regional_panel, region_col = "region")
+#' }
+create_regions_sf <- function(regional_panel, 
+                              region_col = "region", 
+                              year = 2021,
+                              nuts_level = "2",
+                              resolution = "20",
+                              crs = 4326) {
+  
+  # Validate inputs
+  if (!region_col %in% names(regional_panel)) {
+    stop("Column '", region_col, "' not found in regional_panel")
+  }
+  
+  # Get unique regions from panel
+  panel_regions <- unique(regional_panel[[region_col]])
+  panel_regions <- panel_regions[!is.na(panel_regions)]
+  
+  if (length(panel_regions) == 0) {
+    stop("No valid regions found in column '", region_col, "'")
+  }
+  
+  # Get Eurostat geospatial data
+  sf_data <- eurostat::get_eurostat_geospatial(
+    output_class = "sf",
+    resolution = resolution,
+    year = year,
+    nuts_level = nuts_level
+  )
+  
+  # Filter to regions in our panel
+  sf_regions <- sf_data %>%
+    dplyr::filter(NUTS_ID %in% panel_regions)
+  
+  # Check for missing regions
+  missing_regions <- setdiff(panel_regions, sf_regions$NUTS_ID)
+  if (length(missing_regions) > 0) {
+    warning("The following regions were not found in Eurostat geospatial data: ",
+            paste(missing_regions, collapse = ", "))
+  }
+  
+  # Order regions to match panel_regions order
+  sf_regions <- sf_regions %>%
+    dplyr::arrange(match(NUTS_ID, panel_regions))
+  
+  # Transform CRS if specified
+  if (!is.null(crs)) {
+    sf_regions <- sf_regions %>%
+      sf::st_transform(crs = crs)
+  }
+  
+  # Keep only essential columns
+  sf_regions <- sf_regions %>%
+    dplyr::left_join(
+      regional_panel,
+      by = c("NUTS_ID" = "region")
+    )
+    # dplyr::select(NUTS_ID, NUTS_NAME, geometry)
+  
+  return(sf_regions)
+}
+
+
+#' Create spatial weights matrix from regions sf object
+#'
+#' @param regions_sf An sf object containing region geometries
+#' @param k_neighbors Number of nearest neighbors to use for k-NN (default: 5)
+#' @param style Style for spatial weights ("W", "B", "C", "U", "S", "minmax")
+#' @param zero_policy Allow regions with no neighbors (default: TRUE)
+#'
+#' @return A listw spatial weights object from the spdep package
+#' @export
+#'
+#' @examples
+#' \dontrun{
+#'   regions_sf <- create_regions_sf(regional_panel)
+#'   spatial_weights <- create_spatial_weights(regions_sf, k_neighbors = 5)
+#' }
+create_spatial_weights <- function(regions_sf, 
+                                   k_neighbors = 5, 
+                                   style = "W",
+                                   zero_policy = TRUE) {
+  
+  regions_sf <- regions_sf %>% filter(year == 2018)
+  
+  # Validate inputs
+  if (!inherits(regions_sf, "sf")) {
+    stop("regions_sf must be an sf object")
+  }
+  
+  if (k_neighbors < 1) {
+    stop("k_neighbors must be at least 1")
+  }
+  
+  if (k_neighbors >= nrow(regions_sf)) {
+    warning("k_neighbors (", k_neighbors, ") is greater than or equal to number of regions (", 
+            nrow(regions_sf), "). Setting k_neighbors = ", nrow(regions_sf) - 1)
+    k_neighbors <- nrow(regions_sf) - 1
+  }
+  
+  # Ensure regions are ordered consistently
+  region_ids <- regions_sf$NUTS_ID
+  
+  # Calculate centroids
+  centroids <- sf::st_centroid(regions_sf)
+  coords <- sf::st_coordinates(centroids)
+  
+  # Create k-nearest neighbors
+  knn <- spdep::knearneigh(coords, k = k_neighbors)
+  knn_nb <- spdep::knn2nb(knn)
+  
+  # Set region IDs in nb object
+  attr(knn_nb, "region.id") <- region_ids
+  
+  # Create spatial weights list
+  listw_weights <- spdep::nb2listw(
+    knn_nb, 
+    style = style, 
+    zero.policy = zero_policy
+  )
+  
+  # Add metadata as attributes
+  attr(listw_weights, "k_neighbors") <- k_neighbors
+  attr(listw_weights, "style") <- style
+  attr(listw_weights, "region_ids") <- region_ids
+  attr(listw_weights, "coords") <- coords
+  
+  return(listw_weights)
+}
+
+
+#' Create correlation matrix using modelsummary
+#'
+#' @param data Data frame
+#' @param vars Character vector of variable names to include
+#' @param title Table title
+#' @return modelsummary correlation table
+create_correlation_matrix <- function(data, vars, title = "Correlation Matrix") {
+  
+  # Select variables and remove missing
+  cor_data <- data %>%
+    dplyr::select(dplyr::all_of(vars)) %>%
+    tidyr::drop_na()
+  
+  # Create correlation matrix
+  modelsummary::datasummary_correlation(
+    data = cor_data,
+    title = title,
+    output = "gt"
+  )
+}
+
+
+#' Create distribution plot (histogram + density)
+#'
+#' @param data Data frame
+#' @param var Variable name to plot
+#' @param title Plot title
+#' @param bins Number of bins for histogram
+#' @return ggplot object
+plot_distribution <- function(data, var, title = NULL, bins = 30) {
+  
+  # Set default title if not provided
+  if (is.null(title)) {
+    title <- paste("Distribution of", var)
+  }
+  
+  # Create plot
+  ggplot(data, aes(x = .data[[var]])) +
+    geom_histogram(aes(y = after_stat(density)), bins = bins, 
+                   fill = "steelblue", alpha = 0.7, color = "white") +
+    geom_density(color = "darkred", linewidth = 1) +
+    labs(title = title, x = var, y = "Density") +
+    theme_minimal() +
+    theme(plot.title = element_text(face = "bold"))
+}
+
+#' Create combined distribution plot for multiple variables
+#'
+#' @param data Data frame
+#' @param vars Character vector of variable names
+#' @param ncol Number of columns in facet grid
+#' @return ggplot object
+plot_distributions_facet <- function(data, vars, ncol = 2) {
+  
+  # Reshape data to long format
+  plot_data <- data %>%
+    dplyr::select(dplyr::all_of(vars)) %>%
+    tidyr::pivot_longer(cols = everything(), names_to = "variable", values_to = "value") %>%
+    tidyr::drop_na()
+  
+  # Create faceted plot
+  ggplot(plot_data, aes(x = value)) +
+    geom_histogram(aes(y = after_stat(density)), bins = 30, 
+                   fill = "steelblue", alpha = 0.7, color = "white") +
+    geom_density(color = "darkred", linewidth = 1) +
+    facet_wrap(~ variable, scales = "free", ncol = ncol) +
+    labs(x = "", y = "Density") +
+    theme_minimal() +
+    theme(strip.text = element_text(face = "bold"))
+}
+
+
+#' Calculate Global Moran's I by year
+#'
+#' @param data Regional panel data frame
+#' @param var Variable name to test
+#' @param spatial_weights listw object from spdep
+#' @return Data frame with Moran's I statistics by year
+calculate_global_morans0 <- function(data, var, spatial_weights) {
+  
+  data %>%
+    dplyr::group_by(year) %>%
+    dplyr::summarise(
+      variable = var,
+      morans_i = spdep::moran.test(.data[[var]], spatial_weights)$estimate["Moran I statistic"],
+      p_value = spdep::moran.test(.data[[var]], spatial_weights)$p.value,
+      .groups = "drop"
+    )
+}
+
+#' Calculate Global Moran's I by year
+#'
+#' @param data Regional panel data frame
+#' @param var Variable name to test
+#' @param spatial_weights listw object from spdep
+#' @return Data frame with Moran's I statistics by year
+calculate_global_morans <- function(data, var, spatial_weights) {
+  
+  # Get the region order from spatial weights
+  region_order <- attr(spatial_weights, "region_ids")
+  
+  data %>%
+    dplyr::group_by(year) %>%
+    dplyr::group_modify(~ {
+      
+      # Create complete dataset matching spatial weights order
+      complete_data <- tibble::tibble(region = region_order) %>%
+        dplyr::left_join(.x, by = "region")
+      
+      # Extract variable vector in correct order
+      var_vector <- complete_data[[var]]
+      
+      # Check for missing values
+      n_missing <- sum(is.na(var_vector))
+      if (n_missing > 0) {
+        warning("Year ", .y$year, " has ", n_missing, " regions with missing data for ", var)
+      }
+      
+      # Calculate Moran's I (handles NAs with na.action)
+      moran_result <- spdep::moran.test(
+        var_vector, 
+        spatial_weights,
+        na.action = na.exclude
+      )
+      
+      # Extract results
+      tibble::tibble(
+        variable = var,
+        morans_i = moran_result$estimate["Moran I statistic"],
+        expectation = moran_result$estimate["Expectation"],
+        variance = moran_result$estimate["Variance"],
+        p_value = moran_result$p.value
+      )
+    }) %>%
+    dplyr::ungroup()
+}
+
+#' Run LM tests for spatial model selection
+#'
+#' @param formula Model formula
+#' @param data Data frame
+#' @param spatial_weights listw object from spdep
+#' @return LM test results
+run_panel_lm_tests <- function(data, spatial_weights) {
+  
+  # # Non-spatial random-effects panel model
+  # plm_model <- plm::plm(
+  #   formula = formula,
+  #   data    = data,
+  #   model   = "within", 
+  #   effect = "twoways", 
+  #   index = 
+  # )
+  form <- reg_potential ~ reg_comp + patent_count + avg_coherence + avg_betweenness + avg_auth + avg_hub
+  
+  list(
+    lm_lag        = splm::slmtest(form, data = data,listw = spatial_weights, test = "lml"),
+    lm_error      = splm::slmtest(form, data = data, listw = spatial_weights, test = "lme"),
+    robust_lm_lag = splm::slmtest(form, data = data, listw = spatial_weights, test = "rlml"),
+    robust_lm_err = splm::slmtest(form, data = data, listw = spatial_weights, test = "rlme")
+  )
+}
+
+# run_lm_tests <- function(formula, data, spatial_weights) {
+#   
+#   # Fit OLS model
+#   ols_model <- lm(formula, data = data)
+#   
+#   # Run LM tests
+#   lm_results <- spdep::lm.LMtests(
+#     model = ols_model,
+#     listw = spatial_weights,
+#     test = "all"
+#   )
+#   
+#   return(lm_results)
+# }
+
+#' Calculate Local Moran's I
+#'
+#' @param data Regional panel data frame
+#' @param var Variable name to test
+#' @param year_filter Specific year to analyze
+#' @param spatial_weights listw object from spdep
+#' @return Data frame with local Moran's I statistics
+calculate_local_morans <- function(data, var, year_filter, spatial_weights) {
+  
+  
+  # Get the region order from spatial weights
+  region_order <- attr(spatial_weights, "region_ids")
+  
+  # Filter to specific year
+  data_year <- data %>%
+    dplyr::filter(year == year_filter)
+  
+  # Create complete dataset matching spatial weights order
+  # Fill missing regions with NA
+  complete_data <- tibble::tibble(region = region_order) %>%
+    dplyr::left_join(data_year, by = "region")
+  
+  # Check for missing regions
+  n_missing <- sum(is.na(complete_data[[var]]))
+  if (n_missing > 0) {
+    warning("Year ", year_filter, " has ", n_missing, " regions with missing data for ", var)
+  }
+  
+  # Extract variable vector in correct order
+  var_vector <- complete_data[[var]]
+  
+  # Calculate local Moran's I (will handle NAs)
+  local_moran <- spdep::localmoran(
+    var_vector, 
+    spatial_weights,
+    na.action = na.exclude  # Handle missing values
+  )
+  
+  # # Spatial lag for quadrant classification
+  # wx <- lag.listw(spatial_weights, var_vector, zero.policy = TRUE, na.action = na.exclude)
+  # 
+  # # Mean-based classification
+  # var_above_mean <- var_vector >= mean(var_vector, na.rm = TRUE)
+  # lag_above_mean <- wx >= mean(wx, na.rm = TRUE)
+  
+  # Combine with original data
+  result <- complete_data %>%
+    dplyr::select(region, year, dplyr::all_of(var)) %>%
+    dplyr::bind_cols(
+      tibble::as_tibble(local_moran) %>%
+        dplyr::rename(
+          local_i = Ii,
+          expectation = `E.Ii`,
+          variance = `Var.Ii`,
+          z_score = `Z.Ii`,
+          p_value = `Pr(z != E(Ii))`
+        )
+    ) %>%
+    dplyr::filter(!is.na(.data[[var]]))  # Remove regions with no data
+  
+  # Add cluster classification
+  result <- result %>%
+    dplyr::mutate(
+      is_sig = if_else(p_value > 0.05, "Not significant", "significant"),
+      # var_above_mean = var_above_mean,
+      # lag_above_mean = lag_above_mean,
+      cluster_type = dplyr::case_when(
+        # p_value > 0.05 ~ "Not significant",
+        # local_i > 0 & var_above_mean & lag_above_mean ~ "High-High",
+        # local_i > 0 & !var_above_mean & !lag_above_mean ~ "Low-Low",
+        # local_i < 0 & var_above_mean & !lag_above_mean ~ "High-Low",
+        # local_i < 0 & !var_above_mean & lag_above_mean ~ "Low-High",
+        local_i > 0 & .data[[var]] >= mean(.data[[var]], na.rm = TRUE) ~ "High-High",
+        local_i > 0 & .data[[var]] < mean(.data[[var]], na.rm = TRUE) ~ "Low-Low",
+        local_i < 0 & .data[[var]] >= mean(.data[[var]], na.rm = TRUE) ~ "High-Low",
+        local_i < 0 & .data[[var]] < mean(.data[[var]], na.rm = TRUE) ~ "Low-High",
+        TRUE ~ "check required"
+      ),
+      is_sig = factor(is_sig),
+      cluster_type = factor(cluster_type)
+    )
+  
+  return(result)
+}
+
+
+#' Create choropleth map for one or two years
+#'
+#' @param sf_data sf object with panel data and geometries
+#' @param var Variable to map
+#' @param year_filter Year to display
+#' @param facet_0 Year 1 of the facet to display
+#' @param facet_1 Year 2 of the facet to display
+#' @param title Map title
+#' @return ggplot map object
+create_choropleth_map <- function(
+    sf_data, var, 
+    year_filter = NULL, 
+    title = NULL, 
+    facet_0 = NULL, 
+    facet_1 = NULL
+    ) {
+  
+  if (is.null(year_filter) && is.null(facet_0) && is.null(facet_1)){
+    stop("Need either year_filter, or both facet_0, facet_1 to be non null numerics denoting years of filtering")
+  }
+  
+  if (!is.null(year_filter) && (!is.null(facet_0) || !is.null(facet_1))){
+    stop("Need EITHER year_filter, or BOTH facet_0, facet_1 to be non null numerics denoting years of filtering")
+  }
+  
+  # Set default title
+  if (is.null(title)) {
+    title <- paste(var, "-", year_filter)
+  }
+  
+  
+  if (!is.null(year_filter) && is.null(facet_0) && is.null(facet_1)){
+    # Filter to year
+    map_data <- sf_data %>%
+      dplyr::filter(year == year_filter)
+    
+    facets <- NULL
+  }
+  
+  if (is.null(year_filter) && !is.null(facet_0) && !is.null(facet_1)){
+    # Filter to year
+    map_data <- sf_data %>%
+      dplyr::filter(year %in% c(facet_0, facet_1))
+    
+    facets <- facet_grid(year ~ .)
+  }
+  
+  
+  # Create map
+  p <- ggplot(map_data) +
+    geom_sf(aes(fill = .data[[var]]), color = "white", linewidth = 0.2) +
+    scale_fill_viridis_c(name = var, option = "plasma") +
+    labs(title = title) + 
+    coord_sf(xlim = c(-12, 45), ylim = c(34, 72), expand = FALSE) +
+    # scale_x_continuous(limits = c(-10, 35)) +
+    # scale_y_continuous(limits = c(35, 65)) +
+    theme_void() + 
+    facets
+  
+  return(p)
+  
+}
+
+
+#' Create side-by-side comparison maps (2008 vs 2018)
+#'
+#' @param sf_data sf object with geometries
+#' @param panel_data Regional panel data
+#' @param var Variable to map
+#' @return Combined ggplot object
+create_comparison_maps <- function(sf_data, var) {
+  
+  # Create 2008 map
+  map_2008 <- create_choropleth_map(sf_data, var, 2008, paste(var, "- 2008"))
+  
+  # Create 2018 map
+  map_2018 <- create_choropleth_map(sf_data, var, 2018, paste(var, "- 2018"))
+  
+  # Combine using patchwork
+  (map_2008 / map_2018) + 
+    plot_layout(guides = "collect") +
+    plot_annotation(title = paste("Comparison:", var))
+}
+
+#' Create LISA cluster map
+#'
+#' @param sf_data sf object with geometries
+#' @param year_filter Year to display
+#' @param facet_0 Year 1 of the facet to display
+#' @param facet_1 Year 2 of the facet to display
+#' @param local_moran_data_0 Local Moran's I results Year 1 of the facet to display
+#' @param local_moran_data_1 Local Moran's I results Year 2 of the facet to display
+#' @return ggplot map object
+create_lisa_map <- function(
+    sf_data,  
+    year_filter = NULL, 
+    facet_0 = NULL, facet_1 = NULL,
+    local_moran_data_0 = NULL,
+    local_moran_data_1 = NULL
+    ) {
+  
+  
+  if (!is.null(year_filter) && is.null(facet_0) && is.null(facet_1)){
+    # Filter to year
+    map_data <- sf_data %>%
+      dplyr::filter(year == year_filter)
+    
+    facets <- NULL
+  }
+  
+  if (is.null(year_filter) && !is.null(facet_0) && !is.null(facet_1)){
+    # Filter to year
+    map_data <- sf_data %>%
+      dplyr::filter(year %in% c(facet_0, facet_1))
+    
+    facets <- facet_grid(. ~ year)
+  }
+  
+  if (!is.null(local_moran_data_0)){
+    map_data <- map_data %>%
+      dplyr::left_join(local_moran_data_0, by = c("NUTS_ID" = "region", "year"))
+  } 
+  
+  if(!is.null(local_moran_data_1)){
+    map_data <- map_data %>%
+      dplyr::left_join(local_moran_data_1, by = c("NUTS_ID" = "region", "year"))
+  }
+  
+  
+  # Define colors for cluster types
+  cluster_colors <- c(
+    "High-High" = "#d7191c",
+    "Low-Low" = "#2b83ba",
+    "High-Low" = "#fdae61",
+    "Low-High" = "#abd9e9",
+    "check required" = "#eeeeee"
+  )
+
+  
+  sig_alphas <- c(
+    "Not significant" = 0.3,
+    "significant" = 1
+  )
+  
+  # Create map
+  map_data %>% 
+    dplyr::mutate(
+      is_sig = factor(is_sig)
+    ) %>% 
+  ggplot() +
+    geom_sf(aes(fill = cluster_type, alpha = is_sig), color = "white", linewidth = 0.1) +
+    scale_fill_manual(
+      values = cluster_colors, 
+      name = "Cluster Type", 
+      breaks = c("High-High", "Low-Low", "High-Low", "Low-High")
+    ) +
+    scale_alpha_manual(values = sig_alphas) + 
+    guides(alpha = "none") +  
+    coord_sf(xlim = c(-12, 45), ylim = c(34, 72), expand = FALSE) +
+    labs(title = paste("LISA Clusters -", unique(map_data$year))) +
+    theme_void() + 
+    theme(legend.position = "bottom", legend.direction = "horizontal") +
+    facets
+}
