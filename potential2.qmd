@@ -74,8 +74,6 @@ $$
 
 where $z_{r,t,y} = 1$ indicates region $r$ has comparative advantage (specialization) in technology $t$ at year $y$.
 
-To further elaborate, let's consider $c_{t,t'}$, the count of patents containing both technologies $t$ and $t'$ ($t\neq t'$) at a given time period, such that $t, t' \in \mathcal{T}$, and $c_{t}$, $c_{t'}$ denote the total patent counts for each class individually.
-
 In the following we will begin by outlining how the REC literature approach relatedness, how it's calculated and discuss in detail different technical contributions and their limitations.
 We will then present our approach and detail our methodological and conceptual contribution in response to these limitations.
 
@@ -320,7 +318,7 @@ knitr::include_graphics("resources/ML_relatedness_tachella2.png")
 Panel A illustrates how density-based predictions aggregate pairwise co-occurrence relationships linearly: the feasibility of entering the focal technology (white node with '?') is computed as the sum of independent two-body correlations with each technology in the regional portfolio (green and orange nodes), yielding a simple additive score (0.02 + 0.06 + 0.12 + 0.01 = 0.21).
 Panel B demonstrates how decision tree algorithms capture many-body correlations by evaluating the full configuration of the portfolio through recursive partitioning: at each node, the algorithm tests combinations of technologies (e.g., presence of both green and orange technologies) and assigns predictions based on complete paths through the tree (21%, 76%, 11%, etc.), making the effect of any single technology dependent on the entire portfolio context.
 This structural difference explains why machine learning approaches can recover non-linear capability interactions that linear aggregation of symmetric relatedness measures cannot represent, as the value of possessing one technology changes depending on which other technologies are present, a form of complementarity that density treat as independent contributions.
-This is leads to explore further how and why random forest---our adopted tree algorithm---works, especially for our case which is the prediction of regional technological specialisation.
+This leads us to explore further how and why random forest---our adopted tree algorithm---works, especially for our case which is the prediction of regional technological specialisation.
 
 Random Forest constructs an ensemble of $B$ decision trees through bootstrap aggregating (bagging) with random feature subsampling.
 Each tree $T_b$ is built on a bootstrap sample $\mathcal{D}_b^*$ drawn with replacement from the original dataset.
@@ -396,7 +394,7 @@ This temporal structure ensures strict separation: models predict future special
 The expanding training window incorporates historical diversification patterns while the fixed lag prevents information leakage.
 
 The procedure yields 7,051 models (641 technologies × 11 years).
-Given computational constraints, we performed cross-validation on a stratified sample of four technologies (G06G, B67B, D02J, C08J) spanning different IPC sections follwoing @hsin2026regional, applying the modal optimal parameters across all models: `mtry = 139`, `trees = 100`, `min_n = 38`.
+Given computational constraints, we performed cross-validation on a stratified sample of four technologies (G06G, B67B, D02J, C08J) spanning different IPC sections following @hsin2026regional, applying the modal optimal parameters across all models: `mtry = 139`, `trees = 100`, `min_n = 38`.
 Training was conducted in R using the Ranger package [@wright2017ranger], orchestrated via the targets pipeline [@landau2021targets].
 
 ## Regional technological potential {#sec-meth-potential}
@@ -423,7 +421,7 @@ Co-occurrence networks inherit the problems outlined in our critique: symmetry, 
 
 ::: {.landscape}
 
-```{r}
+```{r fig-fits-network}
 #| fig-env: "figure"
 #| out-width: "95%"
 #| fig-dpi: 150
@@ -436,6 +434,7 @@ knitr::include_graphics("resources/technology_network.png")
 ```
 :::
 
+@fig-fits-network shows the full FITS network estimated on 2018 patent data.
 FITS addresses these by constructing an asymmetric, predictive network from the feature importance scores of our Technological Potential models.
 Rather than inferring relationships from co-occurrence, FITS extracts directional dependencies revealed by which technologies predict others' future adoption.
 
@@ -466,7 +465,7 @@ This asymmetry captures hierarchical technological dependencies invisible to sym
 
 
 The contrast between relatedness and FITS is sharpest when examining specific technologies.
-Consider H01L (semiconductors) and D06Q (textile decoration) respectively shown in @fig-h10l and @fig-d06q.
+Consider H01L (semiconductors) and D06Q (textile decoration) respectively shown in @fig-h01l and @fig-d06q.
 
 For semiconductors, relatedness identifies technologies that frequently appear together in regional portfolios.
 Some connections are sensible: semiconductor memories (H10B), packaging technologies (B68B).
@@ -492,12 +491,12 @@ Again, this information is obscured in the relatedness network.
 
 
 
-```{r fig-h10l}
+```{r fig-h01l}
 #| fig-env: "figure"
 #| out-width: "95%"
 #| fig-dpi: 150
 #| echo: false
-#| fig-cap: "Relatedness vs FITS Networks for H10L (based on 2018 patent data)"
+#| fig-cap: "Relatedness vs FITS Networks for H01L (based on 2018 patent data)"
 
 
 knitr::include_graphics("resources/h10l_eg.png")
@@ -514,7 +513,7 @@ knitr::include_graphics("resources/h10l_eg.png")
 
 
 
-knitr::include_graphics("resources/h10l_eg.png")
+knitr::include_graphics("resources/d06q_eg.png")
 
 ```
 
@@ -596,7 +595,7 @@ While Region B's portfolio, is well connected to industries that the target tech
 Coherence captures this difference, region A should have high coherence with technology $t$ because of the structural knowledge infrastructure in A and $t$ align.
 Whereas region B would have low coherence with $t$ because of the mismatch in their respective knowledge infrastructure.
 Let's consider the example in @tbl-tbl_eg of two regions, both are capital regions: Île-de-France (FR10, France) and Bratislava (SK01, Slovakia), both in the lowest decile of potential (first decile) for technology B64U (unmanned aerial vehicles and equipments) in 2009.
-Despite their clear resemblance in terms of their potential, they have different coherence levels for this technology ($0.926(D_{10})$ for FR10, and $0.742(D_{8})$ for SK10).
+Despite their clear resemblance in terms of their potential, they have different coherence levels for this technology ($0.926(D_{10})$ for FR10, and $0.742(D_{8})$ for SK01).
 To further understand this slight divergence, we can  examine their embededdness profiles as shown in @fig-plot_eg.
 The right side panel shown the bidirectional embededdness of B64U, we can notice that this technology relies uniformally in both directions on industry sections H (Electricity), G (Physics), and F (Mechanical engineering), and similarly but only for the incoming edges on C (Chemistry and metallurgy).
 In the left side panel, we can compare the industrial profile of the regions.
@@ -664,7 +663,7 @@ Second, we compute coherence at an internal domain scale (IPC section) to keep t
 In here, our coherence measure ranges from 0 to 1.
 In our context, high coherence ($\approx 1$) means that for technology $t$'s embeddedness signal in different categories/industries closely matches the average industrial embeddedness of region $r$'s portfolio of technologies.
 The region's existing industrial capabilities align with the structural industrial prerequisites and consequences of technology $t$.
-Alternatively, a neutral coherence ($\approx 0$) reflects a misalignment in industrial embeddedness between technology $i$'s and the region.
+Alternatively, a neutral coherence ($\approx 0$) reflects a misalignment in industrial embeddedness between technology $t$ and the region.
 
 To our aim, coherence serves two roles in this work.
 First, as dyadic fit measure: it is a direct indicator of portfolio–technology alignment in a given domain or industry.
@@ -688,7 +687,7 @@ Through the semiconductor versus textile decoration example, we show concretely 
 We conclude by introducing Coherence, a measure we propose to bridge the technology-level information in FITS and the region-level information in Technological Potential.
 Drawing on the coherent diversification literature, and motivated by evidence that region-wide coherence measures behave inconsistently across spatial scales, we compute Coherence within IPC sections rather than across the full portfolio.
 We design it to capture whether a region's industrial embeddedness profile -- as revealed by the directional FITS structure -- aligns with the industrial embeddedness profile of a target technology.
-This makes Coherence both a dyadic fit indicator and a moderation channel: we use it to test whether the effect of a technology's network position on diversification feasibility of a region depends  depends on how well that region's industrial structure aligns with the industrial capability dependencies of that technology.
+This makes Coherence both a dyadic fit indicator and a moderation channel: we use it to test whether the effect of a technology's network position on diversification feasibility of a region depends on how well that region's industrial structure aligns with the industrial capability dependencies of that technology.
 
 Together, the three measures we develop operationalise a conceptual shift: from asking *what* a region might diversify into, toward asking under what structural context diversification is feasible.
 This is the core analytical problem we address in the subsequent chapters.

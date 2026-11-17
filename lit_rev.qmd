@@ -157,7 +157,7 @@ Consequently, this aligns with many studies that argue that localised institutio
 This is one of the core arguments also in @pinheiro2025: REC-based frameworks are biased toward domestic supply, ignoring the demand-side and competitive dynamics that condition capability accumulation. 
 
 This motivates treating entrepreneurship and institutions as a coupled system rather than treating institutions as a single latent factor that mirrors quality of governance.
-The Global Entrepreneurship Index (GEI) operationalises this coupling through a systemic approach that simultaneously combines individual and institutional aspects of ta national ecosystem[@acs2014national; @varga2020estimating].
+The Global Entrepreneurship Index (GEI) operationalises this coupling through a systemic approach that simultaneously combines individual and institutional aspects of a national ecosystem [@acs2014national; @varga2020estimating].
 This is among the few ecosystem measures explicitly designed to capture both the individual and the systemic dimensions of the institutional enabling environment.
 This justifies its empirical merit as an appropriate operationalisation of the higher-level context that the present study requires.
 

@@ -48,7 +48,7 @@ In here we briefly outline the big picture in the REC methodological and empiric
 ### Relatedness, relatedness density, and diversification {#sec-intro-relatedness}
 
 Relatedness and relatedness density are essentially measures of proximity.
-In a sense they describe how close two technologies are close to each other, or how close a given technology is to a region given its portfolio of technologies.
+In a sense they describe how close two technologies are to each other, or how close a given technology is to a region given its portfolio of technologies.
 To further decompose the problem here, we will first establish the methodological constructs for proximity measures.
 For relatedness that's co-occurrence, and for relatedness density that's the linear aggregation of relatedness. 
 
@@ -142,7 +142,7 @@ With that, we can identify which combinations enable feasible diversification ac
 Endogenous factors (within-region):
 
 - Technology-specific network position; whether a technology plays a bridging or enabling role in the directed capability space.
-- Portfolio alignment (coherence); the degree to which a region's industrial structure is organised around that of a given of a given technology.
+- Portfolio alignment (coherence); the degree to which a region's industrial structure is organised around that of a given technology.
 
 Exogenous factors (beyond-region):
 
