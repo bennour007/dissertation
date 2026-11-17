@@ -700,7 +700,12 @@ $$E^{*\leftarrow}_{r,c} = \frac{1}{|S_{r,c}|}\sum_{t' \in S_{r,c}} E^{\leftarrow
 
 $$E^{*\rightarrow}_{r,c} = \frac{1}{|S_{r,c}|}\sum_{t' \in S_{r,c}} E^{\rightarrow}_{t',c}$$ {#eq-region-emb-out}
 
-If $S_{r,c} = \emptyset$, then set $E^{*\leftarrow}_{r,c} = E^{*\rightarrow}_{r,c} = 0$.Meaning that the region has no foothold in section $c$ and therefore no alignment signal in that domain.
+If $S_{r,c} = \emptyset$, then set $E^{*\leftarrow}_{r,c} = E^{*\rightarrow}_{r,c} = 0$, meaning that the region has no foothold in section $c$ and therefore no alignment signal in that domain.
+
+Both regional averages are simple arithmetic means.
+A weighted or smoothed average, or a specification at the level of IPC classes, would be reasonable alternatives.
+We keep the simple mean because coherence plays a different role from the Random Forest: the forest learns feasibility from the full configuration of the portfolio, whereas coherence is meant as a transparent summary of industrial structure that can be used as a moderator.
+A more elaborate aggregation would make the interaction terms harder to interpret, without a clear gain for this purpose.
 
 Coherence is the cosine similarity between the industrial embeddedness profile of technology $t$ and that of region $r$.
 Each profile stacks the incoming and outgoing embeddedness across the IPC sections:
