@@ -1,2 +1,2 @@
 unit_id,issue,pr,date,files,lines_before,change,why,dependents_checked,dependents_changed,flags_raised,open_ends,letter_line,status
-M10,63,,2026-11-17,potential2.qmd,see M15,Done together with M15 (provenance sentences per construct),"ISK source information for formulas, indicators, figures",see M15,none,,Fig 3.1 caption (F01) and Breiman citation (M11) parked,see M15,in_pr
+M10,63,72,2026-11-17,potential2.qmd,see M15,Done together with M15 (provenance sentences per construct),"ISK source information for formulas, indicators, figures",see M15,none,,Fig 3.1 caption (F01) and Breiman citation (M11) parked,see M15,in_pr
