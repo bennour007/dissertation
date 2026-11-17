@@ -722,7 +722,7 @@ Although the fixed effect design we described in the previous section is relativ
 Yet between-region variation in our context is theoretically meaningful since we are interested in understanding why some regions are systematically characterised by higher potential compared to others.
 This interest then compliments our focus in the previous specification where the focal attention is on why potential fluctuates. 
 
-Thus to properly test H3, we need a specification that preserves national and regional variation.
+Thus to properly test H4, we need a specification that preserves national and regional variation.
 To this end we include random effects by modelling nested region within country intercepts that are drawn from a distribution rather than absorbing them as free parameters.
 For that we estimate linear mixed models with the following nesting structure:
 
@@ -816,7 +816,7 @@ In light of this, the SAR model is the adequate specification, while we use the 
 ### Spatial Autoregressive (SAR) panel - primary specification {#sec-emp-sar}
 
 We estimate the Spatial Autoregressive (SAR) model with two-way (region and year) demeaning.
-In this model, the spatial autoregressive parameter $\rho$ tests H4 where a positive and significant $\rho$ indicates that regions tend to exhibit higher potential when neighbouring regions also display high potential. 
+In this model, the spatial autoregressive parameter $\rho$ tests H5a where a positive and significant $\rho$ indicates that regions tend to exhibit higher potential when neighbouring regions also display high potential. 
 
 $$P_{r,y} = \rho \mathbf{W} P_{r,y} + \mathbf{X}_{r,y}\boldsymbol{\beta} + \alpha_r + \zeta_y + \varepsilon_{r,y}$$
 
