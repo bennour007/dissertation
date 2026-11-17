@@ -127,6 +127,15 @@ The fourth concerns space, regional potential may not be locally contained, and 
 
 
 
+## Contribution {#sec-intro-contribution}
+
+The contribution of this work is both methodological and empirical, and we distinguish what is adopted from the literature, what is adapted, and what is a novel formulation.
+The per-technology training design, the use of out-of-sample prediction as an evaluation standard, and the derivation of a technology network from feature importances are taken from the literature that applies machine learning to relatedness, which was developed for trade and product data [@tacchella2023relatedness; @albora2023product; @fessina2024identifying].
+We adapt this approach to European patent data at NUTS2 level, which yields regional technological potential, our alternative to relatedness density, and the Feature Importance Technology Space (FITS), our alternative to the technology space.
+Our own contribution is the interpretive structure applied to the directed network, which distinguishes bridging and enabling roles of technologies, and the coherence measure, which captures the industrial alignment between a region and a technology.
+Empirically, we contribute a multilayered contextual framework that combines network position, coherence, national ecosystem conditions and spatial interdependence, and we test it on European regions.
+
+
 ## Research questions and hypotheses {#sec-intro-rq-hypotheses}
 
 ### RQ1: Is regional technological potential at least as informative as relatedness density in predicting technology entry? {#sec-intro-rq1}
