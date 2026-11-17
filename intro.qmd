@@ -42,61 +42,24 @@ REC models diversification through network aggregation based on co-location and 
 Using these patterns, different aggregations are used to quantify relatedness (the frequency of observing a pair of activities in the same region), and relatedness density (how much of the activities frequently observed together a region has).
 However, these measures are often interpreted not as aggregations of frequent observations but rather as relationship models.
 Empirically, diversification is studied using these constructs as predictors of entry, that is a region's entry to a new specialisation in a new technology, often considered as a binary outcome.
-In here we briefly outline the big picture in the REC methodological and empirical framework, its conceptual issues, its empirical consequences, and highlight the research gap. 
-
-
-### Relatedness, relatedness density, and diversification {#sec-intro-relatedness}
-
-Relatedness and relatedness density are essentially measures of proximity.
-In a sense they describe how close two technologies are to each other, or how close a given technology is to a region given its portfolio of technologies.
-To further decompose the problem here, we will first establish the methodological constructs for proximity measures.
-For relatedness that's co-occurrence, and for relatedness density that's the linear aggregation of relatedness. 
-
-First, co-occurrence is essentially the frequency of observing two activities together.
-In the REC literature, this frequency describes the strength of the relationship.
-Activities frequently observed together are more related than the pairs rarely observed together. 
-
-Second, linear aggregation of relatedness essentially measures the percentage of co-located technologies in a region that are related to a reference technology.
-Thus, we can think of relatedness density as the link between related technologies and co-located technologies.
-The idea in the REC literature states that relative to a given technology, the more related technologies a region has, the more likely that it can develop that technology. 
 
 These two constructs are used together to predict the probability that a region will enter a new technology.
 The REC literature shows that relatedness density is consistently associated with higher probabilities in almost all studies [@hidalgo2018principle].
 These results among others were one of the major latent contributors to smart specialisation strategy (S3) policy.
-Thus the consensus in the literature was clear: In order to diversify into new technologies with the highest likelihood of success, regions must prioritise investment in related technologies [@balland2019smart]. 
+Thus the consensus in the literature was clear: In order to diversify into new technologies with the highest likelihood of success, regions must prioritise investment in related technologies [@balland2019smart].
 
-
-### Empirical consequences {#sec-intro-consequences}
-
-The idea of resilience is not a main focus for the REC literature nor it is ours.
-However, falling back to this concept allows us to further assess the empirical consequences of the mainstream interpretation of relatedness and relatedness density.
-The idea is that in order to be resilient to external shocks and subsequent uncertainties diversification is key.
-But what kind of diversification is required and feasible and how to achieve it is the focus here.
-The REC literature tells us that the most likely successful diversification strategy is the one that targets related capacity in the regions, often referred to as related variety.
 However, generalising this recommendation is not that straight forward.
 Aggregate regional capacities and their national and broader geographic contexts differ significantly.
 The initial landscape of the regional technological portfolio is essential here because this strategy could favour regions with already diverse portfolio but it's questionable that regions with limited portfolios would equally benefit.
 This is aligned with the concept of path dependency, related variety without context enforces that dependency and locks regions within their limited capacities.
-This brings us back to the core focus of in this work; context is key.
+This brings us back to the core focus of this work; context is key.
 However, context on its own here might not be enough because adding contextual factors to the existing framework would not resolve the underlying problem, because path dependency in related variety is a direct consequence of how relatedness and relatedness density are constructed.
-These constructs and their underlying methodological assumptions (co-occurrence and linear aggregation) are the core problem that we're highlighting here. 
-
-Co-occurrence assumes that technologies frequently observed together are likely related.
-Although this is within the boundaries of common sense, it's highly unlikely that's actually the case.
-A frequency measure is only informative when we have more observations than items -- that is, more geographies than technologies.
-Almost always, we will have more technologies than geographies, this means that relatedness is at best noisy.
-Additionally, relatedness as interpreted in the literature quantifies the relationship between pairs of technologies.
-However, as it stands, there's no differentiation in the direction of that relationship thus, assuming that the relationship between two technologies is symmetrical.
-Albeit this assumption in itself is not problematic, it exacerbates the linearity issue when we measure relatedness density as we loose information in co-occurrence, symmetry, and linear aggregations.
-This takes us to the final issue we would like to highlight; relatedness density.
-Simply put, relatedness density measures the sum of technologies related to a reference technology present in a given region.
-The implicit assumption in here is that technologies are linked through linear combinations, and those combinations predict the likelihood of successful diversification.
-However, relatedness density is often interpreted as a value that quantifies the existing requirements a region has relative to a technology, whereas the sum of existing related technologies do not inform us on the actual requirements.
+These constructs and their underlying methodological assumptions (co-occurrence and linear aggregation) are the core problem that we're highlighting here.
 
 In summary, relatedness and relatedness density measures suffer from diverse methodological issues embedded in the implicit assumptions in their core constructs.
-Co-occurrence and linear aggregation of observed frequencies are misinterpreted, accrue information loss, and poorly handles the granular data often used.
+We discuss these issues in detail in @sec-meth-mainstream.
 This means that the empirical and methodological work ahead must account for these issues to further contextualise the study of diversification strategies.
-Our work here is a step in that direction by reforming these constructs in a first methodological phase then use them within a broader empirical application. 
+Our work here is a step in that direction by reforming these constructs in a first methodological phase then use them within a broader empirical application.
 
 
 ### Research problem {#sec-intro-research-problem}
