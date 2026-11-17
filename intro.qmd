@@ -169,10 +169,10 @@ The fourth concerns space, regional potential may not be locally contained, and 
 
 ## Research questions and hypotheses {#sec-intro-rq-hypotheses}
 
-### RQ1: Is regional technological potential a better predictor of technology entry than relatedness density? {#sec-intro-rq1}
+### RQ1: Is regional technological potential at least as informative as relatedness density in predicting technology entry? {#sec-intro-rq1}
 
 
-**H1:** Regional technological potential is a better predictor of entry then relatedness density is. 
+**H1:** Regional technological potential is at least as informative as relatedness density in predicting technology entry. 
 
 
 ### RQ2: How do technology-specific characteristics shape regional technological potential? {#sec-intro-rq2}
