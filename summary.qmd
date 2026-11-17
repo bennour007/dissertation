@@ -215,6 +215,7 @@ Other approaches here like causal RF could be an interesting direction also, suc
 This will allow us, in future iteration to assess the causal implications of adding a technology or removing from the region and could prove a powerful tool for policy makers.
 Adding to that, we can also flip the dimensions of the estimation process in our training strategy, instead of predicting the outcome based on the information of the technology portfolio in a region, we can predict the outcome based on the portfolio of other regions.
 I.e. we can predict a region's own outcome from the contribution of all the others regions, which would allow us to create an inter-regional dependence matrix (Feature Importance Regional Space) that enable us to investigate regional linkages in a more depth and certitude. 
+The coherence measure could also be refined, for example with weighted averages or at the level of IPC classes.
 
 Second, the patents data that we use contains an important dimension that we ignored in this work, which is the collaboration patterns.
 Many studies in the literature investigate the role of collaboration in regional technological adoption, albeit the results in general are not conclusive the general consensus is that collaboration is a catalyst for technological adoption because it mirrors knowledge import which can be used to recombine existing knowledge stock into new knowledge.
