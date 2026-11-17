@@ -482,7 +482,7 @@ table_sp_sem %>%
 
 
 In this chapter we presented the results of our empirical analysis which we introduced in the first section.
-The second section addressed our benchmark question of whether regional technological potential is a more informative predictor of entry than relatedness density.
+The second section addressed our benchmark question of whether regional technological potential is at least as informative as relatedness density in predicting entry.
 Our results show that potential subsumes much of the relatedness density signal and provides marginal improvements in model fit.
 Although potential does not clearly dominate relatedness density when both are included as co-predictors, the evidence is consistent with our conservative criterion -- potential contributes more across specifications and there is no specification in which relatedness density dominates potential.
 We therefore accept H1, while acknowledging that a more robust comparison is warranted.
