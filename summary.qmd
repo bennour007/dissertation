@@ -138,7 +138,7 @@ Albeit, for enabling technologies, we've seen no conclusive results on the moder
 Furthermore, we added another layer of context as we included the national ecosystem covariates.
 We started by assessing their influence in model 1 and we've seen a relative stability for few of the pillars we introduced.
 Of course the apparent inconsistencies where not empirical, but rather structural since the fixed effects models do not handle the nested structure of the data properly.
-This was confirmed in model 2 where we adopted a hierarchical model that accounts for that structure.
+This was supported by model 2, where we adopted a hierarchical model that accounts for that structure.
 Model 2 shows a clear consistency in the results and provide evidence for the case on the importance of institution in regional diversification as the variables were all significantly associated with the outcome.
 Our results show that the most predictive pillar of the entrepreneurial ecosystem of regional technological potential is competition (positively associated at 8.8%) and internationalisation (negatively associated at 8%). 
 
@@ -148,15 +148,15 @@ This means that ecosystems that are heavily export oriented inhibit their region
 This was relatively mirrored in the literature of trade and global value chains, and more specifically in @sebestyen2024resolving.
 The idea here is that some export intensive countries might tend to lock themselves out into activities that have low added value in complexity and innovation intensity, or into activities where the value added is entirely exported.
 However we acknowledge here that further research is needed given the heterogeneity between European regions.
-Second, our results on the role of competition confirms the intuition in @komlosi2025balanced who employs a necessary condition analysis to assess the structure of the ecosystem that shape regional economic performance.
+Second, our results on the role of competition are consistent with the intuition in @komlosi2025balanced who employs a necessary condition analysis to assess the structure of the ecosystem that shape regional economic performance.
 In their study they found that in the context of their sample of EU regions, competition was almost always necessary for their outcome. 
 
-Model 3 completes our final layer of contextualisation and confirms our initial intuition relatively supported by the variance decomposition in model 2.
+Model 3 completes our final layer of contextualisation and is consistent with our initial intuition, relatively supported by the variance decomposition in model 2.
 Space matters, which country a region belongs to and who are their neighbours are a structural baseline predictors that close the logical chain we started in this work. 
 
 When we average our main variables of interest to a regional panel (eliminate the individual technology signal) we have a different level of analysis.
 Unlike model 1 and 2 who ask what are the (joint) characteristics of regions and technologies that predict regional potential in each technology, model 3 asks on aggregate, does the characteristics of the technologies endowed in the region predict it aggregate (portfolio level) potential?
-I.e. now we can see if the stock of bridging and enabling technologies predict the region's average feasible opportunities, and whether or not the spatial component is confirmed.
+I.e. now we can see if the stock of bridging and enabling technologies predict the region's average feasible opportunities, and whether or not the spatial component is supported.
 To this end, the results provide a contrasting story to the dyadic models.
 First, the average potential of a region is spatially dependent on the average potential of it neighbouring regions.
 Second, regions endowed with high level of bridging roles technologies are associated with a decrease in their potential, whereas for enabling roles technologies, they are positively associated.
