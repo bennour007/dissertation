@@ -51,14 +51,15 @@ $$
        {\displaystyle\frac{\sum_{r'} X_{r',t,y}}{\sum_{r',t'} X_{r',t',y}}}
 = \frac{X_{r,t,y}\,\sum_{r',t'}X_{r',t',y}}
        {\bigl(\sum_{t'}X_{r,t',y}\bigr)\,\bigl(\sum_{r'}X_{r',t,y}\bigr)}
-$$ Where, $X_{r,t,y}$: patent count for region $r$ in technology $t$ during year $y$
+$$ {#eq-rta}
+Where, $X_{r,t,y}$: patent count for region $r$ in technology $t$ during year $y$
 
 For each year $y$, we construct the RTA matrix $\mathbf{R}^{(y)}$ with entries $\text{RTA}_{r,t,y}$:
 
 $$
 \mathbf{R}^{(y)}
 = \bigl[\text{RTA}_{r,t,y}\bigr]_{r=1,\dots,N_{R}}^{t=1,\dots,N_{T}}
-$$
+$$ {#eq-rta-matrix}
 
 These yearly matrices form the foundation for all subsequent modeling.
 We then binarize specialization for classification tasks:
@@ -70,7 +71,7 @@ z_{r,t,y}
 1 & \text{if }\text{RTA}_{r,t,y}\ge1 \\
 0 & \text{otherwise}
 \end{cases}
-$$
+$$ {#eq-z}
 
 where $z_{r,t,y} = 1$ indicates region $r$ has comparative advantage (specialization) in technology $t$ at year $y$.
 
@@ -98,7 +99,7 @@ Various normalisation schemes address this issue.
 
 $$
 \phi_{t,t'}^{\text{assoc}} = \frac{c_{t,t'} \cdot T}{c_t \cdot c_{t'}}
-$$
+$$ {#eq-assoc}
 
 where $T = \sum_{t \in \mathcal{T}} c_t$ is the total patent count.
 Values exceeding one indicate that the technologies appear together more frequently than would be expected if their occurrences were independent--they are positively associated.
@@ -108,24 +109,24 @@ This measure properly corrects for size effects: a rare technology and a common 
 
 $$
 \phi_{t,t'}^{\text{cosine}} = \frac{c_{t,t'}}{\sqrt{c_t \cdot c_{t'}}}
-$$
+$$ {#eq-cosine}
 
 This measures relative overlap between technology profiles.
 While intuitive, it systematically favours frequent technologies over rare ones and does not properly correct for size effects, making comparisons across technologies with different prevalences problematic.
 
 **Minimum Conditional Probability** [@hidalgo2007product] takes a different approach: it measures co-location across regions rather than co-occurrence within patents.
-For this measure the counts are taken over regions, using the binary specialisation indicators $z_{r,t,y}$ defined above (the year index is dropped for readability):
+For this measure the counts are taken over regions, using the binary specialisation indicators $z_{r,t,y}$ defined in @eq-z (the year index is dropped for readability):
 
 $$
 c_{t,t'} = \sum_{r \in \mathcal{R}} z_{r,t}\, z_{r,t'}, \qquad c_t = \sum_{r \in \mathcal{R}} z_{r,t}
-$$
+$$ {#eq-mcp-counts}
 
 so that $c_{t,t'}$ is the number of regions specialised in both $t$ and $t'$, and $c_t$ is the number of regions specialised in $t$.
 The share of regions specialised in $t'$ that are also specialised in $t$ is the conditional probability $P(t \mid t') = c_{t,t'}/c_{t'}$, and the measure keeps the smaller of the two directions:
 
 $$
 \phi_{t,t'}^{\text{min}} = \min\left\{\frac{c_{t,t'}}{c_t},\; \frac{c_{t,t'}}{c_{t'}}\right\} = \frac{c_{t,t'}}{\max(c_t,\, c_{t'})}
-$$
+$$ {#eq-mcp}
 
 The measure therefore normalises co-location by the ubiquity of the more widespread technology, which prevents a technology present in many regions from appearing close to every other technology.
 Unlike association strength, it involves no null model: observed co-location is not compared with what independence would predict.
@@ -181,7 +182,7 @@ For region $r$ and technology $t$, relatedness density aggregates the relatednes
 
 $$
 \text{relatedness density}: \Phi_{r,t} = \frac{\sum_{t' \in \mathcal{T}_r, t' \neq t} \phi_{t,t'}}{\sum_{t' \neq t} \phi_{t,t'}} \times 100
-$$
+$$ {#eq-density}
 
 where $\mathcal{T}_r$ denotes the set of technologies in which region $r$ specialises (those with $\text{RTA}_{r,t} \geq 1$).
 
@@ -334,13 +335,13 @@ For technology $s$ and threshold $\tau$ on its lagged RTA, the split creates two
 
 Split quality is assessed via Gini impurity:
 
-$$G(\nu) = 1 - \sum_{\ell=0}^{1} \pi_\ell^2(\nu) = 2\pi_0(\nu)\pi_1(\nu)$$
+$$G(\nu) = 1 - \sum_{\ell=0}^{1} \pi_\ell^2(\nu) = 2\pi_0(\nu)\pi_1(\nu)$$ {#eq-gini}
 
 where $\pi_\ell(\nu) = n_\ell(\nu)/n(\nu)$ is the share of region–years at node $\nu$ with $z_{r,t,y} = \ell$, and $n(\nu)$ is the number of region–years at the node.
 Gini impurity quantifies node heterogeneity: $G=0$ indicates perfect purity (homogeneous class), while $G=0.5$ indicates maximum impurity (equal class distribution).
 The optimal split maximises weighted impurity reduction:
 
-$$\Delta G(\nu; s, \tau) = G(\nu) - \left[\frac{n(\nu_L)}{n(\nu)} G(\nu_L) + \frac{n(\nu_R)}{n(\nu)} G(\nu_R)\right]$$
+$$\Delta G(\nu; s, \tau) = G(\nu) - \left[\frac{n(\nu_L)}{n(\nu)} G(\nu_L) + \frac{n(\nu_R)}{n(\nu)} G(\nu_R)\right]$$ {#eq-gini-decrease}
 
 Weighting by relative node size prevents trivial splits that isolate single observations into pure but uninformative leaves.
 
@@ -350,7 +351,7 @@ Each terminal node stores the share $\pi_1$ of its training region–years that 
 For prediction, the features $\mathbf{x}_o$ of a region–year are passed down all $B$ trees.
 We use the probability version of the forest: rather than counting votes for the majority class, it averages the class shares stored in the terminal nodes reached in each tree,
 
-$$\hat{P}(z_{r,t,y}=1 \mid \mathbf{x}_o) = \frac{1}{B}\sum_{b=1}^{B} \pi_1\big(\nu_b(\mathbf{x}_o)\big)$$
+$$\hat{P}(z_{r,t,y}=1 \mid \mathbf{x}_o) = \frac{1}{B}\sum_{b=1}^{B} \pi_1\big(\nu_b(\mathbf{x}_o)\big)$$ {#eq-rf-probability}
 
 where $\nu_b(\mathbf{x}_o)$ is the terminal node of tree $h_b$ reached by $\mathbf{x}_o$.
 This probability is the regional technological potential $p_{r,t,y}$ (@sec-meth-potential).
@@ -360,13 +361,13 @@ Unlike parametric models, these are averages of observed class frequencies rathe
 The algorithm's effectiveness stems from variance reduction through decorrelated predictions.
 Bootstrap sampling and random feature selection reduce the correlation $\rho_h$ between the predictions of individual trees, each with variance $\sigma^2$, yielding ensemble variance:
 
-$$\text{Var}(\bar{h}) = \rho_h\sigma^2 + \frac{1-\rho_h}{B}\sigma^2$$
+$$\text{Var}(\bar{h}) = \rho_h\sigma^2 + \frac{1-\rho_h}{B}\sigma^2$$ {#eq-rf-variance}
 
 As $B$ increases and $\rho_h$ decreases, ensemble variance diminishes while maintaining the low bias of flexible tree models.
 
 Feature importance quantifies each predictor's contribution by aggregating Gini impurity reductions (mean decrease in impurity):
 
-$$I_t(s) = \frac{1}{B}\sum_{b=1}^{B} \sum_{\nu \in h_b \,:\, v(\nu)=s} \frac{n(\nu)}{n_b}\, \Delta G(\nu)$$
+$$I_t(s) = \frac{1}{B}\sum_{b=1}^{B} \sum_{\nu \in h_b \,:\, v(\nu)=s} \frac{n(\nu)}{n_b}\, \Delta G(\nu)$$ {#eq-importance}
 
 where the inner sum runs over all nodes $\nu$ of tree $h_b$ that split on technology $s$, $\Delta G(\nu)$ is the impurity reduction achieved by that split, and $n(\nu)/n_b$ is the share of the tree's bootstrap sample reaching the node.
 Higher values indicate features consistently creating purer partitions.
@@ -390,11 +391,11 @@ For each target year $y^*$ and target technology $t$, the training and test sets
 
 $$
 \text{Training: } \left\{ \left( (\text{RTA}_{r,s,y-\delta})_{s \neq t},\; z_{r,t,y} \right) : r \in \mathcal{R},\; y \in [1978+\delta,\; y^*-\delta] \right\}
-$$
+$$ {#eq-train}
 
 $$
 \text{Test: } \left\{ \left( (\text{RTA}_{r,s,y^*-\delta})_{s \neq t},\; z_{r,t,y^*} \right) : r \in \mathcal{R} \right\}
-$$
+$$ {#eq-test}
 
 The training features therefore cover the years $[1978,\; y^*-2\delta]$ and the training outcomes the years $[1978+\delta,\; y^*-\delta]$.
 
@@ -407,7 +408,7 @@ Training was conducted in R using the Ranger package [@wright2017ranger], orches
 
 ## Regional technological potential {#sec-meth-potential}
 
-Each model produces probabilities $p_{r,t,y} = \hat{P}(z_{r,t,y} = 1 \mid \text{RTA}_{r,\cdot,y-\delta})$ representing the likelihood that region $r$ develops specialisation in technology $t$ by year $y$, conditional on its prior portfolio.
+Each model produces probabilities $p_{r,t,y} = \hat{P}(z_{r,t,y} = 1 \mid \text{RTA}_{r,\cdot,y-\delta})$ representing the likelihood that region $r$ develops specialisation in technology $t$ by year $y$, conditional on its prior portfolio (@eq-rf-probability).
 These probabilities constitute **Technological Potential**--a forward-looking, region-specific measure of diversification feasibility.
 
 The shift from correlation to prediction reframes what the measure captures.
@@ -453,11 +454,11 @@ We formalise FITS as a directed, weighted network $G = (V, E, W)$ where:
 
 -   **Nodes** $V = \mathcal{T}$: the set of 641 technologies
 -   **Edges** $E$: directed connections $(t \to t')$ for all $t, t' \in \mathcal{T}, t \neq t'$
--   **Weights** $W_{t \to t'}$: the feature importance of technology $t$ in the model predicting technology $t'$, i.e. $I_{t'}(t)$, normalised as below
+-   **Weights** $W_{t \to t'}$: the feature importance of technology $t$ in the model predicting technology $t'$, i.e. $I_{t'}(t)$, normalised as in @eq-fits-weight
 
 To ensure that the incoming edge weights sum to 1 for each technology and facilitate comparisons in later stages, we normalise as follows:
 
-$$W_{t \to t'} = \frac{I_{t'}(t)}{\sum_{s \neq t'} I_{t'}(s)}$$
+$$W_{t \to t'} = \frac{I_{t'}(t)}{\sum_{s \neq t'} I_{t'}(s)}$$ {#eq-fits-weight}
 so that $\sum_{t \neq t'} W_{t \to t'} = 1$ for every target technology $t'$: the incoming weights of a technology are the shares of its model's total importance.
 Outgoing weights are not constrained to sum to one.
 
@@ -622,15 +623,15 @@ With this in mind, we use this metric to test whether regional technological pot
 
 
 To formalise our proposed metric, let $t \in \mathcal{T}$ denote the target technology, $r \in \mathcal{R}$ the region, and $c \in \mathcal{C}$ an IPC section (first digit).
-FITS weights $W_{t \to t'}$ are as defined in the FITS section.
+FITS weights $W_{t \to t'}$ are as defined in @eq-fits-weight.
 We use $t'$ to index technologies distinct from $t$ throughout.
 For each region $r$, technology $t$, and IPC category/industry $c$, we construct two embeddedness vectors.
 
 For target technology $t$ and IPC section $c$, the **incoming** and **outgoing** industrial embeddedness measure the average FITS edge weight between $t$ and the technologies belonging to section $c$:
 
-$$E^{\leftarrow}_{t,c} = \frac{\displaystyle\sum_{t' \in c,\, t' \neq t} W_{t' \to t}}{\displaystyle|\{t' \in c : W_{t' \to t} > 0\}|}$$
+$$E^{\leftarrow}_{t,c} = \frac{\displaystyle\sum_{t' \in c,\, t' \neq t} W_{t' \to t}}{\displaystyle|\{t' \in c : W_{t' \to t} > 0\}|}$$ {#eq-emb-in}
 
-$$E^{\rightarrow}_{t,c} = \frac{\displaystyle\sum_{t' \in c,\, t' \neq t} W_{t \to t'}}{\displaystyle|\{t' \in c : W_{t \to t'} > 0\}|}$$
+$$E^{\rightarrow}_{t,c} = \frac{\displaystyle\sum_{t' \in c,\, t' \neq t} W_{t \to t'}}{\displaystyle|\{t' \in c : W_{t \to t'} > 0\}|}$$ {#eq-emb-out}
 
 where $E^{\leftarrow}_{t,c}$ captures how strongly technologies in section $c$ predict future specialisation in $t$, and $E^{\rightarrow}_{t,c}$ captures how strongly $t$ predicts future specialisation in technologies belonging to section $c$.
 If no technology in section $c$ connects to $t$ in either direction, the corresponding scalar is set to zero.
@@ -640,26 +641,26 @@ Since FITS weights are non-negative by construction, all embeddedness scalars sa
 
 Further, we define the set of technologies in section $c$ in which region $r$ is specialised:
 
-$$S_{r,c} = \{t' \in c : \text{RTA}_{r,t'} \geq 1\}$$
+$$S_{r,c} = \{t' \in c : \text{RTA}_{r,t'} \geq 1\}$$ {#eq-region-set}
 
 The **regional average embeddedness** in section $c$ averages the embeddedness scores of those specialised technologies:
 
-$$E^{*\leftarrow}_{r,c} = \frac{1}{|S_{r,c}|}\sum_{t' \in S_{r,c}} E^{\leftarrow}_{t',c}$$
+$$E^{*\leftarrow}_{r,c} = \frac{1}{|S_{r,c}|}\sum_{t' \in S_{r,c}} E^{\leftarrow}_{t',c}$$ {#eq-region-emb-in}
 
-$$E^{*\rightarrow}_{r,c} = \frac{1}{|S_{r,c}|}\sum_{t' \in S_{r,c}} E^{\rightarrow}_{t',c}$$
+$$E^{*\rightarrow}_{r,c} = \frac{1}{|S_{r,c}|}\sum_{t' \in S_{r,c}} E^{\rightarrow}_{t',c}$$ {#eq-region-emb-out}
 
 If $S_{r,c} = \emptyset$, then set $E^{*\leftarrow}_{r,c} = E^{*\rightarrow}_{r,c} = 0$.Meaning that the region has no foothold in section $c$ and therefore no alignment signal in that domain.
 
 Coherence is the cosine similarity between the industrial embeddedness profile of technology $t$ and that of region $r$.
 Each profile stacks the incoming and outgoing embeddedness across the IPC sections:
 
-$$\text{Coherence}_{r,t} = \frac{\mathbf{v}_t \cdot \mathbf{v}_r}{\|\mathbf{v}_t\| \, \|\mathbf{v}_r\|} = \frac{\sum_{c \in \mathcal{C}} \left( E^{\leftarrow}_{t,c}\, E^{*\leftarrow}_{r,c} + E^{\rightarrow}_{t,c}\, E^{*\rightarrow}_{r,c} \right)}{\|\mathbf{v}_t\| \, \|\mathbf{v}_r\|}$$
+$$\text{Coherence}_{r,t} = \frac{\mathbf{v}_t \cdot \mathbf{v}_r}{\|\mathbf{v}_t\| \, \|\mathbf{v}_r\|} = \frac{\sum_{c \in \mathcal{C}} \left( E^{\leftarrow}_{t,c}\, E^{*\leftarrow}_{r,c} + E^{\rightarrow}_{t,c}\, E^{*\rightarrow}_{r,c} \right)}{\|\mathbf{v}_t\| \, \|\mathbf{v}_r\|}$$ {#eq-coherence}
 
 where:
 
-$$\mathbf{v}_t = \left[E^{\leftarrow}_{t,c},\; E^{\rightarrow}_{t,c}\right]_{c \in \mathcal{C}} \in \mathbb{R}^{2|\mathcal{C}|}_{\geq 0} \quad \text{(technology profile)}$$
+$$\mathbf{v}_t = \left[E^{\leftarrow}_{t,c},\; E^{\rightarrow}_{t,c}\right]_{c \in \mathcal{C}} \in \mathbb{R}^{2|\mathcal{C}|}_{\geq 0} \quad \text{(technology profile)}$$ {#eq-profile-tech}
 
-$$\mathbf{v}_r = \left[E^{*\leftarrow}_{r,c},\; E^{*\rightarrow}_{r,c}\right]_{c \in \mathcal{C}} \in \mathbb{R}^{2|\mathcal{C}|}_{\geq 0} \quad \text{(region profile)}$$
+$$\mathbf{v}_r = \left[E^{*\leftarrow}_{r,c},\; E^{*\rightarrow}_{r,c}\right]_{c \in \mathcal{C}} \in \mathbb{R}^{2|\mathcal{C}|}_{\geq 0} \quad \text{(region profile)}$$ {#eq-profile-region}
 
 The numerator pairs the technology with the region section by section and direction by direction.
 Coherence is therefore high when the region's portfolio is embedded in the same industries, in the same directions and in similar relative proportions as the technology.

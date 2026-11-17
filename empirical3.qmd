@@ -181,7 +181,7 @@ Values are bounded between 0 and 1.
 
 Because OLS on a bounded outcome is problematic and can generate out-of-range fitted values, we apply a logit transformation before estimation:
 
-$$p^*_{r,t,y} = \text{logit}(p_{r,t,y}) = \log\!\left(\frac{p_{r,t,y}}{1 - p_{r,t,y}}\right)$$
+$$p^*_{r,t,y} = \text{logit}(p_{r,t,y}) = \log\!\left(\frac{p_{r,t,y}}{1 - p_{r,t,y}}\right)$$ {#eq-logit-potential}
 
 with extreme values trimmed to avoid numerical instability.
 The transformed outcome
@@ -195,7 +195,7 @@ potential, $\tilde{p}_{r,t,y}$ (z-scored), as a predictor of next-period entry a
 
 For the spatial models (H5), we aggregate to region–year means (the geographic distribution of average potential across European regions is shown in @fig-map-potential.):
 
-$$P_{r,y} = \frac{1}{|\mathcal{T}|} \sum_{t \in \mathcal{T}} p_{r,t,y}$$
+$$P_{r,y} = \frac{1}{|\mathcal{T}|} \sum_{t \in \mathcal{T}} p_{r,t,y}$$ {#eq-avg-potential}
 
 
 
@@ -487,7 +487,7 @@ We estimate linear probability models (LPM) that include both standardised poten
 
 The general specification is:
 
-$$\text{Entry}_{r,t,y+1} = \beta_1 \text{Density}_{r,t,y} + \beta_2 \text{Potential}_{r,t,y} + \mathbf{Z}_{r,t,y}\boldsymbol{\gamma} + \alpha_y + \varepsilon_{r,t,y}$$
+$$\text{Entry}_{r,t,y+1} = \beta_1 \text{Density}_{r,t,y} + \beta_2 \text{Potential}_{r,t,y} + \mathbf{Z}_{r,t,y}\boldsymbol{\gamma} + \alpha_y + \varepsilon_{r,t,y}$$ {#eq-model0}
 
 where $\text{Density}_{r,t,y}$ is the standardised relatedness density (z-scored), $\text{Potential}_{r,t,y}$ is the standardised technological potential (z-scored), $\mathbf{Z}_{r,t,y}$ contains controls (regional complexity, technology complexity, patent count), and $\alpha_y$ are year fixed effects.
 Standard errors are clustered by region and technology to account for the dyadic structure of the data.
@@ -541,7 +541,7 @@ This choice accounts for the structural correlation of the observations in the s
 
 The general specification is:
 
-$$p^*_{r,t,y} = \alpha_r + \alpha_y + \mathbf{X}_{r,t,y}\boldsymbol{\beta} + \varepsilon_{r,t,y}$$
+$$p^*_{r,t,y} = \alpha_r + \alpha_y + \mathbf{X}_{r,t,y}\boldsymbol{\beta} + \varepsilon_{r,t,y}$$ {#eq-model1}
 
 where $\alpha_r$ are region fixed effects, $\alpha_y$ are year fixed effects, and
 $\mathbf{X}_{r,t,y}$ is the covariates matrix. 
@@ -726,7 +726,7 @@ Thus to properly test H4, we need a specification that preserves national and re
 To this end we include random effects by modelling nested region within country intercepts that are drawn from a distribution rather than absorbing them as free parameters.
 For that we estimate linear mixed models with the following nesting structure:
 
-$$p^*_{r,t,y} = \mathbf{X}_{r,t,y}\boldsymbol{\beta} + \zeta_t + u_c + u_{r|c} + \varepsilon_{r,t,y}$$
+$$p^*_{r,t,y} = \mathbf{X}_{r,t,y}\boldsymbol{\beta} + \zeta_t + u_c + u_{r|c} + \varepsilon_{r,t,y}$$ {#eq-model2}
 
 where $u_c \sim \mathcal{N}(0, \sigma^2_c)$ is a country-level random intercept and $u_{r|c} \sim \mathcal{N}(0, \sigma^2_{r|c})$ is a region-within-country random intercept.
 Year is included as a dummy ($\zeta_t$) to absorb common temporal dynamics.
@@ -749,7 +749,7 @@ The spatial models in this analysis test this formally.
 To proceed with the spatial analysis, we construct spatial weights using k-nearest neighbours (k = 5) based on NUTS2 geographic centroids.
 We also perform row-standardisation for each focal region $i$ and its candidate neighbour $j$, such that $\sum_j w_{ij} = 1$, where:
 
-$$w_{ij} = \begin{cases} 1/k & \text{if } j \in \mathrm{knn}_5(i) \\ 0 & \text{otherwise} \end{cases}$$
+$$w_{ij} = \begin{cases} 1/k & \text{if } j \in \mathrm{knn}_5(i) \\ 0 & \text{otherwise} \end{cases}$$ {#eq-spatial-weights}
 
 
 
@@ -818,7 +818,7 @@ In light of this, the SAR model is the adequate specification, while we use the 
 We estimate the Spatial Autoregressive (SAR) model with two-way (region and year) demeaning.
 In this model, the spatial autoregressive parameter $\rho$ tests H5a where a positive and significant $\rho$ indicates that regions tend to exhibit higher potential when neighbouring regions also display high potential. 
 
-$$P_{r,y} = \rho \mathbf{W} P_{r,y} + \mathbf{X}_{r,y}\boldsymbol{\beta} + \alpha_r + \zeta_y + \varepsilon_{r,y}$$
+$$P_{r,y} = \rho \mathbf{W} P_{r,y} + \mathbf{X}_{r,y}\boldsymbol{\beta} + \alpha_r + \zeta_y + \varepsilon_{r,y}$$ {#eq-sar}
 
 
 
@@ -837,7 +837,7 @@ Alternatively, we estimate the Spatial Error Model (SEM) as a robustness check.
 In this model we assume that the unobservable determinant of regional potential are spatially autocorrelated.
 This is to say that the spatial dependence of regional potential is driven by unobserved spatial correlation rather than observed variations. 
 
-$$P_{r,y} = \mathbf{X}_{r,y}\boldsymbol{\beta} + \alpha_r + u_{r,y}, \qquad u_{r,y} = \delta \mathbf{W} u_{r,y} + \varepsilon_{r,y}$$
+$$P_{r,y} = \mathbf{X}_{r,y}\boldsymbol{\beta} + \alpha_r + u_{r,y}, \qquad u_{r,y} = \delta \mathbf{W} u_{r,y} + \varepsilon_{r,y}$$ {#eq-sem}
 
 In here, $\delta$ is our benchmark such that its sign, magnitude and significance compared to $\rho$ from the SAR model allows to differentiate the spatial dynamics that drives regional potential. 
 
