@@ -32,16 +32,10 @@ We consider the following sets:
 
 where $N_T$, $N_R$, $N_Y$, $N_C$, and $N_K$ denote the total number of technologies, regions, years, technology categories, and countries respectively.
 
-These sets are mirrored by the European Patent Office data (1978-2021) classified at the 4-digit IPC level, yielding 641 distinct technologies across 345 NUTS2 regions in 34 European countries.
-IPC classifications provide hierarchical structure: section (letter, we also refer to this as categories), class (two digits), subclass (letter).
-For example, F16H encompasses Section F (Mechanical engineering), Class 16 (engineering elements for mechanical power transmission), and Subclass H (gearing systems).
-
 We quantify regional specialization using the Revealed Comparative Advantage [@balassa1965rca].
 Although originally designed for trade data, this metric has been widely adopted in innovation geography literature.
 Following the nomenclature in @balland2017geography, we refer to it as Revealed Technological Advantage (RTA) in our patent data context.
 The RTA measures relative specialization, enabling simultaneous capture of expertise depth and portfolio diversity.
-Despite critiques regarding patent-based applications [@balland2019beyond; @diodato2023economic], we retain it as the input measure for our machine learning models.
-The goal here is to learn meaningful technology relationships from portfolio patterns rather than from raw co-occurrence frequencies.
 
 The RTA for region $r$ in technology $t$ during year $y$ is defined as:
 
@@ -373,6 +367,19 @@ Higher values indicate features consistently creating purer partitions.
 Feature importance measures predictive association rather than causal effect, and exhibits bias toward high-cardinality features and correlated predictor sets.
 It ranks predictive relevance but requires caution in causal interpretation.
 
+## Application to European regional patent data {#sec-meth-application}
+
+This section describes how we apply the approach of @sec-meth-ml-approach to European regional patent data: the data and input measure, the training procedure, and the two constructs that the training yields, regional technological potential and FITS.
+
+### Data and input measure {#sec-meth-data}
+
+The sets defined in @sec-meth-motivation are mirrored by the European Patent Office data (1978-2021) classified at the 4-digit IPC level, yielding 641 distinct technologies across 345 NUTS2 regions in 34 European countries.
+IPC classifications provide hierarchical structure: section (letter, we also refer to this as categories), class (two digits), subclass (letter).
+For example, F16H encompasses Section F (Mechanical engineering), Class 16 (engineering elements for mechanical power transmission), and Subclass H (gearing systems).
+
+Despite critiques regarding patent-based applications [@balland2019beyond; @diodato2023economic], we retain the RTA (@eq-rta) as the input measure for our machine learning models.
+The goal here is to learn meaningful technology relationships from portfolio patterns rather than from raw co-occurrence frequencies.
+
 ### Training procedure {#sec-meth-training}
 
 We follow the methodology of @fessina2024identifying, @albora2023product (and @tacchella2023relatedness), originally developed for trade data.
@@ -405,7 +412,7 @@ The procedure yields 7,051 models (641 technologies × 11 years).
 Given computational constraints, we performed cross-validation on a stratified sample of four technologies (G06G, B67B, D02J, C08J) spanning different IPC sections following @hsin2026regional, applying the modal optimal parameters across all models: `mtry = 139`, `trees = 100`, `min_n = 38`.
 Training was conducted in R using the Ranger package [@wright2017ranger], orchestrated via the targets pipeline [@landau2021targets].
 
-## Regional technological potential {#sec-meth-potential}
+### Regional technological potential {#sec-meth-potential}
 
 Each model produces probabilities $p_{r,t,y} = \hat{P}(z_{r,t,y} = 1 \mid \text{RTA}_{r,\cdot,y-\delta})$ representing the likelihood that region $r$ develops specialisation in technology $t$ by year $y$, conditional on its prior portfolio.
 These probabilities constitute **Technological Potential**--a forward-looking, region-specific measure of diversification feasibility.
@@ -421,7 +428,7 @@ Intermediate values reflect genuine uncertainty, where diversification may be po
 Such factors could be industrial alignment, national ecosystem characteristics, or spatial context, which the subsequent empirical analysis investigates.
 
 
-## Feature Importance Technology Space (FITS) {#sec-meth-fits}
+### Feature Importance Technology Space (FITS) {#sec-meth-fits}
 
 Traditional technology networks rely on patent citations or co-occurrence patterns, each with limitations.
 Citations suffer from examiner additions that may not reflect actual knowledge flows, aggregation from patent-level to technology-level that obscures directionality, and backward-looking orientation that captures historical influence rather than predictive relationships [@fessina2024identifying].

@@ -35,6 +35,8 @@ so that each promise in the response letters can be traced to a merged change.
 
 Conventions:
 
+- Issues: PRs into `revision` do **not** auto-close issues. Label `in-pr` when the PR opens; close the issue manually (comment with the PR number) when it is merged; label `partial` if only part is done.
+
 - Tables: proposed as a plain Markdown table in the plan; implemented as an R `gt` table in the `.qmd`.
 - Every unit also reports anything else found that is inconsistent, imprecise, or bad practice (in `flags.csv`).
 - `master` is untouched until the revision is complete.
