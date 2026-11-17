@@ -164,7 +164,7 @@ All normalisation schemes above produce symmetric measures: $\phi_{t,t'} = \phi_
 This symmetry assumes that the relationship between any two technologies operates bidirectionally with equal strength.
 Yet technological development often exhibits clear hierarchies [@boschma2017relatedness].
 Expertise in semiconductor fabrication may strongly predict future development of integrated circuit design, but the reverse need not hold--circuit designers may not subsequently develop fabrication capabilities.
-The capabilities required to transition from technology $i$ to technology $j$ may differ vastly from those required for the reverse transition.
+The capabilities required to transition from technology $t$ to technology $t'$ may differ vastly from those required for the reverse transition.
 Symmetric measures cannot distinguish prerequisite relationships from derived relationships, enabling technologies from their applications, or identify the stepping-stone pathways that matter for strategic planning.
 
 ### Relatedness density through linear aggregation {#sec-meth-density}
@@ -256,11 +256,11 @@ This addresses the circularity where relatedness is inferred from outcomes and t
 
 Second, prediction-based approaches can capture the many-body correlations that density-based measures discard.
 As Tacchella et al. (2023) emphasise, describing diversification paths as sums of binary relatedness relationships is an oversimplification.
-A region's probability of developing technology $i$ depends not just on pairwise similarities but on the full configuration of its existing portfolio--which combinations are present, which are absent, and how these interact.
+A region's probability of developing technology $t$ depends not just on pairwise similarities but on the full configuration of its existing portfolio--which combinations are present, which are absent, and how these interact.
 Tree-based algorithms learn precisely these complex conditional patterns.
 
 Third, the framework naturally accommodates the asymmetric, directed relationships that symmetric co-occurrence measures cannot represent.
-When we train separate models for each target technology, we obtain directional importance scores: technology $t$ may strongly predict entry into technology $i$ while $i$ weakly predicts entry into $t$.
+When we train separate models for each target technology, we obtain directional importance scores: technology $t$ may strongly predict entry into technology $t'$ while $t'$ weakly predicts entry into $t$.
 This asymmetry reveals hierarchical structure--prerequisites, enabling technologies, and developmental sequences--that bidirectional similarity metrics obscure.
 
 We apply this framework through two complementary constructs:
@@ -270,7 +270,7 @@ This replaces relatedness density.
 Rather than linearly summing symmetric co-occurrence frequencies, we predict region-specific feasibility using the full structure of past portfolios.
 The measure captures non-linear interactions and regional heterogeneity that additive approaches miss.
 
-**Feature Importance Technology Space (FITS)** extracts directional dependencies $I_{t \to t'}$ between technologies from the trained models.
+**Feature Importance Technology Space (FITS)** extracts directional dependencies $W_{t \to t'}$ between technologies from the trained models.
 This replaces symmetric technology networks.
 Instead of co-occurrence frequencies, we identify which technologies predict others' future adoption--and crucially, which do not predict in the reverse direction.
 The resulting asymmetric network reveals hierarchical technological structure invisible to symmetric measures.
@@ -322,53 +322,53 @@ Panel B demonstrates how decision tree algorithms capture many-body correlations
 This structural difference explains why machine learning approaches can recover non-linear capability interactions that linear aggregation of symmetric relatedness measures cannot represent, as the value of possessing one technology changes depending on which other technologies are present, a form of complementarity that density treat as independent contributions.
 This leads us to explore further how and why random forest---our adopted tree algorithm---works, especially for our case which is the prediction of regional technological specialisation.
 
-Random Forest constructs an ensemble of $B$ decision trees through bootstrap aggregating (bagging) with random feature subsampling.
-Each tree $T_b$ is built on a bootstrap sample $\mathcal{D}_b^*$ drawn with replacement from the original dataset.
+In our application, one forest is trained per target technology $t$ (and target year, see @sec-meth-training).
+An observation is a region–year $o = (r, y)$; its features are the lagged specialisations $x_{o,s} = \text{RTA}_{r,s,y-\delta}$ in the $N_T - 1$ other technologies $s \neq t$; its outcome is the specialisation indicator $z_{r,t,y}$.
+
+Random Forest constructs an ensemble of $B$ decision trees $h_1, \ldots, h_B$ through bootstrap aggregating (bagging) with random feature subsampling.
+Each tree $h_b$ is built on a bootstrap sample $\mathcal{D}_b^*$ of region–years drawn with replacement from the training data.
 
 Each tree recursively partitions the feature space through binary splits.
-At node $t$, we randomly select $m$ features (typically $m = \sqrt{p}$) and evaluate all possible splits within this subset.
-For feature $j$ and threshold $\tau$, the split creates two child nodes: $t_L = \{i : x_{ij} \leq \tau\}$ and $t_R = \{i : x_{ij} > \tau\}$.
+At node $\nu$, we randomly select $m$ of the $N_T - 1$ features and evaluate all possible splits within this subset (we use $m = 139$; the common default would be $\lfloor\sqrt{N_T - 1}\rfloor = 25$).
+For technology $s$ and threshold $\tau$ on its lagged RTA, the split creates two child nodes: $\nu_L = \{o \in \nu : x_{o,s} \leq \tau\}$ and $\nu_R = \{o \in \nu : x_{o,s} > \tau\}$.
 
 Split quality is assessed via Gini impurity:
 
-$$G(t) = 1 - \sum_{k=0}^{1} p_k^2(t) = 2p_0(t)p_1(t)$$
+$$G(\nu) = 1 - \sum_{\ell=0}^{1} \pi_\ell^2(\nu) = 2\pi_0(\nu)\pi_1(\nu)$$
 
-where $p_k(t) = n_k(t)/n(t)$ represents the proportion of class $k$ observations at node $t$.
+where $\pi_\ell(\nu) = n_\ell(\nu)/n(\nu)$ is the share of region–years at node $\nu$ with $z_{r,t,y} = \ell$, and $n(\nu)$ is the number of region–years at the node.
 Gini impurity quantifies node heterogeneity: $G=0$ indicates perfect purity (homogeneous class), while $G=0.5$ indicates maximum impurity (equal class distribution).
 The optimal split maximises weighted impurity reduction:
 
-$$\Delta G(j, \tau) = G(t) - \left[\frac{n(t_L)}{n(t)} G(t_L) + \frac{n(t_R)}{n(t)} G(t_R)\right]$$
+$$\Delta G(\nu; s, \tau) = G(\nu) - \left[\frac{n(\nu_L)}{n(\nu)} G(\nu_L) + \frac{n(\nu_R)}{n(\nu)} G(\nu_R)\right]$$
 
 Weighting by relative node size prevents trivial splits that isolate single observations into pure but uninformative leaves.
 
 Recursive splitting continues until predefined stopping criteria: node purity ($G=0$), minimum node size threshold, or maximum tree depth.
-Terminal nodes are assigned the majority class of their constituent observations.
+Each terminal node stores the share $\pi_1$ of its training region–years that are specialised in $t$.
 
-For prediction, observation $\mathbf{x}$ traverses all $B$ trees.
-Final classification aggregates individual tree predictions via majority voting:
+For prediction, the features $\mathbf{x}_o$ of a region–year are passed down all $B$ trees.
+We use the probability version of the forest: rather than counting votes for the majority class, it averages the class shares stored in the terminal nodes reached in each tree,
 
-$$\hat{y}(\mathbf{x}) = \text{mode}\{\hat{y}_1(\mathbf{x}), \ldots, \hat{y}_B(\mathbf{x})\}$$
+$$\hat{P}(z_{r,t,y}=1 \mid \mathbf{x}_o) = \frac{1}{B}\sum_{b=1}^{B} \pi_1\big(\nu_b(\mathbf{x}_o)\big)$$
 
-Class probabilities are estimated as the proportion of trees predicting each class:
-
-$$\hat{P}(y=1|\mathbf{x}) = B^{-1}\sum_{b=1}^{B} \mathbb{I}[\hat{y}_b(\mathbf{x})=1]$$
-
-This probability represents empirical vote share across trees.
-Values near 1 indicate strong consensus for class 1 (high confidence), while values near 0.5 reflect uncertainty.
-Unlike parametric models, these are data-driven vote proportions rather than model-based probability estimates.
+where $\nu_b(\mathbf{x}_o)$ is the terminal node of tree $h_b$ reached by $\mathbf{x}_o$.
+This probability is the regional technological potential $p_{r,t,y}$ (@sec-meth-potential).
+Values near 1 indicate that region–years with similar portfolios were almost always specialised in $t$, values near 0 that they almost never were, and intermediate values reflect uncertainty.
+Unlike parametric models, these are averages of observed class frequencies rather than model-based probability estimates.
 
 The algorithm's effectiveness stems from variance reduction through decorrelated predictions.
-Bootstrap sampling and random feature selection reduce inter-tree correlation $\rho$, yielding ensemble variance:
+Bootstrap sampling and random feature selection reduce the correlation $\rho_h$ between the predictions of individual trees, each with variance $\sigma^2$, yielding ensemble variance:
 
-$$\text{Var}(\bar{y}) = \rho\sigma^2 + \frac{1-\rho}{B}\sigma^2$$
+$$\text{Var}(\bar{h}) = \rho_h\sigma^2 + \frac{1-\rho_h}{B}\sigma^2$$
 
-As $B$ increases and $\rho$ decreases, ensemble variance diminishes while maintaining the low bias of flexible tree models.
+As $B$ increases and $\rho_h$ decreases, ensemble variance diminishes while maintaining the low bias of flexible tree models.
 
-Feature importance quantifies each predictor's contribution by aggregating Gini impurity reductions:
+Feature importance quantifies each predictor's contribution by aggregating Gini impurity reductions (mean decrease in impurity):
 
-$$I(j) = \frac{1}{B}\sum_{b=1}^{B} \sum_{t \in T_b : v(t)=j} \Delta G(t)$$
+$$I_t(s) = \frac{1}{B}\sum_{b=1}^{B} \sum_{\nu \in h_b \,:\, v(\nu)=s} \frac{n(\nu)}{n_b}\, \Delta G(\nu)$$
 
-where the sum runs over all nodes using feature $j$ for splitting.
+where the inner sum runs over all nodes $\nu$ of tree $h_b$ that split on technology $s$, $\Delta G(\nu)$ is the impurity reduction achieved by that split, and $n(\nu)/n_b$ is the share of the tree's bootstrap sample reaching the node.
 Higher values indicate features consistently creating purer partitions.
 Feature importance measures predictive association rather than causal effect, and exhibits bias toward high-cardinality features and correlated predictor sets.
 It ranks predictive relevance but requires caution in causal interpretation.
@@ -377,20 +377,26 @@ It ranks predictive relevance but requires caution in causal interpretation.
 
 We follow the methodology of @fessina2024identifying, @albora2023product (and @tacchella2023relatedness), originally developed for trade data.
 The key innovation lies in training separate models for each technology rather than constructing a single global model.
-For every technology $t,t' \in \mathcal{T}$, we train a binary classification model where:
+For every target technology $t \in \mathcal{T}$, we train a binary classification model where:
 
 -   **Outcome**: $z_{r,t,y}$ indicates whether region $r$ specialises in technology $t$ at year $y$ (RTA $\geq 1$)
--   **Features**: $\{\text{RTA}_{r,t,y-\delta} : t \in \mathcal{T}, t \neq t'\}$ comprises RTA values for all other technologies $\delta$ years prior
+-   **Features**: $\{\text{RTA}_{r,s,y-\delta} : s \in \mathcal{T}, s \neq t\}$ comprises RTA values for all other technologies $\delta$ years prior
 
 This technology-specific approach enables each model to learn unique dependency patterns.
 The lag $\delta = 4$ years balances predictive horizon with data availability, following conventions in the literature on capability accumulation [@andreoni2019political].
 
 We predict specialisation for target years $y^* \in \{2008, \ldots, 2018\}$ using data from 1978 onward.
-For each target year $y_t$ and technology $i$:
+For each target year $y^*$ and target technology $t$, the training and test sets are:
 
-**Training set:** $$X_{\text{train}} = \{ \text{RTA}_{r,t,y} \mid y \in [1978, y_t - 2\delta], t \neq t'\}$$ $$Y_{\text{train}} = \{z_{r,t',y} \mid y \in [1978 + \delta,  y_t - \delta]\}$$
+$$
+\text{Training: } \left\{ \left( (\text{RTA}_{r,s,y-\delta})_{s \neq t},\; z_{r,t,y} \right) : r \in \mathcal{R},\; y \in [1978+\delta,\; y^*-\delta] \right\}
+$$
 
-**Test set:** $$X_{\text{test}} = \{ \text{RTA}_{r,t',y^*-\delta} \mid t \neq t'\}$$ $$Y_{\text{test}} = \{z_{r,t,y^*}\}$$
+$$
+\text{Test: } \left\{ \left( (\text{RTA}_{r,s,y^*-\delta})_{s \neq t},\; z_{r,t,y^*} \right) : r \in \mathcal{R} \right\}
+$$
+
+The training features therefore cover the years $[1978,\; y^*-2\delta]$ and the training outcomes the years $[1978+\delta,\; y^*-\delta]$.
 
 This temporal structure ensures strict separation: models predict future specialisation using only information available at the prediction date.
 The expanding training window incorporates historical diversification patterns while the fixed lag prevents information leakage.
@@ -401,7 +407,7 @@ Training was conducted in R using the Ranger package [@wright2017ranger], orches
 
 ## Regional technological potential {#sec-meth-potential}
 
-Each model produces probabilities $p_{r,i,y} = P(z_{r,i,y} = 1 \mid \text{RTA}_{r,\cdot,y-\delta})$ representing the likelihood that region $r$ develops specialisation in technology $i$ by year $y$, conditional on its prior portfolio.
+Each model produces probabilities $p_{r,t,y} = \hat{P}(z_{r,t,y} = 1 \mid \text{RTA}_{r,\cdot,y-\delta})$ representing the likelihood that region $r$ develops specialisation in technology $t$ by year $y$, conditional on its prior portfolio.
 These probabilities constitute **Technological Potential**--a forward-looking, region-specific measure of diversification feasibility.
 
 The shift from correlation to prediction reframes what the measure captures.
@@ -440,8 +446,8 @@ knitr::include_graphics("resources/technology_network.png")
 FITS addresses these by constructing an asymmetric, predictive network from the feature importance scores of our Technological Potential models.
 Rather than inferring relationships from co-occurrence, FITS extracts directional dependencies revealed by which technologies predict others' future adoption.
 
-Recall that for each technology $i$, we trained a Random Forest model predicting $z_{r,i,y}$ using $\{\text{RTA}_{r,t,y-\delta} : t \neq i\}$ as features.
-The feature importance $I_i(t)$ quantifies how much technology $t$ contributes to predicting future specialisation in technology $i$ across all regions and time periods.
+Recall that for each target technology $t'$, we trained a Random Forest model predicting $z_{r,t',y}$ using $\{\text{RTA}_{r,t,y-\delta} : t \neq t'\}$ as features.
+The feature importance $I_{t'}(t)$ quantifies how much technology $t$ contributes to predicting future specialisation in technology $t'$ across all regions and time periods.
 
 We formalise FITS as a directed, weighted network $G = (V, E, W)$ where:
 
