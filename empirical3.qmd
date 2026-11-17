@@ -22,7 +22,7 @@ Additionally, we also defined a coherence measure following intuition in the lit
 In this chapter we provide an empirical application to our methodological contribution following the same ideas we discussed in the literature review.
 In here we will first re-iterate and further clarify our objectives and how they translate to empirical constructs, then we will explain progressively how we will to address the research questions and the test the hypothesis. 
 
-## Overview and identification goals {#sec-emp-overview}
+## Overview and empirical goals {#sec-emp-overview}
 
 The central question of this chapter is what explains variation in regional technological potential?
 The analogue to this question in the REC literature is what explains relatedness.
@@ -51,7 +51,7 @@ Finally, as a secondary benchmark, we also compare the influence of potential an
 
 
 
-The guiding research question is what conditions determine the feasibility of regional technological diversification, and how do technology-specific characteristics, portfolio alignment, national ecosystem structure, and spatial interdependence jointly shape that feasibility.
+The guiding research question is what conditions are associated with the feasibility of regional technological diversification, and how do technology-specific characteristics, portfolio alignment, national ecosystem structure, and spatial interdependence jointly shape that feasibility.
 This decomposes into five testable claims which we re-iterate from the first chapter and summarise in @tbl-hypo. 
 
 **H1 (Benchmark):** Regional technological potential is at least as informative as relatedness density in predicting technology entry.
@@ -478,7 +478,7 @@ corr_matrix_agg %>%
 
 ## Model 0: Entry Benchmark {#sec-emp-model0}
 
-Before decomposing regional technological potential into its structural determinants, we establish that potential carries meaningful information about diversification feasibility beyond what traditional relatedness measures capture.
+Before decomposing regional technological potential into its structural correlates, we establish that potential carries meaningful information about diversification feasibility beyond what traditional relatedness measures capture.
 This benchmark analysis validates the methodological investment in the machine learning framework by testing whether the added complexity--non-linear capability interactions, region-specific predictions--translates into improved empirical performance.
 
 The outcome in this specification is *observed entry*: whether region $r$ develops specialisation (RTA ≥ 1) in technology $t$ at year $y+1$, conditional on not being specialised at year $y$.
@@ -533,7 +533,7 @@ map_avg_rd +
 
 ## Model 1: Dyadic fixed effects models {#sec-emp-model1}
 
-The first model in our work is specified to investigate the explanatory factors that drives regional technological potential.
+The first model in our work is specified to investigate the factors associated with regional technological potential.
 In here, as well as in the other dyadic models we estimate our linear models on the logit-transformed potential $p^*_{r,t,y}$. 
 
 Essentially we adopt a two-way region and year fixed effects as our preferred specification to assess the within region variations with standard errors clustered by region and technology.
@@ -546,9 +546,9 @@ $$p^*_{r,t,y} = \alpha_r + \alpha_y + \mathbf{X}_{r,t,y}\boldsymbol{\beta} + \va
 where $\alpha_r$ are region fixed effects, $\alpha_y$ are year fixed effects, and
 $\mathbf{X}_{r,t,y}$ is the covariates matrix. 
 
-This specification is one part of our identification strategy where region fixed effects absorb all time-invariant regional characteristics that could confound the relationship between the regional portfolio characteristics and regional potential.
+This specification is one part of our estimation strategy, in which region fixed effects absorb all time-invariant regional characteristics that could confound the relationship between the regional portfolio characteristics and regional potential.
 Additionally, year fixed effects absorb all common temporal shocks.
-Thus, we identify within-group variations that change over time.
+Thus, the estimates rely on within-region variation over time.
 Additionally, this specification should also address at least partially potential issues with endogeneity.
 
 The idea here is to understand what factors explain regional technological potential when we account for the regional and temporal common variations.
@@ -563,7 +563,7 @@ The network model adds betweenness and eigenvector centrality testing whether ne
 The interaction model add the coherence x betweenness and coherence x eigenvector terms.
 We also add a parallel specification for robustness where we replaces the coherence moderation with distance. 
 
-Of course with the inclusion of national ecosystem covariates, this identification looses some of its merits since we cannot account for cross-regional country level differences.
+Of course with the inclusion of national ecosystem covariates, this design loses some of its merits since we cannot account for cross-regional country level differences.
 This is  because region fixed effect will absorb country level variations and because country fixed effect will leave out common regional variation.
 This motivates the adoption of a hierarchical model when we include the country level covariates.
 However, we also retain this (fixed effects) approach as robustness check for model 2.
@@ -644,7 +644,7 @@ map_eigen +
 #| out-width: "100%"
 #| fig-dpi: 150
 #| fig-cap: "Total Patent Count by Region (2008–2018 Averages)"
-#| fig-subcap: "This map visualizes total patent activity across European regions, representing the volume of technological production and innovation output. The square root transformation compresses the scale to make the distribution more interpretable, as raw patent counts exhibit extreme skew (a few metropolitan regions produce thousands of patents while many rural regions produce tens). High-activity regions (bright yellow) are concentrated in major innovation hubs--Munich, Stuttgart, Paris, Milan, London, Stockholm-which dominate European patenting, while low-activity regions (dark blue) span large rural and peripheral territories. This map confirms that patenting is highly concentrated geographically, with the top 10% of regions accounting for the majority of European patent output, a pattern that motivates our analysis of how regions with different knowledge stocks face different diversification opportunities."
+#| fig-subcap: "This map visualizes total patent activity across European regions, representing the volume of technological production and innovation output. The square root transformation compresses the scale to make the distribution more interpretable, as raw patent counts exhibit extreme skew (a few metropolitan regions produce thousands of patents while many rural regions produce tens). High-activity regions (bright yellow) are concentrated in major innovation hubs--Munich, Stuttgart, Paris, Milan, London, Stockholm-which dominate European patenting, while low-activity regions (dark blue) span large rural and peripheral territories. This map shows that patenting is highly concentrated geographically, with the top 10% of regions accounting for the majority of European patent output, a pattern that motivates our analysis of how regions with different knowledge stocks face different diversification opportunities."
 
 map_count <- targets::tar_read(map_count, store = here::here("../../_targets_DES"))
 
@@ -732,7 +732,7 @@ where $u_c \sim \mathcal{N}(0, \sigma^2_c)$ is a country-level random intercept 
 Year is included as a dummy ($\zeta_t$) to absorb common temporal dynamics.
 
 With these models we will be able to compare the contribution of the covariates to the contribution to the nested structure itself.
-This is to say that if the nested structure is highly predictive of the variation in regional technological potential then the outcome is primarily driven by the location rather than the covariates themselves.
+This is to say that if the nested structure is highly predictive of the variation in regional technological potential then the outcome varies primarily with location rather than with the covariates themselves.
 This justifies our next layer of analysis: if geography matters then we need to assess the spatial dependence of the factors associated with regional potential.
 To that end we explore in the next section in more details how we will assess this dependence. 
 
@@ -742,7 +742,7 @@ To that end we explore in the next section in more details how we will assess th
 
 Till now, we discussed two models that investigate variation in regional technological potential at different levels of grouping specification.
 The fixed effect models are designed to assess the within-region variation, and the hierarchical model is designed to simultaneously account for the national ecosystem factors while also serving as a robustness check for the network covariates and their interaction with coherence.
-As we justified earlier, if the nested structure of the data drives much of the explanatory power of the model, it could be an indication that spatial dependence and/or geographical proximity is what matters here.
+As we justified earlier, if the nested structure of the data accounts for much of the explanatory power of the model, it could be an indication that spatial dependence and/or geographical proximity is what matters here.
 Additionally, the literature gives reason to expect real interdependence especially in the context of European regions where administrative borders are simply a construct and not a barrier for firms and entrepreneurs [@boschma2009related; @komlosi2025balanced].
 The spatial models in this analysis test this formally. 
 
@@ -839,7 +839,7 @@ This is to say that the spatial dependence of regional potential is driven by un
 
 $$P_{r,y} = \mathbf{X}_{r,y}\boldsymbol{\beta} + \alpha_r + u_{r,y}, \qquad u_{r,y} = \delta \mathbf{W} u_{r,y} + \varepsilon_{r,y}$$ {#eq-sem}
 
-In here, $\delta$ is our benchmark such that its sign, magnitude and significance compared to $\rho$ from the SAR model allows to differentiate the spatial dynamics that drives regional potential. 
+In here, $\delta$ is our benchmark such that its sign, magnitude and significance compared to $\rho$ from the SAR model allows us to distinguish the spatial patterns in regional potential. 
 
 
 ## Summary {#sec-emp-summary}
@@ -855,7 +855,7 @@ First, whether regions with high potential tend to neighbour other high-potentia
 Second, whether the overall composition of a region's portfolio in terms of bridging and enabling technologies predicts its average potential, and whether this depends on the region's overall coherence level.
 To address these questions we use three models.
 Model 1 is a fixed effects model that captures within-region variation.
-Model 2 is a hierarchical random effects model that accounts for regions being nested within countries, which allows us to properly identify the contribution of national ecosystem characteristics.
+Model 2 is a hierarchical random effects model that accounts for regions being nested within countries, which allows us to estimate the contribution of national ecosystem characteristics.
 Model 3 is a spatial autoregressive model that tests for and decomposes spatial interdependence.
 Before these three models we also run a benchmark comparison between regional technological potential and relatedness density as predictors of observed technology entry, to validate that our machine learning framework adds predictive value over the conventional approach.
 

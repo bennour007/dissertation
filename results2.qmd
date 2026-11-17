@@ -23,9 +23,9 @@ Model 1 also extends this exploration by including the national ecosystem covari
 Essentially model 1 fits our variables to regional technological potential and assess the within-group variation.
 But because the national ecosystem covariates are not at a regional level, we also want to assess their contribution when we account for both within-group and between-group variation since regions are administrative artefacts that share the same national ecosystem characteristics.
 This nested structure motivate our model 2 presented in @tbl-potential-re.
-As we mentioned in the previous chapter, if the nested structure of model 2 drives most of the variation of the outcome, it could be an indication that this variation is mainly driven by spatial dependence.
+As we mentioned in the previous chapter, if the nested structure of model 2 accounts for most of the variation of the outcome, this variation may reflect spatial dependence.
 This is the case as we will explain later in this chapter, thus motivates our model 3.
-The idea here is to understand the spatial dynamics that drives regional outcomes, the test results presented in the previous chapter indicate a strong dependence on neighbouring region outcome.
+The idea here is to understand the spatial patterns in regional outcomes; the test results presented in the previous chapter indicate a strong dependence on neighbouring region outcome.
 This justified the inclusion of the SAR model (@tbl-spatial-sar), albeit we also present the SEM model as a robustness check (@tbl-spatial-sem)
 
 
@@ -195,7 +195,7 @@ Similar to the extended fixed effects specification in @tbl-potential-fe-ols-h, 
 
 Crucially, the core coefficients remain stable in the hierarchical models as well.
 In the random effects specification comparable to the fixed effects benchmark, coherence remains positive (around $0.709$ at mean betweenness and eigenvector), and the coherence-conditioned gradient for betweenness is preserved: with a main effect of around $0.398$ at mean coherence and an interaction of $-0.292$, the marginal effect of betweenness ranges from approximately $+0.690$ at one standard deviation below mean coherence to $+0.106$ at one standard deviation above, remaining positive throughout the empirical coherence distribution.
-The consistency of these variables across fixed effects and random effects specifications confirms that the coherence condition is not an artifact of the within-group estimation strategy but a robust structural feature of the data.
+The consistency of these variables across fixed effects and random effects specifications suggests that the coherence condition is not an artifact of the within-group estimation strategy but a robust structural feature of the data.
 Eigenvector centrality remains negative (around $-0.222$) and its interaction with coherence also remains non-significant.
 This further supports our previous assessment, the enabling technology inhibiting effect holds across both within-group and cross-regional specifications regardless of the coherence level. 
 
@@ -203,7 +203,7 @@ However and more importantly, in this model the national ecosystem covariates ar
 In this model we can see that variation in human capital, competition, product innovation, and high growth pillars are associated at 4%, 9%, 1.6% and 0.8% respectively with the outcome.
 This is in contrast to process innovation, internationalisation, and risk capital pillars whose variations are negatively associated with the outcome at 2%, 8%, and 3.5% respectively. 
 
-These results directly address H4, and relatively confirm the intuition we formalised in this work and the results in the previous model.
+These results directly address H4, and are consistent with the intuition we formalised in this work and the results in the previous model.
 National entrepreneurial ecosystem characteristics matters for regional potential and explain a significant proportion of the variation (our full specification in column 5 shows the highest marginal and conditional $R^2$, 0.201 and 0.668 respectively).
 In fact,  this can also be observed in the high intra-class correlation ($ICC = 0.60$).
 This shows that $60\%$ of variance in regional potential is between-group rather than within-group (stable across the different specifications).
@@ -212,7 +212,7 @@ These decompositions inform us that, while the fixed effects estimates document 
 
 The results of this model also help justify the spatial models that follow.
 The large $ICC$ and the variance decompositions indicates that regional potential is strongly structured across places.
-This confirms our intuition in the previous section as we introduced the rational behind model 2.
+This is consistent with our intuition in the previous section as we introduced the rational behind model 2.
 The nested structure of the dyadic context matters almost as much as the dyadic components themselves.
 This is to say that the geography of the region (where it is, in which country) is extremely informative of its technological potential.
 This could justify the idea that feasibility is not independent across space but may be shaped by neighbouring structures.
@@ -268,7 +268,7 @@ Albeit, the marginal effects of the covariates in this model should be observed 
 In the SEM model, the spatial error parameter $\delta$ is around $0.420$ in the interaction specification, which indicates that spatial correlation could also be an unobserved components.
 These estimates are consistent with the interpretation that spatial context matters for regional feasibility landscapes, whether through spillovers or through correlated shocks and unobservables.
 
-The spatial interaction terms in both models, especially in SAR, confirm the importance of space.
+The spatial interaction terms in both models, especially in SAR, point to the importance of space.
 These terms indicates that the regional feasibility landscape is spatially structured as we iterated previously when we discussed the results from the hierarchical model and the intuition behind it.
 However, these spatial parameters only capture correlation mechanisms and not causal structures.
 
@@ -304,12 +304,12 @@ This means that regions characterised with high aggregate coherence are associat
 This is to say, that regions already endowed with bridging (general purpose) technologies would benefit more from higher aggregate industrial alignment on their average potential. 
 The sign flip occurs at approximately $-0.67$ SD: regions below this coherence threshold experience a negative portfolio-level betweenness effect, while regions above it experience a positive one.
 The interaction coefficient ($+0.0208$ total) is $142\%$ of the betweenness main effect ($+0.0140$).
-In a non-causal sense, coherence is the governing condition that determines the direction and magnitude here.
+Coherence conditions the direction and magnitude of this association.
 A portfolio with bridge like technologies without adequate industrial alignment is not sufficient for regions to increase their aggregate potential.
 To embed and activate those bridging connections into portfolio-level feasibility advantage a baseline of aggregate industrial alignment is required.
 This is further illustrated in @tbl-eg_avg_coh, where we can see the association clearly for two groups of regions: those above the coherence threshold: Lombardia (ITC4, IT), Hannover (DE92, DE), and Provence-Alpes-Côte d'Azur (FRL0, FR); and those below it: Moravskoslezsko (CZ08, CZ), Zeeland (NL34, NL), and Cantabria (ES13, ES).
 In this table we can see that even with low average betweenness (third, forth, and seventh deciles), regions above the coherence threshold have higher average regional potential (ninth decile), whereas for the regions below the coherence threshold (having average coherence below the second decile) have lower average potential despite having higher average betweenness than the regions above the same threshold.
-This confirms and reflects known geographic dichotomies in Europe specifically the core-periphery divide. 
+This reflects known geographic dichotomies in Europe specifically the core-periphery divide. 
 
 
 
@@ -453,9 +453,9 @@ gt_tbl_simple %>%
 These two conditional gradients (average betweenness and eigenvector) converge on coherence as the central organising condition of the regional feasibility landscape at the spatial level.
 From the interaction SAR specification (@tbl-sar-effects), average coherence carries a total effect of $+0.1044$ at mean betweenness and mean eigenvector -- the largest main effect among all portfolio-level covariates -- decomposing into a direct effect of $+0.0669$ and an indirect effect of $+0.0375$, with the indirect channel accounting for approximately $36\%$ of the total.
 This baseline effect is itself modulated by both betweenness and eigenvector through their respective interactions, but what the conditional gradients in paragraphs above make precise is the asymmetry in how coherence operates across the two network dimensions.
-First, for betweenness, coherence is the condition that determines whether bridging technologies is an asset or a liability at the portfolio level.
+First, for betweenness, coherence is the condition under which bridging technologies are associated with higher or lower potential at the portfolio level.
 Second, for eigenvector, coherence amplifies an advantage that exists independently of alignment.
-In both cases, however, the direction of the coherence effect on regional potential is unambiguous and stable -- higher industrial alignment is associated with higher average potential across the full distribution of betweenness and eigenvector values, with the indirect effects confirming that this alignment advantage propagates spatially to neighbouring regions.
+In both cases, however, the direction of the coherence effect on regional potential is unambiguous and stable -- higher industrial alignment is associated with higher average potential across the full distribution of betweenness and eigenvector values, with the indirect effects suggesting that this alignment advantage extends to neighbouring regions.
 Coherence is therefore not only a dyadic feasibility correlate, as the earlier models established, but the structural condition that governs how portfolio-level network positions -- bridging and enabling alike -- translate into regional potential and its spatial diffusion.
 
 
@@ -488,24 +488,24 @@ Although potential does not clearly dominate relatedness density when both are i
 We therefore accept H1, while acknowledging that a more robust comparison is warranted.
 
 The third section presented the results of model 1 concerning the influence of technology characteristics and portfolio alignment on regional technological potential.
-Coherence is consistently the strongest predictor of potential across all specifications, confirming H3a -- regions with more coherent portfolios face lower feasibility barriers across the technology space.
-Regarding technology characteristics, enabling technologies are consistently associated with lower potential regardless of the level of portfolio alignment, confirming H2b.
+Coherence is consistently the strongest predictor of potential across all specifications, supporting H3a -- regions with more coherent portfolios face lower feasibility barriers across the technology space.
+Regarding technology characteristics, enabling technologies are consistently associated with lower potential regardless of the level of portfolio alignment, supporting H2b.
 This inhibiting effect is stable and does not vary with coherence, meaning H3c is not supported -- the structural difficulty of entering foundational technologies appears to operate through mechanisms that portfolio alignment alone does not address.
 For bridging technologies, the picture is more nuanced.
-They are consistently associated with higher potential, confirming H2a, and this association is stronger for regions with lower coherence, confirming H3b.
+They are consistently associated with higher potential, supporting H2a, and this association is stronger for regions with lower coherence, supporting H3b.
 The advantage of bridging technologies diminishes as coherence increases but remains positive throughout the empirical distribution, meaning they are a reliable diversification pathway across the coherence spectrum, with the largest returns for regions where direct alignment is limited.
 
 The forth section introduced national ecosystem covariates.
 In the fixed effects model the results were not fully consistent across specifications, which is expected given the identification constraints of that design.
-The hierarchical model addressed this directly and showed clear and consistent effects across all ecosystem dimensions, confirming H4.
+The hierarchical model addressed this directly and showed clear and consistent effects across all ecosystem dimensions, supporting H4.
 National institutional and market characteristics contribute independently to regional potential beyond what portfolio mechanisms explain, though the direction of effects varies across ecosystem dimensions.
 
 The fifth section presented the spatial model results.
-The spatial lag parameter is positive and significant, confirming H5a -- regional feasibility landscapes are spatially interdependent rather than locally contained.
+The spatial lag parameter is positive and significant, supporting H5a -- regional feasibility landscapes are spatially interdependent rather than locally contained.
 At the aggregate portfolio level, the role of coherence, bridging, and enabling characteristics shifts relative to the dyadic results.
 For portfolios concentrated in enabling technologies, the association with average potential is positive and amplified by coherence, consistent with H5c.
 This contrasts with the dyadic finding where enabling technologies inhibit potential -- once they exist in the portfolio, their structural position in the capability network supports the feasibility of other technologies by construction, which is reflected in higher aggregate potential.
-For portfolios concentrated in bridging technologies, the association with average potential is conditional on coherence, partially confirming H5b.
+For portfolios concentrated in bridging technologies, the association with average potential is conditional on coherence, partially supporting H5b.
 Below the coherence threshold the association is negative, and above it the association is positive.
 This means that bridging technologies as targeted diversification options are reliable at the dyadic level, but their contribution to aggregate portfolio potential requires a baseline of industrial alignment to materialise.
 Bridging characteristics alone are therefore not a sufficient portfolio-level instrument -- their aggregate value depends on the broader industrial structure in which they are embedded.
