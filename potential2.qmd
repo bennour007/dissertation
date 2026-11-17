@@ -16,6 +16,18 @@ Essentially, REC formalizes the empirical observation that shared input requirem
 While this framework have proven valuable for policy [@zaccaria2018integrating; @albora2021economic], deriving granular, context-specific implications remains challenging [@hidalgo2023policy; @li2024evaluating].
 Recent work on unrelated diversification [@pinheiro2022time; @boschma2023role], geographic inequalities [@pinheiro2025dark; @hartmann2017linking], and emerging technologies [@lee2018early; @fessina2024identifying] highlights the need for methodologies that capture contextual nuances beyond path dependency identification which we will elaborate on in subsequent sections.
 
+@tbl-meth-roadmap summarises how the chapter proceeds.
+
+| The chapter asks | Because the literature shows | And answers with |
+|---|---|---|
+| How does the mainstream measure relatedness? | Co-occurrence underpins the technology space and diversification policy alike | @sec-meth-mainstream: the measures and their aggregation into density, our benchmark |
+| Why is that not enough? | Estimates are noisy, nestedness dominates, symmetry hides hierarchy, linear sums discard interactions | @sec-meth-cooccurrence-limits and @sec-meth-density-limits: the structural limitations |
+| How else can feasibility be measured? | Feasibility depends on the whole portfolio, not on pairs | @sec-meth-ml-approach and @sec-meth-potential: Technological Potential |
+| How else can relationships between technologies be measured? | Direction is expected in theory but absent from symmetric measures | @sec-meth-fits: FITS |
+| What remains uncaptured? | Regions with equal feasibility can differ in how their knowledge base is structured | @sec-meth-coherence: Coherence |
+
+: Roadmap of the chapter {#tbl-meth-roadmap}
+
 Our approach is a response to the nuances expressed in the literature.
 But in order to properly situate our contribution we must first elaborate on the mainstream approach conceptually, methodologically and its empirical implications which we briefly outlined in the introduction.
 From there we expand on the mainstream approach and present our alternative constructs conceptually and mathematically, and showcase our training strategy.
@@ -69,9 +81,6 @@ $$ {#eq-z}
 
 where $z_{r,t,y} = 1$ indicates region $r$ has comparative advantage (specialization) in technology $t$ at year $y$.
 
-In the following we will begin by outlining how the REC literature approach relatedness, how it's calculated and discuss in detail different technical contributions and their limitations.
-We will then present our approach and detail our methodological and conceptual contribution in response to these limitations.
-
 ## The mainstream approach {#sec-meth-mainstream}
 
 ### Relatedness through co-occurrence {#sec-meth-cooccurrence}
@@ -80,6 +89,7 @@ The REC literature operationalises relatedness through the observed frequency of
 The intuition is appealingly simple: technologies that frequently appear together--whether in the same patent, the same firm, or the same region--likely share underlying knowledge requirements.
 If mastering one technology facilitates developing another, we should observe them co-located more often than chance would predict.
 This reasoning has proven influential, providing the empirical foundation for technology space visualisations and diversification recommendations across academic and policy settings.
+All measures in this section are taken from the existing literature; we present them as the benchmark for our approach.
 
 Yet the inference from co-occurrence to capability-based relatedness rests on assumptions that warrant scrutiny.
 Co-occurrence is a frequency measure; it tells us how often two technologies appear together, not why they do so or whether that co-presence reflects shared inputs, complementary applications, or statistical artefact.
@@ -235,6 +245,8 @@ This reconstruction motivates the machine learning approach developed in the fol
 
 ## An alternative approach: Machine learning for contextualised relatedness {#sec-meth-ml-approach}
 
+*Is there a way to relax the mainstream assumptions?*
+
 The limitations outlined above--dimensional mismatch producing noisy correlations, symmetric measures obscuring directional dependencies, and linear aggregation discarding interaction effects--are not merely technical inconveniences.
 They represent fundamental obstacles to using relatedness for prediction and policy.
 If co-occurrence methods perform no better than trivial baselines, as demonstrated in @tacchella2023relatedness, then their assessment of diversification feasibility offers insufficient guidance for strategic decisions.
@@ -244,6 +256,9 @@ This motivates a shift from descriptive correlation to predictive modelling.
 
 The core reframing here is methodological: rather than inferring relatedness from co-occurrence patterns and hoping this correlates with future outcomes, we directly model diversification as a prediction problem.
 This follows recent work positioning relatedness estimation within supervised learning frameworks [@tacchella2023relatedness; @albora2023product; @fessina2024identifying].
+From this literature we adopt three elements: training a separate model for each target activity, evaluating the models by out-of-sample prediction, and deriving a network of activities from the feature importances.
+These methods were developed for trade and product data.
+Our contribution lies in transferring them to European patent data at NUTS2 level (@sec-meth-application), in the interpretation of the directed network, and in the coherence measure (@sec-meth-coherence).
 The shift offers three advantages.
 
 First, it provides a falsifiable evaluation standard.
@@ -318,6 +333,7 @@ Panel A illustrates how density-based predictions aggregate pairwise co-occurren
 Panel B demonstrates how decision tree algorithms capture many-body correlations by evaluating the full configuration of the portfolio through recursive partitioning: at each node, the algorithm tests combinations of technologies (e.g., presence of both green and orange technologies) and assigns predictions based on complete paths through the tree (21%, 76%, 11%, etc.), making the effect of any single technology dependent on the entire portfolio context.
 This structural difference explains why machine learning approaches can recover non-linear capability interactions that linear aggregation of symmetric relatedness measures cannot represent, as the value of possessing one technology changes depending on which other technologies are present, a form of complementarity that density treat as independent contributions.
 This leads us to explore further how and why random forest---our adopted tree algorithm---works, especially for our case which is the prediction of regional technological specialisation.
+The algorithm itself is standard; we use the implementation in the ranger package [@wright2017ranger].
 
 In our application, one forest is trained per target technology $t$ (and target year, see @sec-meth-training).
 An observation is a region–year $o = (r, y)$; its features are the lagged specialisations $x_{o,s} = \text{RTA}_{r,s,y-\delta}$ in the $N_T - 1$ other technologies $s \neq t$; its outcome is the specialisation indicator $z_{r,t,y}$.
@@ -420,7 +436,7 @@ We return to both in the discussion of limitations (@sec-sum-methodology).
 ### Training procedure {#sec-meth-training}
 
 We follow the methodology of @fessina2024identifying, @albora2023product (and @tacchella2023relatedness), originally developed for trade data.
-The key innovation lies in training separate models for each technology rather than constructing a single global model.
+The key feature of this approach is to train a separate model for each technology rather than a single global model.
 For every target technology $t \in \mathcal{T}$, we train a binary classification model where:
 
 -   **Outcome**: $z_{r,t,y}$ indicates whether region $r$ specialises in technology $t$ at year $y$ (RTA $\geq 1$)
@@ -451,8 +467,11 @@ Training was conducted in R using the Ranger package [@wright2017ranger], orches
 
 ### Regional technological potential {#sec-meth-potential}
 
+*But how can we estimate feasibility without pairwise calculations?*
+
 Each model produces probabilities $p_{r,t,y} = \hat{P}(z_{r,t,y} = 1 \mid \text{RTA}_{r,\cdot,y-\delta})$ representing the likelihood that region $r$ develops specialisation in technology $t$ by year $y$, conditional on its prior portfolio (@eq-rf-probability).
 These probabilities constitute **Technological Potential**--a forward-looking, region-specific measure of diversification feasibility.
+Potential adapts the product progression probability of @albora2023product from countries and products to regions and technologies.
 
 The shift from correlation to prediction reframes what the measure captures.
 Density asks: "How similar is technology $t$ to what region $r$ already has?"
@@ -466,6 +485,8 @@ Such factors could be industrial alignment, national ecosystem characteristics, 
 
 
 ### Feature Importance Technology Space (FITS) {#sec-meth-fits}
+
+*Can the same models tell us which technologies predict which?*
 
 Traditional technology networks rely on patent citations or co-occurrence patterns, each with limitations.
 Citations suffer from examiner additions that may not reflect actual knowledge flows, aggregation from patent-level to technology-level that obscures directionality, and backward-looking orientation that captures historical influence rather than predictive relationships [@fessina2024identifying].
@@ -489,6 +510,7 @@ knitr::include_graphics("resources/technology_network.png")
 @fig-fits-network shows the full FITS network estimated on 2018 patent data.
 FITS addresses these by constructing an asymmetric, predictive network from the feature importance scores of our Technological Potential models.
 Rather than inferring relationships from co-occurrence, FITS extracts directional dependencies revealed by which technologies predict others' future adoption.
+FITS adapts the feature-importance network of @fessina2024identifying, built there for products, to technologies and regions.
 
 Recall that for each target technology $t'$, we trained a Random Forest model predicting $z_{r,t',y}$ using $\{\text{RTA}_{r,t,y-\delta} : t \neq t'\}$ as features.
 The feature importance $I_{t'}(t)$ quantifies how much technology $t$ contributes to predicting future specialisation in technology $t'$ across all regions and time periods.
@@ -580,6 +602,8 @@ Together, these constructs enable the contextualised analysis our research requi
 
 ## Coherence: Bridging technology networks and regional portfolios {#sec-meth-coherence}
 
+*But do regions with similar potential have similarly structured knowledge bases?*
+
 Till now we established two methodological constructs throughout the previous sections based on our machine learning approach.
 The first construct is FITS, which is our baseline for identifying directed technology-to-technology dependencies.
 Analogous to the relatedness approach, we use these dependencies to construct the technology network.
@@ -605,6 +629,7 @@ This idea of coherent diversification, argues that the performance of a diversif
 Regional coherence in this sense is a structured property of the knowledge base, or as we referred to in the introduction as knowledge infrastructure.
 This logic aligns with recombinant views of innovation, the idea that knowledge advances through combinations among related elements rather than as a homogeneous "stock" input [@quatraro2010].
 This was also established at the firm level, two firms with the same number of technological fields can differ substantially depending on whether those fields form a coherent block or scattered knowledge infrastructure, coherence captures that internal structure [@pugliese2019unfolding].
+The measure itself, built on the directed FITS network and on section-level embeddedness profiles, is our own.
 
 
 However, in this context there's recurring open issue in the literature regarding the meaning and effect of coherence.
