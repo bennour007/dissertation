@@ -37,7 +37,9 @@ Conventions:
 
 - Issues: PRs into `revision` do **not** auto-close issues. Label `in-pr` when the PR opens; close the issue manually (comment with the PR number) when it is merged; label `partial` if only part is done.
 
+- Guiding questions: new or restructured sections open with one short, plain guiding question (reviewer suggestion).
 - Tables: proposed as a plain Markdown table in the plan; implemented as an R `gt` table in the `.qmd`.
+- Missing inputs (data, references, page numbers) are parked as blocked/flags, never guessed.
 - Every unit also reports anything else found that is inconsistent, imprecise, or bad practice (in `flags.csv`).
 - `master` is untouched until the revision is complete.
 - `status` in `units.csv` is synced in a small commit after each batch of merges (not inside every PR), to avoid conflicts.
