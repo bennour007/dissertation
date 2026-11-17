@@ -642,18 +642,20 @@ $$E^{*\rightarrow}_{r,c} = \frac{1}{|S_{r,c}|}\sum_{t' \in S_{r,c}} E^{\rightarr
 
 If $S_{r,c} = \emptyset$, then set $E^{*\leftarrow}_{r,c} = E^{*\rightarrow}_{r,c} = 0$.Meaning that the region has no foothold in section $c$ and therefore no alignment signal in that domain.
 
-The original formula computes cosine similarity between two vectors, each of which **pairs the technology's embeddedness with the region's embeddedness** -- one vector for the incoming direction, one for the outgoing:
+Coherence is the cosine similarity between the industrial embeddedness profile of technology $t$ and that of region $r$.
+Each profile stacks the incoming and outgoing embeddedness across the IPC sections:
 
-$$\text{Coherence}_{r,t} = \frac{\mathbf{v}_1 \cdot \mathbf{v}_2}{\|\mathbf{v}_1\| \cdot \|\mathbf{v}_2\|}$$
+$$\text{Coherence}_{r,t} = \frac{\mathbf{v}_t \cdot \mathbf{v}_r}{\|\mathbf{v}_t\| \, \|\mathbf{v}_r\|} = \frac{\sum_{c \in \mathcal{C}} \left( E^{\leftarrow}_{t,c}\, E^{*\leftarrow}_{r,c} + E^{\rightarrow}_{t,c}\, E^{*\rightarrow}_{r,c} \right)}{\|\mathbf{v}_t\| \, \|\mathbf{v}_r\|}$$
 
 where:
 
-$$\mathbf{v}_1 = \left[E^{\leftarrow}_{t,c},\; E^{*\leftarrow}_{r,c}\right]_{c \in \mathcal{C}} \in \mathbb{R}^{2|\mathcal{C}|}_{\geq 0}$$
+$$\mathbf{v}_t = \left[E^{\leftarrow}_{t,c},\; E^{\rightarrow}_{t,c}\right]_{c \in \mathcal{C}} \in \mathbb{R}^{2|\mathcal{C}|}_{\geq 0} \quad \text{(technology profile)}$$
 
-$$\mathbf{v}_2 = \left[E^{\rightarrow}_{t,c},\; E^{*\rightarrow}_{r,c}\right]_{c \in \mathcal{C}} \in \mathbb{R}^{2|\mathcal{C}|}_{\geq 0}$$
+$$\mathbf{v}_r = \left[E^{*\leftarrow}_{r,c},\; E^{*\rightarrow}_{r,c}\right]_{c \in \mathcal{C}} \in \mathbb{R}^{2|\mathcal{C}|}_{\geq 0} \quad \text{(region profile)}$$
 
-So $\mathbf{v}_1$ concatenates the incoming embeddedness of technology $t$ and region $r$ for each industry, and $\mathbf{v}_2$ does the same for the outgoing direction.
-The cosine similarity between them captures how consistently the incoming and outgoing industrial signals align across $t$ and $r$ jointly.
+The numerator pairs the technology with the region section by section and direction by direction.
+Coherence is therefore high when the region's portfolio is embedded in the same industries, in the same directions and in similar relative proportions as the technology.
+As a cosine, it compares the shape of the two profiles, not their overall level.
 Since all entries are non-negative, $\text{Coherence}_{r,t} \in [0,1]$.
 
 
@@ -665,7 +667,7 @@ Second, we compute coherence at an internal domain scale (IPC section) to keep t
 In here, our coherence measure ranges from 0 to 1.
 In our context, high coherence ($\approx 1$) means that for technology $t$'s embeddedness signal in different categories/industries closely matches the average industrial embeddedness of region $r$'s portfolio of technologies.
 The region's existing industrial capabilities align with the structural industrial prerequisites and consequences of technology $t$.
-Alternatively, a neutral coherence ($\approx 0$) reflects a misalignment in industrial embeddedness between technology $t$ and the region.
+Low coherence ($\approx 0$) indicates that the region's portfolio is embedded in different industries, or in different directions, from the technology.
 
 To our aim, coherence serves two roles in this work.
 First, as dyadic fit measure: it is a direct indicator of portfolio–technology alignment in a given domain or industry.
