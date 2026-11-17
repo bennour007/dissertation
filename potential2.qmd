@@ -445,11 +445,13 @@ We formalise FITS as a directed, weighted network $G = (V, E, W)$ where:
 
 -   **Nodes** $V = \mathcal{T}$: the set of 641 technologies
 -   **Edges** $E$: directed connections $(t \to t')$ for all $t, t' \in \mathcal{T}, t \neq t'$
--   **Weights** $W_{t \to t'} = I_{t}(t')$: feature importance of technology $t$ in the model predicting technology $t'$
+-   **Weights** $W_{t \to t'}$: the feature importance of technology $t$ in the model predicting technology $t'$, i.e. $I_{t'}(t)$, normalised as below
 
 To ensure that the incoming edge weights sum to 1 for each technology and facilitate comparisons in later stages, we normalise as follows:
 
-$$W_{t \to t'} = \frac{I_{t}(t')}{\sum_{t' \neq t} I_i(t')}$$
+$$W_{t \to t'} = \frac{I_{t'}(t)}{\sum_{s \neq t'} I_{t'}(s)}$$
+so that $\sum_{t \neq t'} W_{t \to t'} = 1$ for every target technology $t'$: the incoming weights of a technology are the shares of its model's total importance.
+Outgoing weights are not constrained to sum to one.
 
 
 
