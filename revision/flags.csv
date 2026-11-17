@@ -1,13 +1,14 @@
 flag_id,found_during,file,lines,description,severity,status,resolution
 X01,mapping,references.bib,212; 530,Duplicate entry key hausmann2011network (defined twice),minor,open,-> G03
-X02,mapping,results2.qmd,93,"'@tbl-potential-re and tbl-potential-fe-ols': second reference missing '@', renders as plain text",minor,open,
-X03,mapping,results2.qmd,178; 180,'Tables @tbl-x' renders as 'Tables Table 5.x' (double word),minor,open,
+X02,mapping,results2.qmd,143-145,"'@tbl-potential-re and tbl-potential-fe-ols': second reference missing '@', renders as plain text",minor,open,
+X03,mapping,results2.qmd,258-261; 263-266,'Tables @tbl-x' renders as 'Tables Table 5.x' (double word),minor,open,
 X04,mapping,empirical3.qmd,1-5,Leftover R Markdown YAML header (output: html_document) inside a book chapter,minor,open,
-X05,mapping,empirical3.qmd,629-631,Model 2 year dummy written zeta_t: t is the technology index (notation clash),minor,open,-> notation table A01
-X06,mapping,empirical3.qmd,144,"Logit transform: 'extreme values trimmed' without stating the threshold (imprecise, not reproducible from text)",moderate,open,needs author value
-X07,mapping,empirical3.qmd,415 vs results2.qmd:17,Model 0 equation shows only year FE (alpha_y); results discuss region + year FE; summary table says 'region & year FE',moderate,open,needs author confirmation of spec
-X08,mapping,empirical3.qmd,276-278,"GEI: pillars x1-x6 excluded, x8-x14 retained; pillar x7 is never mentioned (14 pillars)",moderate,open,needs author explanation
-X09,mapping,results2.qmd,377-420,"Three eval=FALSE table chunks (tbl-potential-fe-logit, -logit-h, re1) left in the chapter",minor,open,delete or move to appendix?
+X05,mapping,empirical3.qmd,729-732,Model 2 year dummy written zeta_t: t is the technology index (notation clash),minor,open,-> notation table A01
+X06,mapping,empirical3.qmd,186-187,"Logit transform: 'extreme values trimmed' without stating the threshold (imprecise, not reproducible from text)",moderate,open,needs author value
+X07,mapping,empirical3.qmd,490 vs results2.qmd:35-44,Model 0 equation shows only year FE (alpha_y); results discuss region + year FE; summary table says 'region & year FE',moderate,open,needs author confirmation of spec
+X08,mapping,empirical3.qmd,338-343,"GEI: pillars x1-x6 excluded, x8-x14 retained; pillar x7 is never mentioned (14 pillars)",moderate,open,needs author explanation
+X09,mapping,results2.qmd,521-564,"Three eval=FALSE table chunks (tbl-potential-fe-logit, -logit-h, re1) left in the chapter",minor,open,delete or move to appendix?
 X10,mapping,response letters,ISK p.4; NS p.14,Letters say the implementation will be corrected (binarisation) and the network direction checked; author confirms implementation is correct: letter wording overstates code changes,moderate,open,adjust letters before resubmission
-X11,mapping,potential2.qmd,331,Figure 3.3 caption 'H10L'; text discusses H01L (semiconductors),minor,open,-> F03
-X12,mapping,potential2.qmd,399,'SK10' in text; region code is SK01 elsewhere,minor,open,-> P03
+X11,mapping,potential2.qmd,500,Figure 3.3 caption 'H10L'; text discusses H01L (semiconductors),minor,open,-> F03
+X12,mapping,potential2.qmd,593-606,'SK10' in text; region code is SK01 elsewhere,minor,open,-> P03
+X13,G04,empirical3.qmd; results2.qmd,"emp:508,578,613,647,682; res:339","fig-subcap used for long explanatory notes on single (non-subfigure) maps; fig-subcap is meant for sub-figure captions, so the note may be dropped or mis-rendered",minor,open,check render; move note to caption or text (-> F05)
