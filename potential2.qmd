@@ -683,6 +683,11 @@ where $E^{\leftarrow}_{t,c}$ captures how strongly technologies in section $c$ p
 If no technology in section $c$ connects to $t$ in either direction, the corresponding scalar is set to zero.
 Since FITS weights are non-negative by construction, all embeddedness scalars satisfy $E^{\leftarrow}_{t,c}, E^{\rightarrow}_{t,c} \geq 0$.
 
+The averages are taken over the links that exist: the denominator counts only the technologies of section $c$ with a positive weight.
+The aim is to measure how strong the links between a technology and an industry are, not an average diluted by the technologies of that industry to which it has no link, which would mix link strength with industry size.
+This choice matters, because FITS keeps only the strongest edges, so most pairs of technologies have no link.
+As a consequence, the measure reflects the intensity of the connection, not its breadth: a technology linked strongly to one technology of an industry is treated much like one linked strongly to many.
+
 
 
 Further, we define the set of technologies in section $c$ in which region $r$ is specialised:
