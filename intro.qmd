@@ -213,15 +213,9 @@ progressive_table("ch1")
 
 
 We structure this work around our methodological and empirical contributions.
-Given the complex nature of the problems we aim to solve, we will first start with more literature context that underlines economic geography, geography of innovation, and more importantly relatedness and economic complexity literatures.
-We then outline our approach in the methodology chapter where we discuss in more details measures of relatedness and proximity and provide alternative conceptualisation to modeling the relationships between technologies and regions. 
-In the empirical chapter we outline the research design and the modeling procedures that implements our methodological contribution.
-The results chapter outline the results of our work and its empirical consequences and interpretation, which we discuss in more detail in the discussion and conclusion of this work in which we also outline different further extensions and future research directions.  
-
-
-
-
-
-
-
-
+Given the complex nature of the problems we aim to solve, we first start with the literature context (@sec-lit), organised around the dimensions that our research questions address, which ends with the gaps they follow from.
+We then outline our approach in the methodology chapter (@sec-meth), where we discuss in more detail measures of relatedness and proximity, adapt a machine learning approach that yields regional technological potential and FITS, and introduce coherence.
+In the empirical chapter (@sec-emp) we outline the research design and the modelling procedures that implement our methodological contribution: an entry benchmark (RQ1), dyadic fixed effects models (RQ2 and RQ3), hierarchical models (RQ4) and spatial panel models (RQ5).
+The results chapter (@sec-res) outlines the results of these models and their interpretation, which we discuss in more detail in the summary chapter (@sec-sum), where we also outline policy implications, further extensions and future research directions.
+Each chapter builds on the previous one: the literature defines the dimensions, the methodology turns them into measures, and the empirical design turns the measures into tests.
+The limitations of this work, mainly the reliance on patent data, the predictive rather than causal nature of our estimates, and the European setting, are discussed in @sec-sum-methodology.
