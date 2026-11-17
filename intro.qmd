@@ -8,23 +8,23 @@ We are already witnessing the consequences of AI development as it paves the way
 Sadly, that doesn't seem to be the end of the shocks the world has seen recently as the war in Ukraine, Gaza, Iran, and most importantly the current, chaotic trade wars, seem to foster ever increasing uncertainties.
 Facing all this, policy makers are confronted with a simple choice; strategise and plan for more resilient local economies. 
 
-In different streams of literature, resilience is directly related to diversification/variety, whether in portfolio management in finance, trade partnerships/linkages, industrial activities, or in terms of knowledge as well.
+In different streams of literature, resilience is directly related to diversification/variety, whether in portfolio management in finance, trade partnerships/linkages, industrial activities, or in terms of knowledge as well [@martin2012regional].
 Thus we can equivalently say that resilience is the capacity to resist and/or adapt to external shocks by relying on existing internal capabilities that evolve in the face of such shocks.
 This means that for an economy to survive uncertainties, it needs to evolve, change, and innovate its way to the other end of the bleak challenges it's confronted with.
-However, to evolve, change and innovate, a baseline of knowledge should be leveraged since the consensus is that variety is a buffer against external shocks and shields uncertainties.
-This chain of thoughts, takes us back to the conceptual basics of sustainable economic development and growth; the knowledge fabric is what facilitates any long term strategy, and has been shown in the literature as clear catalyst for societal prosperity and economic resilience.
+However, to evolve, change and innovate, a baseline of knowledge should be leveraged since the consensus is that variety is a buffer against external shocks and shields uncertainties [@frenken2007theoretical].
+This chain of thoughts, takes us back to the conceptual basics of sustainable economic development and growth; the knowledge fabric is what facilitates any long term strategy, and has been shown in the literature as clear catalyst for societal prosperity and economic resilience [@hidalgo2021economic].
 For this reason the study of knowledge is essential for policy making, and understanding how to increase its diversity is more relevant than ever before. 
 
 Knowledge is a set of information that covers one or many topics, and its characteristics are contingent on the different forms it can take or how it was created, generally speaking, academia and businesses are the main knowledge creators in any economy through research and patents.
 Essentially, knowledge can be codified (accessible by anyone through any medium), or tacit (personal information based on social connections, intuition, experience, etc, that's hard to share with others).
-The consensus in the literature is that the main driver of competitive advantage for firms is the tacit form of knowledge, which is also widely acknowledged that it's space dependent.
+The consensus in the literature is that the main driver of competitive advantage for firms is the tacit form of knowledge, which is also widely acknowledged that it's space dependent [@audretsch1996r].
 However, the knowledge produced by firms can be reliably seen in patents, although they capture codified information, they also reveal tacit knowledge and its geographic footprint in space.
 This means that its essential to assess the knowledge in patenting activities (we refer to this knowledge as technologies), and more so to focus on the local aspect of these activities i.e: sub-national regions. 
 
 This framing, however, is not at all new or novel.
 In fact, this is the entire aim of the literature of the geography of innovation; to study how innovation is created and diffused to different actors in different geographical contexts.
 Specifically, relatedness and economic complexity (REC) is one of the main streams of literature that focus on the relationships between activities and geographies.
-The conceptual and methodological framework that REC provides is widely used and adopted in academia and among policy practitioners and was one of the main contributors to the smart specialisation policy literature.
+The conceptual and methodological framework that REC provides is widely used and adopted in academia and among policy practitioners and was one of the main contributors to the smart specialisation policy literature [@hidalgo2018principle; @balland2019smart].
 The ideas embedded in this framework, to put it simply, rely on the premise of spatial dependence of tacit knowledge in local/regional economies/geographies and focus on simplifying these relationships using network science to model the relationships between knowledge and regions.
 These simplifications provide valuable scope of analysis, interpretation and empirical insights and are widely used for policy design.
 But the resulting loss of granular information limits how much regional and technological contexts can be incorporated within these assumptions, and implies that there's much more conceptual, methodological, and empirical work needed.
@@ -61,9 +61,9 @@ Thus, we can think of relatedness density as the link between related technologi
 The idea in the REC literature states that relative to a given technology, the more related technologies a region has, the more likely that it can develop that technology. 
 
 These two constructs are used together to predict the probability that a region will enter a new technology.
-The REC literature shows that relatedness density is consistently associated with higher probabilities in almost all studies.
+The REC literature shows that relatedness density is consistently associated with higher probabilities in almost all studies [@hidalgo2018principle].
 These results among others were one of the major latent contributors to smart specialisation strategy (S3) policy.
-Thus the consensus in the literature was clear: In order to diversify into new technologies with the highest likelihood of success, regions must prioritise investment in related technologies. 
+Thus the consensus in the literature was clear: In order to diversify into new technologies with the highest likelihood of success, regions must prioritise investment in related technologies [@balland2019smart]. 
 
 
 ### Empirical consequences {#sec-intro-consequences}
