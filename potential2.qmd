@@ -382,8 +382,20 @@ The sets defined in @sec-meth-motivation are mirrored by the European Patent Off
 IPC classifications provide hierarchical structure: section (letter, we also refer to this as categories), class (two digits), subclass (letter).
 For example, F16H encompasses Section F (Mechanical engineering), Class 16 (engineering elements for mechanical power transmission), and Subclass H (gearing systems).
 
-Despite critiques regarding patent-based applications [@balland2019beyond; @diodato2023economic], we retain the RTA (@eq-rta) as the input measure for our machine learning models.
-The goal here is to learn meaningful technology relationships from portfolio patterns rather than from raw co-occurrence frequencies.
+*But can patents tell us what regions are capable of?*
+
+Patent data have two known weaknesses as a measure of capabilities.
+First, patents capture technological and analytical knowledge, but not other capabilities: a region may have little potential in new technologies and still have high potential in new occupations or sectors [@balland2019beyond].
+Second, in catching-up regions, capabilities often lie in absorbing technologies developed elsewhere rather than in inventing new ones [@diodato2023economic].
+Both weaknesses mean that a patent-based assessment understates the potential of peripheral regions.
+
+We still use the RTA (@eq-rta) as the input to our models, for three reasons.
+First, the models use the RTA to learn from the configuration of regional portfolios, not to measure innovative output: as @diodato2023economic note, patents used in this way indicate the fields in which a region is active.
+Second, the RTA is relative, so it shows where a region is comparatively specialised whatever its total number of patents.
+Third, patents are the only capability data available consistently for all NUTS2 regions in our sample; data on occupations or sectors would complement them rather than replace them, and extending the approach to such data is left for future work.
+
+Two things remain outside the measure: knowledge that is not patented, and differences between countries in how much firms patent.
+We return to both in the discussion of limitations (@sec-sum-methodology).
 
 ### Training procedure {#sec-meth-training}
 
