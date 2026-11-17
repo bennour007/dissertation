@@ -60,3 +60,7 @@ execute:
 
 
 
+
+editor:
+  markdown:
+    wrap: sentence
