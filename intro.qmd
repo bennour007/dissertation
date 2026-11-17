@@ -138,6 +138,10 @@ Empirically, we contribute a multilayered contextual framework that combines net
 
 ## Research questions and hypotheses {#sec-intro-rq-hypotheses}
 
+The research questions and hypotheses are formulated as general theoretical claims derived from the literature, but they are tested on European NUTS2 regions with European patent data.
+Patenting behaviour, institutional conditions, entrepreneurial ecosystems and spatial structure are all context-dependent, and the European setting shapes what the results can support.
+The findings should therefore be read as evidence from this setting rather than as general regularities.
+
 ### RQ1: Is regional technological potential at least as informative as relatedness density in predicting technology entry? {#sec-intro-rq1}
 
 
