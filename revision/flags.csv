@@ -18,3 +18,6 @@ X16,grouped,index.qmd,22,Abstract: alignment 'a substantial moderation mechanism
 X17,E01,summary.qmd,114,'regional potential and entry are both associated with ... probability that a region will enter': should be potential and relatedness density,minor,open,,34
 X18,M06,potential2.qmd,FITS section,"FITS importances described as pooled across time periods, but models are per technology-year and figures say 2018; notation lacks a year index",moderate,open,author to clarify,37
 X19,M06,potential2.qmd; summary.qmd,FITS edges; summary future research,Ch3 defines edges as all pairs; summary refers to filtering the links of the RF estimation; filtering rule not described,moderate,open,author to clarify; relates to M16,38
+X20,M01,potential2.qmd,coherence section,Coherence said to be computed within industries; formula aggregates across sections into one scalar,moderate,open,rephrase,40
+X21,M01,potential2.qmd,coherence formula,Cosine undefined for all-zero technology or region profiles; handling not stated,minor,open,author to state,41
+X22,M01,potential2.qmd; empirical3.qmd,coherence section; dyad vars,"No year index on coherence in Ch3; Ch4 uses coherence_{r,t,y}",minor,open,-> M05/A01,42
