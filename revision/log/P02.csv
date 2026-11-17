@@ -1,0 +1,2 @@
+unit_id,issue,pr,date,files,lines_before,change,why,dependents_checked,dependents_changed,flags_raised,open_ends,letter_line,status
+P02,14,35,2026-11-17,potential2.qmd,77,"Deleted the repeated definition of c_{t,t′} (identical definition kept in sec-meth-cooccurrence)",NS minor: repeated section pp.37-38,"Kept definition precedes every use of c_{t,t′}; no reference pointed to the deleted paragraph",none,,,The repeated definition of the co-occurrence count was removed.,in_pr

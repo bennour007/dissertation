@@ -22,6 +22,7 @@ so that each promise in the response letters can be traced to a merged change.
 | `planned` | Plan posted on the issue, awaiting go |
 | `in_pr` | PR open |
 | `merged` | Merged into `revision` **and** logged with empty `open_ends` |
+| `partial` | Part merged; `open_ends` in the log says what remains |
 
 ## Protocol (per issue)
 

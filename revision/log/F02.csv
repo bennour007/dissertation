@@ -1,0 +1,2 @@
+unit_id,issue,pr,date,files,lines_before,change,why,dependents_checked,dependents_changed,flags_raised,open_ends,letter_line,status
+F02,11,35,2026-11-17,potential2.qmd,424-435,FITS network chunk labelled fig-fits-network; in-text reference added at the start of the FITS construction paragraph,ISK Figure 3.2 lacks in-text reference,All other labelled figures and tables already referenced at least once (audit during mapping),none,,,Figure 3.2 is now referenced in the text.,in_pr

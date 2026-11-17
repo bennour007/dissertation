@@ -14,10 +14,10 @@ Then we investigate which technologies are more feasible, and whether the indust
 Additionally, we incorporate national ecosystem co-variates that describe institutional and market conditions into our analysis to investigate their contribution in the feasibility of a diversification option.
 Lastly, we investigate whether or not these dynamics are space dependent and whether this dependency is stable at different effect channels. 
 
-Our results shows four main conclusions.
+Our results show five main conclusions.
 First, we validate that our regional technological potential is an adequate predictor of entry to new technologies.
-Second we confirm that different network structures are strong predictor or technological potential.
+Second we confirm that different network structures are strong predictors of technological potential.
 Third industrial alignment is our strongest predictor here and moderates the relationship between network structures and potential.
-Forth, we show that national entrepreneurial ecosystem characteristics are substantial predictors of regional technological potential and that their effect is stable but heterogeneous for different pillars.
+Fourth, we show that national entrepreneurial ecosystem characteristics are substantial predictors of regional technological potential and that their effect is stable but heterogeneous for different pillars.
 Fifth, and lastly, we confirm the spatial dependency at the regional portfolio level, and show that the average characteristics of these portfolios in terms of their endowment of bridging and enabling technologies are similarly strong and consistent predictors of aggregate regional potential and that industrial alignment remains a substantial moderation mechanism that's stable across all effect channels.  
 
