@@ -768,21 +768,18 @@ This is an explicitly contextual mechanism that simple diversification counts ca
 
 ## Summary {#sec-meth-summary}
 
-This chapter develops the methodological foundation for contextualised analysis of regional technological diversification.
-We reconstruct two core constructs from the REC literature and introduce a novel bridging measure.
+This chapter asked how the feasibility of regional diversification can be measured without the assumptions of the mainstream approach.
+The mainstream measures relatedness from co-occurrence and aggregates it linearly into density.
+We showed that this compounds three problems: pairwise estimates are noisy and dominated by nestedness when technologies outnumber regions, symmetric measures cannot represent direction, and linear sums discard how capabilities combine.
 
-We open by identifying three compounding structural limitations in the mainstream approach: co-occurrence measures produce noisy estimates when technologies outnumber regions, symmetric normalisation obscures the directional nature of technological dependencies, and linear aggregation of relatedness density discards the combinatorial interactions among capabilities that matter most for distinguishing feasible from infeasible diversification paths.
+We therefore treated relatedness as a prediction problem.
+Adopting the per-technology Random Forest strategy developed for trade data, we trained one model for each technology on European regional patent portfolios.
+The models yield two constructs, both adapted from that literature.
+Regional technological potential is the predicted probability that a region specialises in a technology, learned from its whole portfolio; it replaces relatedness density.
+FITS is the directed network of feature importances between technologies; it replaces the symmetric technology space.
+Both have limits: importances are predictive, not causal, and the models see observed entries, not attempts.
 
-We respond to these limitations by shifting from descriptive correlation to supervised prediction using Random Forest.
-By training a separate classifier for each target technology, we derive two novel constructs.
-We propose Regional Technological Potential ($p_{r,t,y}$) as a replacement for relatedness density -- a region-specific probability of future specialisation grounded in out-of-sample predictive performance rather than co-occurrence frequencies.
-We further propose FITS to replace symmetric technology networks with a directed, weighted graph that exposes hierarchical relationships, enabling technologies, and developmental sequences invisible to symmetric measures.
-Through the semiconductor versus textile decoration example, we show concretely how FITS filters noise and reveals asymmetric dependencies that co-occurrence conflates.
+Potential and FITS describe regions and technologies separately.
+Coherence, our own measure, connects them: it compares the industrial profile of a technology in FITS with that of a region's portfolio, and asks whether regions with similar potential stand on similarly structured knowledge bases.
 
-We conclude by introducing Coherence, a measure we propose to bridge the technology-level information in FITS and the region-level information in Technological Potential.
-Drawing on the coherent diversification literature, and motivated by evidence that region-wide coherence measures behave inconsistently across spatial scales, we compute Coherence within IPC sections rather than across the full portfolio.
-We design it to capture whether a region's industrial embeddedness profile -- as revealed by the directional FITS structure -- aligns with the industrial embeddedness profile of a target technology.
-This makes Coherence both a dyadic fit indicator and a moderation channel: we use it to test whether the effect of a technology's network position on diversification feasibility of a region depends on how well that region's industrial structure aligns with the industrial capability dependencies of that technology.
-
-Together, the three measures we develop operationalise a conceptual shift: from asking *what* a region might diversify into, toward asking under what structural context diversification is feasible.
-This is the core analytical problem we address in the subsequent chapters.
+The empirical chapters use these three measures to ask under what structural context diversification is feasible: Potential serves as the outcome and as the benchmark against density, FITS supplies the network positions of technologies, and coherence the alignment that may condition them.
