@@ -368,6 +368,26 @@ Higher values indicate features consistently creating purer partitions.
 Feature importance measures predictive association rather than causal effect, and exhibits bias toward high-cardinality features and correlated predictor sets.
 It ranks predictive relevance but requires caution in causal interpretation.
 
+### What Random Forest cannot do {#sec-meth-rf-limits}
+
+*But what can a Random Forest not tell us?*
+
+**Importance is predictive, not causal.**
+Feature importance measures how much a technology helps the model predict, not the effect of having that technology.
+It is also biased towards predictors that are correlated with one another and towards predictors with many possible split points.
+The direction of a FITS edge should therefore be read as a predictive pattern, not as a proven dependency (see also @sec-meth-fits).
+
+**Portfolio size may still leak in.**
+Because each model is conditioned on the whole portfolio, it may still partly pick up the size of the portfolio, which is the nestedness problem raised against co-occurrence measures (@sec-meth-cooccurrence-limits).
+Normalising the importances within each model (@eq-fits-weight) corrects for this only in part.
+
+**One set of hyperparameters for all models.**
+The hyperparameters were tuned on four technologies and applied to all 7,051 models, so the models for rare technologies are likely to fit less well.
+
+**Observed entries, not attempts.**
+The models learn from entries that happened.
+They cannot tell whether a technology is rarely entered because it is hard to enter or because few regions try, so feasibility and frequency remain partly mixed.
+
 ## Application to European regional patent data {#sec-meth-application}
 
 This section describes how we apply the approach of @sec-meth-ml-approach to European regional patent data: the data and input measure, the training procedure, and the two constructs that the training yields, regional technological potential and FITS.
