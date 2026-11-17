@@ -24,3 +24,4 @@ X22,M01,potential2.qmd; empirical3.qmd,coherence section; dyad vars,"No year ind
 X23,M09,potential2.qmd,association strength,"T = sum_t c_t counts patent-class assignments, not patents; T clashes with calligraphic T, N_T, T_b",minor,open,-> M05/A01,45
 X24,M09,potential2.qmd,co-occurrence section,"c_{t,t'} means patent counts and then region counts in adjacent paragraphs (author kept c); switch made explicit in text",minor,open,consider superscript or note in A01,46
 X25,M05,potential2.qmd; summary.qmd,training procedure; summary limitations,delta=4 justified with andreoni2019political; summary says albora2023product found delta=5 optimal,minor,open,author to justify,48
+X26,M04,empirical3.qmd,"eq-spatial-weights, eq-sar, eq-sem","Ch4 equation clashes: w_ij with i,j regions and k=5 (k=country); W = FITS symbol; SEM delta = training lag; SAR element vs vector notation",minor,open,-> notation pass / A01,50
