@@ -1,4 +1,4 @@
-# Results
+# Results {#sec-res}
 
 
 ```{r}
@@ -30,7 +30,7 @@ This justified the inclusion of the SAR model (@tbl-spatial-sar), albeit we also
 
 
 
-## Entry as a benchmark
+## Entry as a benchmark {#sec-res-benchmark}
 
 In @tbl-entry-ols we benchmark how much conventional relatedness density and potential (pred11) explain regional entry to a new technology.
 In the pooled specifications, both measures strongly predict entry: relatedness density is positive and precisely estimated ($0.055$), while Potential is larger ($0.081$).
@@ -77,7 +77,7 @@ table_entry_ols %>%
 
 
 
-## Network effects and coherence moderation
+## Network effects and coherence moderation {#sec-res-network}
 
 As we mentioned in the beginning of this chapter, one of our main tests in our work is regarding the relationship between the technologies' network roles and regional technological potential and whether this relationship is universal or dependent on the alignment of industrial structure between regions' portfolios and a given technology.
 @tbl-potential-fe-ols portrays one side of the picture that we're testing here which focuses on the within-group variation.
@@ -138,7 +138,7 @@ Our results contextualise this further, as this distance seems more relevant for
 This contrast can be seen in the insignificant betweenness $\times$ rawdist interaction.
 This (limited evidence) aligns with the intuition that general purpose technologies by construct should be accessible by construction as they bridge different areas of the network.
 
-## National context and robustness
+## National context and robustness {#sec-res-national}
 
 In @tbl-potential-fe-ols-h (and later on in @tbl-potential-re) we extend our framework by incorporating covariates on the national entrepreneurial ecosystem characteristics from the Global Entrepreneurship Index.
 The idea here is to understand whether these covariates contribute to the variation in regional potential along side the network metrics (and their interactions).
@@ -187,7 +187,7 @@ table_pred_fe_ols_h %>%
 
 :::
 
-## Hierarchical structures and spatial implications
+## Hierarchical structures and spatial implications {#sec-res-hierarchical}
 
 Similar to the extended fixed effects specification in @tbl-potential-fe-ols-h, model 2 accounts for the same covariates but considers the nested structure of the data.
 @tbl-potential-re employs random effects models where the regions' random intercepts are drawn from the same distribution for each country.
@@ -253,7 +253,7 @@ table_pred_re_logit %>%
 
 
 
-## Role of space
+## Role of space {#sec-res-space}
 
 Having established stable dyadic mechanisms at the technology–region level (Tables @tbl-potential-fe-ols and @tbl-potential-fe-ols-h) and substantial between-place heterogeneity in the hierarchical models (Table @tbl-potential-re), we test whether regional potential exhibits spatial dependence.
 We aggregate potential to region-year means and estimate spatial panel models with $5$-nearest-neighbor weights matrices.
@@ -478,7 +478,7 @@ table_sp_sem %>%
 
 ```
 
-## Summary 
+## Summary {#sec-res-summary}
 
 
 In this chapter we presented the results of our empirical analysis which we introduced in the first section.

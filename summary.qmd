@@ -1,7 +1,7 @@
-# Summary
+# Summary {#sec-sum}
 
 
-## Discussion
+## Discussion {#sec-sum-discussion}
 
 The covid 19 pandemic was a turning point in the global economy.
 Essentially it forced policy makers to reassess their decisions and their perception of resilience and sovereignty.
@@ -14,7 +14,7 @@ Our methodological and empirical contribution both target the contextualisation 
 In this chapter we will conclude this dissertation and discuss different aspect of novelty, limitations and implication to our contributions.        
 
 
-### On the methodology
+### On the methodology {#sec-sum-methodology}
 
 Our contribution in this work spans both methodology and empirical application.
 The call in the literature for a more contextualised studies of regional capabilities were our main theoretical motivation in this context.
@@ -99,7 +99,7 @@ A more appropriate interpretation here would have been foundational role.
 The distinction and interpretation of these roles is not as clear as we intended it to be, and it's a major flaw of our framing which we acknowledge and will address in future work.
 This however doesn't systematically affect the core agenda we subscribe to nor the general ideas we've portrayed evidence for, network structures---regardless of the interpretation---have a sizeable contribution to region diversification. 
  
-### On the results
+### On the results {#sec-sum-results}
 
 Our results presented in the previous chapter, showcase an interesting story derived from a research agenda framed almost a decade ago.
 The entire idea from this work is to operationalise the idea that "context matters".
@@ -169,7 +169,7 @@ This is to say that bridging technologies should be considered as a secondary, t
 
 
 
-### Policy implication
+### Policy implication {#sec-sum-policy}
 
 Our work here is not merely an empirical application and contains many area of important policy implications.
 We will divide these implication into two parts, the first addresses the the asymmetric FITS network and regional interdependence, while the second is regarding the characteristics of the technologies.
@@ -193,7 +193,7 @@ This however is not a single layer, combining these policy directions with other
 
 
 
-## Future research agenda 
+## Future research agenda {#sec-sum-future}
 
 This dissertation started with a specific framing issued from clear and relevant policy and research gap in the literature.
 The need to further contextualise the study of regional capabilities through more detailed context.
@@ -218,7 +218,7 @@ Our instinct here, is that these patterns are extremely informative and accounti
 The challenge in this context is how to accommodate collaboration patterns in a machine learning-based estimations, and whether this accommodation is even necessary.
 What is clear however, is that collaboration patterns---which are considered as a catalyst for innovation---could have a circular feedback effect on the entrepreneurial ecosystems characteristics, whether these characteristics influence more collaboration, or collaboration influence these characteristics is question that deserve attention. 
 
-## Conclusion
+## Conclusion {#sec-sum-conclusion}
 
 In conclusion, this dissertation provides a methodological and an empirical answer to explicit gaps and research agenda in the literature of Evolutionary Economic Geography.
 The frequent calls for a contextualised assessment of regional diversification opportunities led us to integrate different streams of literature in one body of work which was an extremely challenging task. 

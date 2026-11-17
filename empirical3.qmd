@@ -3,7 +3,7 @@ output: html_document
 editor_options: 
   chunk_output_type: console
 ---
-# Empirical design
+# Empirical design {#sec-emp}
 
 ```{r}
 pacman::p_load(tidyverse, gt, modelsummary)
@@ -22,7 +22,7 @@ Additionally, we also defined a coherence measure following intuition in the lit
 In this chapter we provide an empirical application to our methodological contribution following the same ideas we discussed in the literature review.
 In here we will first re-iterate and further clarify our objectives and how they translate to empirical constructs, then we will explain progressively how we will to address the research questions and the test the hypothesis. 
 
-## Overview and identification goals
+## Overview and identification goals {#sec-emp-overview}
 
 The central question of this chapter is what explains variation in regional technological potential?
 The analogue to this question in the REC literature is what explains relatedness.
@@ -47,7 +47,7 @@ Finally, as a secondary benchmark, we also compare the influence of potential an
 
 
 
-## Research design
+## Research design {#sec-emp-design}
 
 
 
@@ -99,7 +99,7 @@ We test this through three sub-claims:
 Finally, we note here that because H5 is a different level of analysis than the other dyadic level hypothesis, its interpretation is also different.
 We warrant this note given the contrasting phrasing between H3 and H5, we will get back in details to this in the results chapter. 
 
-## Data
+## Data {#sec-emp-data}
 
 We use data very similar to many studies discussed in the literature review, namely the European patent applications from the EPO/PATSTAT database, covering 641 technologies (4-digit IPC classes) across 345 NUTS2 regions in 30 European countries over 11 years (2008–2018).
 The dyadic models (H1–H4) use approximately 1.9 million technology–region–year observations.
@@ -174,7 +174,7 @@ hypotheses |>
 
 
 
-### Outcome: Regional technological potential
+### Outcome: Regional technological potential {#sec-emp-outcome}
 
 The primary outcome in this work is Regional Technological Potential $p_{r,t,y}$: the Random Forest-predicted probability that region $r$ develops revealed technological advantage ($RTA \geq 1$) in technology $t$ at year $y$, estimated from portfolio characteristics four years prior.
 Values are bounded between 0 and 1. 
@@ -232,7 +232,7 @@ map_avg_pred1 +
 
 ```
 
-### Technology–region level variables
+### Technology–region level variables {#sec-emp-dyad-vars}
 
 **Coherence** ($\text{coherence}_{r,t,y}$) measures the alignment between the regional technology portfolio and a specific technology in the directed FITS network in terms of industrial embeddedness (see the previous chapter for more details).
 It captures whether the regional portfolio is structurally positioned across industries to support a given technology’s embeddedness in those industries. i.e., whether the region and the technology “sit” in compatible parts of the capability system.
@@ -281,7 +281,7 @@ We use it to controls for pre-existing knowledge stock on a given technology in 
 This is to ensure that coherence and network position effects are do not turn into proxies for size as argued in @bathelt2023related.
 The geographic distribution of total patent activity is shown in @fig-map-avg-count.
 
-### Technology level variables
+### Technology level variables {#sec-emp-tech-vars}
 
 Betweenness centrality^[the FITS network is directed, in earlier iterations explored HITS authority and hub scores separately but because HITS scores and betweenness are correlated we decided to use eigenvector centrality in the final specification.] ($\text{betweenness}_t$) measures how frequently a technology lies on shortest directed paths between other technologies.
 High-betweenness technologies act as bridges between otherwise separated domains of knowledge.
@@ -333,7 +333,7 @@ corr_matrix_disagg %>%
 ::: 
 
 
-### National level variables: GEI pillars
+### National level variables: GEI pillars {#sec-emp-gei}
 
 To test H4, which assumes that national entrepreneurial ecosystem characteristics contribute to regional potential, we incorporate seven pillars from the Global Entrepreneurship Index (GEI).
 The GEI decomposes national ecosystem characteristics into fourteen that account for individual attitudes, systemic capabilities, and aspirational orientations [@acs2014national].
@@ -430,7 +430,7 @@ summary_lr_country %>%
 
 ```
 
-### Region level variables 
+### Region level variables {#sec-emp-region-vars}
 
 For the spatial panel (H5),  we aggregate the dyadic variables to region–year means.
 Specifically we retain average coherence, average betweenness, and average eigenvector of each region's existing portfolio.
@@ -476,7 +476,7 @@ corr_matrix_agg %>%
 
 
 
-## Model 0: Entry Benchmark
+## Model 0: Entry Benchmark {#sec-emp-model0}
 
 Before decomposing regional technological potential into its structural determinants, we establish that potential carries meaningful information about diversification feasibility beyond what traditional relatedness measures capture.
 This benchmark analysis validates the methodological investment in the machine learning framework by testing whether the added complexity--non-linear capability interactions, region-specific predictions--translates into improved empirical performance.
@@ -531,7 +531,7 @@ map_avg_rd +
 
 
 
-## Model 1: Dyadic fixed effects models 
+## Model 1: Dyadic fixed effects models {#sec-emp-model1}
 
 The first model in our work is specified to investigate the explanatory factors that drives regional technological potential.
 In here, as well as in the other dyadic models we estimate our linear models on the logit-transformed potential $p^*_{r,t,y}$. 
@@ -712,7 +712,7 @@ map_comp +
 
 ```
 
-## Model 2: Hierarchical models
+## Model 2: Hierarchical models {#sec-emp-model2}
 
 As we cross different literature domains in this work we observed that there's a clear and urgent gap that was not properly addressed that's the lack of time varying regional entrepreneurial ecosystem datasets.
 The Regional Entrepreneurship and Development Index (REDI) [@szerb2013regional; @argiles2014redi] and the work of @leendertse2022measure are a step in that direction but the challenge of time variation still persist.
@@ -738,7 +738,7 @@ To that end we explore in the next section in more details how we will assess th
 
 
 
-## Model 3: Spatial panel models
+## Model 3: Spatial panel models {#sec-emp-model3}
 
 Till now, we discussed two models that investigate variation in regional technological potential at different levels of grouping specification.
 The fixed effect models are designed to assess the within-region variation, and the hierarchical model is designed to simultaneously account for the national ecosystem factors while also serving as a robustness check for the network covariates and their interaction with coherence.
@@ -813,7 +813,7 @@ In light of this, the SAR model is the adequate specification, while we use the 
 
 
 
-### Spatial Autoregressive (SAR) panel - primary specification
+### Spatial Autoregressive (SAR) panel - primary specification {#sec-emp-sar}
 
 We estimate the Spatial Autoregressive (SAR) model with two-way (region and year) demeaning.
 In this model, the spatial autoregressive parameter $\rho$ tests H4 where a positive and significant $\rho$ indicates that regions tend to exhibit higher potential when neighbouring regions also display high potential. 
@@ -831,7 +831,7 @@ That is to say in this level of analysis our focus is on the aggregate character
 For our work, this interpretation complements the specification of the dyadic models and reveal more context to the dynamics we're studying.  
 
 
-### Spatial Error Model (SEM) - robustness
+### Spatial Error Model (SEM) - robustness {#sec-emp-sem}
 
 Alternatively, we estimate the Spatial Error Model (SEM) as a robustness check.
 In this model we assume that the unobservable determinant of regional potential are spatially autocorrelated.
@@ -842,7 +842,7 @@ $$P_{r,y} = \mathbf{X}_{r,y}\boldsymbol{\beta} + \alpha_r + u_{r,y}, \qquad u_{r
 In here, $\delta$ is our benchmark such that its sign, magnitude and significance compared to $\rho$ from the SAR model allows to differentiate the spatial dynamics that drives regional potential. 
 
 
-## Summary 
+## Summary {#sec-emp-summary}
 
 This chapter presents the empirical framework we adopt to investigate what shapes regional technological diversification feasibility.
 We build directly on the methodological contribution of the previous chapter and translate our research questions into a structured empirical design.

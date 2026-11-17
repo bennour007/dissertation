@@ -1,8 +1,8 @@
-# Literature review
+# Literature review {#sec-lit}
 
 
 
-## Regional diversification and resilience: Overview from an Evolutionary perspective
+## Regional diversification and resilience: Overview from an Evolutionary perspective {#sec-lit-resilience}
 
 In the previous chapter, we framed this work's core idea around the need to study technological diversification patterns of regions within a broader context.
 To justify this framing we grounded this core idea on the ever increasing importance of resilience facing an increasingly uncertain global and geopolitical world order [@xiao2018resilience].
@@ -38,7 +38,7 @@ Understanding what shapes diversification feasibility in more granular context, 
 
 
     
-## Why place (still) matters?
+## Why place (still) matters? {#sec-lit-place}
 
 The agenda for assessing regional resilience through an evolutionary lens through relatedness, network structures and institutions, falls on the theoretical convergence that regional economies can be considered as capability systems [@hidalgo2009building; @hausmann2011network; @martin2007complexity] where a region’s economy can be represented as a structured set of complementary capabilities that constrain which new activities are feasible.
 To approximate the interconnectedness between these capabilities in a regional economy, interpreting this system as a network is the consensus here [@toth2022technology].
@@ -110,7 +110,7 @@ This is also consistent with the recent methodological move in the relatedness/c
 Taken together, these arguments motivate the core move in this dissertation: a more contextualised assessment of diversification feasibility that keeps the strengths of the relatedness/network tradition (path dependence, structured opportunity sets) while explicitly incorporating (i) agency (firms and entrepreneurs as carriers of capabilities and novelty) [@neffke2018agents], and (ii) institutional–system conditions approximated through entrepreneurial ecosystems and higher-level contexts that shape whether potential translates into sustained diversification [@hekkert2007functions; @stamwelter2020; @audretsch2017entrepreneurial].
 This provides a coherent bridge from an evolutionary resilience-adjacent framing to an empirical strategy that decomposes diversification into endogenous opportunity structure and exogenous enabling conditions—while remaining faithful to the EEG insight that regional change is path-dependent, multi-actor, and deeply place-contingent [@ballandboschma2015; @boschma2017relatedness; @neffke2018agents].
     
-## Relatedness as the baseline, context as the extension
+## Relatedness as the baseline, context as the extension {#sec-lit-relatedness-context}
 
 The critiques raised by @bathelt2023related and @whittle2020related find a rigorous empirical counterpart in recent methodological work.
 @tacchella2023relatedness demonstrate systematically—across trade, patent, and scientific production data—that the co-occurrence-based relatedness measures that underpin the product space and related approaches perform worse in predicting new specialisations than trivial autocorrelation strategies: simply predicting that a region's current basket will remain unchanged outperforms the Product Space in the COMTRADE dataset in multiple classification metrics.
