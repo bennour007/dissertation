@@ -104,14 +104,6 @@ where $T = \sum_{t \in \mathcal{T}} c_t$ is the total patent count.
 Values exceeding one indicate that the technologies appear together more frequently than would be expected if their occurrences were independent--they are positively associated.
 This measure properly corrects for size effects: a rare technology and a common technology can still exhibit strong association if they co-occur more than their marginal frequencies would predict.
 
-**The Probability Index** refines this probabilistic approach by accounting for the fact that a patent cannot co-occur with itself:
-
-$$
-\phi_{t,t'}^{\text{prob}} = \frac{c_{t,t'}}{\frac{1}{2}\left[\frac{c_t}{T} \cdot \frac{c_{t'}}{T - c_t} + \frac{c_{t'}}{T} \cdot \frac{c_t}{T - c_{t'}}\right] \cdot T}
-$$
-
-This correction, while subtle, provides more accurate estimates for patent co-occurrence analysis and is implemented in standard software packages used in the field.
-
 **Cosine Similarity** offers a set-theoretic alternative:
 
 $$
@@ -121,14 +113,24 @@ $$
 This measures relative overlap between technology profiles.
 While intuitive, it systematically favours frequent technologies over rare ones and does not properly correct for size effects, making comparisons across technologies with different prevalences problematic.
 
-**Minimum Conditional Probability** takes a different approach by examining regional co-location rather than patent-level co-occurrence:
+**Minimum Conditional Probability** [@hidalgo2007product] takes a different approach: it measures co-location across regions rather than co-occurrence within patents.
+For this measure the counts are taken over regions, using the binary specialisation indicators $z_{r,t,y}$ defined above (the year index is dropped for readability):
 
 $$
-\phi_{t,t'}^{\text{min}} = \min\left\{P(\text{RTA}_{r,t} | \text{RTA}_{r,t'}), P(\text{RTA}_{r,t'} | \text{RTA}_{r,t})\right\}
+c_{t,t'} = \sum_{r \in \mathcal{R}} z_{r,t}\, z_{r,t'}, \qquad c_t = \sum_{r \in \mathcal{R}} z_{r,t}
 $$
 
-This computes the minimum of the conditional probabilities: given that a region specialises in one technology, how likely is it to specialise in the other?
-The minimum operator ensures symmetry while avoiding inflation from imbalanced conditional relationships.
+so that $c_{t,t'}$ is the number of regions specialised in both $t$ and $t'$, and $c_t$ is the number of regions specialised in $t$.
+The share of regions specialised in $t'$ that are also specialised in $t$ is the conditional probability $P(t \mid t') = c_{t,t'}/c_{t'}$, and the measure keeps the smaller of the two directions:
+
+$$
+\phi_{t,t'}^{\text{min}} = \min\left\{\frac{c_{t,t'}}{c_t},\; \frac{c_{t,t'}}{c_{t'}}\right\} = \frac{c_{t,t'}}{\max(c_t,\, c_{t'})}
+$$
+
+The measure therefore normalises co-location by the ubiquity of the more widespread technology, which prevents a technology present in many regions from appearing close to every other technology.
+Unlike association strength, it involves no null model: observed co-location is not compared with what independence would predict.
+Because it is defined on counts of specialised regions, it requires the binarised indicator rather than the continuous RTA.
+Finally, the minimum makes the measure symmetric by construction ($\phi^{\text{min}}_{t,t'} = \phi^{\text{min}}_{t',t}$), so it cannot represent a directional relationship between two technologies; this limitation is discussed below and motivates the directed network in @sec-meth-fits.
 
 A clarification is warranted here regarding two distinct but often conflated concepts.
 Co-occurrence typically refers to technologies appearing together within the same patent or firm, while co-location refers to technologies appearing together within the same region.

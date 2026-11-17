@@ -8,7 +8,7 @@ X06,mapping,empirical3.qmd,186-187,"Logit transform: 'extreme values trimmed' wi
 X07,mapping,empirical3.qmd,490 vs results2.qmd:35-44,Model 0 equation shows only year FE (alpha_y); results discuss region + year FE; summary table says 'region & year FE',moderate,open,needs author confirmation of spec,26
 X08,mapping,empirical3.qmd,338-343,"GEI: pillars x1-x6 excluded, x8-x14 retained; pillar x7 is never mentioned (14 pillars)",moderate,open,needs author explanation,27
 X09,mapping,results2.qmd,521-564,"Three eval=FALSE table chunks (tbl-potential-fe-logit, -logit-h, re1) left in the chapter",minor,open,delete or move to appendix?,28
-X10,mapping,response letters,ISK p.4; NS p.14,Letters say the implementation will be corrected (binarisation) and the network direction checked; author confirms implementation is correct: letter wording overstates code changes,moderate,open,adjust letters before resubmission,29
+X10,mapping,response letters,ISK p.4; NS p.14,Letters say the implementation will be corrected (binarisation) and the network direction checked; author confirms implementation is correct: letter wording overstates code changes; ISK letter MCP passage: 'no normalisation is involved' and 'difference informative about which predicts the other' are inaccurate; letter uses N=Z'Z and Hausmann & Klinger (text now uses c and Hidalgo 2007),moderate,open,adjust letters before resubmission,29
 X11,mapping,potential2.qmd,500,Figure 3.3 caption 'H10L'; text discusses H01L (semiconductors),minor,resolved,fixed in grouped PR (F03/P03),
 X12,mapping,potential2.qmd,593-606,'SK10' in text; region code is SK01 elsewhere,minor,resolved,fixed in grouped PR (F03/P03),
 X13,G04,empirical3.qmd; results2.qmd,"emp:508,578,613,647,682; res:339","fig-subcap used for long explanatory notes on single (non-subfigure) maps; fig-subcap is meant for sub-figure captions, so the note may be dropped or mis-rendered",minor,open,check render; move note to caption or text (-> F05),30
@@ -21,3 +21,5 @@ X19,M06,potential2.qmd; summary.qmd,FITS edges; summary future research,Ch3 defi
 X20,M01,potential2.qmd,coherence section,Coherence said to be computed within industries; formula aggregates across sections into one scalar,moderate,open,rephrase,40
 X21,M01,potential2.qmd,coherence formula,Cosine undefined for all-zero technology or region profiles; handling not stated,minor,open,author to state,41
 X22,M01,potential2.qmd; empirical3.qmd,coherence section; dyad vars,"No year index on coherence in Ch3; Ch4 uses coherence_{r,t,y}",minor,open,-> M05/A01,42
+X23,M09,potential2.qmd,association strength,"T = sum_t c_t counts patent-class assignments, not patents; T clashes with calligraphic T, N_T, T_b",minor,open,-> M05/A01,45
+X24,M09,potential2.qmd,co-occurrence section,"c_{t,t'} means patent counts and then region counts in adjacent paragraphs (author kept c); switch made explicit in text",minor,open,consider superscript or note in A01,46
