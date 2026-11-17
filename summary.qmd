@@ -252,16 +252,28 @@ What is clear however, is that collaboration patterns---which are considered as 
 ## Conclusion {#sec-sum-conclusion}
 
 In conclusion, this dissertation provides a methodological and an empirical answer to explicit gaps and research agenda in the literature of Evolutionary Economic Geography.
-The frequent calls for a contextualised assessment of regional diversification opportunities led us to integrate different streams of literature in one body of work which was an extremely challenging task. 
+The frequent calls for a contextualised assessment of regional diversification opportunities led us to integrate different streams of literature in one body of work.
 
-We first, addressed a methodological issue in the literature of relatedness and economic complexity specifically targeting the conventional measures of relatedness/proximity that obscure much of the granular information in the patenting data.
-To this end, we adopted a machine learning training strategy that addresses this issue, then we used the results of our approach to investigate how the characteristics of different technologies, the regions' own network structures, their national entrepreneurial ecosystem characteristics, and their spatial position associate with their technological potential (or the feasible opportunities).
-This methodological contribution and empirical investigation respond to the research agenda and the gaps in the literature.
+We first reviewed these streams of literature around the dimensions that our research questions address: relatedness, network structure, coherence, national institutions and space (@sec-lit).
+We then addressed a methodological issue in the literature of relatedness and economic complexity, specifically the conventional measures of relatedness that obscure much of the granular information in the patenting data (@sec-meth).
+To this end, we adapted a machine learning training strategy that yields regional technological potential and the FITS network, and we introduced coherence to connect the two.
+In the empirical design (@sec-emp) we used these measures in four models, and in the results (@sec-res) we investigated how the characteristics of different technologies, the alignment of regional portfolios, national entrepreneurial ecosystem characteristics, and spatial position associate with regional technological potential.
 
-Our results, validate many of the ideas in the literature and highlight the importance of the national context and the heterogeneity of the influence of different technological characteristics on regions' technological potential.
-Our main findings suggest that bridging technologies can be used a secondary targeted policy direction as they are relatively feasible.
-These targets should aim at increasing the aggregate industrial alignment of the region as this alignment is the key to unlock the benefit of having this type of technologies.
-Our results also show that the entrepreneurial ecosystem characteristics at the national level have a significant predictive power and that it should be considered when designing policy instrument specifically targeting human capital, competition, and supporting high growth firms. 
+Our main results, for each research question, are the following.
 
+1. **RQ1 (H1).** Regional technological potential is at least as informative as relatedness density in predicting entry; when both are included, potential keeps most of its predictive power while that of density falls. Whether potential is the better predictor remains open: both keep explanatory power, and the comparison covers ten years.
+2. **RQ2 (H2a–H2b).** A technology's position in the directed FITS network is associated with how feasible it is: bridging technologies with higher potential, enabling technologies with lower potential. How closely these positions correspond to general-purpose and enabling roles remains to be validated.
+3. **RQ3 (H3a–H3c).** Coherence between a region's portfolio and a technology is the strongest predictor of potential. It moderates the role of bridging technologies, which matter most where alignment is weak, but not that of enabling technologies. Part of this association may reflect the shared construction of coherence and potential.
+4. **RQ4 (H4).** National ecosystem conditions are associated with regional potential beyond portfolio mechanisms, positively for human capital, competition, product innovation and high growth, and negatively for process innovation, internationalisation and risk capital. Because the indicators are national, differences within countries remain unexplained.
+5. **RQ5 (H5a–H5c).** Regional potential is spatially interdependent. At the portfolio level, enabling technologies are associated with higher average potential, amplified by coherence, while bridging technologies are associated with higher potential only where coherence is high enough. These are associations between aggregates, not effects of adding technologies to a portfolio.
 
+These results come with limitations, which we discuss in @sec-sum-methodology.
+They rest on patent data, which miss knowledge that is not patented; they are predictive associations rather than causal effects, partly shaped by the shared construction of coherence and potential; and they come from European NUTS2 regions.
 
+With these limitations in mind, the results can support policy as decision support rather than as prescription (@sec-sum-policy).
+Our main findings suggest that bridging technologies can be considered as a secondary, targeted diversification direction, as they are relatively feasible, especially for regions with low industrial alignment.
+Since the portfolio-level association of bridging technologies depends on coherence, such targets could be combined with efforts to increase the aggregate industrial alignment of the region.
+Our results also suggest that the entrepreneurial ecosystem characteristics at the national level, in particular human capital, competition and high growth, should be considered when designing policy instruments for regional diversification.
+
+Taken together, the results support a shift from asking what a region might diversify into towards asking under which structural conditions diversification is feasible.
+The directions for future research that follow from this shift are set out in @sec-sum-future.
