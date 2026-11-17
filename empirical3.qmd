@@ -747,7 +747,7 @@ Additionally, the literature gives reason to expect real interdependence especia
 The spatial models in this analysis test this formally. 
 Model 3 is therefore not a robustness check of the dyadic models.
 It answers a separate question (RQ5): whether the feasibility landscape is spatially structured, which cannot be tested at the region–technology level.
-Without it, the spatial dimension identified in the literature review (@sec-lit) would remain without an empirical answer.
+Without it, the spatial dimension identified in the literature review (@sec-lit-spatial) would remain without an empirical answer.
 
 To proceed with the spatial analysis, we construct spatial weights using k-nearest neighbours (k = 5) based on NUTS2 geographic centroids.
 We also perform row-standardisation for each focal region $i$ and its candidate neighbour $j$, such that $\sum_j w_{ij} = 1$, where:

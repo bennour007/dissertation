@@ -532,6 +532,7 @@ It does not show that $t'$ depends on $t$.
 Two properties of impurity-based importance also matter for how the edges are read.
 First, the importance is shared out unevenly among correlated predictors, as technologies in the same IPC section often are: the technology chosen first for a split takes up importance that its neighbours would otherwise receive, so a weak edge may reflect this masking rather than the absence of a relationship.
 Second, the importances are less reliable in models that predict poorly, typically those for rare technologies.
+We discuss these limits further in @sec-meth-rf-limits.
 
 The defining property of FITS is asymmetry: $W_{t \to t'} \neq W_{t' \to t}$ in general.
 This asymmetry captures directed predictive relationships that symmetric measures cannot represent:
