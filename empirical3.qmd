@@ -109,67 +109,16 @@ We briefly described in the previous chapter how we use this data to construct o
 In here we take this a step further and describe in more details the other variables we use in our design.
 Descriptive statistics and correlation matrix for all dyadic variables are reported respectively  in @tbl-desc-lr and  @tbl-corr-dyadic.
 
+::: {.landscape}
+
 ```{r tbl-hypo}
-#| tbl-cap: "Hypotheses, Variables, and Empirical Tests"
-
-hypotheses <- tibble(
-  Hypothesis = c("H1", "H2a", "H2b", "H3a", "H3b", "H3c", "H4", "H5a", "H5b", "H5c"),
-  Claim = c(
-    "Potential is at least as informative as relatedness density in predicting entry",
-    "Technologies with a bridging role are positively associated with potential",
-    "Technologies with an enabling role are negatively associated with potential",
-    "Coherence positively predicts potential",
-    "Bridging technologies predict higher potential for low-coherence regions",
-    "Enabling technologies predict higher potential for high-coherence regions",
-    "National ecosystem characteristics shape potential beyond portfolio mechanisms",
-    "Regional potential is spatially interdependent across neighbouring regions",
-    "Bridging portfolio concentration predicts higher potential under sufficient coherence",
-    "Enabling portfolio concentration predict higher potential and is amplified by coherence"
-  ),
-  Key_variables = c(
-    "pred11 vs relatedness_density",
-    "betweenness",
-    "eigenvector",
-    "coherence",
-    "betweenness x coherence",
-    "eigenvector x coherence",
-    "GEI pillars x8-x14",
-    "Spatial lag (SAR)",
-    "avg_betweenness x avg_coherence",
-    "avg_eigenvector x avg_coherence"
-  ),
-  Model = c(
-    "Model 0",
-    "Model 1",
-    "Model 1",
-    "Model 1",
-    "Model 1",
-    "Model 1",
-    "Model 2",
-    "Model 3",
-    "Model 3",
-    "Model 3"
-  )
-)
-
-hypotheses |>
-  gt() |>
-  cols_label(
-    Hypothesis    = "Hypothesis",
-    Claim         = "Claim",
-    Key_variables = "Key variables",
-    Model         = "Model"
-  ) |>
-  cols_width(
-    Hypothesis    ~ px(90),
-    Claim         ~ px(280),
-    Key_variables ~ px(180),
-    Model         ~ px(80)
-  ) |>
-  tab_source_note(
-    "Note: Model 0 is the entry benchmark (LPM). Models 1 and 2 are dyadic fixed effects and hierarchical random effects respectively. Model 3 is the spatial autoregressive (SAR) panel estimated on region-year aggregates."
-  )
+#| tbl-cap: "Research questions, hypotheses, measures and models"
+source(here::here("R/progressive_table.R"))
+progressive_table("ch4") |>
+  gt::tab_source_note("Model 0 is the entry benchmark (LPM). Models 1 and 2 are dyadic fixed effects and hierarchical random effects respectively. Model 3 is the spatial autoregressive (SAR) panel estimated on region-year aggregates.")
 ```
+
+:::
 
 
 
