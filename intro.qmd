@@ -220,6 +220,16 @@ Moving from the technology–region dyad to the regional portfolio as a whole, w
 
 
 
+@tbl-progress-intro summarises the research questions and hypotheses.
+The table is extended in later chapters as the corresponding elements are introduced: the literature gaps and measures in Chapter 3, the models in Chapter 4, and the findings in the summary chapter.
+
+```{r tbl-progress-intro}
+#| tbl-cap: "Research questions and hypotheses"
+source(here::here("R/progressive_table.R"))
+progressive_table("ch1")
+```
+
+
 ## Structure {#sec-intro-structure}
 
 

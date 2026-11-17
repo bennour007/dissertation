@@ -172,8 +172,8 @@ Unlike model 1 and 2 who ask what are the (joint) characteristics of regions and
 I.e. now we can see if the stock of bridging and enabling technologies predict the region's average feasible opportunities, and whether or not the spatial component is supported.
 To this end, the results provide a contrasting story to the dyadic models.
 First, the average potential of a region is spatially dependent on the average potential of it neighbouring regions.
-Second, regions endowed with high level of bridging roles technologies are associated with a decrease in their potential, whereas for enabling roles technologies, they are positively associated.
-Lastly, average coherence conditions the marginal effect of bridging portfolios on average regional potential but not enabling portfolios.
+Second, regions endowed with more bridging technologies have lower average potential when their coherence is low and higher average potential when it is high, whereas regions endowed with more enabling technologies have higher average potential.
+Lastly, average coherence conditions the association of bridging portfolios with average regional potential, and amplifies that of enabling portfolios.
 This seems in contradiction with the results of models 1 and 2, but a deeper assessment is warranted.
 At the aggregate regional level, model 3 informs us that regions with low industrial alignment do not benefit (in terms of their average potential) from an increase in their bridging technologies endowment, there's a threshold of industrial alignment that condition whether or not an increase in bridging technologies improve regional potential.
 This complements our results in model 1 and 2, bridging technologies are a facilitator of diversification for regions with low coherence, and the opposite for regions with high coherence.
@@ -184,6 +184,19 @@ This is one of our most important conclusions here, because this means that brid
 However, they can be considered as a targeted catalyst to improve industrial alignment itself because at the dyadic level they are associated with higher regional potential.
 This is to say that bridging technologies should be considered as a secondary, targeted, and precise diversification option, that supports other primary targets aimed at improving the overall industrial alignment.   
 
+
+
+@tbl-progress-summary completes the table of research questions with the findings for each hypothesis.
+
+::: {.landscape}
+
+```{r tbl-progress-summary}
+#| tbl-cap: "Research questions, hypotheses and findings"
+source(here::here("R/progressive_table.R"))
+progressive_table("ch6")
+```
+
+:::
 
 
 ### Policy implication {#sec-sum-policy}

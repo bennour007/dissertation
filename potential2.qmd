@@ -783,3 +783,15 @@ Potential and FITS describe regions and technologies separately.
 Coherence, our own measure, connects them: it compares the industrial profile of a technology in FITS with that of a region's portfolio, and asks whether regions with similar potential stand on similarly structured knowledge bases.
 
 The empirical chapters use these three measures to ask under what structural context diversification is feasible: Potential serves as the outcome and as the benchmark against density, FITS supplies the network positions of technologies, and coherence the alignment that may condition them.
+
+@tbl-progress-meth extends the table of research questions with the gap in the literature that each hypothesis addresses and the measure it relies on.
+
+::: {.landscape}
+
+```{r tbl-progress-meth}
+#| tbl-cap: "Research questions, gaps and measures"
+source(here::here("R/progressive_table.R"))
+progressive_table("ch3")
+```
+
+:::
