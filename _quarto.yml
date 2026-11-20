@@ -13,6 +13,8 @@ book:
     - results2.qmd
     - summary.qmd
     - references.qmd
+  appendices:
+    - appendix.qmd
 
 bibliography: references.bib
 
