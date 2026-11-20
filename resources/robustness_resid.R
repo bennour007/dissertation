@@ -36,8 +36,10 @@ diag_tbl <- tibble(
 # --- Table B: entry models -------------------------------------
 ctrl <- "patent_n + reg_comp + tech_comp | region + year"
 
-m <- function(x) feols(as.formula(paste("entry ~", x, "+", ctrl)),
-                       data, cluster = ~ region + tech)
+m <- function(x) feols(as.formula(paste("f(entry, 1) ~", x, "+", ctrl)),
+                       data, vcov = ~ region + tech,
+                       # vcov = "cluster",
+                       panel.id = ~ rt + year)
 
 
 mods <- list(

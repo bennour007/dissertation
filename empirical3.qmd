@@ -431,9 +431,9 @@ We estimate linear probability models (LPM) that include both standardised poten
 
 The general specification is:
 
-$$\text{Entry}_{r,t,y+1} = \beta_1 \text{Density}_{r,t,y} + \beta_2 \text{Potential}_{r,t,y} + \mathbf{Z}_{r,t,y}\boldsymbol{\gamma} + \alpha_y + \varepsilon_{r,t,y}$$ {#eq-model0}
+$$\text{Entry}_{r,t,y+1} = \beta_1 \text{Density}_{r,t,y} + \beta_2 \text{Potential}_{r,t,y} + \mathbf{Z}_{r,t,y}\boldsymbol{\gamma} + \alpha_r + \alpha_y + \varepsilon_{r,t,y}$$ {#eq-model0}
 
-where $\text{Density}_{r,t,y}$ is the standardised relatedness density (z-scored), $\text{Potential}_{r,t,y}$ is the standardised technological potential (z-scored), $\mathbf{Z}_{r,t,y}$ contains controls (regional complexity, technology complexity, patent count), and $\alpha_y$ are year fixed effects.
+where $\text{Density}_{r,t,y}$ is the standardised relatedness density (z-scored), $\text{Potential}_{r,t,y}$ is the standardised technological potential (z-scored), $\mathbf{Z}_{r,t,y}$ contains controls (regional complexity, technology complexity, patent count), $\alpha_r$ are region fixed effects, and $\alpha_y$ are year fixed effects.
 Standard errors are clustered by region and technology to account for the dyadic structure of the data.
 
 The motivation for this specification is straightforward.

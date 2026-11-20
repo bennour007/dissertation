@@ -23,6 +23,7 @@ so that each promise in the response letters can be traced to a merged change.
 | `in_pr` | PR open |
 | `merged` | Merged into `revision` **and** logged with empty `open_ends` |
 | `partial` | Part merged; `open_ends` in the log says what remains |
+| `archived` | Dropped by author decision; not implemented |
 
 Flags (`flags.csv`) use `open`, `in_pr`, `resolved`, and `archived` (closed by author decision, not fixed; the GitHub issue is closed as *not planned* with the `archived` label).
 
