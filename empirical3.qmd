@@ -46,9 +46,7 @@ The rest of this chapter follows this structure.
 @sec-emp-model0, @sec-emp-model1, @sec-emp-model2 and @sec-emp-model3 then specify the four models, from the entry benchmark to the spatial panel.
 
 
-
 ## Research design {#sec-emp-design}
-
 
 
 The guiding research question is what conditions are associated with the feasibility of regional technological diversification, and how do technology-specific characteristics, portfolio alignment, national ecosystem structure, and spatial interdependence jointly shape that feasibility.
@@ -134,12 +132,14 @@ For the spatial models (H5), we aggregate to region–year means (the geographic
 
 $$P_{r,y} = \frac{1}{|\mathcal{T}|} \sum_{t \in \mathcal{T}} p_{r,t,y}$$ {#eq-avg-potential}
 
+::: {.landscape}
 
+::: {layout-ncol=2}
 
 ```{r fig-map-potential, echo=FALSE}
-#| fig-width: 8
-#| fig-height: 9
-#| out-width: "100%"
+#| fig-width: 6
+#| fig-height: 6.75
+#| out-width: "80%"
 #| fig-dpi: 150
 #| fig-cap: "Average Regional Technological Potential (2008 vs 2018)"
 map_avg_pred1 <- targets::tar_read(map_avg_pred1, store = here::here("../../_targets_DES"))
@@ -169,6 +169,45 @@ map_avg_pred1 +
 
 ```
 
+```{r fig-map-avg-count, echo=FALSE}
+#| fig-width: 6
+#| fig-height: 6.75
+#| out-width: "80%"
+#| fig-dpi: 150
+#| fig-cap: "Total Patent Count by Region (2008–2018 Averages)"
+#| fig-subcap: "This map visualises total patent activity across European regions on a square root scale, as raw patent counts are extremely skewed. High-activity regions (bright yellow) are concentrated in major innovation hubs, while low-activity regions (dark blue) span large rural and peripheral territories."
+
+map_count <- targets::tar_read(map_count, store = here::here("../../_targets_DES"))
+
+map_count +
+  scale_fill_viridis_c(
+    oob = scales::squish,
+    limits = c(10, 1000),
+    trans = scales::transform_sqrt(),
+    name = "Patent Count",
+    # labels = scales::label_log()
+  ) +
+  theme(
+    plot.title = element_blank(),
+    # legend.position = "bottom",
+    # legend.direction = "horizontal",
+    # legend.box = "horizontal",
+    legend.title = element_text(hjust = 0.5, angle = 90),
+    legend.title.position = "right",
+    legend.key.width = unit(0.2, "cm"),
+    legend.key.height = unit(1, "null"),
+    # legend.box.just = "center",
+    legend.title.align = 0.5,
+    legend.margin = margin(t = 0, b = 0, r = 0.6, l = 0.6)
+  )
+
+```
+
+:::
+
+:::
+
+
 With the outcome defined, the question becomes which characteristics are associated with higher or lower potential.
 Is it the alignment between the region and the technology, the position of the technology in the network, or the conditions of the country and the region?
 We group the covariates by the level at which they vary: technology–region, technology, country and region.
@@ -179,38 +218,6 @@ We group the covariates by the level at which they vary: technology–region, te
 It captures whether the regional portfolio is structurally positioned across industries to support a given technology’s embeddedness in those industries. i.e., whether the region and the technology “sit” in compatible parts of the capability system.
 This aligns with the intuition in the literature that diversification feasibility depends on how well the target technology aligns with internal regional knowledge infrastructure base [@teece1994understanding; @nesta2005coherence; @quatraro2010; @pugliese2019coherent; @straccamore2025comparative].
 The geographic distribution of average coherence is shown in @fig-map-coherence.
-
-```{r fig-map-coherence, echo=FALSE}
-#| fig-width: 8
-#| fig-height: 9
-#| out-width: "100%"
-#| fig-dpi: 150
-#| fig-cap: "Average Coherence Across Regions (2008 vs 2018)"
-
-map_coherence <- targets::tar_read(map_coherence, store = here::here("../../_targets_DES"))
-
-map_coherence + 
-  scale_fill_viridis_c(
-    limits = c(0.0, 1),  
-    oob = scales::squish,
-    name = "Avg Coherence"
-    # trans = scales::transform_()
-  ) +
-  theme(
-    plot.title = element_blank(),
-    legend.position = "right",
-    legend.direction = "vertical",
-    legend.box = "vertical",
-    legend.title = element_text(hjust = 0.5, angle = 90),
-    legend.title.position = "right",
-    legend.key.width = unit(0.2, "cm"),
-    legend.key.height = unit(0.7, "null"),
-    legend.box.just = "center",
-    legend.title.align = 0.5
-    # legend.margin = margin(t = 0, b = 0, r = 0.6, l = 0.6)
-  )
-
-```
 
 
 **Distance** ($\text{rawdist}_{r,t,y}$) is the shortest path weighted length in the FITS network from the closest technology in the regional portfolio to a given technology, using the shorter of the two directions (see @sec-app-distance).
@@ -233,7 +240,6 @@ Eigenvector centrality ($\text{eigenvector}_t$) measures how strongly connected 
 The idea is to capture authoritative positions in the capability system.
 In our interpretation, this corresponds to KET-like enabling roles capability-dense, strongly interdependent domains whose entry tends to require broader complementary competence rather than a single bridge.
 The corresponding distribution for eigenvector centrality is shown in @fig-map-avg-eig.
-
 
 
 **Regional complexity** ($\text{reg\_comp}_{r,y}$) and **technology complexity**
@@ -395,7 +401,6 @@ summary_panel %>%
 ```
 
 
-
 ```{r tbl-corr-regional, echo=FALSE}
 #| tbl-cap: "Correlation matrix of the aggregated variables"
 corr_matrix_agg <- targets::tar_read(corr_matrix_agg, store = here::here("../../_targets_DES"))
@@ -413,8 +418,6 @@ corr_matrix_agg %>%
   #   # table.width = pct(90)         # fill available width
   # )
 ```
-
-
 
 
 ## Model 0: Entry Benchmark {#sec-emp-model0}
@@ -438,38 +441,6 @@ Relatedness density has been established as a robust predictor of diversificatio
 If our ML-derived potential measure provides no improvement over this standard benchmark -- or worse, if density remains the dominant predictor when both are included -- then the added machinery of Random Forests, feature importance networks, and coherence calculations would be empirically unjustified.
 The test is therefore conservative by design: we assess whether potential subsumes, supplements, or is subsumed by the conventional measure.
 The geographic distribution of average relatedness density is shown in @fig-map-avg-rd
-
-
-```{r fig-map-avg-rd, echo=FALSE}
-#| fig-width: 8
-#| fig-height: 9
-#| out-width: "100%"
-#| fig-dpi: 150
-#| fig-cap: "Average Relatedness Density Across Regional Technology Portfolios"
-#| fig-subcap: "This map shows the average relatedness density for each region, computed as the mean density score across all non-specialised technologies. High density regions (bright colours) face a dense feasibility landscape with many related opportunities, while low density regions (dark colours) face sparser opportunity structures."
-
-
-
-
-map_avg_rd <- targets::tar_read(map_avg_rd, store = here::here("../../_targets_DES"))
-
-map_avg_rd +
-  scale_fill_viridis_c(
-    name = "Avg Relatedness Density"  # New legend title
-  ) +
-  theme(
-    plot.title = element_blank(),
-    legend.title = element_text(hjust = 0.5, angle = 90),
-    legend.title.position = "right",
-    legend.key.width = unit(0.2, "cm"),
-    legend.key.height = unit(1, "null"),
-    # legend.box.just = "center",
-    legend.title.align = 0.5,
-    legend.margin = margin(t = 0, b = 0, r = 0.6, l = 0.6)
-  )
-
-```
-
 
 
 ## Model 1: Dyadic fixed effects models {#sec-emp-model1}
@@ -510,149 +481,6 @@ This motivates the adoption of a hierarchical model when we include the country 
 However, we also retain this (fixed effects) approach as robustness check for model 2.
 
 
-```{r fig-map-avg-bet, echo=FALSE}
-#| fig-width: 8
-#| fig-height: 9
-#| out-width: "100%"
-#| fig-dpi: 150
-#| fig-cap: "Average Betweenness Centrality of Regional Technology Portfolios"
-#| fig-subcap: "This map displays the average betweenness centrality of regional technology portfolios, the extent to which regions specialise in bridge technologies in the FITS network. High betweenness regions (bright yellow) have portfolios rich in bridging technologies, while low betweenness regions (dark blue) concentrate in specialised endpoints or peripheral technologies."
-
-map_bet <- targets::tar_read(map_bet, store = here::here("../../_targets_DES"))
-
-map_bet +
-  scale_fill_viridis_c(
-    limits = c(-0.5, 0.55),
-    oob = scales::squish,  
-    # trans = scales::transform_log1p(),
-    option = "plasma",
-    name = "Avg Betweenness Centrality"
-  ) +
-  theme(
-    plot.title = element_blank(),
-   # legend.position = "bottom",
-    # legend.direction = "horizontal",
-    # legend.box = "horizontal",
-    legend.title = element_text(hjust = 0.5, angle = 90),
-    legend.title.position = "right",
-    legend.key.width = unit(0.2, "cm"),
-    legend.key.height = unit(1, "null"),
-    # legend.box.just = "center",
-    legend.title.align = 0.5,
-    legend.margin = margin(t = 0, b = 0, r = 0.6, l = 0.6)
-  )
-
-```
-
-
-```{r fig-map-avg-eig, echo=FALSE}
-#| fig-width: 8
-#| fig-height: 9
-#| out-width: "100%"
-#| fig-dpi: 150
-#| fig-cap: "Average Eigenvector Centrality of Regional Technology Portfolios"
-#| fig-subcap: "This map shows the average eigenvector centrality of technologies in which each region specialises, capturing the extent to which regional portfolios occupy the structural core of the FITS network. High eigenvector regions (red/pink) concentrate in central, highly interdependent technology domains, while low eigenvector regions (blue) specialise in peripheral or isolated technologies."
-
-map_eigen <- targets::tar_read(map_eigen, store = here::here("../../_targets_DES"))
-
-map_eigen +
-    scale_fill_viridis_c(
-      option = "turbo",
-        limits = c(0.05, 0.2),  
-        name = "Avg Eigenvector Centrality",
-        oob = scales::squish 
-    ) +
-   theme(
-     plot.title = element_blank(),
-   # legend.position = "bottom",
-    # legend.direction = "horizontal",
-    # legend.box = "horizontal",
-    legend.title = element_text(hjust = 0.5, angle = 90),
-    legend.title.position = "right",
-    legend.key.width = unit(0.2, "cm"),
-    legend.key.height = unit(1, "null"),
-    # legend.box.just = "center",
-    legend.title.align = 0.5,
-    legend.margin = margin(t = 0, b = 0, r = 0.6, l = 0.6)
-  ) 
-
-```
-
-
-```{r fig-map-avg-count, echo=FALSE}
-#| fig-width: 8
-#| fig-height: 9
-#| out-width: "100%"
-#| fig-dpi: 150
-#| fig-cap: "Total Patent Count by Region (2008–2018 Averages)"
-#| fig-subcap: "This map visualises total patent activity across European regions on a square root scale, as raw patent counts are extremely skewed. High-activity regions (bright yellow) are concentrated in major innovation hubs, while low-activity regions (dark blue) span large rural and peripheral territories."
-
-map_count <- targets::tar_read(map_count, store = here::here("../../_targets_DES"))
-
-map_count +
-  scale_fill_viridis_c(
-    oob = scales::squish,
-    limits = c(10, 1000),
-    trans = scales::transform_sqrt(),
-    name = "Patent Count",
-    # labels = scales::label_log()
-  ) +
-  theme(
-    plot.title = element_blank(),
-    # legend.position = "bottom",
-    # legend.direction = "horizontal",
-    # legend.box = "horizontal",
-    legend.title = element_text(hjust = 0.5, angle = 90),
-    legend.title.position = "right",
-    legend.key.width = unit(0.2, "cm"),
-    legend.key.height = unit(1, "null"),
-    # legend.box.just = "center",
-    legend.title.align = 0.5,
-    legend.margin = margin(t = 0, b = 0, r = 0.6, l = 0.6)
-  )
-
-```
-
-
-```{r fig-map-avg-comp, echo=FALSE}
-#| fig-width: 8
-#| fig-height: 9
-#| out-width: "100%"
-#| fig-dpi: 150
-#| fig-cap: "Geographic Distribution of Regional Complexity Across European NUTS2 Regions (2008 vs 2018)"
-#| fig-subcap: "This map displays regional complexity, a measure of the sophistication and diversity of regional technological portfolios, across 345 European NUTS2 regions. Values are standardised and capped at 2 standard deviations; the pattern reveals a clear core-periphery divide."
-
-
-map_comp <- targets::tar_read(map_comp, store = here::here("../../_targets_DES"))
-
-map_comp +
-  scale_fill_viridis_c(
-    oob = scales::squish,
-    limits = c(-2, 2),
-    name = "Regional Complexity (standardized)"
-  ) +
-  theme(
-    plot.title = element_blank(),
-   # legend.position = "bottom",
-    # legend.direction = "horizontal",
-    # legend.box = "horizontal",
-    legend.title = element_text(hjust = 0.5, angle = 90),
-    legend.title.position = "right",
-    legend.key.width = unit(0.2, "cm"),
-    legend.key.height = unit(1, "null"),
-    # legend.box.just = "center",
-    legend.title.align = 0.5,
-    legend.margin = margin(t = 0, b = 0, r = 0.6, l = 0.6)
-  ) 
-  # guides(
-  #   fill = guide_legend(
-  #   direction = "vertical"
-  #   # ncol = 1  # Force single column = vertical stacking
-  #   )
-  # )
-
-```
-
 ## Model 2: Hierarchical models {#sec-emp-model2}
 
 Model 1 tells us how potential varies within regions over time.
@@ -683,7 +511,6 @@ This justifies our next layer of analysis: if geography matters then we need to 
 To that end we explore in the next section in more details how we will assess this dependence. 
 
 
-
 ## Model 3: Spatial panel models {#sec-emp-model3}
 
 Till now, we discussed two models that investigate variation in regional technological potential at different levels of grouping specification.
@@ -700,7 +527,6 @@ To proceed with the spatial analysis, we construct spatial weights using k-neare
 We also perform row-standardisation for each focal region $i$ and its candidate neighbour $j$, such that $\sum_j w_{ij} = 1$, where:
 
 $$w_{ij} = \begin{cases} 1/k & \text{if } j \in \mathrm{knn}_5(i) \\ 0 & \text{otherwise} \end{cases}$$ {#eq-spatial-weights}
-
 
 
 ```{r tbl-spatial-diagnostics, echo=FALSE}
@@ -761,15 +587,12 @@ Thus, these diagnostic results indicate that spatial dependence operates primari
 In light of this, the SAR model is the adequate specification, while we use the SEM model as a robustness check.
 
 
-
-
 ### Spatial Autoregressive (SAR) panel - primary specification {#sec-emp-sar}
 
 We estimate the Spatial Autoregressive (SAR) model with two-way (region and year) demeaning.
 In this model, the spatial autoregressive parameter $\rho$ tests H5a where a positive and significant $\rho$ indicates that regions tend to exhibit higher potential when neighbouring regions also display high potential. 
 
 $$P_{r,y} = \rho \mathbf{W} P_{r,y} + \mathbf{X}_{r,y}\boldsymbol{\beta} + \alpha_r + \zeta_y + \varepsilon_{r,y}$$ {#eq-sar}
-
 
 
 The covariates matrix $\mathbf{X}_{r,y}$  includes regional patent count, regional complexity,  average coherence, average betweenness, and average eigenvector, along with their interactions. 
