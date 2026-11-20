@@ -335,6 +335,10 @@ This reflects known geographic dichotomies in Europe specifically the core-perip
 
 
 
+```{=latex}
+\begingroup\small\setstretch{1}
+```
+
 ```{r tbl-eg_avg_coh}
 #| tbl-cap: "Heterogeneity of average betweenness at different average coherence deciles"
 
@@ -344,10 +348,12 @@ tblavg |>
   dplyr::select(-year, - ctr) |>
   dplyr::mutate(coht = paste(coht, "coherence threshold")) |>
   dplyr::rename("decile pot" = potq, "decile coh" = cohq, "decile bet" = betq, "coherence threshold" = coht) |>
-  gt::gt(groupname_col = "coherence threshold", rowname_col = "region") |> 
+  dplyr::relocate(region) |>
+  gt::gt(groupname_col = "coherence threshold") |> 
   gt::fmt_number(columns = c("reg_potential", "avg_coherence"), decimals = 2) |>
   gt::fmt_number(columns = "avg_betweenness", decimals = 4) |>
   gt::cols_label(
+    region          = "Region",
     reg_potential   = "Avg. potential",
     avg_coherence   = "Avg. coherence",
     avg_betweenness = "Avg. betweenness",
@@ -355,9 +361,18 @@ tblavg |>
     `decile coh`    = "Decile (coherence)",
     `decile bet`    = "Decile (betweenness)"
   ) |>
+  gt::cols_width(
+    region ~ gt::pct(10),
+    c(reg_potential, avg_coherence, avg_betweenness) ~ gt::pct(15),
+    c(`decile pot`, `decile coh`, `decile bet`) ~ gt::pct(15)
+  ) |>
   gt::tab_options(table.font.size = gt::px(10), table.width = gt::pct(100))
   
 
+```
+
+```{=latex}
+\endgroup
 ```
 
 
@@ -449,16 +464,27 @@ gt_tbl_simple <- full_df %>%
     ends_with("dir"),
     ends_with("ind"),
     ends_with("tot")
-    # starts_with("Estimate__"),
-    # starts_with("Std. Error__"),
-    # starts_with("Pr(>|t|)__")
   ) %>% 
-  gt(groupname_col = "model", rowname_col = "term") %>% 
+  # short labels so the table fits the page: "Est.", "SE", "p" under Direct / Indirect / Total
+  rename_with(\(x) x |>
+    sub("^Estimate", "Est.", x = _) |>
+    sub("^Std\\. Error", "SE", x = _) |>
+    sub("^Pr\\(>\\|t\\|\\)", "p", x = _) |>
+    sub("__dir$", "__Direct", x = _) |>
+    sub("__ind$", "__Indirect", x = _) |>
+    sub("__tot$", "__Total", x = _)
+  ) %>% 
+  gt(groupname_col = "model") %>% 
   tab_spanner_delim(columns = 3:last_col(), delim = "__", split = "first", reverse = T) %>% 
+  cols_label(term = "Term") %>% 
   fmt_number(
-    # columns = c("Estimate", "Std. Error", "Pr(>|t|)"),  # Specify columns to round
     decimals = 3               # Number of decimal places
-  ) 
+  ) %>% 
+  cols_width(
+    term ~ pct(19),
+    everything() ~ pct(9)
+  ) %>% 
+  tab_options(table.font.size = px(10), table.width = pct(100), data_row.padding = px(2)) 
 
 
 ```
@@ -468,6 +494,10 @@ gt_tbl_simple <- full_df %>%
 
 
 
+```{=latex}
+\begingroup\small\setstretch{1}
+```
+
 ```{r tbl-sar-effects, message=FALSE, warning=FALSE}
 #| tbl-cap: "SAR effect decomposition - Regional Potential"
 
@@ -475,6 +505,10 @@ gt_tbl_simple %>%
   tab_source_note(
     "This table reports the direct, indirect, and total parametric impacts of the SAR models for each specification. Because the spatial lag propagates any local shock through the neighbourhood network via the spatial multiplier, the raw coefficient vector does not recover marginal effects. The direct effect captures the own-region response, the indirect effect captures the average spillover to neighbouring regions, and the total effect is their sum."
   )
+```
+
+```{=latex}
+\endgroup
 ```
 
 
