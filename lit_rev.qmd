@@ -7,7 +7,8 @@ The chapter is organised around the dimensions that our research questions addre
 
 ## Regional diversification as capability recombination {#sec-lit-recombination}
 
-*How do regions adapt and diversify?*
+We start from a simple question that frames the rest of this chapter: how do regions adapt and diversify?
+In this section we review how evolutionary economic geography answers it, by treating regional diversification as the recombination of existing capabilities.
 
 Within the literature of evolutionary economic geography (EEG), @ballandboschma2015 summarize this turn toward resilience and highlight that, while interest has grown, "the resulting debate suggests [that economic geographers] are far from a common understanding".
 This is to say that resilience as a concept is attracting more attention, however, there's still no consensus on a generalised ontological framework that drives further research in this area.
@@ -57,7 +58,9 @@ Understanding what shapes diversification feasibility in more granular context, 
 
 ## Relatedness and its limitations {#sec-lit-relatedness}
 
-*Can co-occurrence measure the opportunity structure?*
+If diversification is the recombination of existing capabilities, the challenge becomes how to measure which recombinations are within reach of a region.
+Can the co-occurrence of activities tell us about the opportunity structure a region faces?
+In this section we review the relatedness approach that answers this question, and its limitations.
 
 The agenda for assessing regional resilience through an evolutionary lens through relatedness, network structures and institutions, falls on the theoretical convergence that regional economies can be considered as capability systems [@hidalgo2009building; @hausmann2011network; @martin2007complexity] where a region’s economy can be represented as a structured set of complementary capabilities that constrain which new activities are feasible.
 To approximate the interconnectedness between these capabilities in a regional economy, interpreting this system as a network is the consensus here [@toth2022technology].
@@ -107,7 +110,10 @@ What remains unresolved is whether feasibility can be measured from the configur
 
 ## Why technology network position matters {#sec-lit-network}
 
-*Are all technologies equivalent as targets?*
+Relatedness density tells us how close a technology is to what a region already has.
+It does not tell us whether all technologies are equivalent as diversification targets.
+Are some technologies easier to enter, or more valuable to hold, because of where they sit in the technology space?
+In this section we review how network position answers this question.
 
 If relatedness captures the proximity dimension of the capability constraint, network structure captures the architectural dimension—specifically, the role that different positions in the technology space play in shaping which regions can access which diversification pathways.
 @toth2022technology operationalise this intuition using the technology space as a capability network, and @napolitano2018technology show that constrained search processes through these networks generate systematic differences in regional development outcomes.
@@ -120,7 +126,10 @@ What remains unresolved is how to give network positions a directional meaning, 
 
 ## Why coherence matters {#sec-lit-coherence}
 
-*Does portfolio structure condition that?*
+Network position describes the technology.
+But the same technology may be more or less within reach depending on how the region's own portfolio is structured.
+Does the structure of the portfolio condition the role of a technology's network position?
+In this section we review the concept of coherence, which addresses this question.
 
 A further dimension absent from standard relatedness accounts is the coherence of the regional capability portfolio itself—the degree to which a region's existing specialisations form a structurally consistent bundle rather than an eclectic collection.
 @teece1994understanding introduced coherence in the context of firm diversification, defining it as the degree to which a firm's activities draw on a common underlying set of capabilities.
@@ -136,7 +145,10 @@ What remains unresolved is whether the alignment between a region's portfolio an
 
 ## Why national context matters {#sec-lit-national}
 
-*What enables opportunities to be realised?*
+Portfolio structure tells us which opportunities a region could pursue.
+It does not tell us whether these opportunities are realised.
+What enables a region to act on its opportunities?
+In this section we turn to institutional conditions, and specifically to the national entrepreneurial ecosystem.
 
 At this point, the institutional dimension becomes central in a way that remains compatible with the network framing.
 Institutions matter because they shape how agents access and mobilize capabilities.
@@ -179,7 +191,10 @@ What remains unresolved is whether national ecosystem conditions explain variati
 
 ## Why spatial context matters {#sec-lit-spatial}
 
-*Does geography structure feasibility?*
+So far, a region's feasibility depends on its own portfolio and its national context.
+But regions are not isolated.
+Does geography structure feasibility, so that a region's opportunities depend on those of its neighbours?
+In this section we review the literature on spatial interdependence that motivates this question.
 
 One dimension often absent from existing accounts of relatedness-constrained diversification is spatial interdependence.
 The standard capability network framing treats each region's feasibility as a function of its own portfolio and the global technology network—implicitly assuming independence across regions.

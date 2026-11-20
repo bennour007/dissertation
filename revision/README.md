@@ -40,7 +40,7 @@ Conventions:
 
 - Issues: PRs into `revision` do **not** auto-close issues. Label `in-pr` when the PR opens; close the issue manually (comment with the PR number) when it is merged; label `partial` if only part is done.
 
-- Guiding questions: new or restructured sections open with one short, plain guiding question (reviewer suggestion).
+- Guiding questions: written in the text at transitions, never as a stand-alone italic line. Pattern: one sentence on what we now know, then the reader's next question in plain words, then where the answer comes (e.g. "This inform us on … the challenge becomes how to compare these 4 dimensions? … In this section we formalise the answer …"). Sparing: section openings, the step from the general picture to the details, and the moderators (#97).
 - Tables: proposed as a plain Markdown table in the plan; implemented as an R `gt` table in the `.qmd`.
 - Missing inputs (data, references, page numbers) are parked as blocked/flags, never guessed.
 - Every unit also reports anything else found that is inconsistent, imprecise, or bad practice (in `flags.csv`).

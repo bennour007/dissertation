@@ -245,10 +245,9 @@ This reconstruction motivates the machine learning approach developed in the fol
 
 ## An alternative approach: Machine learning for contextualised relatedness {#sec-meth-ml-approach}
 
-*Is there a way to relax the mainstream assumptions?*
-
 The limitations outlined above--dimensional mismatch producing noisy correlations, symmetric measures obscuring directional dependencies, and linear aggregation discarding interaction effects--are not merely technical inconveniences.
 They represent fundamental obstacles to using relatedness for prediction and policy.
+The question then becomes whether there is a way to relax these assumptions without losing the intuition behind relatedness.
 If co-occurrence methods perform no better than trivial baselines, as demonstrated in @tacchella2023relatedness, then their assessment of diversification feasibility offers insufficient guidance for strategic decisions.
 This motivates a shift from descriptive correlation to predictive modelling.
 
@@ -391,7 +390,10 @@ It ranks predictive relevance but requires caution in causal interpretation.
 
 ### What Random Forest cannot do {#sec-meth-rf-limits}
 
-*But what can a Random Forest not tell us?*
+The properties above explain why we use Random Forest.
+They also come with limits that matter for how its outputs should be read.
+What can a Random Forest not tell us?
+We list four limits below.
 
 **Importance is predictive, not causal.**
 Feature importance measures how much a technology helps the model predict, not the effect of having that technology.
@@ -419,8 +421,8 @@ The sets defined in @sec-meth-motivation are mirrored by the European Patent Off
 IPC classifications provide hierarchical structure: section (letter, we also refer to this as categories), class (two digits), subclass (letter).
 For example, F16H encompasses Section F (Mechanical engineering), Class 16 (engineering elements for mechanical power transmission), and Subclass H (gearing systems).
 
-*But can patents tell us what regions are capable of?*
-
+Our models learn from the RTA, so they can only learn the capabilities that patents reveal.
+But can patents tell us what regions are capable of?
 Patent data have two known weaknesses as a measure of capabilities.
 First, patents capture technological and analytical knowledge, but not other capabilities: a region may have little potential in new technologies and still have high potential in new occupations or sectors [@balland2019beyond].
 Second, in catching-up regions, capabilities often lie in absorbing technologies developed elsewhere rather than in inventing new ones [@diodato2023economic].
@@ -468,7 +470,9 @@ Training was conducted in R using the Ranger package [@wright2017ranger], orches
 
 ### Regional technological potential {#sec-meth-potential}
 
-*But how can we estimate feasibility without pairwise calculations?*
+Relatedness density builds feasibility from pairwise relatedness (@sec-meth-density).
+How can we estimate feasibility without these pairwise calculations?
+The trained models answer this directly.
 
 Each model produces probabilities $p_{r,t,y} = \hat{P}(z_{r,t,y} = 1 \mid \text{RTA}_{r,\cdot,y-\delta})$ representing the likelihood that region $r$ develops specialisation in technology $t$ by year $y$, conditional on its prior portfolio (@eq-rf-probability).
 These probabilities constitute **Technological Potential**--a forward-looking, region-specific measure of diversification feasibility.
@@ -487,7 +491,10 @@ Such factors could be industrial alignment, national ecosystem characteristics, 
 
 ### Feature Importance Technology Space (FITS) {#sec-meth-fits}
 
-*Can the same models tell us which technologies predict which?*
+Potential uses the predictions of the models.
+But the same models also tell us which technologies each prediction relies on.
+Can they tell us which technologies predict which?
+In this section we build a technology network from this information, the Feature Importance Technology Space (FITS).
 
 Traditional technology networks rely on patent citations or co-occurrence patterns, each with limitations.
 Citations suffer from examiner additions that may not reflect actual knowledge flows, aggregation from patent-level to technology-level that obscures directionality, and backward-looking orientation that captures historical influence rather than predictive relationships [@fessina2024identifying].
@@ -605,14 +612,14 @@ Together, these constructs enable the contextualised analysis our research requi
 
 ## Coherence: Bridging technology networks and regional portfolios {#sec-meth-coherence}
 
-*But do regions with similar potential have similarly structured knowledge bases?*
-
 Till now we established two methodological constructs throughout the previous sections based on our machine learning approach.
 The first construct is FITS, which is our baseline for identifying directed technology-to-technology dependencies.
 Analogous to the relatedness approach, we use these dependencies to construct the technology network.
 The second construct, is Regional Technological Potential, which is our baseline for quantifying region-specific feasibility of future specialisation in a given technology.
 Similar to FITS, Potential is an analogue to the relatedness density construct.
-FITS and Potential each target a specific layer of information, the first targets technologies, and the second focuses on region's feasible specialisations. 
+FITS and Potential each target a specific layer of information, the first targets technologies, and the second focuses on region's feasible specialisations.
+But two regions with similar potential for the same technology may build on very different portfolios.
+Do regions with similar potential have similarly structured knowledge bases?
 
 To bridge these two layers of information we introduce here the Coherence measure.
 Coherence, links these two layers by quantifying the industrial alignment between a specific technology and a region's technological portfolio.
