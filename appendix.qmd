@@ -5,6 +5,62 @@
 pacman::p_load(tidyverse, gt, modelsummary)
 ```
 
+## Notation {#sec-app-notation}
+
+@tbl-app-notation collects the symbols used in this dissertation and where each is defined.
+
+| Symbol | Meaning | Defined in |
+|:--------|:------------------------------------------|:------------|
+| **Indices and sets** | | |
+| $t, t', s$ | Technologies (4-digit IPC classes); $s$ is used for predictor technologies | @sec-meth-motivation |
+| $r$, $y$, $c$ | Region (NUTS2), year, technology category (IPC section) | @sec-meth-motivation |
+| $\mathcal{T}, \mathcal{R}, \mathcal{Y}, \mathcal{C}, \mathcal{K}$ | Sets of technologies, regions, years, categories and countries | @sec-meth-motivation |
+| $N_T, N_R, N_Y, N_C, N_K$ | Number of technologies, regions, years, categories and countries | @sec-meth-motivation |
+| **Specialisation** | | |
+| $X_{r,t,y}$ | Patent count of region $r$ in technology $t$ in year $y$ | @eq-rta |
+| $\text{RTA}_{r,t,y}$ | Revealed technological advantage | @eq-rta |
+| $\mathbf{R}^{(y)}$ | RTA matrix for year $y$ | @eq-rta-matrix |
+| $z_{r,t,y}$ | Binary specialisation, 1 if $\text{RTA}_{r,t,y} \geq 1$ | @eq-z |
+| **Relatedness (benchmark)** | | |
+| $c_{t,t'}$, $c_t$ | Co-occurrence counts: patents for association strength and cosine, regions for MCP | @eq-assoc, @eq-mcp-counts |
+| $\phi_{t,t'}$ | Relatedness between $t$ and $t'$ (association strength, cosine, MCP) | @eq-assoc, @eq-cosine, @eq-mcp |
+| $\mathcal{T}_r$ | Technologies in which region $r$ specialises | @eq-density |
+| $\Phi_{r,t}$ | Relatedness density | @eq-density |
+| **Random Forest** | | |
+| $\delta$ | Lag between features and outcome (4 years) | @sec-meth-training |
+| $y^*$ | Target (prediction) year | @eq-train |
+| $B$, $h_b$ | Number of trees; tree $b$ | @eq-rf-probability |
+| $\nu$ | Node of a tree | @eq-gini |
+| $G(\nu)$, $\Delta G$ | Gini impurity; its decrease at a split | @eq-gini, @eq-gini-decrease |
+| $I_t(s)$ | Importance of technology $s$ in the model for target $t$ | @eq-importance |
+| **Potential and FITS** | | |
+| $p_{r,t,y}$ | Regional technological potential (predicted probability) | @eq-rf-probability |
+| $W_{t \to t'}$ | FITS edge weight: normalised importance of $t$ in the model for $t'$ | @eq-fits-weight |
+| **Coherence** | | |
+| $E^{\leftarrow}_{t,c}$, $E^{\rightarrow}_{t,c}$ | Incoming and outgoing embeddedness of technology $t$ in section $c$ | @eq-emb-in, @eq-emb-out |
+| $S_{r,c}$ | Technologies of section $c$ in which region $r$ specialises | @eq-region-set |
+| $E^{*\leftarrow}_{r,c}$, $E^{*\rightarrow}_{r,c}$ | Incoming and outgoing embeddedness of region $r$ in section $c$ | @eq-region-emb-in, @eq-region-emb-out |
+| $\mathbf{v}_t$, $\mathbf{v}_r$ | Embeddedness profiles of the technology and the region | @eq-profile-tech, @eq-profile-region |
+| $\text{Coherence}_{r,t}$ | Cosine similarity of the two profiles | @eq-coherence |
+| **Empirical models** | | |
+| $p^*_{r,t,y}$ | Logit of potential | @eq-logit-potential |
+| $P_{r,y}$ | Average regional potential | @eq-avg-potential |
+| $\text{Entry}_{r,t,y+1}$ | Entry into specialisation in the next period | @eq-model0 |
+| $\mathbf{X}$, $\boldsymbol{\beta}$ | Covariates and their coefficients | @eq-model1 |
+| $\mathbf{Z}$, $\boldsymbol{\gamma}$ | Controls in Model 0 and their coefficients | @eq-model0 |
+| $\alpha_r$, $\alpha_y$ | Region and year fixed effects | @eq-model0, @eq-model1 |
+| $\zeta_y$ | Year effects in Models 2 and 3 | @eq-model2, @eq-sar |
+| $u_c$, $u_{r\mid c}$ | Country and region-within-country random intercepts | @eq-model2 |
+| $w_{ij}$, $\mathbf{W}$ | Spatial weights (5 nearest neighbours) and the weights matrix in Model 3 | @eq-spatial-weights, @eq-sar |
+| $\rho$ | Spatial autoregressive parameter | @eq-sar |
+| $\delta$ (Model 3) | Spatial error parameter | @eq-sem |
+| $\varepsilon$ | Error term | @eq-model1 |
+| **Distance** | | |
+| $d(s,t)$ | Distance between two technologies in FITS | @eq-app-distance-pair |
+| $\text{rawdist}_{r,t,y}$ | Distance from the regional portfolio to technology $t$ | @eq-app-distance |
+
+: Notation {#tbl-app-notation}
+
 ## Provenance of the Random Forest claims {#sec-app-rf-provenance}
 
 ::: {.landscape}
