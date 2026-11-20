@@ -174,7 +174,7 @@ The maps of average potential and patent count are shown in the main text (@fig-
 ```{r fig-map-coherence, echo=FALSE}
 #| fig-width: 6
 #| fig-height: 6.75
-#| out-width: "80%"
+#| out-height: "9.5cm"
 #| fig-dpi: 150
 #| fig-cap: "Average Coherence Across Regions (2008 vs 2018)"
 
@@ -206,7 +206,7 @@ map_coherence +
 ```{r fig-map-avg-rd, echo=FALSE}
 #| fig-width: 6
 #| fig-height: 6.75
-#| out-width: "80%"
+#| out-height: "9.5cm"
 #| fig-dpi: 150
 #| fig-cap: "Average Relatedness Density Across Regional Technology Portfolios"
 #| fig-subcap: "This map shows the average relatedness density for each region, computed as the mean density score across all non-specialised technologies. High density regions (bright colours) face a dense feasibility landscape with many related opportunities, while low density regions (dark colours) face sparser opportunity structures."
@@ -244,7 +244,7 @@ map_avg_rd +
 ```{r fig-map-avg-bet, echo=FALSE}
 #| fig-width: 6
 #| fig-height: 6.75
-#| out-width: "80%"
+#| out-height: "9.5cm"
 #| fig-dpi: 150
 #| fig-cap: "Average Betweenness Centrality of Regional Technology Portfolios"
 #| fig-subcap: "This map displays the average betweenness centrality of regional technology portfolios, the extent to which regions specialise in bridge technologies in the FITS network. High betweenness regions (bright yellow) have portfolios rich in bridging technologies, while low betweenness regions (dark blue) concentrate in specialised endpoints or peripheral technologies."
@@ -278,7 +278,7 @@ map_bet +
 ```{r fig-map-avg-eig, echo=FALSE}
 #| fig-width: 6
 #| fig-height: 6.75
-#| out-width: "80%"
+#| out-height: "9.5cm"
 #| fig-dpi: 150
 #| fig-cap: "Average Eigenvector Centrality of Regional Technology Portfolios"
 #| fig-subcap: "This map shows the average eigenvector centrality of technologies in which each region specialises, capturing the extent to which regional portfolios occupy the structural core of the FITS network. High eigenvector regions (red/pink) concentrate in central, highly interdependent technology domains, while low eigenvector regions (blue) specialise in peripheral or isolated technologies."
@@ -319,7 +319,7 @@ map_eigen +
 ```{r fig-map-avg-comp, echo=FALSE}
 #| fig-width: 6
 #| fig-height: 6.75
-#| out-width: "80%"
+#| out-height: "9.5cm"
 #| fig-dpi: 150
 #| fig-cap: "Geographic Distribution of Regional Complexity Across European NUTS2 Regions (2008 vs 2018)"
 #| fig-subcap: "This map displays regional complexity, a measure of the sophistication and diversity of regional technological portfolios, across 345 European NUTS2 regions. Values are standardised and capped at 2 standard deviations; the pattern reveals a clear core-periphery divide."
