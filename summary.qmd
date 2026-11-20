@@ -184,21 +184,6 @@ This is one of our most important conclusions here, because this means that brid
 However, they can be considered as a targeted catalyst to improve industrial alignment itself because at the dyadic level they are associated with higher regional potential.
 This is to say that bridging technologies should be considered as a secondary, targeted, and precise diversification option, that supports other primary targets aimed at improving the overall industrial alignment.   
 
-
-
-@tbl-progress-summary completes the table of research questions with the findings for each hypothesis.
-
-::: {.landscape}
-
-```{r tbl-progress-summary}
-#| tbl-cap: "Research questions, hypotheses and findings"
-source(here::here("R/progressive_table.R"))
-progressive_table("ch6")
-```
-
-:::
-
-
 ### Policy implication {#sec-sum-policy}
 
 Our work here is not merely an empirical application and contains many area of important policy implications.
@@ -277,3 +262,23 @@ Our results also suggest that the entrepreneurial ecosystem characteristics at t
 
 Taken together, the results support a shift from asking what a region might diversify into towards asking under which structural conditions diversification is feasible.
 The directions for future research that follow from this shift are set out in @sec-sum-future.
+
+@tbl-progress-summary completes the table of research questions with the findings for each hypothesis.
+
+::: {.landscape}
+
+```{=latex}
+\begingroup\small\setstretch{1}
+```
+
+```{r tbl-progress-summary}
+#| tbl-cap: "Research questions, hypotheses and findings"
+source(here::here("R/progressive_table.R"))
+progressive_table("ch6")
+```
+
+```{=latex}
+\endgroup
+```
+
+:::

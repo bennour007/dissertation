@@ -196,19 +196,6 @@ Spatial interdependence is a recognised but neglected dimension of evolutionary 
 
  **H5c:** Regions with portfolios concentrated in enabling technologies have higher average potential which increases as coherence increase, meaning that enabling technology endowments are a structural portfolio-level advantage, amplified further by coherence.
 
-
-
-
-@tbl-progress-intro summarises the research questions and hypotheses.
-The table is extended in later chapters as the corresponding elements are introduced: the literature gaps and measures in Chapter 3, the models in Chapter 4, and the findings in the summary chapter.
-
-```{r tbl-progress-intro}
-#| tbl-cap: "Research questions and hypotheses"
-source(here::here("R/progressive_table.R"))
-progressive_table("ch1")
-```
-
-
 ## Structure {#sec-intro-structure}
 
 
@@ -219,3 +206,24 @@ In the empirical chapter (@sec-emp) we outline the research design and the model
 The results chapter (@sec-res) outlines the results of these models and their interpretation, which we discuss in more detail in the summary chapter (@sec-sum), where we also outline policy implications, further extensions and future research directions.
 Each chapter builds on the previous one: the literature defines the dimensions, the methodology turns them into measures, and the empirical design turns the measures into tests.
 The limitations of this work, mainly the reliance on patent data, the predictive rather than causal nature of our estimates, and the European setting, are discussed in @sec-sum-methodology.
+
+@tbl-progress-intro summarises the research questions and hypotheses.
+The table is extended in later chapters as the corresponding elements are introduced: the literature gaps and measures in Chapter 3, the models in Chapter 4, and the findings in the summary chapter.
+
+::: {.landscape}
+
+```{=latex}
+\begingroup\small\setstretch{1}
+```
+
+```{r tbl-progress-intro}
+#| tbl-cap: "Research questions and hypotheses"
+source(here::here("R/progressive_table.R"))
+progressive_table("ch1")
+```
+
+```{=latex}
+\endgroup
+```
+
+:::

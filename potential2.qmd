@@ -18,6 +18,10 @@ Recent work on unrelated diversification [@pinheiro2022time; @boschma2023role], 
 
 @tbl-meth-roadmap summarises how the chapter proceeds.
 
+```{=latex}
+\begingroup\small\setstretch{1}
+```
+
 | The chapter asks | Because the literature shows | And answers with |
 |---|---|---|
 | How does the mainstream measure relatedness? | Co-occurrence underpins the technology space and diversification policy alike | @sec-meth-mainstream: the measures and their aggregation into density, our benchmark |
@@ -27,6 +31,10 @@ Recent work on unrelated diversification [@pinheiro2022time; @boschma2023role], 
 | What remains uncaptured? | Regions with equal feasibility can differ in how their knowledge base is structured | @sec-meth-coherence: Coherence |
 
 : Roadmap of the chapter {#tbl-meth-roadmap}
+
+```{=latex}
+\endgroup
+```
 
 Our approach is a response to the nuances expressed in the literature.
 But in order to properly situate our contribution we must first elaborate on the mainstream approach conceptually, methodologically and its empirical implications which we briefly outlined in the introduction.
@@ -798,10 +806,18 @@ The empirical chapters use these three measures to ask under what structural con
 
 ::: {.landscape}
 
+```{=latex}
+\begingroup\small\setstretch{1}
+```
+
 ```{r tbl-progress-meth}
 #| tbl-cap: "Research questions, gaps and measures"
 source(here::here("R/progressive_table.R"))
 progressive_table("ch3")
+```
+
+```{=latex}
+\endgroup
 ```
 
 :::
