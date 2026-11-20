@@ -319,7 +319,7 @@ We now present the algorithm formally before describing our application.
 ```{r fig-tachella}
 #| out-width: "100%"
 #| echo: false
-#| fig-cap: "Node correlation - Density vs ML approach Tacchella et al. 2023"
+#| fig-cap: "Node correlation - Density vs ML approach (adapted from Tacchella et al. 2023, p. 3)"
 
 knitr::include_graphics("resources/ML_relatedness_tachella2.png")
 ```
@@ -329,7 +329,7 @@ knitr::include_graphics("resources/ML_relatedness_tachella2.png")
 
 ### The Random Forest algorithm {#sec-meth-rf-algorithm}
 
-@fig-tachella from @tacchella2023relatedness contrasts the fundamental difference between traditional relatedness density approaches (Panel A) and machine learning-based prediction methods (Panel B) in modeling diversification feasibility.
+@fig-tachella, adapted from @tacchella2023relatedness [p. 3], contrasts the fundamental difference between traditional relatedness density approaches (Panel A) and machine learning-based prediction methods (Panel B) in modeling diversification feasibility.
 Panel A illustrates how density-based predictions aggregate pairwise co-occurrence relationships linearly: the feasibility of entering the focal technology (white node with '?') is computed as the sum of independent two-body correlations with each technology in the regional portfolio (green and orange nodes), yielding a simple additive score (0.02 + 0.06 + 0.12 + 0.01 = 0.21).
 Panel B demonstrates how decision tree algorithms capture many-body correlations by evaluating the full configuration of the portfolio through recursive partitioning: at each node, the algorithm tests combinations of technologies (e.g., presence of both green and orange technologies) and assigns predictions based on complete paths through the tree (21%, 76%, 11%, etc.), making the effect of any single technology dependent on the entire portfolio context.
 This structural difference explains why machine learning approaches can recover non-linear capability interactions that linear aggregation of symmetric relatedness measures cannot represent, as the value of possessing one technology changes depending on which other technologies are present, a form of complementarity that density treat as independent contributions.
@@ -415,7 +415,7 @@ This section describes how we apply the approach of @sec-meth-ml-approach to Eur
 
 ### Data and input measure {#sec-meth-data}
 
-The sets defined in @sec-meth-motivation are mirrored by the European Patent Office data (1978-2021) classified at the 4-digit IPC level, yielding 641 distinct technologies across 345 NUTS2 regions in 34 European countries.
+The sets defined in @sec-meth-motivation are mirrored by the European Patent Office data (1978-2021) classified at the 4-digit IPC level, yielding 641 distinct technologies across 345 NUTS2 regions in 30 European countries.
 IPC classifications provide hierarchical structure: section (letter, we also refer to this as categories), class (two digits), subclass (letter).
 For example, F16H encompasses Section F (Mechanical engineering), Class 16 (engineering elements for mechanical power transmission), and Subclass H (gearing systems).
 
@@ -666,7 +666,7 @@ The intuition is simple: regional portfolios can be coherent in some industries 
 #| out-width: "95%"
 #| fig-dpi: 300
 #| echo: false
-#| fig-cap: "Bidirectional Embededdness: profile of a region vs a technology"
+#| fig-cap: "Bidirectional embeddedness: profile of a region (left) vs a technology (right)"
 
 
 knitr::include_graphics("resources/eg_plot2.png")
@@ -681,8 +681,8 @@ Coherence captures this difference, region A should have high coherence with tec
 Whereas region B would have low coherence with $t$ because of the mismatch in their respective knowledge infrastructure.
 Let's consider the example in @tbl-tbl_eg of two regions, both are capital regions: Île-de-France (FR10, France) and Bratislava (SK01, Slovakia), both in the lowest decile of potential (first decile) for technology B64U (unmanned aerial vehicles and equipments) in 2009.
 Despite their clear resemblance in terms of their potential, they have different coherence levels for this technology ($0.926(D_{10})$ for FR10, and $0.742(D_{8})$ for SK01).
-To further understand this slight divergence, we can  examine their embededdness profiles as shown in @fig-plot_eg.
-The right side panel shown the bidirectional embededdness of B64U, we can notice that this technology relies uniformally in both directions on industry sections H (Electricity), G (Physics), and F (Mechanical engineering), and similarly but only for the incoming edges on C (Chemistry and metallurgy).
+To further understand this slight divergence, we can  examine their embeddedness profiles as shown in @fig-plot_eg.
+The right side panel shows the bidirectional embeddedness of B64U, we can notice that this technology relies uniformly in both directions on industry sections H (Electricity), G (Physics), and F (Mechanical engineering), and similarly but only for the incoming edges on C (Chemistry and metallurgy).
 In the left side panel, we can compare the industrial profile of the regions.
 In here, we can see that FR10's portfolio is strongly and broadly embedded across precisely these sections.
 In contrast, SK01's profile is heavily embeded in B (Performing operations and transporting) which is not a focal industry for B64U.
