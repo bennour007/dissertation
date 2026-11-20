@@ -128,7 +128,7 @@ And finally we adopted a set of pillars from the GEI data to proxy institutional
 With that we addressed the concerns in the literature on contextualisation. 
 
 The three models we specified each target a specific idea, combined they are each other robustness checks.
-The benchmark model 0 shows that regional potential and entry are both associated with a positive change in the probability of that a region will enter a new technology.
+The benchmark model 0 shows that regional potential and relatedness density are both associated with a positive change in the probability that a region will enter a new technology.
 Because both retain significant explanatory power when introduced together, the evidence supports H1 (potential is at least as informative as relatedness density) but not the stronger claim that it is a better predictor, even though across all specifications the contribution of potential to the models is higher than that of relatedness density.
 This result is more modest than anticipated, as we expected to see a much more significant difference.
 Regardless, the overall picture when we take the results of all specifications together tell us one thing, there's no evidence that relatedness density predict more variation than regional potential. 

@@ -24,6 +24,8 @@ so that each promise in the response letters can be traced to a merged change.
 | `merged` | Merged into `revision` **and** logged with empty `open_ends` |
 | `partial` | Part merged; `open_ends` in the log says what remains |
 
+Flags (`flags.csv`) use `open`, `in_pr`, `resolved`, and `archived` (closed by author decision, not fixed; the GitHub issue is closed as *not planned* with the `archived` label).
+
 ## Protocol (per issue)
 
 1. **Plan**: posted on the issue before any edit: what (lines), how, why (reviewer comment + promise), knock-on effects.
@@ -56,6 +58,6 @@ flags <- read_csv("revision/flags.csv")
 
 units |> count(status)
 log   |> filter(!is.na(open_ends))
-flags |> filter(status != "resolved")
+flags |> filter(!status %in% c("resolved", "archived"))
 units |> filter(status == "merged", !id %in% log$unit_id)   # merged but not logged
 ```
