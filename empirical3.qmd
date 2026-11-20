@@ -139,7 +139,7 @@ $$P_{r,y} = \frac{1}{|\mathcal{T}|} \sum_{t \in \mathcal{T}} p_{r,t,y}$$ {#eq-av
 ```{r fig-map-potential, echo=FALSE}
 #| fig-width: 6
 #| fig-height: 6.75
-#| out-width: "80%"
+#| out-height: "9.5cm"
 #| fig-dpi: 150
 #| fig-cap: "Average Regional Technological Potential (2008 vs 2018)"
 map_avg_pred1 <- targets::tar_read(map_avg_pred1, store = here::here("../../_targets_DES"))
@@ -172,7 +172,7 @@ map_avg_pred1 +
 ```{r fig-map-avg-count, echo=FALSE}
 #| fig-width: 6
 #| fig-height: 6.75
-#| out-width: "80%"
+#| out-height: "9.5cm"
 #| fig-dpi: 150
 #| fig-cap: "Total Patent Count by Region (2008–2018 Averages)"
 #| fig-subcap: "This map visualises total patent activity across European regions on a square root scale, as raw patent counts are extremely skewed. High-activity regions (bright yellow) are concentrated in major innovation hubs, while low-activity regions (dark blue) span large rural and peripheral territories."
