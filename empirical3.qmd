@@ -111,20 +111,6 @@ We briefly described in the previous chapter how we use this data to construct o
 In here we take this a step further and describe in more details the other variables we use in our design.
 Descriptive statistics and correlation matrix for all dyadic variables are reported respectively  in @tbl-desc-lr and  @tbl-corr-dyadic.
 
-::: {.landscape}
-
-```{r tbl-hypo}
-#| tbl-cap: "Research questions, hypotheses, measures and models"
-source(here::here("R/progressive_table.R"))
-progressive_table("ch4") |>
-  gt::tab_source_note("Model 0 is the entry benchmark (LPM). Models 1 and 2 are dyadic fixed effects and hierarchical random effects respectively. Model 3 is the spatial autoregressive (SAR) panel estimated on region-year aggregates.")
-```
-
-:::
-
-
-
-
 ### Outcome: Regional technological potential {#sec-emp-outcome}
 
 The primary outcome in this work is Regional Technological Potential $p_{r,t,y}$: the Random Forest-predicted probability that region $r$ develops revealed technological advantage ($RTA \geq 1$) in technology $t$ at year $y$, estimated from portfolio characteristics four years prior.
@@ -823,3 +809,23 @@ Model 2 is a hierarchical random effects model that accounts for regions being n
 Model 3 is a spatial autoregressive model that tests for and decomposes spatial interdependence.
 Before these three models we also run a benchmark comparison between regional technological potential and relatedness density as predictors of observed technology entry, to validate that our machine learning framework adds predictive value over the conventional approach.
 
+@tbl-hypo extends the table of research questions with the variables, models and methods used to test each hypothesis.
+
+::: {.landscape}
+
+```{=latex}
+\begingroup\small\setstretch{1}
+```
+
+```{r tbl-hypo}
+#| tbl-cap: "Research questions, hypotheses, measures and models"
+source(here::here("R/progressive_table.R"))
+progressive_table("ch4") |>
+  gt::tab_source_note("Model 0 is the entry benchmark (LPM). Models 1 and 2 are dyadic fixed effects and hierarchical random effects respectively. Model 3 is the spatial autoregressive (SAR) panel estimated on region-year aggregates.")
+```
+
+```{=latex}
+\endgroup
+```
+
+:::
