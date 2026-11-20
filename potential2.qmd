@@ -34,6 +34,7 @@ From there we expand on the mainstream approach and present our alternative cons
 To this end, we also provide a brief example on how the mainstream approach and the machine learning approach to modeling the technology space compare.
 For the sake of clarity and consistency we will establish our notation system and the main definition in this paragraph and use them in the subsequent sections and chapter in this dissertation unless we specify otherwise.
 
+@sec-app-notation collects all symbols in one table.
 We consider the following sets:
 
 -   $\mathcal{T} = \{\,t : 1 \le t \le N_T\}$: set of technologies

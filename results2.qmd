@@ -345,8 +345,17 @@ tblavg |>
   dplyr::mutate(coht = paste(coht, "coherence threshold")) |>
   dplyr::rename("decile pot" = potq, "decile coh" = cohq, "decile bet" = betq, "coherence threshold" = coht) |>
   gt::gt(groupname_col = "coherence threshold", rowname_col = "region") |> 
-  gt::fmt_number(columns = c("reg_potential", "avg_coherence", "avg_betweenness"), decimals = 2) |>
-  gt::fmt_number(columns = "avg_betweenness", decimal = 4)
+  gt::fmt_number(columns = c("reg_potential", "avg_coherence"), decimals = 2) |>
+  gt::fmt_number(columns = "avg_betweenness", decimals = 4) |>
+  gt::cols_label(
+    reg_potential   = "Avg. potential",
+    avg_coherence   = "Avg. coherence",
+    avg_betweenness = "Avg. betweenness",
+    `decile pot`    = "Decile (potential)",
+    `decile coh`    = "Decile (coherence)",
+    `decile bet`    = "Decile (betweenness)"
+  ) |>
+  gt::tab_options(table.font.size = gt::px(10), table.width = gt::pct(100))
   
 
 ```

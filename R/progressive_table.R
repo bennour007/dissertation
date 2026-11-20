@@ -17,10 +17,23 @@ progressive_table <- function(view = c("ch1", "ch3", "ch4", "ch6")) {
     show_col_types = FALSE
   )
 
+  # Column widths (% of table width) so that cells wrap in the PDF instead of overflowing
+  widths <- list(
+    ch1 = c(H = 8, Claim = 92),
+    ch3 = c(H = 6, Claim = 30, Gap = 26, Measure = 18, Provenance = 20),
+    ch4 = c(H = 5, Claim = 25, Measure = 14, `Key variables` = 18, Model = 10, Method = 16, Level = 12),
+    ch6 = c(H = 5, Claim = 25, Measure = 14, Model = 10, Level = 10, Finding = 36)
+  )
+  w <- widths[[view]]
+  width_specs <- lapply(names(w), function(col) {
+    stats::as.formula(paste0("`", col, "` ~ gt::pct(", w[[col]], ")"))
+  })
+
   dat |>
     dplyr::select("RQ", dplyr::all_of(views[[view]])) |>
     gt::gt(groupname_col = "RQ") |>
     gt::cols_align(align = "left") |>
+    gt::cols_width(.list = width_specs) |>
     gt::tab_options(
       table.font.size = gt::px(10),
       data_row.padding = gt::px(2),
