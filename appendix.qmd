@@ -1,0 +1,71 @@
+# Methodological details {#sec-app-methods}
+
+```{r}
+#| include: false
+pacman::p_load(tidyverse, gt)
+```
+
+## Provenance of the Random Forest claims {#sec-app-rf-provenance}
+
+::: {.landscape}
+
+```{r tbl-rf-attribution}
+#| echo: false
+#| tbl-cap: "Provenance of the methodological claims in the Random Forest section"
+#| tbl-pos: H
+
+rf_attr <- tribble(
+  ~Q, ~ML, ~Rel, ~Own,
+
+  "Can it handle sparse, high-dimensional portfolios?",
+  "Feature subsampling at each split avoids the small-n, large-p problem (Breiman 2001)",
+  "Used on sparse export and patent baskets (Tacchella et al. 2023; Albora et al. 2023)",
+  "That NUTS2 portfolios are sparse in exactly this way",
+
+  "Can it capture what linear aggregation cannot?",
+  "Importance decomposes across all interaction terms (Louppe et al. 2013)",
+  "Summing pairwise relatedness is an oversimplification (Tacchella et al. 2023)",
+  "Reading these interactions as capability complementarities",
+
+  "Can it stay interpretable?",
+  "Importance aggregates each predictor's contribution across trees (Breiman 2001)",
+  "Importances can form a technology network (Fessina et al. 2024)",
+  "Deriving both constructs from one estimation",
+
+  "Is it stable at our sample size?",
+  "Bagging reduces the variance of single trees (Breiman 1996)",
+  "—",
+  "Moderate n per technology-year model",
+
+  "What can it not do?",
+  "Gini importance is biased; correlated features mask one another (Strobl et al. 2007; Louppe et al. 2013)",
+  "—",
+  "A weak FITS edge may reflect masking, not absence of dependence"
+)
+
+rf_attr |>
+  gt() |>
+  cols_label(
+    Q    = "Guiding question",
+    ML   = "Machine learning literature",
+    Rel  = "Relatedness literature",
+    Own  = "Our own claim"
+  ) |>
+  cols_width(
+    Q    ~ px(160),
+    ML   ~ px(240),
+    Rel  ~ px(200),
+    Own  ~ px(200)
+  ) |>
+  tab_style(
+    style = cell_text(weight = "bold"),
+    locations = cells_body(columns = Q)
+  ) |>
+  tab_options(
+    table.font.size           = px(12),
+    data_row.padding          = px(4),
+    column_labels.font.weight = "bold"
+  )
+```
+
+:::

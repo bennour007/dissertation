@@ -291,6 +291,7 @@ The resulting asymmetric network reveals hierarchical technological structure in
 
 Among supervised learning approaches, tree-based ensemble methods--particularly Random Forest--offer properties well-suited to relatedness estimation.
 We briefly outline these before presenting the technical details.
+@tbl-rf-attribution in @sec-app-rf-provenance shows which of these claims come from the machine learning literature [@breiman1996bagging; @breiman2001random; @louppe2013understanding; @strobl2007bias], which from the relatedness literature [@tacchella2023relatedness; @albora2023product; @fessina2024identifying], and which are our own.
 
 **High-dimensional sparse data.**
 Regional technology portfolios are high-dimensional (hundreds of technology classes) and sparse (most regions specialise in few technologies).
