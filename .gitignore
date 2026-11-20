@@ -1,3 +1,17 @@
-/.quarto/
-**/*.quarto_ipynb
-.Rproj.user
+# RStudio
+.Rproj.user/
+.Rhistory
+
+# Quarto cache and render leftovers
+.quarto/
+/*_files/
+index.tex
+index.aux
+index.log
+index.lof
+index.lot
+index.toc
+index.out
+
+# Rendered book: uncomment only if the site is NOT served from _book/
+# _book/

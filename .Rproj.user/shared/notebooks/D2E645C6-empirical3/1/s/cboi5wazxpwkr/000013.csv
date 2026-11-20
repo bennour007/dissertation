@@ -1,5 +1,0 @@
-"0","summary_lr_country
-"
-"2","Error in dt_options$value[[which(dt_options$parameter == option)]] : 
-  attempt to select less than one element in get1index
-"
