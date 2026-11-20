@@ -32,6 +32,9 @@ This justified the inclusion of the SAR model (@tbl-spatial-sar), albeit we also
 
 ## Entry as a benchmark {#sec-res-benchmark}
 
+Before decomposing potential, we first ask whether it is worth decomposing.
+Does potential tell us more about entry than relatedness density already does?
+
 In @tbl-entry-ols we benchmark how much conventional relatedness density and potential (pred11) explain regional entry to a new technology.
 In the pooled specifications, both measures strongly predict entry: relatedness density is positive and precisely estimated ($0.055$), while Potential is larger ($0.081$).
 This is consistent with the interpretation that both capture diversification opportunities, however, Potential here is closer to a feasibility metric that's learned from portfolio configurations than relatedness.
@@ -116,6 +119,12 @@ table_pred_fe_ols_noh %>%
 :::
 
 Similarly, betweenness centrality, our network measure that captures bridging positions (as a proxy classification to general purpose technology role), exhibits consistent and substantive positive effects at mean coherence ($0.388$, column 5).
+
+The network roles tell us which technologies are associated with higher potential on average.
+But is a bridging or enabling technology equally valuable for every region?
+Or does it depend on whether the region's portfolio is embedded in the same industries as the technology?
+In what follows we turn to the interactions with coherence to answer this question.
+
 The coherence $\times$ betweenness interaction is significantly negative ($-0.284$), but its interpretation requires evaluating the conditional marginal effect of betweenness across the coherence distribution rather than reading the interaction term in isolation^[The marginal effect of a variable on the outcome, defined as its partial derivative $\text{ME}(\tilde{x} \mid c) = \partial y / \partial \tilde{x} = \beta_{\tilde{x}} + \beta_{\tilde{x} \cdot \tilde{z}} \cdot c$, is not fixed when two z-standardised variables interact — it depends on the level $c$ at which the conditioning variable $\tilde{z}$ is evaluated. Since all variables are z-standardised, $c = 0$ is the sample mean, $c = +1$ is one standard deviation above, and $c = -1$ one standard deviation below. The effect reverses sign only if the threshold $c^* = -\beta_{\tilde{x}} / \beta_{\tilde{x} \cdot \tilde{z}}$ falls within the empirical range of $\tilde{z}$. To illustrate: the marginal effect of betweenness conditioned on coherence at one standard deviation above the mean is $\text{ME}(\text{betweenness} \mid c=+1) = 0.388 + (-0.284) \cdot (+1) = +0.104$. The same logic yields all conditional values reported in this section.].
 The marginal effect of betweenness when coherence is 0 is $0.388$: at one standard deviation below mean coherence this yields $+0.672$, and at one standard deviation above mean coherence the marginal effect is $+0.104$.
 Therefore, bridging technologies associate with a higher likelihood of a region having a higher potential across the full coherence distribution -- the interaction moderates the magnitude of that benefit, not its direction.
@@ -140,6 +149,9 @@ This contrast can be seen in the insignificant betweenness $\times$ rawdist inte
 This (limited evidence) aligns with the intuition that general purpose technologies by construct should be accessible by construction as they bridge different areas of the network.
 
 ## National context and robustness {#sec-res-national}
+
+Network roles and coherence describe the technology and the region.
+Do the national conditions in which regions operate add anything to this picture?
 
 In @tbl-potential-fe-ols-h (and later on in @tbl-potential-re) we extend our framework by incorporating covariates on the national entrepreneurial ecosystem characteristics from the Global Entrepreneurship Index.
 The idea here is to understand whether these covariates contribute to the variation in regional potential along side the network metrics (and their interactions).
@@ -189,6 +201,9 @@ table_pred_fe_ols_h %>%
 :::
 
 ## Hierarchical structures and spatial implications {#sec-res-hierarchical}
+
+The fixed effects tell us how potential changes within a region.
+How much of the differences in potential lie between regions and countries, rather than within them?
 
 Similar to the extended fixed effects specification in @tbl-potential-fe-ols-h, model 2 accounts for the same covariates but considers the nested structure of the data.
 @tbl-potential-re employs random effects models where the regions' random intercepts are drawn from the same distribution for each country.
@@ -256,7 +271,7 @@ table_pred_re_logit %>%
 
 ## Role of space {#sec-res-space}
 
-Having established stable dyadic mechanisms at the technology–region level (@tbl-potential-fe-ols and @tbl-potential-fe-ols-h) and substantial between-place heterogeneity in the hierarchical models (@tbl-potential-re), we test whether regional potential exhibits spatial dependence.
+Having established stable dyadic mechanisms at the technology–region level (@tbl-potential-fe-ols and @tbl-potential-fe-ols-h) and substantial between-place heterogeneity in the hierarchical models (@tbl-potential-re), the question becomes whether regional potential exhibits spatial dependence: is a region's potential related to that of its neighbours?
 We aggregate potential to region-year means and estimate spatial panel models with $5$-nearest-neighbor weights matrices.
 In alignment with the robust Lagrange Multiplier tests presented in @tbl-spatial-diagnostics in the previous chapter, we treat the SAR model as our main empirical assessment here and consider the SEM model for robustness.
 Essentially, this is also in alignment with the LISA map (@fig-lisa) which shows that most spatial autocorrelation is concentrated in the High-High and Low-Low quadrant of variations. 
@@ -294,6 +309,12 @@ table_sp_sar %>%
 The coefficients in @tbl-spatial-sar do not represent the marginal effects of the predictors, thus we refer to @tbl-sar-effects for this.
 Our focus is the interaction specification because of the conditional interpretation it provides^[In a SAR model the estimated coefficient vector $\hat{\boldsymbol{\beta}}$ does not directly recover marginal effects due to the spatial multiplier $(I - \rho W)^{-1}$. The total parametric impacts reported in @tbl-sar-effects -- derived following @lesage2009 -- decompose each covariate's total effect into a direct component (own-region response, averaging the diagonal of the partial derivative matrix $\partial \mathbf{y}/\partial \mathbf{x}_k$) and an indirect component (average spillover to all other regions, averaging the off-diagonal entries). It is these decomposed total impacts, not the raw coefficient vector, that recover the correct marginal effects and are used throughout].
 
+
+Before interpreting these effects, a note on what the network measures mean here.
+In Models 1 and 2, betweenness and eigenvector describe the position of the target technology; in Model 3 they describe the average composition of a region's portfolio.
+Are the results then contradictory, since enabling technologies are difficult entry targets (H2b) but valuable portfolio holdings (H5c)?
+The two results describe different objects, a candidate technology's position versus a region's existing endowment, and are measured at different levels of analysis.
+Their coefficients are therefore not directly comparable: a technology that is difficult to enter can still be valuable to hold.
 
 The marginal effect of average portfolio betweenness centrality on regional potential is entirely conditioned by the level of average industrial coherence in the regional portfolio.
 From the interaction SAR specification (@tbl-sar-effects), the conditional total marginal effect of average betweenness(when average coherence = 0) is $0.0140$.

@@ -40,6 +40,11 @@ The second design addresses spatial dependence, where we aggregate our covariate
 In here we are mainly interested in understanding how the endowment of enabling or bridging technologies in a given regional portfolio influence the general feasibility of the entire portfolio, i.e.: in all other existing technologies.
 Finally, as a secondary benchmark, we also compare the influence of potential and relatedness as contrasting construct on regional entry into new technologies.  
 
+The rest of this chapter follows this structure.
+@sec-emp-design restates the hypotheses and links each to its model (@tbl-hypo).
+@sec-emp-data describes the data and the variables at each level: technology–region, technology, country and region.
+@sec-emp-model0, @sec-emp-model1, @sec-emp-model2 and @sec-emp-model3 then specify the four models, from the entry benchmark to the spatial panel.
+
 
 
 ## Research design {#sec-emp-design}
@@ -48,6 +53,8 @@ Finally, as a secondary benchmark, we also compare the influence of potential an
 
 The guiding research question is what conditions are associated with the feasibility of regional technological diversification, and how do technology-specific characteristics, portfolio alignment, national ecosystem structure, and spatial interdependence jointly shape that feasibility.
 This decomposes into five testable claims which we re-iterate from the first chapter and summarise in @tbl-hypo. 
+As in the introduction, the hypotheses below are general claims derived from the literature, but we test them on 345 European NUTS2 regions in 30 countries between 2008 and 2018.
+Patenting behaviour, institutional conditions, entrepreneurial ecosystems and spatial structure are all context-dependent, and the European setting shapes what the results can support.
 
 **H1 (Benchmark):** Regional technological potential is at least as informative as relatedness density in predicting technology entry.
 The literature has established relatedness density as a robust predictor of entry [@hidalgo2009building; @neffke2011how].
@@ -175,6 +182,10 @@ map_avg_pred1 +
 
 
 ```
+
+With the outcome defined, the question becomes which characteristics are associated with higher or lower potential.
+Is it the alignment between the region and the technology, the position of the technology in the network, or the conditions of the country and the region?
+We group the covariates by the level at which they vary: technology–region, technology, country and region.
 
 ### Technology–region level variables {#sec-emp-dyad-vars}
 
@@ -658,6 +669,11 @@ map_comp +
 
 ## Model 2: Hierarchical models {#sec-emp-model2}
 
+Model 1 tells us how potential varies within regions over time.
+The challenge becomes how to assess national covariates that do not vary within a country.
+How much of the variation in potential is due to where a region is, rather than what it already holds?
+Model 2 answers this by treating regions as nested within countries.
+
 As we cross different literature domains in this work we observed that there's a clear and urgent gap that was not properly addressed that's the lack of time varying regional entrepreneurial ecosystem datasets.
 The Regional Entrepreneurship and Development Index (REDI) [@szerb2013regional; @argiles2014redi] and the work of @leendertse2022measure are a step in that direction but the challenge of time variation still persist.
 This means that to be consistent with the evolutionary scope with which we framed this work we are forced to accommodate the national covariates. 
@@ -687,6 +703,7 @@ To that end we explore in the next section in more details how we will assess th
 Till now, we discussed two models that investigate variation in regional technological potential at different levels of grouping specification.
 The fixed effect models are designed to assess the within-region variation, and the hierarchical model is designed to simultaneously account for the national ecosystem factors while also serving as a robustness check for the network covariates and their interaction with coherence.
 As we justified earlier, if the nested structure of the data accounts for much of the explanatory power of the model, it could be an indication that spatial dependence and/or geographical proximity is what matters here.
+If location matters this much, the next question is whether it matters through the neighbours: is a region's potential related to the potential of the regions around it?
 Additionally, the literature gives reason to expect real interdependence especially in the context of European regions where administrative borders are simply a construct and not a barrier for firms and entrepreneurs [@boschma2009related; @komlosi2025balanced].
 The spatial models in this analysis test this formally. 
 Model 3 is therefore not a robustness check of the dyadic models.
