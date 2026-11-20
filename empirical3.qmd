@@ -216,7 +216,7 @@ map_coherence +
 ```
 
 
-**Distance** ($\text{rawdist}_{r,t,y}$) is the shortest path weighted length in the FITS network from the closest technology in the regional portfolio to a given technology regardless of the direction of the links.
+**Distance** ($\text{rawdist}_{r,t,y}$) is the shortest path weighted length in the FITS network from the closest technology in the regional portfolio to a given technology, using the shorter of the two directions (see @sec-app-distance).
 This distance measures topological accessibility in the network or how many steps separate the region's current frontier from a given opportunity.
 This variable operationalises the product-space logic of @hidalgo2007product who show that the probability of entry decays with distance in the product space. 
 

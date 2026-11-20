@@ -50,22 +50,7 @@ mods <- list(
 )
 
 
-mod_list <- modelsummary(
-  mods,
-  output = "gt",
-  stars   = T,
-  coef_map = c(
-    "relatedness_density" = "Relatedness density",
-    "pred11"              = "Potential",
-    "resid_z"             = "Resid",
-    "patent_n"            = "Patent count",
-    "reg_comp"            = "Regional complexity",
-    "tech_comp"           = "Technology complexity"
-  ),
-  gof_map = c("nobs", "r2.within", "rmse"),
-  title   = "Entry benchmark with the orthogonal component of Potential",
-  notes   = "All models include region and year fixed effects; standard errors clustered by region and technology. 'Resid' is the standardised residual from regressing Potential on relatedness density."
-)
+mod_list <- modelsummary(mods, output = "modelsummary_list")  # lean; formatted in the appendix chunk
 
 
 
