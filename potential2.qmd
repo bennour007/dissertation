@@ -521,7 +521,8 @@ We formalise FITS as a directed, weighted network $G = (V, E, W)$ where:
 -   **Edges** $E$: directed connections $(t \to t')$ for all $t, t' \in \mathcal{T}, t \neq t'$
 -   **Weights** $W_{t \to t'}$: the feature importance of technology $t$ in the model predicting technology $t'$, i.e. $I_{t'}(t)$, normalised as in @eq-fits-weight
 
-To ensure that the incoming edge weights sum to 1 for each technology and facilitate comparisons in later stages, we normalise as follows:
+Before building the network, we keep for each target technology $t'$ only the top 25% of its predictors by importance $I_{t'}(t)$, and set all other importances to zero.
+To ensure that the incoming edge weights sum to 1 for each technology and facilitate comparisons in later stages, we then normalise as follows:
 
 $$W_{t \to t'} = \frac{I_{t'}(t)}{\sum_{s \neq t'} I_{t'}(s)}$$ {#eq-fits-weight}
 so that $\sum_{t \neq t'} W_{t \to t'} = 1$ for every target technology $t'$: the incoming weights of a technology are the shares of its model's total importance.
@@ -556,7 +557,7 @@ Frequency-based aggregation treats all co-presence equally, regardless of whethe
 Our FITS approach reveals a different structure.
 The models we developed asks a different question than relatedness.
 Rather than asking which technologies appear in proximity of H01L, we ask which technologies predict future development in H01L, and which technologies H01L predict.
-The asymmetry is clear: strong edges flow FROM application domains (digital computing G06F, telecommunications H04L, control systems G05F) TO semiconductors (H01L), which indicates that these fields depend on semiconductor capabilities.
+The asymmetry is clear: strong edges flow FROM application domains (digital computing G06F, telecommunications H04L) TO semiconductors (H01L), which indicates that semiconductors depend on capabilities in these fields.
 Weaker reverse edges show that semiconductor expertise does not particularly predict future specialisation into computing or telecommunications.
 In the FITS network, the importance of H01L's position is not which technologies are close to it, but the asymmetric dependency map that predicts it.
 This is not possible to observe in relatedness based networks.  
@@ -656,7 +657,7 @@ tbl |>
 ```
 
 
-Our solution is to bridge the scale disagreement by measuring coherence for regions at a smaller internal scale: instead of computing coherence as a single region-wide property, we compute coherence within broad industries (IPC sections, i.e. 1st digit code).
+Our solution is to bridge the scale disagreement by measuring coherence for regions at a smaller internal scale: instead of computing coherence as a single region-wide property, we compare the region and the technology within broad industries (IPC sections, i.e. 1st digit code), section by section, and combine these comparisons into one coherence value.
 The intuition is simple: regional portfolios can be coherent in some industries and not others, and those within-industry alignments are precisely what should matter for whether a region can realistically leverage a technology’s prerequisites and downstream connections in FITS.
 
 ```{r fig-plot_eg}
@@ -753,7 +754,7 @@ Since all entries are non-negative, $\text{Coherence}_{r,t} \in [0,1]$.
 
 Conceptually, this is close to how coherent diversification measures compute "how surrounded a technology is" by related portfolio elements, but with two key differences.
 First, we ground proximity in predictive, directed dependencies (FITS) rather than symmetric co-occurrence similarity.
-Second, we compute coherence at an internal domain scale (IPC section) to keep the measure meaningful for regional analysis under known scale heterogeneity.
+Second, we build coherence from an internal domain scale (IPC section) to keep the measure meaningful for regional analysis under known scale heterogeneity.
 
 In here, our coherence measure ranges from 0 to 1.
 In our context, high coherence ($\approx 1$) means that for technology $t$'s embeddedness signal in different categories/industries closely matches the average industrial embeddedness of region $r$'s portfolio of technologies.

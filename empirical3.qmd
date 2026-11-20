@@ -1,8 +1,3 @@
----
-output: html_document
-editor_options: 
-  chunk_output_type: console
----
 # Empirical design {#sec-emp}
 
 ```{r}
@@ -675,10 +670,10 @@ Thus to properly test H4, we need a specification that preserves national and re
 To this end we include random effects by modelling nested region within country intercepts that are drawn from a distribution rather than absorbing them as free parameters.
 For that we estimate linear mixed models with the following nesting structure:
 
-$$p^*_{r,t,y} = \mathbf{X}_{r,t,y}\boldsymbol{\beta} + \zeta_t + u_c + u_{r|c} + \varepsilon_{r,t,y}$$ {#eq-model2}
+$$p^*_{r,t,y} = \mathbf{X}_{r,t,y}\boldsymbol{\beta} + \zeta_y + u_c + u_{r|c} + \varepsilon_{r,t,y}$$ {#eq-model2}
 
 where $u_c \sim \mathcal{N}(0, \sigma^2_c)$ is a country-level random intercept and $u_{r|c} \sim \mathcal{N}(0, \sigma^2_{r|c})$ is a region-within-country random intercept.
-Year is included as a dummy ($\zeta_t$) to absorb common temporal dynamics.
+Year is included as a dummy ($\zeta_y$) to absorb common temporal dynamics.
 
 With these models we will be able to compare the contribution of the covariates to the contribution to the nested structure itself.
 This is to say that if the nested structure is highly predictive of the variation in regional technological potential then the outcome varies primarily with location rather than with the covariates themselves.
