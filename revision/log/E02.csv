@@ -1,0 +1,2 @@
+unit_id,issue,pr,date,files,lines_before,change,why,dependents_checked,dependents_changed,flags_raised,open_ends,letter_line,status
+E02,,95,2026-11-20,potential2.qmd,sec-meth-data first line,"34 European countries -> 30 (author confirmed), matching Chapter 4.",Inconsistent country count between Ch3 and Ch4,empirical3 Data; intro; summary,,,,,in_pr
