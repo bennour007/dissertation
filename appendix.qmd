@@ -2,7 +2,7 @@
 
 ```{r}
 #| include: false
-pacman::p_load(tidyverse, gt)
+pacman::p_load(tidyverse, gt, modelsummary)
 ```
 
 ## Provenance of the Random Forest claims {#sec-app-rf-provenance}
@@ -69,3 +69,60 @@ rf_attr |>
 ```
 
 :::
+
+## The distance variable {#sec-app-distance}
+
+FITS weights are predictive associations: a higher weight means a closer relationship.
+We therefore use the inverse of a weight as the length of the corresponding edge, $\ell_{s \to t} = 1/W_{s \to t}$, with weights below 0.001 set to 0.001 to avoid division by zero.
+Because the network is directed, the shortest path from $s$ to $t$ generally differs from the path from $t$ to $s$.
+We compute the weighted shortest path in both directions, and keep the shorter of the two as the distance between the two technologies:
+
+$$d(s,t) = \min\left\{\text{sp}(s \to t),\; \text{sp}(t \to s)\right\}$$ {#eq-app-distance-pair}
+
+The distance of technology $t$ for region $r$ is the distance from the closest technology in the region's portfolio:
+
+$$\text{rawdist}_{r,t,y} = \min_{s:\,\text{RTA}_{r,s,y} \geq 1} d(s,t)$$ {#eq-app-distance}
+
+Keeping the shorter direction loses the information on which technology predicts which.
+We accept this to keep the later models tractable.
+When no path connects a technology to the regional portfolio, the distance is missing.
+
+## Entry benchmark: the part of potential that density does not explain {#sec-app-benchmark}
+
+This section reports two checks on the entry benchmark (Model 0).
+@tbl-bench-diag shows how strongly potential and relatedness density are correlated, and whether their joint estimation is affected by collinearity.
+@tbl-bench-models repeats the benchmark with the standardised residual from regressing potential on relatedness density ("Resid"), which is the part of potential that density does not explain.
+
+```{r}
+#| echo: false
+bench <- readRDS(here::here("resources/benchmark_check.rds"))
+```
+
+```{r tbl-bench-diag}
+#| echo: false
+#| tbl-cap: "Collinearity diagnostics, Model 0"
+#| tbl-pos: H
+bench$diagnostics |>
+  gt::gt() |>
+  gt::fmt_number(Value, decimals = 3)
+```
+
+```{r tbl-bench-models}
+#| echo: false
+#| tbl-cap: "Entry benchmark with the orthogonal component of Potential"
+#| tbl-pos: H
+modelsummary::modelsummary(
+  bench$models,
+  stars = c("*" = .05, "**" = .01, "***" = .001),
+  coef_map = c(
+    "relatedness_density" = "Relatedness density",
+    "pred11"              = "Potential",
+    "resid_z"             = "Resid",
+    "patent_n"            = "Patent count",
+    "reg_comp"            = "Regional complexity",
+    "tech_comp"           = "Technology complexity"
+  ),
+  gof_map = c("nobs", "r2.within", "rmse"),
+  notes = "All models include region and year fixed effects; standard errors clustered by region and technology. 'Resid' is the standardised residual from regressing Potential on relatedness density."
+)
+```
