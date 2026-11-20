@@ -177,6 +177,7 @@ The maps of average potential and patent count are shown in the main text (@fig-
 #| out-height: "9.5cm"
 #| fig-dpi: 150
 #| fig-cap: "Average Coherence Across Regions (2008 vs 2018)"
+#| fig-subcap: "This map shows the average coherence for each region in 2008 and 2018, the alignment between the industrial embeddedness of the region's portfolio and that of technologies in FITS. High-coherence regions (bright yellow) have portfolios aligned with the industrial profiles of many technologies, while low-coherence regions (dark purple) are aligned with fewer."
 
 map_coherence <- targets::tar_read(map_coherence, store = here::here("../../_targets_DES"))
 

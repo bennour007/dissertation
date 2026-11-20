@@ -142,6 +142,7 @@ $$P_{r,y} = \frac{1}{|\mathcal{T}|} \sum_{t \in \mathcal{T}} p_{r,t,y}$$ {#eq-av
 #| out-height: "9.5cm"
 #| fig-dpi: 150
 #| fig-cap: "Average Regional Technological Potential (2008 vs 2018)"
+#| fig-subcap: "This map shows the average regional technological potential for each region in 2008 and 2018, computed as the mean predicted probability of specialisation across all technologies. High-potential regions (bright yellow) face many feasible diversification opportunities, while low-potential regions (dark purple) face fewer."
 map_avg_pred1 <- targets::tar_read(map_avg_pred1, store = here::here("../../_targets_DES"))
 
 
