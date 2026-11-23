@@ -4,6 +4,7 @@
 
 # Quarto cache and render leftovers
 .quarto/
+/_book/
 /*_files/
 index.tex
 index.aux
