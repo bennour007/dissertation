@@ -213,6 +213,23 @@ window.Quarto = {
  <span class="menu-text">References</span></a>
   </div>
 </li>
+        <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-1" role="navigation" aria-expanded="true">
+ <span class="menu-text">Appendices</span></a>
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-1" role="navigation" aria-expanded="true" aria-label="Toggle section">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-1" class="collapse list-unstyled sidebar-section depth1 show">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./appendix.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">A</span>&nbsp; <span class="chapter-title">Methodological details</span></span></a>
+  </div>
+</li>
+      </ul>
+  </li>
     </ul>
     </div>
 </nav>
@@ -330,7 +347,7 @@ Table&nbsp;3.1: Roadmap of the chapter
 </figure>
 </div>
 <p>Our approach is a response to the nuances expressed in the literature. But in order to properly situate our contribution we must first elaborate on the mainstream approach conceptually, methodologically and its empirical implications which we briefly outlined in the introduction. From there we expand on the mainstream approach and present our alternative constructs conceptually and mathematically, and showcase our training strategy. To this end, we also provide a brief example on how the mainstream approach and the machine learning approach to modeling the technology space compare. For the sake of clarity and consistency we will establish our notation system and the main definition in this paragraph and use them in the subsequent sections and chapter in this dissertation unless we specify otherwise.</p>
-<p>We consider the following sets:</p>
+<p><a href="appendix.html#sec-app-notation" class="quarto-xref"><span>Section A.1</span></a> collects all symbols in one table. We consider the following sets:</p>
 <ul>
 <li><span class="math inline">\(\mathcal{T} = \{\,t : 1 \le t \le N_T\}\)</span>: set of technologies</li>
 <li><span class="math inline">\(\mathcal{R} = \{\,r : 1 \le r \le N_R\}\)</span>: set of regions</li>
@@ -428,8 +445,7 @@ c_{t,t'} = \sum_{r \in \mathcal{R}} z_{r,t}\, z_{r,t'}, \qquad c_t = \sum_{r \in
 </section>
 <section id="sec-meth-ml-approach" class="level2" data-number="3.3">
 <h2 data-number="3.3" class="anchored" data-anchor-id="sec-meth-ml-approach"><span class="header-section-number">3.3</span> An alternative approach: Machine learning for contextualised relatedness</h2>
-<p><em>Is there a way to relax the mainstream assumptions?</em></p>
-<p>The limitations outlined above–dimensional mismatch producing noisy correlations, symmetric measures obscuring directional dependencies, and linear aggregation discarding interaction effects–are not merely technical inconveniences. They represent fundamental obstacles to using relatedness for prediction and policy. If co-occurrence methods perform no better than trivial baselines, as demonstrated in <span class="citation" data-cites="tacchella2023relatedness">Tacchella et al. (<a href="references.html#ref-tacchella2023relatedness" role="doc-biblioref">2023</a>)</span>, then their assessment of diversification feasibility offers insufficient guidance for strategic decisions. This motivates a shift from descriptive correlation to predictive modelling.</p>
+<p>The limitations outlined above–dimensional mismatch producing noisy correlations, symmetric measures obscuring directional dependencies, and linear aggregation discarding interaction effects–are not merely technical inconveniences. They represent fundamental obstacles to using relatedness for prediction and policy. The question then becomes whether there is a way to relax these assumptions without losing the intuition behind relatedness. If co-occurrence methods perform no better than trivial baselines, as demonstrated in <span class="citation" data-cites="tacchella2023relatedness">Tacchella et al. (<a href="references.html#ref-tacchella2023relatedness" role="doc-biblioref">2023</a>)</span>, then their assessment of diversification feasibility offers insufficient guidance for strategic decisions. This motivates a shift from descriptive correlation to predictive modelling.</p>
 <section id="sec-meth-ml-prediction" class="level3" data-number="3.3.1">
 <h3 data-number="3.3.1" class="anchored" data-anchor-id="sec-meth-ml-prediction"><span class="header-section-number">3.3.1</span> Machine learning as a prediction framework</h3>
 <p>The core reframing here is methodological: rather than inferring relatedness from co-occurrence patterns and hoping this correlates with future outcomes, we directly model diversification as a prediction problem. This follows recent work positioning relatedness estimation within supervised learning frameworks <span class="citation" data-cites="tacchella2023relatedness albora2023product fessina2024identifying">(<a href="references.html#ref-tacchella2023relatedness" role="doc-biblioref">Tacchella et al. 2023</a>; <a href="references.html#ref-albora2023product" role="doc-biblioref">Albora et al. 2023</a>; <a href="references.html#ref-fessina2024identifying" role="doc-biblioref">Fessina et al. 2024</a>)</span>. From this literature we adopt three elements: training a separate model for each target activity, evaluating the models by out-of-sample prediction, and deriving a network of activities from the feature importances. These methods were developed for trade and product data. Our contribution lies in transferring them to European patent data at NUTS2 level (<a href="#sec-meth-application" class="quarto-xref"><span>Section 3.4</span></a>), in the interpretation of the directed network, and in the coherence measure (<a href="#sec-meth-coherence" class="quarto-xref"><span>Section 3.5</span></a>). The shift offers three advantages.</p>
@@ -442,7 +458,7 @@ c_{t,t'} = \sum_{r \in \mathcal{R}} z_{r,t}\, z_{r,t'}, \qquad c_t = \sum_{r \in
 </section>
 <section id="sec-meth-why-rf" class="level3" data-number="3.3.2">
 <h3 data-number="3.3.2" class="anchored" data-anchor-id="sec-meth-why-rf"><span class="header-section-number">3.3.2</span> Why Random Forest</h3>
-<p>Among supervised learning approaches, tree-based ensemble methods–particularly Random Forest–offer properties well-suited to relatedness estimation. We briefly outline these before presenting the technical details.</p>
+<p>Among supervised learning approaches, tree-based ensemble methods–particularly Random Forest–offer properties well-suited to relatedness estimation. We briefly outline these before presenting the technical details. <a href="appendix.html#tbl-rf-attribution" class="quarto-xref">Table&nbsp;<span>A.2</span></a> in <a href="appendix.html#sec-app-rf-provenance" class="quarto-xref"><span>Section A.2</span></a> shows which of these claims come from the machine learning literature <span class="citation" data-cites="breiman1996bagging breiman2001random louppe2013understanding strobl2007bias">(<a href="references.html#ref-breiman1996bagging" role="doc-biblioref">Breiman 1996</a>, <a href="references.html#ref-breiman2001random" role="doc-biblioref">2001</a>; <a href="references.html#ref-louppe2013understanding" role="doc-biblioref">Louppe et al. 2013</a>; <a href="references.html#ref-strobl2007bias" role="doc-biblioref">Strobl et al. 2007</a>)</span>, which from the relatedness literature <span class="citation" data-cites="tacchella2023relatedness albora2023product fessina2024identifying">(<a href="references.html#ref-tacchella2023relatedness" role="doc-biblioref">Tacchella et al. 2023</a>; <a href="references.html#ref-albora2023product" role="doc-biblioref">Albora et al. 2023</a>; <a href="references.html#ref-fessina2024identifying" role="doc-biblioref">Fessina et al. 2024</a>)</span>, and which are our own.</p>
 <p><strong>High-dimensional sparse data.</strong> Regional technology portfolios are high-dimensional (hundreds of technology classes) and sparse (most regions specialise in few technologies). Tree-based methods handle this naturally through recursive partitioning: each split considers only a subset of features, and the hierarchical structure means irrelevant technologies simply do not appear in decision paths. Linear methods struggle with the collinearity and sparsity typical of specialisation data; neural networks require larger samples than regional patent data typically provide.</p>
 <p><strong>Non-linear interactions.</strong> The recursive splitting structure captures interactions without explicit specification. If technology <span class="math inline">\(t_1\)</span> matters for predicting <span class="math inline">\(t_3\)</span> only when <span class="math inline">\(t_2\)</span> is also present, this emerges naturally as a conditional split pattern. Density-based measures, by construction, cannot represent such conditionality–they assume each related technology contributes independently.</p>
 <p><strong>Interpretable feature importance.</strong> Unlike black-box models, Random Forests produce feature importance scores that aggregate each predictor’s contribution across all trees. These scores become the basis for FITS construction, translating prediction performance into an interpretable technology network. This maintains the explanatory value of relatedness measures while grounding them in predictive validity.</p>
@@ -456,7 +472,7 @@ c_{t,t'} = \sum_{r \in \mathcal{R}} z_{r,t}\, z_{r,t'}, \qquad c_t = \sum_{r \in
 <img src="resources/ML_relatedness_tachella2.png" class="img-fluid figure-img" style="width:100.0%">
 </div>
 <figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-tachella-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-Figure&nbsp;3.1: Node correlation - Density vs ML approach Tacchella et al.&nbsp;2023
+Figure&nbsp;3.1: Node correlation - Density vs ML approach (adapted from Tacchella et al.&nbsp;2023, p.&nbsp;3)
 </figcaption>
 </figure>
 </div>
@@ -465,7 +481,7 @@ Figure&nbsp;3.1: Node correlation - Density vs ML approach Tacchella et al.&nbsp
 </section>
 <section id="sec-meth-rf-algorithm" class="level3" data-number="3.3.3">
 <h3 data-number="3.3.3" class="anchored" data-anchor-id="sec-meth-rf-algorithm"><span class="header-section-number">3.3.3</span> The Random Forest algorithm</h3>
-<p><a href="#fig-tachella" class="quarto-xref">Figure&nbsp;<span>3.1</span></a> from <span class="citation" data-cites="tacchella2023relatedness">Tacchella et al. (<a href="references.html#ref-tacchella2023relatedness" role="doc-biblioref">2023</a>)</span> contrasts the fundamental difference between traditional relatedness density approaches (Panel A) and machine learning-based prediction methods (Panel B) in modeling diversification feasibility. Panel A illustrates how density-based predictions aggregate pairwise co-occurrence relationships linearly: the feasibility of entering the focal technology (white node with ‘?’) is computed as the sum of independent two-body correlations with each technology in the regional portfolio (green and orange nodes), yielding a simple additive score (0.02 + 0.06 + 0.12 + 0.01 = 0.21). Panel B demonstrates how decision tree algorithms capture many-body correlations by evaluating the full configuration of the portfolio through recursive partitioning: at each node, the algorithm tests combinations of technologies (e.g., presence of both green and orange technologies) and assigns predictions based on complete paths through the tree (21%, 76%, 11%, etc.), making the effect of any single technology dependent on the entire portfolio context. This structural difference explains why machine learning approaches can recover non-linear capability interactions that linear aggregation of symmetric relatedness measures cannot represent, as the value of possessing one technology changes depending on which other technologies are present, a form of complementarity that density treat as independent contributions. This leads us to explore further how and why random forest—our adopted tree algorithm—works, especially for our case which is the prediction of regional technological specialisation. The algorithm itself is standard; we use the implementation in the ranger package <span class="citation" data-cites="wright2017ranger">(<a href="references.html#ref-wright2017ranger" role="doc-biblioref">Wright and Ziegler 2017</a>)</span>.</p>
+<p><a href="#fig-tachella" class="quarto-xref">Figure&nbsp;<span>3.1</span></a>, adapted from <span class="citation" data-cites="tacchella2023relatedness">Tacchella et al. (<a href="references.html#ref-tacchella2023relatedness" role="doc-biblioref">2023, 3</a>)</span>, contrasts the fundamental difference between traditional relatedness density approaches (Panel A) and machine learning-based prediction methods (Panel B) in modeling diversification feasibility. Panel A illustrates how density-based predictions aggregate pairwise co-occurrence relationships linearly: the feasibility of entering the focal technology (white node with ‘?’) is computed as the sum of independent two-body correlations with each technology in the regional portfolio (green and orange nodes), yielding a simple additive score (0.02 + 0.06 + 0.12 + 0.01 = 0.21). Panel B demonstrates how decision tree algorithms capture many-body correlations by evaluating the full configuration of the portfolio through recursive partitioning: at each node, the algorithm tests combinations of technologies (e.g., presence of both green and orange technologies) and assigns predictions based on complete paths through the tree (21%, 76%, 11%, etc.), making the effect of any single technology dependent on the entire portfolio context. This structural difference explains why machine learning approaches can recover non-linear capability interactions that linear aggregation of symmetric relatedness measures cannot represent, as the value of possessing one technology changes depending on which other technologies are present, a form of complementarity that density treat as independent contributions. This leads us to explore further how and why random forest—our adopted tree algorithm—works, especially for our case which is the prediction of regional technological specialisation. The algorithm itself is standard; we use the implementation in the ranger package <span class="citation" data-cites="wright2017ranger">(<a href="references.html#ref-wright2017ranger" role="doc-biblioref">Wright and Ziegler 2017</a>)</span>.</p>
 <p>In our application, one forest is trained per target technology <span class="math inline">\(t\)</span> (and target year, see <a href="#sec-meth-training" class="quarto-xref"><span>Section 3.4.2</span></a>). An observation is a region–year <span class="math inline">\(o = (r, y)\)</span>; its features are the lagged specialisations <span class="math inline">\(x_{o,s} = \text{RTA}_{r,s,y-\delta}\)</span> in the <span class="math inline">\(N_T - 1\)</span> other technologies <span class="math inline">\(s \neq t\)</span>; its outcome is the specialisation indicator <span class="math inline">\(z_{r,t,y}\)</span>.</p>
 <p>Random Forest constructs an ensemble of <span class="math inline">\(B\)</span> decision trees <span class="math inline">\(h_1, \ldots, h_B\)</span> through bootstrap aggregating (bagging) with random feature subsampling. Each tree <span class="math inline">\(h_b\)</span> is built on a bootstrap sample <span class="math inline">\(\mathcal{D}_b^*\)</span> of region–years drawn with replacement from the training data.</p>
 <p>Each tree recursively partitions the feature space through binary splits. At node <span class="math inline">\(\nu\)</span>, we randomly select <span class="math inline">\(m\)</span> of the <span class="math inline">\(N_T - 1\)</span> features and evaluate all possible splits within this subset (we use <span class="math inline">\(m = 139\)</span>; the common default would be <span class="math inline">\(\lfloor\sqrt{N_T - 1}\rfloor = 25\)</span>). For technology <span class="math inline">\(s\)</span> and threshold <span class="math inline">\(\tau\)</span> on its lagged RTA, the split creates two child nodes: <span class="math inline">\(\nu_L = \{o \in \nu : x_{o,s} \leq \tau\}\)</span> and <span class="math inline">\(\nu_R = \{o \in \nu : x_{o,s} &gt; \tau\}\)</span>.</p>
@@ -487,7 +503,7 @@ Figure&nbsp;3.1: Node correlation - Density vs ML approach Tacchella et al.&nbsp
 </section>
 <section id="sec-meth-rf-limits" class="level3" data-number="3.3.4">
 <h3 data-number="3.3.4" class="anchored" data-anchor-id="sec-meth-rf-limits"><span class="header-section-number">3.3.4</span> What Random Forest cannot do</h3>
-<p><em>But what can a Random Forest not tell us?</em></p>
+<p>The properties above explain why we use Random Forest. They also come with limits that matter for how its outputs should be read. What can a Random Forest not tell us? We list four limits below.</p>
 <p><strong>Importance is predictive, not causal.</strong> Feature importance measures how much a technology helps the model predict, not the effect of having that technology. It is also biased towards predictors that are correlated with one another and towards predictors with many possible split points. The direction of a FITS edge should therefore be read as a predictive pattern, not as a proven dependency (see also <a href="#sec-meth-fits" class="quarto-xref"><span>Section 3.4.4</span></a>).</p>
 <p><strong>Portfolio size may still leak in.</strong> Because each model is conditioned on the whole portfolio, it may still partly pick up the size of the portfolio, which is the nestedness problem raised against co-occurrence measures (<a href="#sec-meth-cooccurrence-limits" class="quarto-xref"><span>Section 3.2.2</span></a>). Normalising the importances within each model (<a href="#eq-fits-weight" class="quarto-xref">Equation&nbsp;<span>3.16</span></a>) corrects for this only in part.</p>
 <p><strong>One set of hyperparameters for all models.</strong> The hyperparameters were tuned on four technologies and applied to all 7,051 models, so the models for rare technologies are likely to fit less well.</p>
@@ -499,9 +515,8 @@ Figure&nbsp;3.1: Node correlation - Density vs ML approach Tacchella et al.&nbsp
 <p>This section describes how we apply the approach of <a href="#sec-meth-ml-approach" class="quarto-xref"><span>Section 3.3</span></a> to European regional patent data: the data and input measure, the training procedure, and the two constructs that the training yields, regional technological potential and FITS.</p>
 <section id="sec-meth-data" class="level3" data-number="3.4.1">
 <h3 data-number="3.4.1" class="anchored" data-anchor-id="sec-meth-data"><span class="header-section-number">3.4.1</span> Data and input measure</h3>
-<p>The sets defined in <a href="#sec-meth-motivation" class="quarto-xref"><span>Section 3.1</span></a> are mirrored by the European Patent Office data (1978-2021) classified at the 4-digit IPC level, yielding 641 distinct technologies across 345 NUTS2 regions in 34 European countries. IPC classifications provide hierarchical structure: section (letter, we also refer to this as categories), class (two digits), subclass (letter). For example, F16H encompasses Section F (Mechanical engineering), Class 16 (engineering elements for mechanical power transmission), and Subclass H (gearing systems).</p>
-<p><em>But can patents tell us what regions are capable of?</em></p>
-<p>Patent data have two known weaknesses as a measure of capabilities. First, patents capture technological and analytical knowledge, but not other capabilities: a region may have little potential in new technologies and still have high potential in new occupations or sectors <span class="citation" data-cites="balland2019beyond">(<a href="references.html#ref-balland2019beyond" role="doc-biblioref">Balland and Boschma 2019</a>)</span>. Second, in catching-up regions, capabilities often lie in absorbing technologies developed elsewhere rather than in inventing new ones <span class="citation" data-cites="diodato2023economic">(<a href="references.html#ref-diodato2023economic" role="doc-biblioref">Diodato et al. 2023</a>)</span>. Both weaknesses mean that a patent-based assessment understates the potential of peripheral regions.</p>
+<p>The sets defined in <a href="#sec-meth-motivation" class="quarto-xref"><span>Section 3.1</span></a> are mirrored by the European Patent Office data (1978-2021) classified at the 4-digit IPC level, yielding 641 distinct technologies across 345 NUTS2 regions in 30 European countries. IPC classifications provide hierarchical structure: section (letter, we also refer to this as categories), class (two digits), subclass (letter). For example, F16H encompasses Section F (Mechanical engineering), Class 16 (engineering elements for mechanical power transmission), and Subclass H (gearing systems).</p>
+<p>Our models learn from the RTA, so they can only learn the capabilities that patents reveal. But can patents tell us what regions are capable of? Patent data have two known weaknesses as a measure of capabilities. First, patents capture technological and analytical knowledge, but not other capabilities: a region may have little potential in new technologies and still have high potential in new occupations or sectors <span class="citation" data-cites="balland2019beyond">(<a href="references.html#ref-balland2019beyond" role="doc-biblioref">Balland and Boschma 2019</a>)</span>. Second, in catching-up regions, capabilities often lie in absorbing technologies developed elsewhere rather than in inventing new ones <span class="citation" data-cites="diodato2023economic">(<a href="references.html#ref-diodato2023economic" role="doc-biblioref">Diodato et al. 2023</a>)</span>. Both weaknesses mean that a patent-based assessment understates the potential of peripheral regions.</p>
 <p>We still use the RTA (<a href="#eq-rta" class="quarto-xref">Equation&nbsp;<span>3.1</span></a>) as the input to our models, for three reasons. First, the models use the RTA to learn from the configuration of regional portfolios, not to measure innovative output: as <span class="citation" data-cites="diodato2023economic">Diodato et al. (<a href="references.html#ref-diodato2023economic" role="doc-biblioref">2023</a>)</span> note, patents used in this way indicate the fields in which a region is active. Second, the RTA is relative, so it shows where a region is comparatively specialised whatever its total number of patents. Third, patents are the only capability data available consistently for all NUTS2 regions in our sample; data on occupations or sectors would complement them rather than replace them, and extending the approach to such data is left for future work.</p>
 <p>Two things remain outside the measure: knowledge that is not patented, and differences between countries in how much firms patent. We return to both in the discussion of limitations (<a href="summary.html#sec-sum-methodology" class="quarto-xref"><span>Section 6.1.1</span></a>).</p>
 </section>
@@ -526,14 +541,14 @@ Figure&nbsp;3.1: Node correlation - Density vs ML approach Tacchella et al.&nbsp
 </section>
 <section id="sec-meth-potential" class="level3" data-number="3.4.3">
 <h3 data-number="3.4.3" class="anchored" data-anchor-id="sec-meth-potential"><span class="header-section-number">3.4.3</span> Regional technological potential</h3>
-<p><em>But how can we estimate feasibility without pairwise calculations?</em></p>
+<p>Relatedness density builds feasibility from pairwise relatedness (<a href="#sec-meth-density" class="quarto-xref"><span>Section 3.2.3</span></a>). How can we estimate feasibility without these pairwise calculations? The trained models answer this directly.</p>
 <p>Each model produces probabilities <span class="math inline">\(p_{r,t,y} = \hat{P}(z_{r,t,y} = 1 \mid \text{RTA}_{r,\cdot,y-\delta})\)</span> representing the likelihood that region <span class="math inline">\(r\)</span> develops specialisation in technology <span class="math inline">\(t\)</span> by year <span class="math inline">\(y\)</span>, conditional on its prior portfolio (<a href="#eq-rf-probability" class="quarto-xref">Equation&nbsp;<span>3.11</span></a>). These probabilities constitute <strong>Technological Potential</strong>–a forward-looking, region-specific measure of diversification feasibility. Potential adapts the product progression probability of <span class="citation" data-cites="albora2023product">Albora et al. (<a href="references.html#ref-albora2023product" role="doc-biblioref">2023</a>)</span> from countries and products to regions and technologies.</p>
 <p>The shift from correlation to prediction reframes what the measure captures. Density asks: “How similar is technology <span class="math inline">\(t\)</span> to what region <span class="math inline">\(r\)</span> already has?” Potential asks: “Given everything we know about how regions diversify, how likely is region <span class="math inline">\(r\)</span> to develop technology <span class="math inline">\(t\)</span>?” The latter question–the one relevant for policy–requires a predictive approach.</p>
 <p>High potential (<span class="math inline">\(p_{r,t,y} \approx 1\)</span>) indicates a region’s existing portfolio strongly predicts future specialisation–the region likely possesses necessary complementary capabilities. Low potential (<span class="math inline">\(p_{r,t,y} \approx 0\)</span>) suggests capability gaps that make diversification unlikely under current conditions. Intermediate values reflect genuine uncertainty, where diversification may be possible but contingent on other factors and conditions beyond current portfolio composition. Such factors could be industrial alignment, national ecosystem characteristics, or spatial context, which the subsequent empirical analysis investigates.</p>
 </section>
 <section id="sec-meth-fits" class="level3" data-number="3.4.4">
 <h3 data-number="3.4.4" class="anchored" data-anchor-id="sec-meth-fits"><span class="header-section-number">3.4.4</span> Feature Importance Technology Space (FITS)</h3>
-<p><em>Can the same models tell us which technologies predict which?</em></p>
+<p>Potential uses the predictions of the models. But the same models also tell us which technologies each prediction relies on. Can they tell us which technologies predict which? In this section we build a technology network from this information, the Feature Importance Technology Space (FITS).</p>
 <p>Traditional technology networks rely on patent citations or co-occurrence patterns, each with limitations. Citations suffer from examiner additions that may not reflect actual knowledge flows, aggregation from patent-level to technology-level that obscures directionality, and backward-looking orientation that captures historical influence rather than predictive relationships <span class="citation" data-cites="fessina2024identifying">(<a href="references.html#ref-fessina2024identifying" role="doc-biblioref">Fessina et al. 2024</a>)</span>. Co-occurrence networks inherit the problems outlined in our critique: symmetry, noise, and linear assumptions.</p>
 <div class="landscape">
 <div class="cell">
@@ -559,7 +574,7 @@ Figure&nbsp;3.2: FITS Technology Network (based on 2018 patent data)
 <li><strong>Edges</strong> <span class="math inline">\(E\)</span>: directed connections <span class="math inline">\((t \to t')\)</span> for all <span class="math inline">\(t, t' \in \mathcal{T}, t \neq t'\)</span></li>
 <li><strong>Weights</strong> <span class="math inline">\(W_{t \to t'}\)</span>: the feature importance of technology <span class="math inline">\(t\)</span> in the model predicting technology <span class="math inline">\(t'\)</span>, i.e.&nbsp;<span class="math inline">\(I_{t'}(t)\)</span>, normalised as in <a href="#eq-fits-weight" class="quarto-xref">Equation&nbsp;<span>3.16</span></a></li>
 </ul>
-<p>To ensure that the incoming edge weights sum to 1 for each technology and facilitate comparisons in later stages, we normalise as follows:</p>
+<p>Before building the network, we keep for each target technology <span class="math inline">\(t'\)</span> only the top 25% of its predictors by importance <span class="math inline">\(I_{t'}(t)\)</span>, and set all other importances to zero. To ensure that the incoming edge weights sum to 1 for each technology and facilitate comparisons in later stages, we then normalise as follows:</p>
 <p><span id="eq-fits-weight"><span class="math display">\[W_{t \to t'} = \frac{I_{t'}(t)}{\sum_{s \neq t'} I_{t'}(s)} \tag{3.16}\]</span></span> so that <span class="math inline">\(\sum_{t \neq t'} W_{t \to t'} = 1\)</span> for every target technology <span class="math inline">\(t'\)</span>: the incoming weights of a technology are the shares of its model’s total importance. Outgoing weights are not constrained to sum to one.</p>
 <p>Because the weights are feature importances, an edge <span class="math inline">\(t \to t'\)</span> records a predictive relationship: specialisation in <span class="math inline">\(t\)</span> helps predict later specialisation in <span class="math inline">\(t'\)</span>. It does not show that <span class="math inline">\(t'\)</span> depends on <span class="math inline">\(t\)</span>. Two properties of impurity-based importance also matter for how the edges are read. First, the importance is shared out unevenly among correlated predictors, as technologies in the same IPC section often are: the technology chosen first for a split takes up importance that its neighbours would otherwise receive, so a weak edge may reflect this masking rather than the absence of a relationship. Second, the importances are less reliable in models that predict poorly, typically those for rare technologies. We discuss these limits further in <a href="#sec-meth-rf-limits" class="quarto-xref"><span>Section 3.3.4</span></a>.</p>
 <p>The defining property of FITS is asymmetry: <span class="math inline">\(W_{t \to t'} \neq W_{t' \to t}\)</span> in general. This asymmetry captures directed predictive relationships that symmetric measures cannot represent:</p>
@@ -570,7 +585,7 @@ Figure&nbsp;3.2: FITS Technology Network (based on 2018 patent data)
 </ul>
 <p>The contrast between relatedness and FITS is sharpest when examining specific technologies. Consider H01L (semiconductors) and D06Q (textile decoration) respectively shown in <a href="#fig-h01l" class="quarto-xref">Figure&nbsp;<span>3.3</span></a> and <a href="#fig-d06q" class="quarto-xref">Figure&nbsp;<span>3.4</span></a>.</p>
 <p>For semiconductors, relatedness identifies technologies that frequently appear together in regional portfolios. Some connections are sensible: semiconductor memories (H10B), packaging technologies (B68B). But the measure also surfaces implausible links–textile decoration (D06Q), woodworking (B27H), fusion reactors (G21B)–that probably appear not because of genuine technological affinity but because they happen to co-occur in diverse portfolios. This is exactly the noise problem we discussed earlier. Frequency-based aggregation treats all co-presence equally, regardless of whether they reflect shared capabilities or statistical coincidence.</p>
-<p>Our FITS approach reveals a different structure. The models we developed asks a different question than relatedness. Rather than asking which technologies appear in proximity of H01L, we ask which technologies predict future development in H01L, and which technologies H01L predict. The asymmetry is clear: strong edges flow FROM application domains (digital computing G06F, telecommunications H04L, control systems G05F) TO semiconductors (H01L), which indicates that these fields depend on semiconductor capabilities. Weaker reverse edges show that semiconductor expertise does not particularly predict future specialisation into computing or telecommunications. In the FITS network, the importance of H01L’s position is not which technologies are close to it, but the asymmetric dependency map that predicts it. This is not possible to observe in relatedness based networks.</p>
+<p>Our FITS approach reveals a different structure. The models we developed asks a different question than relatedness. Rather than asking which technologies appear in proximity of H01L, we ask which technologies predict future development in H01L, and which technologies H01L predict. The asymmetry is clear: strong edges flow FROM application domains (digital computing G06F, telecommunications H04L) TO semiconductors (H01L), which indicates that semiconductors depend on capabilities in these fields. Weaker reverse edges show that semiconductor expertise does not particularly predict future specialisation into computing or telecommunications. In the FITS network, the importance of H01L’s position is not which technologies are close to it, but the asymmetric dependency map that predicts it. This is not possible to observe in relatedness based networks.</p>
 <p>The contrast sharpens further with D06Q (textile decoration) the noisy node from the relatedness network. This is a sparse technology for which co-occurrence produces near-total noise: elevators (B64B), timing devices (G04D), chemical production (C13B). This is simply because D06Q is rare and co-occurs randomly with whatever else rare-technology regions happen to have. FITS filters this effectively. Our approach identifies genuine textile domain relationships–sewing (D05B), textile treatment (D06M), wall coverings (D06N), all share actual functional connections. We can also see from <a href="#fig-d06q" class="quarto-xref">Figure&nbsp;<span>3.4</span></a> that the dominant direction of these links is To D06Q, which means that this technology at least for the top strongest links, is dependent on and have no influence on other technologies. Again, this information is obscured in the relatedness network.</p>
 <div class="cell">
 <div class="cell-output-display">
@@ -605,8 +620,7 @@ Figure&nbsp;3.4: Relatedness vs FITS Networks for D06Q (based on 2018 patent dat
 </section>
 <section id="sec-meth-coherence" class="level2" data-number="3.5">
 <h2 data-number="3.5" class="anchored" data-anchor-id="sec-meth-coherence"><span class="header-section-number">3.5</span> Coherence: Bridging technology networks and regional portfolios</h2>
-<p><em>But do regions with similar potential have similarly structured knowledge bases?</em></p>
-<p>Till now we established two methodological constructs throughout the previous sections based on our machine learning approach. The first construct is FITS, which is our baseline for identifying directed technology-to-technology dependencies. Analogous to the relatedness approach, we use these dependencies to construct the technology network. The second construct, is Regional Technological Potential, which is our baseline for quantifying region-specific feasibility of future specialisation in a given technology. Similar to FITS, Potential is an analogue to the relatedness density construct. FITS and Potential each target a specific layer of information, the first targets technologies, and the second focuses on region’s feasible specialisations.</p>
+<p>Till now we established two methodological constructs throughout the previous sections based on our machine learning approach. The first construct is FITS, which is our baseline for identifying directed technology-to-technology dependencies. Analogous to the relatedness approach, we use these dependencies to construct the technology network. The second construct, is Regional Technological Potential, which is our baseline for quantifying region-specific feasibility of future specialisation in a given technology. Similar to FITS, Potential is an analogue to the relatedness density construct. FITS and Potential each target a specific layer of information, the first targets technologies, and the second focuses on region’s feasible specialisations. But two regions with similar potential for the same technology may build on very different portfolios. Do regions with similar potential have similarly structured knowledge bases?</p>
 <p>To bridge these two layers of information we introduce here the Coherence measure. Coherence, links these two layers by quantifying the industrial alignment between a specific technology and a region’s technological portfolio. In here we consider the first digit of the IPC classification as an industry (eg: semiconductor memories (H10B) belongs to section H, Electricity). To build the coherence measure we first examine industrial embeddedness. For a technology in the FITS network this is the (average) strength of it links (incoming and outgoing) with each industry. Essentially, we collapse the hierarchy of each node linked to a specific technology to their respective section numbers and that represents the industrial embeddedness of a given technology to each industry in both directions. For a region, we simply aggregate the industrial embeddedness of each technology present in its portfolio, again in both directions. This inform us on how much each technology and each regional portfolio is embedded in each industry for each direction. With that, the challenge becomes how to compare these 4 dimensions? How can we compare the embeddedness of a region’s portfolio to that of a technology? In this section we formalise the answer to these questions based on our coherence measure.</p>
 <p>The logic we just portrayed is not novel as it follows core ideas in the literature first established in <span class="citation" data-cites="teece1994understanding">Teece et al. (<a href="references.html#ref-teece1994understanding" role="doc-biblioref">1994</a>)</span> and later in <span class="citation" data-cites="nesta2005coherence">Nesta and Saviotti (<a href="references.html#ref-nesta2005coherence" role="doc-biblioref">2005</a>)</span>. This idea of coherent diversification, argues that the performance of a diversification strategy is shaped not only by “how much” or “what” an actor does, but also by how the activities in its portfolio hang together. Regional coherence in this sense is a structured property of the knowledge base, or as we referred to in the introduction as knowledge infrastructure. This logic aligns with recombinant views of innovation, the idea that knowledge advances through combinations among related elements rather than as a homogeneous “stock” input <span class="citation" data-cites="quatraro2010">(<a href="references.html#ref-quatraro2010" role="doc-biblioref">Quatraro 2010</a>)</span>. This was also established at the firm level, two firms with the same number of technological fields can differ substantially depending on whether those fields form a coherent block or scattered knowledge infrastructure, coherence captures that internal structure <span class="citation" data-cites="pugliese2019unfolding">(<a href="references.html#ref-pugliese2019unfolding" role="doc-biblioref">Pugliese et al. 2019</a>)</span>. The measure itself, built on the directed FITS network and on section-level embeddedness profiles, is our own.</p>
 <p>However, in this context there’s recurring open issue in the literature regarding the meaning and effect of coherence. Recent studies shows that coherence can correlate positively with growth at metropolitan scales but turn negative at larger regional or national scales <span class="citation" data-cites="straccamore2025comparative">(<a href="references.html#ref-straccamore2025comparative" role="doc-biblioref">Straccamore et al. 2025</a>)</span>. This means that at broader scales coherence may signal path-dependency and lock-in rather than productive focus. This disagreement with other relevant studies <span class="citation" data-cites="quatraro2010 pugliese2019unfolding">(<a href="references.html#ref-quatraro2010" role="doc-biblioref">Quatraro 2010</a>; <a href="references.html#ref-pugliese2019unfolding" role="doc-biblioref">Pugliese et al. 2019</a>)</span> raises another challenge as it creates a practical problem for regional diversification analysis: if coherence behaves differently across scales, we need a measure that keeps coherence informative at the regional level without letting it collapse into a purely macro “lock-in” indicator.</p>
@@ -618,23 +632,23 @@ Table&nbsp;3.2: Heterogeneity of coherence at similar potential deciles (2009)
 </figcaption>
 <div aria-describedby="tbl-tbl_eg-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
 <div class="cell-output-display">
-<div id="pdytxbatbz" style="padding-left:0px;padding-right:0px;padding-top:10px;padding-bottom:10px;overflow-x:auto;overflow-y:auto;width:auto;height:auto;">
-<style>#pdytxbatbz table {
+<div id="cjzmpquplf" style="padding-left:0px;padding-right:0px;padding-top:10px;padding-bottom:10px;overflow-x:auto;overflow-y:auto;width:auto;height:auto;">
+<style>#cjzmpquplf table {
   font-family: system-ui, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol', 'Noto Color Emoji';
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
 
-#pdytxbatbz thead, #pdytxbatbz tbody, #pdytxbatbz tfoot, #pdytxbatbz tr, #pdytxbatbz td, #pdytxbatbz th {
+#cjzmpquplf thead, #cjzmpquplf tbody, #cjzmpquplf tfoot, #cjzmpquplf tr, #cjzmpquplf td, #cjzmpquplf th {
   border-style: none;
 }
 
-#pdytxbatbz p {
+#cjzmpquplf p {
   margin: 0;
   padding: 0;
 }
 
-#pdytxbatbz .gt_table {
+#cjzmpquplf .gt_table {
   display: table;
   border-collapse: collapse;
   line-height: normal;
@@ -660,12 +674,12 @@ Table&nbsp;3.2: Heterogeneity of coherence at similar potential deciles (2009)
   border-left-color: #D3D3D3;
 }
 
-#pdytxbatbz .gt_caption {
+#cjzmpquplf .gt_caption {
   padding-top: 4px;
   padding-bottom: 4px;
 }
 
-#pdytxbatbz .gt_title {
+#cjzmpquplf .gt_title {
   color: #333333;
   font-size: 125%;
   font-weight: initial;
@@ -677,7 +691,7 @@ Table&nbsp;3.2: Heterogeneity of coherence at similar potential deciles (2009)
   border-bottom-width: 0;
 }
 
-#pdytxbatbz .gt_subtitle {
+#cjzmpquplf .gt_subtitle {
   color: #333333;
   font-size: 85%;
   font-weight: initial;
@@ -689,7 +703,7 @@ Table&nbsp;3.2: Heterogeneity of coherence at similar potential deciles (2009)
   border-top-width: 0;
 }
 
-#pdytxbatbz .gt_heading {
+#cjzmpquplf .gt_heading {
   background-color: #FFFFFF;
   text-align: center;
   border-bottom-color: #FFFFFF;
@@ -701,13 +715,13 @@ Table&nbsp;3.2: Heterogeneity of coherence at similar potential deciles (2009)
   border-right-color: #D3D3D3;
 }
 
-#pdytxbatbz .gt_bottom_border {
+#cjzmpquplf .gt_bottom_border {
   border-bottom-style: solid;
   border-bottom-width: 2px;
   border-bottom-color: #D3D3D3;
 }
 
-#pdytxbatbz .gt_col_headings {
+#cjzmpquplf .gt_col_headings {
   border-top-style: solid;
   border-top-width: 2px;
   border-top-color: #D3D3D3;
@@ -722,7 +736,7 @@ Table&nbsp;3.2: Heterogeneity of coherence at similar potential deciles (2009)
   border-right-color: #D3D3D3;
 }
 
-#pdytxbatbz .gt_col_heading {
+#cjzmpquplf .gt_col_heading {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -742,7 +756,7 @@ Table&nbsp;3.2: Heterogeneity of coherence at similar potential deciles (2009)
   overflow-x: hidden;
 }
 
-#pdytxbatbz .gt_column_spanner_outer {
+#cjzmpquplf .gt_column_spanner_outer {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -754,15 +768,15 @@ Table&nbsp;3.2: Heterogeneity of coherence at similar potential deciles (2009)
   padding-right: 4px;
 }
 
-#pdytxbatbz .gt_column_spanner_outer:first-child {
+#cjzmpquplf .gt_column_spanner_outer:first-child {
   padding-left: 0;
 }
 
-#pdytxbatbz .gt_column_spanner_outer:last-child {
+#cjzmpquplf .gt_column_spanner_outer:last-child {
   padding-right: 0;
 }
 
-#pdytxbatbz .gt_column_spanner {
+#cjzmpquplf .gt_column_spanner {
   border-bottom-style: solid;
   border-bottom-width: 2px;
   border-bottom-color: #D3D3D3;
@@ -774,11 +788,11 @@ Table&nbsp;3.2: Heterogeneity of coherence at similar potential deciles (2009)
   width: 100%;
 }
 
-#pdytxbatbz .gt_spanner_row {
+#cjzmpquplf .gt_spanner_row {
   border-bottom-style: hidden;
 }
 
-#pdytxbatbz .gt_group_heading {
+#cjzmpquplf .gt_group_heading {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -804,7 +818,7 @@ Table&nbsp;3.2: Heterogeneity of coherence at similar potential deciles (2009)
   text-align: left;
 }
 
-#pdytxbatbz .gt_empty_group_heading {
+#cjzmpquplf .gt_empty_group_heading {
   padding: 0.5px;
   color: #333333;
   background-color: #FFFFFF;
@@ -819,15 +833,15 @@ Table&nbsp;3.2: Heterogeneity of coherence at similar potential deciles (2009)
   vertical-align: middle;
 }
 
-#pdytxbatbz .gt_from_md > :first-child {
+#cjzmpquplf .gt_from_md > :first-child {
   margin-top: 0;
 }
 
-#pdytxbatbz .gt_from_md > :last-child {
+#cjzmpquplf .gt_from_md > :last-child {
   margin-bottom: 0;
 }
 
-#pdytxbatbz .gt_row {
+#cjzmpquplf .gt_row {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -846,7 +860,7 @@ Table&nbsp;3.2: Heterogeneity of coherence at similar potential deciles (2009)
   overflow-x: hidden;
 }
 
-#pdytxbatbz .gt_stub {
+#cjzmpquplf .gt_stub {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -859,7 +873,7 @@ Table&nbsp;3.2: Heterogeneity of coherence at similar potential deciles (2009)
   padding-right: 5px;
 }
 
-#pdytxbatbz .gt_stub_row_group {
+#cjzmpquplf .gt_stub_row_group {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -873,15 +887,15 @@ Table&nbsp;3.2: Heterogeneity of coherence at similar potential deciles (2009)
   vertical-align: top;
 }
 
-#pdytxbatbz .gt_row_group_first td {
+#cjzmpquplf .gt_row_group_first td {
   border-top-width: 2px;
 }
 
-#pdytxbatbz .gt_row_group_first th {
+#cjzmpquplf .gt_row_group_first th {
   border-top-width: 2px;
 }
 
-#pdytxbatbz .gt_summary_row {
+#cjzmpquplf .gt_summary_row {
   color: #333333;
   background-color: #FFFFFF;
   text-transform: inherit;
@@ -891,16 +905,16 @@ Table&nbsp;3.2: Heterogeneity of coherence at similar potential deciles (2009)
   padding-right: 5px;
 }
 
-#pdytxbatbz .gt_first_summary_row {
+#cjzmpquplf .gt_first_summary_row {
   border-top-style: solid;
   border-top-color: #D3D3D3;
 }
 
-#pdytxbatbz .gt_first_summary_row.thick {
+#cjzmpquplf .gt_first_summary_row.thick {
   border-top-width: 2px;
 }
 
-#pdytxbatbz .gt_last_summary_row {
+#cjzmpquplf .gt_last_summary_row {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -910,7 +924,7 @@ Table&nbsp;3.2: Heterogeneity of coherence at similar potential deciles (2009)
   border-bottom-color: #D3D3D3;
 }
 
-#pdytxbatbz .gt_grand_summary_row {
+#cjzmpquplf .gt_grand_summary_row {
   color: #333333;
   background-color: #FFFFFF;
   text-transform: inherit;
@@ -920,7 +934,7 @@ Table&nbsp;3.2: Heterogeneity of coherence at similar potential deciles (2009)
   padding-right: 5px;
 }
 
-#pdytxbatbz .gt_first_grand_summary_row {
+#cjzmpquplf .gt_first_grand_summary_row {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -930,7 +944,7 @@ Table&nbsp;3.2: Heterogeneity of coherence at similar potential deciles (2009)
   border-top-color: #D3D3D3;
 }
 
-#pdytxbatbz .gt_last_grand_summary_row_top {
+#cjzmpquplf .gt_last_grand_summary_row_top {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -940,11 +954,11 @@ Table&nbsp;3.2: Heterogeneity of coherence at similar potential deciles (2009)
   border-bottom-color: #D3D3D3;
 }
 
-#pdytxbatbz .gt_striped {
+#cjzmpquplf .gt_striped {
   background-color: rgba(128, 128, 128, 0.05);
 }
 
-#pdytxbatbz .gt_table_body {
+#cjzmpquplf .gt_table_body {
   border-top-style: solid;
   border-top-width: 2px;
   border-top-color: #D3D3D3;
@@ -953,7 +967,7 @@ Table&nbsp;3.2: Heterogeneity of coherence at similar potential deciles (2009)
   border-bottom-color: #D3D3D3;
 }
 
-#pdytxbatbz .gt_footnotes {
+#cjzmpquplf .gt_footnotes {
   color: #333333;
   background-color: #FFFFFF;
   border-bottom-style: none;
@@ -967,7 +981,7 @@ Table&nbsp;3.2: Heterogeneity of coherence at similar potential deciles (2009)
   border-right-color: #D3D3D3;
 }
 
-#pdytxbatbz .gt_footnote {
+#cjzmpquplf .gt_footnote {
   margin: 0px;
   font-size: 90%;
   padding-top: 4px;
@@ -976,7 +990,7 @@ Table&nbsp;3.2: Heterogeneity of coherence at similar potential deciles (2009)
   padding-right: 5px;
 }
 
-#pdytxbatbz .gt_sourcenotes {
+#cjzmpquplf .gt_sourcenotes {
   color: #333333;
   background-color: #FFFFFF;
   border-bottom-style: none;
@@ -990,7 +1004,7 @@ Table&nbsp;3.2: Heterogeneity of coherence at similar potential deciles (2009)
   border-right-color: #D3D3D3;
 }
 
-#pdytxbatbz .gt_sourcenote {
+#cjzmpquplf .gt_sourcenote {
   font-size: 90%;
   padding-top: 4px;
   padding-bottom: 4px;
@@ -998,72 +1012,72 @@ Table&nbsp;3.2: Heterogeneity of coherence at similar potential deciles (2009)
   padding-right: 5px;
 }
 
-#pdytxbatbz .gt_left {
+#cjzmpquplf .gt_left {
   text-align: left;
 }
 
-#pdytxbatbz .gt_center {
+#cjzmpquplf .gt_center {
   text-align: center;
 }
 
-#pdytxbatbz .gt_right {
+#cjzmpquplf .gt_right {
   text-align: right;
   font-variant-numeric: tabular-nums;
 }
 
-#pdytxbatbz .gt_font_normal {
+#cjzmpquplf .gt_font_normal {
   font-weight: normal;
 }
 
-#pdytxbatbz .gt_font_bold {
+#cjzmpquplf .gt_font_bold {
   font-weight: bold;
 }
 
-#pdytxbatbz .gt_font_italic {
+#cjzmpquplf .gt_font_italic {
   font-style: italic;
 }
 
-#pdytxbatbz .gt_super {
+#cjzmpquplf .gt_super {
   font-size: 65%;
 }
 
-#pdytxbatbz .gt_footnote_marks {
+#cjzmpquplf .gt_footnote_marks {
   font-size: 75%;
   vertical-align: 0.4em;
   position: initial;
 }
 
-#pdytxbatbz .gt_asterisk {
+#cjzmpquplf .gt_asterisk {
   font-size: 100%;
   vertical-align: 0;
 }
 
-#pdytxbatbz .gt_indent_1 {
+#cjzmpquplf .gt_indent_1 {
   text-indent: 5px;
 }
 
-#pdytxbatbz .gt_indent_2 {
+#cjzmpquplf .gt_indent_2 {
   text-indent: 10px;
 }
 
-#pdytxbatbz .gt_indent_3 {
+#cjzmpquplf .gt_indent_3 {
   text-indent: 15px;
 }
 
-#pdytxbatbz .gt_indent_4 {
+#cjzmpquplf .gt_indent_4 {
   text-indent: 20px;
 }
 
-#pdytxbatbz .gt_indent_5 {
+#cjzmpquplf .gt_indent_5 {
   text-indent: 25px;
 }
 
-#pdytxbatbz .katex-display {
+#cjzmpquplf .katex-display {
   display: inline-flex !important;
   margin-bottom: 0.75em !important;
 }
 
-#pdytxbatbz div.Reactable > div.rt-table > div.rt-thead > div.rt-tr.rt-tr-group-header > div.rt-th-group:after {
+#cjzmpquplf div.Reactable > div.rt-table > div.rt-thead > div.rt-tr.rt-tr-group-header > div.rt-th-group:after {
   height: 0px !important;
 }
 </style>
@@ -1107,7 +1121,7 @@ Table&nbsp;3.2: Heterogeneity of coherence at similar potential deciles (2009)
 </figure>
 </div>
 </div>
-<p>Our solution is to bridge the scale disagreement by measuring coherence for regions at a smaller internal scale: instead of computing coherence as a single region-wide property, we compute coherence within broad industries (IPC sections, i.e.&nbsp;1st digit code). The intuition is simple: regional portfolios can be coherent in some industries and not others, and those within-industry alignments are precisely what should matter for whether a region can realistically leverage a technology’s prerequisites and downstream connections in FITS.</p>
+<p>Our solution is to bridge the scale disagreement by measuring coherence for regions at a smaller internal scale: instead of computing coherence as a single region-wide property, we compare the region and the technology within broad industries (IPC sections, i.e.&nbsp;1st digit code), section by section, and combine these comparisons into one coherence value. The intuition is simple: regional portfolios can be coherent in some industries and not others, and those within-industry alignments are precisely what should matter for whether a region can realistically leverage a technology’s prerequisites and downstream connections in FITS.</p>
 <div class="cell">
 <div class="cell-output-display">
 <div id="fig-plot_eg" class="quarto-float quarto-figure quarto-figure-center anchored">
@@ -1116,13 +1130,13 @@ Table&nbsp;3.2: Heterogeneity of coherence at similar potential deciles (2009)
 <img src="resources/eg_plot2.png" class="img-fluid figure-img" style="width:95.0%">
 </div>
 <figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-plot_eg-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-Figure&nbsp;3.5: Bidirectional Embededdness: profile of a region vs a technology
+Figure&nbsp;3.5: Bidirectional embeddedness: profile of a region (left) vs a technology (right)
 </figcaption>
 </figure>
 </div>
 </div>
 </div>
-<p>To illustrate this further, let’s consider two regions, both lacking specialization in technology <span class="math inline">\(t\)</span>, both having similar potential <span class="math inline">\(p_{r,t,y}\)</span>. However, region A’s portfolio is well connected to industries which the target technology <span class="math inline">\(t\)</span> is well connected to. While Region B’s portfolio, is well connected to industries that the target technology <span class="math inline">\(t\)</span> is not. Coherence captures this difference, region A should have high coherence with technology <span class="math inline">\(t\)</span> because of the structural knowledge infrastructure in A and <span class="math inline">\(t\)</span> align. Whereas region B would have low coherence with <span class="math inline">\(t\)</span> because of the mismatch in their respective knowledge infrastructure. Let’s consider the example in <a href="#tbl-tbl_eg" class="quarto-xref">Table&nbsp;<span>3.2</span></a> of two regions, both are capital regions: Île-de-France (FR10, France) and Bratislava (SK01, Slovakia), both in the lowest decile of potential (first decile) for technology B64U (unmanned aerial vehicles and equipments) in 2009. Despite their clear resemblance in terms of their potential, they have different coherence levels for this technology (<span class="math inline">\(0.926(D_{10})\)</span> for FR10, and <span class="math inline">\(0.742(D_{8})\)</span> for SK01). To further understand this slight divergence, we can examine their embededdness profiles as shown in <a href="#fig-plot_eg" class="quarto-xref">Figure&nbsp;<span>3.5</span></a>. The right side panel shown the bidirectional embededdness of B64U, we can notice that this technology relies uniformally in both directions on industry sections H (Electricity), G (Physics), and F (Mechanical engineering), and similarly but only for the incoming edges on C (Chemistry and metallurgy). In the left side panel, we can compare the industrial profile of the regions. In here, we can see that FR10’s portfolio is strongly and broadly embedded across precisely these sections. In contrast, SK01’s profile is heavily embeded in B (Performing operations and transporting) which is not a focal industry for B64U. To put it simply, FR10 coherence with B64U is higher than SK01’s because the former’s profile is more balanced and aligned around every focal industry B64U is embeded with in both directions. Our coherence measure, captures these asymmetries and provides a substantial layer of context.</p>
+<p>To illustrate this further, let’s consider two regions, both lacking specialization in technology <span class="math inline">\(t\)</span>, both having similar potential <span class="math inline">\(p_{r,t,y}\)</span>. However, region A’s portfolio is well connected to industries which the target technology <span class="math inline">\(t\)</span> is well connected to. While Region B’s portfolio, is well connected to industries that the target technology <span class="math inline">\(t\)</span> is not. Coherence captures this difference, region A should have high coherence with technology <span class="math inline">\(t\)</span> because of the structural knowledge infrastructure in A and <span class="math inline">\(t\)</span> align. Whereas region B would have low coherence with <span class="math inline">\(t\)</span> because of the mismatch in their respective knowledge infrastructure. Let’s consider the example in <a href="#tbl-tbl_eg" class="quarto-xref">Table&nbsp;<span>3.2</span></a> of two regions, both are capital regions: Île-de-France (FR10, France) and Bratislava (SK01, Slovakia), both in the lowest decile of potential (first decile) for technology B64U (unmanned aerial vehicles and equipments) in 2009. Despite their clear resemblance in terms of their potential, they have different coherence levels for this technology (<span class="math inline">\(0.926(D_{10})\)</span> for FR10, and <span class="math inline">\(0.742(D_{8})\)</span> for SK01). To further understand this slight divergence, we can examine their embeddedness profiles as shown in <a href="#fig-plot_eg" class="quarto-xref">Figure&nbsp;<span>3.5</span></a>. The right side panel shows the bidirectional embeddedness of B64U, we can notice that this technology relies uniformly in both directions on industry sections H (Electricity), G (Physics), and F (Mechanical engineering), and similarly but only for the incoming edges on C (Chemistry and metallurgy). In the left side panel, we can compare the industrial profile of the regions. In here, we can see that FR10’s portfolio is strongly and broadly embedded across precisely these sections. In contrast, SK01’s profile is heavily embeded in B (Performing operations and transporting) which is not a focal industry for B64U. To put it simply, FR10 coherence with B64U is higher than SK01’s because the former’s profile is more balanced and aligned around every focal industry B64U is embeded with in both directions. Our coherence measure, captures these asymmetries and provides a substantial layer of context.</p>
 <p>In this sense, the coherence metric we propose here operationalizes the “knowledge coherence” and “cognitive proximity” concepts from innovation literature <span class="citation" data-cites="neffke2011how boschma2015towards">(<a href="references.html#ref-neffke2011how" role="doc-biblioref">Neffke et al. 2011</a>; <a href="references.html#ref-boschma2015towards" role="doc-biblioref">Boschma 2015</a>)</span>, and adds an extra layer of context in the information it captures by leveraging our directional network structure. With this in mind, we use this metric to test whether regional technological potential (predicted feasibility) depends on the alignment in knowledge infrastructure between regional portfolios and technologies.</p>
 <p>To formalise our proposed metric, let <span class="math inline">\(t \in \mathcal{T}\)</span> denote the target technology, <span class="math inline">\(r \in \mathcal{R}\)</span> the region, and <span class="math inline">\(c \in \mathcal{C}\)</span> an IPC section (first digit). FITS weights <span class="math inline">\(W_{t \to t'}\)</span> are as defined in <a href="#eq-fits-weight" class="quarto-xref">Equation&nbsp;<span>3.16</span></a>. We use <span class="math inline">\(t'\)</span> to index technologies distinct from <span class="math inline">\(t\)</span> throughout. For each region <span class="math inline">\(r\)</span>, technology <span class="math inline">\(t\)</span>, and IPC category/industry <span class="math inline">\(c\)</span>, we construct two embeddedness vectors.</p>
 <p>For target technology <span class="math inline">\(t\)</span> and IPC section <span class="math inline">\(c\)</span>, the <strong>incoming</strong> and <strong>outgoing</strong> industrial embeddedness measure the average FITS edge weight between <span class="math inline">\(t\)</span> and the technologies belonging to section <span class="math inline">\(c\)</span>:</p>
@@ -1143,7 +1157,7 @@ Figure&nbsp;3.5: Bidirectional Embededdness: profile of a region vs a technology
 <p><span id="eq-profile-tech"><span class="math display">\[\mathbf{v}_t = \left[E^{\leftarrow}_{t,c},\; E^{\rightarrow}_{t,c}\right]_{c \in \mathcal{C}} \in \mathbb{R}^{2|\mathcal{C}|}_{\geq 0} \quad \text{(technology profile)} \tag{3.23}\]</span></span></p>
 <p><span id="eq-profile-region"><span class="math display">\[\mathbf{v}_r = \left[E^{*\leftarrow}_{r,c},\; E^{*\rightarrow}_{r,c}\right]_{c \in \mathcal{C}} \in \mathbb{R}^{2|\mathcal{C}|}_{\geq 0} \quad \text{(region profile)} \tag{3.24}\]</span></span></p>
 <p>The numerator pairs the technology with the region section by section and direction by direction. Coherence is therefore high when the region’s portfolio is embedded in the same industries, in the same directions and in similar relative proportions as the technology. As a cosine, it compares the shape of the two profiles, not their overall level. Since all entries are non-negative, <span class="math inline">\(\text{Coherence}_{r,t} \in [0,1]\)</span>.</p>
-<p>Conceptually, this is close to how coherent diversification measures compute “how surrounded a technology is” by related portfolio elements, but with two key differences. First, we ground proximity in predictive, directed dependencies (FITS) rather than symmetric co-occurrence similarity. Second, we compute coherence at an internal domain scale (IPC section) to keep the measure meaningful for regional analysis under known scale heterogeneity.</p>
+<p>Conceptually, this is close to how coherent diversification measures compute “how surrounded a technology is” by related portfolio elements, but with two key differences. First, we ground proximity in predictive, directed dependencies (FITS) rather than symmetric co-occurrence similarity. Second, we build coherence from an internal domain scale (IPC section) to keep the measure meaningful for regional analysis under known scale heterogeneity.</p>
 <p>In here, our coherence measure ranges from 0 to 1. In our context, high coherence (<span class="math inline">\(\approx 1\)</span>) means that for technology <span class="math inline">\(t\)</span>’s embeddedness signal in different categories/industries closely matches the average industrial embeddedness of region <span class="math inline">\(r\)</span>’s portfolio of technologies. The region’s existing industrial capabilities align with the structural industrial prerequisites and consequences of technology <span class="math inline">\(t\)</span>. Low coherence (<span class="math inline">\(\approx 0\)</span>) indicates that the region’s portfolio is embedded in different industries, or in different directions, from the technology.</p>
 <p>To our aim, coherence serves two roles in this work. First, as dyadic fit measure: it is a direct indicator of portfolio–technology alignment in a given domain or industry. It captures whether predicted feasibility is supported by an internally coherent knowledge infrastructure. Second, as moderation channel: it allows us to test whether the effect of technology network position (e.g., bridging technologies, enabling technologies) depends on whether regions have the industry-level knowledge infrastructure to exploit those positions. This is an explicitly contextual mechanism that simple diversification counts cannot reveal <span class="citation" data-cites="quatraro2010 boschma2015towards">(<a href="references.html#ref-quatraro2010" role="doc-biblioref">Quatraro 2010</a>; <a href="references.html#ref-boschma2015towards" role="doc-biblioref">Boschma 2015</a>)</span> and aligns with the core idea of this work.</p>
 </section>
@@ -1163,30 +1177,30 @@ Table&nbsp;3.3: Research questions, gaps and measures
 </figcaption>
 <div aria-describedby="tbl-progress-meth-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
 <div class="cell-output-display">
-<div id="fapeodvrgl" style="padding-left:0px;padding-right:0px;padding-top:10px;padding-bottom:10px;overflow-x:auto;overflow-y:auto;width:auto;height:auto;">
-<style>#fapeodvrgl table {
+<div id="ayetcrwzdt" style="padding-left:0px;padding-right:0px;padding-top:10px;padding-bottom:10px;overflow-x:auto;overflow-y:auto;width:auto;height:auto;">
+<style>#ayetcrwzdt table {
   font-family: system-ui, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol', 'Noto Color Emoji';
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
 
-#fapeodvrgl thead, #fapeodvrgl tbody, #fapeodvrgl tfoot, #fapeodvrgl tr, #fapeodvrgl td, #fapeodvrgl th {
+#ayetcrwzdt thead, #ayetcrwzdt tbody, #ayetcrwzdt tfoot, #ayetcrwzdt tr, #ayetcrwzdt td, #ayetcrwzdt th {
   border-style: none;
 }
 
-#fapeodvrgl p {
+#ayetcrwzdt p {
   margin: 0;
   padding: 0;
 }
 
-#fapeodvrgl .gt_table {
+#ayetcrwzdt .gt_table {
   display: table;
   border-collapse: collapse;
   line-height: normal;
   margin-left: auto;
   margin-right: auto;
   color: #333333;
-  font-size: 10px;
+  font-size: 12px;
   font-weight: normal;
   font-style: normal;
   background-color: #FFFFFF;
@@ -1205,12 +1219,12 @@ Table&nbsp;3.3: Research questions, gaps and measures
   border-left-color: #D3D3D3;
 }
 
-#fapeodvrgl .gt_caption {
+#ayetcrwzdt .gt_caption {
   padding-top: 4px;
   padding-bottom: 4px;
 }
 
-#fapeodvrgl .gt_title {
+#ayetcrwzdt .gt_title {
   color: #333333;
   font-size: 125%;
   font-weight: initial;
@@ -1222,7 +1236,7 @@ Table&nbsp;3.3: Research questions, gaps and measures
   border-bottom-width: 0;
 }
 
-#fapeodvrgl .gt_subtitle {
+#ayetcrwzdt .gt_subtitle {
   color: #333333;
   font-size: 85%;
   font-weight: initial;
@@ -1234,7 +1248,7 @@ Table&nbsp;3.3: Research questions, gaps and measures
   border-top-width: 0;
 }
 
-#fapeodvrgl .gt_heading {
+#ayetcrwzdt .gt_heading {
   background-color: #FFFFFF;
   text-align: center;
   border-bottom-color: #FFFFFF;
@@ -1246,13 +1260,13 @@ Table&nbsp;3.3: Research questions, gaps and measures
   border-right-color: #D3D3D3;
 }
 
-#fapeodvrgl .gt_bottom_border {
+#ayetcrwzdt .gt_bottom_border {
   border-bottom-style: solid;
   border-bottom-width: 2px;
   border-bottom-color: #D3D3D3;
 }
 
-#fapeodvrgl .gt_col_headings {
+#ayetcrwzdt .gt_col_headings {
   border-top-style: solid;
   border-top-width: 2px;
   border-top-color: #D3D3D3;
@@ -1267,7 +1281,7 @@ Table&nbsp;3.3: Research questions, gaps and measures
   border-right-color: #D3D3D3;
 }
 
-#fapeodvrgl .gt_col_heading {
+#ayetcrwzdt .gt_col_heading {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -1287,7 +1301,7 @@ Table&nbsp;3.3: Research questions, gaps and measures
   overflow-x: hidden;
 }
 
-#fapeodvrgl .gt_column_spanner_outer {
+#ayetcrwzdt .gt_column_spanner_outer {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -1299,15 +1313,15 @@ Table&nbsp;3.3: Research questions, gaps and measures
   padding-right: 4px;
 }
 
-#fapeodvrgl .gt_column_spanner_outer:first-child {
+#ayetcrwzdt .gt_column_spanner_outer:first-child {
   padding-left: 0;
 }
 
-#fapeodvrgl .gt_column_spanner_outer:last-child {
+#ayetcrwzdt .gt_column_spanner_outer:last-child {
   padding-right: 0;
 }
 
-#fapeodvrgl .gt_column_spanner {
+#ayetcrwzdt .gt_column_spanner {
   border-bottom-style: solid;
   border-bottom-width: 2px;
   border-bottom-color: #D3D3D3;
@@ -1319,11 +1333,11 @@ Table&nbsp;3.3: Research questions, gaps and measures
   width: 100%;
 }
 
-#fapeodvrgl .gt_spanner_row {
+#ayetcrwzdt .gt_spanner_row {
   border-bottom-style: hidden;
 }
 
-#fapeodvrgl .gt_group_heading {
+#ayetcrwzdt .gt_group_heading {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -1349,7 +1363,7 @@ Table&nbsp;3.3: Research questions, gaps and measures
   text-align: left;
 }
 
-#fapeodvrgl .gt_empty_group_heading {
+#ayetcrwzdt .gt_empty_group_heading {
   padding: 0.5px;
   color: #333333;
   background-color: #FFFFFF;
@@ -1364,15 +1378,15 @@ Table&nbsp;3.3: Research questions, gaps and measures
   vertical-align: middle;
 }
 
-#fapeodvrgl .gt_from_md > :first-child {
+#ayetcrwzdt .gt_from_md > :first-child {
   margin-top: 0;
 }
 
-#fapeodvrgl .gt_from_md > :last-child {
+#ayetcrwzdt .gt_from_md > :last-child {
   margin-bottom: 0;
 }
 
-#fapeodvrgl .gt_row {
+#ayetcrwzdt .gt_row {
   padding-top: 2px;
   padding-bottom: 2px;
   padding-left: 5px;
@@ -1391,7 +1405,7 @@ Table&nbsp;3.3: Research questions, gaps and measures
   overflow-x: hidden;
 }
 
-#fapeodvrgl .gt_stub {
+#ayetcrwzdt .gt_stub {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -1404,7 +1418,7 @@ Table&nbsp;3.3: Research questions, gaps and measures
   padding-right: 5px;
 }
 
-#fapeodvrgl .gt_stub_row_group {
+#ayetcrwzdt .gt_stub_row_group {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -1418,15 +1432,15 @@ Table&nbsp;3.3: Research questions, gaps and measures
   vertical-align: top;
 }
 
-#fapeodvrgl .gt_row_group_first td {
+#ayetcrwzdt .gt_row_group_first td {
   border-top-width: 2px;
 }
 
-#fapeodvrgl .gt_row_group_first th {
+#ayetcrwzdt .gt_row_group_first th {
   border-top-width: 2px;
 }
 
-#fapeodvrgl .gt_summary_row {
+#ayetcrwzdt .gt_summary_row {
   color: #333333;
   background-color: #FFFFFF;
   text-transform: inherit;
@@ -1436,16 +1450,16 @@ Table&nbsp;3.3: Research questions, gaps and measures
   padding-right: 5px;
 }
 
-#fapeodvrgl .gt_first_summary_row {
+#ayetcrwzdt .gt_first_summary_row {
   border-top-style: solid;
   border-top-color: #D3D3D3;
 }
 
-#fapeodvrgl .gt_first_summary_row.thick {
+#ayetcrwzdt .gt_first_summary_row.thick {
   border-top-width: 2px;
 }
 
-#fapeodvrgl .gt_last_summary_row {
+#ayetcrwzdt .gt_last_summary_row {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -1455,7 +1469,7 @@ Table&nbsp;3.3: Research questions, gaps and measures
   border-bottom-color: #D3D3D3;
 }
 
-#fapeodvrgl .gt_grand_summary_row {
+#ayetcrwzdt .gt_grand_summary_row {
   color: #333333;
   background-color: #FFFFFF;
   text-transform: inherit;
@@ -1465,7 +1479,7 @@ Table&nbsp;3.3: Research questions, gaps and measures
   padding-right: 5px;
 }
 
-#fapeodvrgl .gt_first_grand_summary_row {
+#ayetcrwzdt .gt_first_grand_summary_row {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -1475,7 +1489,7 @@ Table&nbsp;3.3: Research questions, gaps and measures
   border-top-color: #D3D3D3;
 }
 
-#fapeodvrgl .gt_last_grand_summary_row_top {
+#ayetcrwzdt .gt_last_grand_summary_row_top {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -1485,11 +1499,11 @@ Table&nbsp;3.3: Research questions, gaps and measures
   border-bottom-color: #D3D3D3;
 }
 
-#fapeodvrgl .gt_striped {
+#ayetcrwzdt .gt_striped {
   background-color: rgba(128, 128, 128, 0.05);
 }
 
-#fapeodvrgl .gt_table_body {
+#ayetcrwzdt .gt_table_body {
   border-top-style: solid;
   border-top-width: 2px;
   border-top-color: #D3D3D3;
@@ -1498,7 +1512,7 @@ Table&nbsp;3.3: Research questions, gaps and measures
   border-bottom-color: #D3D3D3;
 }
 
-#fapeodvrgl .gt_footnotes {
+#ayetcrwzdt .gt_footnotes {
   color: #333333;
   background-color: #FFFFFF;
   border-bottom-style: none;
@@ -1512,7 +1526,7 @@ Table&nbsp;3.3: Research questions, gaps and measures
   border-right-color: #D3D3D3;
 }
 
-#fapeodvrgl .gt_footnote {
+#ayetcrwzdt .gt_footnote {
   margin: 0px;
   font-size: 90%;
   padding-top: 4px;
@@ -1521,7 +1535,7 @@ Table&nbsp;3.3: Research questions, gaps and measures
   padding-right: 5px;
 }
 
-#fapeodvrgl .gt_sourcenotes {
+#ayetcrwzdt .gt_sourcenotes {
   color: #333333;
   background-color: #FFFFFF;
   border-bottom-style: none;
@@ -1535,7 +1549,7 @@ Table&nbsp;3.3: Research questions, gaps and measures
   border-right-color: #D3D3D3;
 }
 
-#fapeodvrgl .gt_sourcenote {
+#ayetcrwzdt .gt_sourcenote {
   font-size: 90%;
   padding-top: 4px;
   padding-bottom: 4px;
@@ -1543,77 +1557,84 @@ Table&nbsp;3.3: Research questions, gaps and measures
   padding-right: 5px;
 }
 
-#fapeodvrgl .gt_left {
+#ayetcrwzdt .gt_left {
   text-align: left;
 }
 
-#fapeodvrgl .gt_center {
+#ayetcrwzdt .gt_center {
   text-align: center;
 }
 
-#fapeodvrgl .gt_right {
+#ayetcrwzdt .gt_right {
   text-align: right;
   font-variant-numeric: tabular-nums;
 }
 
-#fapeodvrgl .gt_font_normal {
+#ayetcrwzdt .gt_font_normal {
   font-weight: normal;
 }
 
-#fapeodvrgl .gt_font_bold {
+#ayetcrwzdt .gt_font_bold {
   font-weight: bold;
 }
 
-#fapeodvrgl .gt_font_italic {
+#ayetcrwzdt .gt_font_italic {
   font-style: italic;
 }
 
-#fapeodvrgl .gt_super {
+#ayetcrwzdt .gt_super {
   font-size: 65%;
 }
 
-#fapeodvrgl .gt_footnote_marks {
+#ayetcrwzdt .gt_footnote_marks {
   font-size: 75%;
   vertical-align: 0.4em;
   position: initial;
 }
 
-#fapeodvrgl .gt_asterisk {
+#ayetcrwzdt .gt_asterisk {
   font-size: 100%;
   vertical-align: 0;
 }
 
-#fapeodvrgl .gt_indent_1 {
+#ayetcrwzdt .gt_indent_1 {
   text-indent: 5px;
 }
 
-#fapeodvrgl .gt_indent_2 {
+#ayetcrwzdt .gt_indent_2 {
   text-indent: 10px;
 }
 
-#fapeodvrgl .gt_indent_3 {
+#ayetcrwzdt .gt_indent_3 {
   text-indent: 15px;
 }
 
-#fapeodvrgl .gt_indent_4 {
+#ayetcrwzdt .gt_indent_4 {
   text-indent: 20px;
 }
 
-#fapeodvrgl .gt_indent_5 {
+#ayetcrwzdt .gt_indent_5 {
   text-indent: 25px;
 }
 
-#fapeodvrgl .katex-display {
+#ayetcrwzdt .katex-display {
   display: inline-flex !important;
   margin-bottom: 0.75em !important;
 }
 
-#fapeodvrgl div.Reactable > div.rt-table > div.rt-thead > div.rt-tr.rt-tr-group-header > div.rt-th-group:after {
+#ayetcrwzdt div.Reactable > div.rt-table > div.rt-thead > div.rt-tr.rt-tr-group-header > div.rt-th-group:after {
   height: 0px !important;
 }
 </style>
 
 <table class="gt_table cell caption-top table table-sm table-striped small" data-quarto-bootstrap="false">
+<colgroup>
+<col style="width: 5%">
+<col style="width: 33%">
+<col style="width: 34%">
+<col style="width: 13%">
+<col style="width: 15%">
+</colgroup>
 <thead>
 <tr class="gt_col_headings header">
 <th id="H" class="gt_col_heading gt_columns_bottom_border gt_left" data-quarto-table-cell-role="th" scope="col">H</th>
@@ -1749,6 +1770,12 @@ Boschma, Ron. 2017. <span>“Relatedness as Driver of Regional Diversification: 
 <div id="ref-boschma2023role" class="csl-entry" role="listitem">
 Boschma, Ron, Ernest Miguelez, Rosina Moreno, and Diego B Ocampo-Corrales. 2023. <span>“The Role of Relatedness and Unrelatedness for the Geography of Technological Breakthroughs in Europe.”</span> <em>Economic Geography</em> 99 (2): 117–39.
 </div>
+<div id="ref-breiman1996bagging" class="csl-entry" role="listitem">
+Breiman, Leo. 1996. <span>“Bagging Predictors.”</span> <em>Machine Learning</em> 24 (2): 123–40. <a href="https://doi.org/10.1007/BF00058655">https://doi.org/10.1007/BF00058655</a>.
+</div>
+<div id="ref-breiman2001random" class="csl-entry" role="listitem">
+Breiman, Leo. 2001. <span>“Random Forests.”</span> <em>Machine Learning</em> 45 (1): 5–32. <a href="https://doi.org/10.1023/A:1010933404324">https://doi.org/10.1023/A:1010933404324</a>.
+</div>
 <div id="ref-bun2017cleaning" class="csl-entry" role="listitem">
 Bun, Joël, Jean-Philippe Bouchaud, and Marc Potters. 2017. <span>“Cleaning Large Correlation Matrices: Tools from Random Matrix Theory.”</span> <em>Physics Reports</em> 666: 1–109.
 </div>
@@ -1794,6 +1821,9 @@ Lee, Changyong, Ohjin Kwon, Myeongjung Kim, and Daeil Kwon. 2018. <span>“Early
 <div id="ref-li2024evaluating" class="csl-entry" role="listitem">
 Li, Yang, and Frank MH Neffke. 2024. <span>“Evaluating the Principle of Relatedness: Estimation, Drivers and Implications for Policy.”</span> <em>Research Policy</em> 53 (3): 104952.
 </div>
+<div id="ref-louppe2013understanding" class="csl-entry" role="listitem">
+Louppe, Gilles, Louis Wehenkel, Antonio Sutera, and Pierre Geurts. 2013. <span>“Understanding Variable Importances in Forests of Randomized Trees.”</span> <em>Advances in Neural Information Processing Systems 26</em>, 431–39.
+</div>
 <div id="ref-mariani2019nestedness" class="csl-entry" role="listitem">
 Mariani, Manuel Sebastian, Zhuo-Ming Ren, Jordi Bascompte, and Claudio Juan Tessone. 2019. <span>“Nestedness in Complex Networks: Observation, Emergence, and Implications.”</span> <em>Physics Reports</em> 813: 1–90.
 </div>
@@ -1829,6 +1859,9 @@ Saracco, Fabio, Mika J Straka, Riccardo Di Clemente, Andrea Gabrielli, Guido Cal
 </div>
 <div id="ref-straccamore2025comparative" class="csl-entry" role="listitem">
 Straccamore, Matteo, Matteo Bruno, and Andrea Tacchella. 2025. <span>“Comparative Analysis of Technological Fitness and Coherence at Different Geographical Scales.”</span> <em>PLoS One</em> 20 (8): e0329746.
+</div>
+<div id="ref-strobl2007bias" class="csl-entry" role="listitem">
+Strobl, Carolin, Anne-Laure Boulesteix, Achim Zeileis, and Torsten Hothorn. 2007. <span>“Bias in Random Forest Variable Importance Measures: Illustrations, Sources and a Solution.”</span> <em>BMC Bioinformatics</em> 8 (1): 25. <a href="https://doi.org/10.1186/1471-2105-8-25">https://doi.org/10.1186/1471-2105-8-25</a>.
 </div>
 <div id="ref-tacchella2023relatedness" class="csl-entry" role="listitem">
 Tacchella, Andrea, Andrea Zaccaria, Marco Miccheli, and Luciano Pietronero. 2023. <span>“Relatedness in the Era of Machine Learning.”</span> <em>Chaos, Solitons &amp; Fractals</em> 176: 114071.
