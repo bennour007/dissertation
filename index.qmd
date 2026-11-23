@@ -2,7 +2,7 @@
 
 In this dissertation we investigate the patterns of technological diversification in European regions.
 Specifically we inquire on the factors that contribute to the feasibility of a diversification option.
-Our focus in this work is to provide a context rich assessment that bridge different gaps in the literature namely relatedness, network positions, institutions, and the role of space.
+Our focus in this work is to provide a context-rich assessment that bridge different gaps in the literature namely relatedness, network positions, institutions, and the role of space.
 To operationalise this contextualised assessment we first address methodological and conceptual issues in the relatedness constructs. 
 
 Our methodological alternative is a machine learning training strategy that shifts relatedness from a descriptive exercise to a predictive exercise.

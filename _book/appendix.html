@@ -223,7 +223,9 @@ window.Quarto = {
   <li><a href="#sec-app-notation" id="toc-sec-app-notation" class="nav-link active" data-scroll-target="#sec-app-notation"><span class="header-section-number">A.1</span> Notation</a></li>
   <li><a href="#sec-app-rf-provenance" id="toc-sec-app-rf-provenance" class="nav-link" data-scroll-target="#sec-app-rf-provenance"><span class="header-section-number">A.2</span> Provenance of the Random Forest claims</a></li>
   <li><a href="#sec-app-distance" id="toc-sec-app-distance" class="nav-link" data-scroll-target="#sec-app-distance"><span class="header-section-number">A.3</span> The distance variable</a></li>
-  <li><a href="#sec-app-benchmark" id="toc-sec-app-benchmark" class="nav-link" data-scroll-target="#sec-app-benchmark"><span class="header-section-number">A.4</span> Entry benchmark: the part of potential that density does not explain</a></li>
+  <li><a href="#sec-app-maps" id="toc-sec-app-maps" class="nav-link" data-scroll-target="#sec-app-maps"><span class="header-section-number">A.4</span> Geographic distribution of the covariates</a></li>
+  <li><a href="#sec-app-benchmark" id="toc-sec-app-benchmark" class="nav-link" data-scroll-target="#sec-app-benchmark"><span class="header-section-number">A.5</span> Entry benchmark: the part of potential that density does not explain</a></li>
+  <li><a href="#sec-app-revisions" id="toc-sec-app-revisions" class="nav-link" data-scroll-target="#sec-app-revisions"><span class="header-section-number">A.6</span> Summary of revisions following the pre-review</a></li>
   </ul>
 </nav>
     </div>
@@ -252,6 +254,7 @@ window.Quarto = {
 <section id="sec-app-notation" class="level2" data-number="A.1">
 <h2 data-number="A.1" class="anchored" data-anchor-id="sec-app-notation"><span class="header-section-number">A.1</span> Notation</h2>
 <p><a href="#tbl-app-notation" class="quarto-xref">Table&nbsp;<span>A.1</span></a> collects the symbols used in this dissertation and where each is defined.</p>
+<div class="landscape">
 <div id="tbl-app-notation" class="quarto-float quarto-figure quarto-figure-center anchored">
 <figure class="quarto-float quarto-float-tbl figure">
 <figcaption class="quarto-float-caption-top quarto-float-caption quarto-float-tbl" id="tbl-app-notation-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
@@ -260,15 +263,15 @@ Table&nbsp;A.1: Notation
 <div aria-describedby="tbl-app-notation-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
 <table class="caption-top table">
 <colgroup>
-<col style="width: 13%">
-<col style="width: 66%">
-<col style="width: 20%">
+<col style="width: 30%">
+<col style="width: 51%">
+<col style="width: 18%">
 </colgroup>
 <thead>
 <tr class="header">
 <th style="text-align: left;">Symbol</th>
 <th style="text-align: left;">Meaning</th>
-<th style="text-align: left;">Defined in</th>
+<th style="text-align: left;">Eq. / Sec.</th>
 </tr>
 </thead>
 <tbody>
@@ -280,22 +283,22 @@ Table&nbsp;A.1: Notation
 <tr class="even">
 <td style="text-align: left;"><span class="math inline">\(t, t', s\)</span></td>
 <td style="text-align: left;">Technologies (4-digit IPC classes); <span class="math inline">\(s\)</span> is used for predictor technologies</td>
-<td style="text-align: left;"><a href="potential2.html#sec-meth-motivation" class="quarto-xref"><span>Section 3.1</span></a></td>
+<td style="text-align: left;">Sec. <a href="potential2.html#sec-meth-motivation" class="quarto-xref"><span>3.1</span></a></td>
 </tr>
 <tr class="odd">
 <td style="text-align: left;"><span class="math inline">\(r\)</span>, <span class="math inline">\(y\)</span>, <span class="math inline">\(c\)</span></td>
 <td style="text-align: left;">Region (NUTS2), year, technology category (IPC section)</td>
-<td style="text-align: left;"><a href="potential2.html#sec-meth-motivation" class="quarto-xref"><span>Section 3.1</span></a></td>
+<td style="text-align: left;">Sec. <a href="potential2.html#sec-meth-motivation" class="quarto-xref"><span>3.1</span></a></td>
 </tr>
 <tr class="even">
 <td style="text-align: left;"><span class="math inline">\(\mathcal{T}, \mathcal{R}, \mathcal{Y}, \mathcal{C}, \mathcal{K}\)</span></td>
 <td style="text-align: left;">Sets of technologies, regions, years, categories and countries</td>
-<td style="text-align: left;"><a href="potential2.html#sec-meth-motivation" class="quarto-xref"><span>Section 3.1</span></a></td>
+<td style="text-align: left;">Sec. <a href="potential2.html#sec-meth-motivation" class="quarto-xref"><span>3.1</span></a></td>
 </tr>
 <tr class="odd">
 <td style="text-align: left;"><span class="math inline">\(N_T, N_R, N_Y, N_C, N_K\)</span></td>
 <td style="text-align: left;">Number of technologies, regions, years, categories and countries</td>
-<td style="text-align: left;"><a href="potential2.html#sec-meth-motivation" class="quarto-xref"><span>Section 3.1</span></a></td>
+<td style="text-align: left;">Sec. <a href="potential2.html#sec-meth-motivation" class="quarto-xref"><span>3.1</span></a></td>
 </tr>
 <tr class="even">
 <td style="text-align: left;"><strong>Specialisation</strong></td>
@@ -305,22 +308,22 @@ Table&nbsp;A.1: Notation
 <tr class="odd">
 <td style="text-align: left;"><span class="math inline">\(X_{r,t,y}\)</span></td>
 <td style="text-align: left;">Patent count of region <span class="math inline">\(r\)</span> in technology <span class="math inline">\(t\)</span> in year <span class="math inline">\(y\)</span></td>
-<td style="text-align: left;"><a href="potential2.html#eq-rta" class="quarto-xref">Equation&nbsp;<span>3.1</span></a></td>
+<td style="text-align: left;">Eq. <a href="potential2.html#eq-rta" class="quarto-xref"><span>3.1</span></a></td>
 </tr>
 <tr class="even">
 <td style="text-align: left;"><span class="math inline">\(\text{RTA}_{r,t,y}\)</span></td>
 <td style="text-align: left;">Revealed technological advantage</td>
-<td style="text-align: left;"><a href="potential2.html#eq-rta" class="quarto-xref">Equation&nbsp;<span>3.1</span></a></td>
+<td style="text-align: left;">Eq. <a href="potential2.html#eq-rta" class="quarto-xref"><span>3.1</span></a></td>
 </tr>
 <tr class="odd">
 <td style="text-align: left;"><span class="math inline">\(\mathbf{R}^{(y)}\)</span></td>
 <td style="text-align: left;">RTA matrix for year <span class="math inline">\(y\)</span></td>
-<td style="text-align: left;"><a href="potential2.html#eq-rta-matrix" class="quarto-xref">Equation&nbsp;<span>3.2</span></a></td>
+<td style="text-align: left;">Eq. <a href="potential2.html#eq-rta-matrix" class="quarto-xref"><span>3.2</span></a></td>
 </tr>
 <tr class="even">
 <td style="text-align: left;"><span class="math inline">\(z_{r,t,y}\)</span></td>
 <td style="text-align: left;">Binary specialisation, 1 if <span class="math inline">\(\text{RTA}_{r,t,y} \geq 1\)</span></td>
-<td style="text-align: left;"><a href="potential2.html#eq-z" class="quarto-xref">Equation&nbsp;<span>3.3</span></a></td>
+<td style="text-align: left;">Eq. <a href="potential2.html#eq-z" class="quarto-xref"><span>3.3</span></a></td>
 </tr>
 <tr class="odd">
 <td style="text-align: left;"><strong>Relatedness (benchmark)</strong></td>
@@ -330,22 +333,22 @@ Table&nbsp;A.1: Notation
 <tr class="even">
 <td style="text-align: left;"><span class="math inline">\(c_{t,t'}\)</span>, <span class="math inline">\(c_t\)</span></td>
 <td style="text-align: left;">Co-occurrence counts: patents for association strength and cosine, regions for MCP</td>
-<td style="text-align: left;"><a href="potential2.html#eq-assoc" class="quarto-xref">Equation&nbsp;<span>3.4</span></a>, <a href="potential2.html#eq-mcp-counts" class="quarto-xref">Equation&nbsp;<span>3.6</span></a></td>
+<td style="text-align: left;">Eq. <a href="potential2.html#eq-assoc" class="quarto-xref"><span>3.4</span></a>, <a href="potential2.html#eq-mcp-counts" class="quarto-xref"><span>3.6</span></a></td>
 </tr>
 <tr class="odd">
 <td style="text-align: left;"><span class="math inline">\(\phi_{t,t'}\)</span></td>
 <td style="text-align: left;">Relatedness between <span class="math inline">\(t\)</span> and <span class="math inline">\(t'\)</span> (association strength, cosine, MCP)</td>
-<td style="text-align: left;"><a href="potential2.html#eq-assoc" class="quarto-xref">Equation&nbsp;<span>3.4</span></a>, <a href="potential2.html#eq-cosine" class="quarto-xref">Equation&nbsp;<span>3.5</span></a>, <a href="potential2.html#eq-mcp" class="quarto-xref">Equation&nbsp;<span>3.7</span></a></td>
+<td style="text-align: left;">Eq. <a href="potential2.html#eq-assoc" class="quarto-xref"><span>3.4</span></a>, <a href="potential2.html#eq-cosine" class="quarto-xref"><span>3.5</span></a>, <a href="potential2.html#eq-mcp" class="quarto-xref"><span>3.7</span></a></td>
 </tr>
 <tr class="even">
 <td style="text-align: left;"><span class="math inline">\(\mathcal{T}_r\)</span></td>
 <td style="text-align: left;">Technologies in which region <span class="math inline">\(r\)</span> specialises</td>
-<td style="text-align: left;"><a href="potential2.html#eq-density" class="quarto-xref">Equation&nbsp;<span>3.8</span></a></td>
+<td style="text-align: left;">Eq. <a href="potential2.html#eq-density" class="quarto-xref"><span>3.8</span></a></td>
 </tr>
 <tr class="odd">
 <td style="text-align: left;"><span class="math inline">\(\Phi_{r,t}\)</span></td>
 <td style="text-align: left;">Relatedness density</td>
-<td style="text-align: left;"><a href="potential2.html#eq-density" class="quarto-xref">Equation&nbsp;<span>3.8</span></a></td>
+<td style="text-align: left;">Eq. <a href="potential2.html#eq-density" class="quarto-xref"><span>3.8</span></a></td>
 </tr>
 <tr class="even">
 <td style="text-align: left;"><strong>Random Forest</strong></td>
@@ -355,32 +358,32 @@ Table&nbsp;A.1: Notation
 <tr class="odd">
 <td style="text-align: left;"><span class="math inline">\(\delta\)</span></td>
 <td style="text-align: left;">Lag between features and outcome (4 years)</td>
-<td style="text-align: left;"><a href="potential2.html#sec-meth-training" class="quarto-xref"><span>Section 3.4.2</span></a></td>
+<td style="text-align: left;">Sec. <a href="potential2.html#sec-meth-training" class="quarto-xref"><span>3.4.2</span></a></td>
 </tr>
 <tr class="even">
 <td style="text-align: left;"><span class="math inline">\(y^*\)</span></td>
 <td style="text-align: left;">Target (prediction) year</td>
-<td style="text-align: left;"><a href="potential2.html#eq-train" class="quarto-xref">Equation&nbsp;<span>3.14</span></a></td>
+<td style="text-align: left;">Eq. <a href="potential2.html#eq-train" class="quarto-xref"><span>3.14</span></a></td>
 </tr>
 <tr class="odd">
 <td style="text-align: left;"><span class="math inline">\(B\)</span>, <span class="math inline">\(h_b\)</span></td>
 <td style="text-align: left;">Number of trees; tree <span class="math inline">\(b\)</span></td>
-<td style="text-align: left;"><a href="potential2.html#eq-rf-probability" class="quarto-xref">Equation&nbsp;<span>3.11</span></a></td>
+<td style="text-align: left;">Eq. <a href="potential2.html#eq-rf-probability" class="quarto-xref"><span>3.11</span></a></td>
 </tr>
 <tr class="even">
 <td style="text-align: left;"><span class="math inline">\(\nu\)</span></td>
 <td style="text-align: left;">Node of a tree</td>
-<td style="text-align: left;"><a href="potential2.html#eq-gini" class="quarto-xref">Equation&nbsp;<span>3.9</span></a></td>
+<td style="text-align: left;">Eq. <a href="potential2.html#eq-gini" class="quarto-xref"><span>3.9</span></a></td>
 </tr>
 <tr class="odd">
 <td style="text-align: left;"><span class="math inline">\(G(\nu)\)</span>, <span class="math inline">\(\Delta G\)</span></td>
 <td style="text-align: left;">Gini impurity; its decrease at a split</td>
-<td style="text-align: left;"><a href="potential2.html#eq-gini" class="quarto-xref">Equation&nbsp;<span>3.9</span></a>, <a href="potential2.html#eq-gini-decrease" class="quarto-xref">Equation&nbsp;<span>3.10</span></a></td>
+<td style="text-align: left;">Eq. <a href="potential2.html#eq-gini" class="quarto-xref"><span>3.9</span></a>, <a href="potential2.html#eq-gini-decrease" class="quarto-xref"><span>3.10</span></a></td>
 </tr>
 <tr class="even">
 <td style="text-align: left;"><span class="math inline">\(I_t(s)\)</span></td>
 <td style="text-align: left;">Importance of technology <span class="math inline">\(s\)</span> in the model for target <span class="math inline">\(t\)</span></td>
-<td style="text-align: left;"><a href="potential2.html#eq-importance" class="quarto-xref">Equation&nbsp;<span>3.13</span></a></td>
+<td style="text-align: left;">Eq. <a href="potential2.html#eq-importance" class="quarto-xref"><span>3.13</span></a></td>
 </tr>
 <tr class="odd">
 <td style="text-align: left;"><strong>Potential and FITS</strong></td>
@@ -390,12 +393,12 @@ Table&nbsp;A.1: Notation
 <tr class="even">
 <td style="text-align: left;"><span class="math inline">\(p_{r,t,y}\)</span></td>
 <td style="text-align: left;">Regional technological potential (predicted probability)</td>
-<td style="text-align: left;"><a href="potential2.html#eq-rf-probability" class="quarto-xref">Equation&nbsp;<span>3.11</span></a></td>
+<td style="text-align: left;">Eq. <a href="potential2.html#eq-rf-probability" class="quarto-xref"><span>3.11</span></a></td>
 </tr>
 <tr class="odd">
 <td style="text-align: left;"><span class="math inline">\(W_{t \to t'}\)</span></td>
 <td style="text-align: left;">FITS edge weight: normalised importance of <span class="math inline">\(t\)</span> in the model for <span class="math inline">\(t'\)</span></td>
-<td style="text-align: left;"><a href="potential2.html#eq-fits-weight" class="quarto-xref">Equation&nbsp;<span>3.16</span></a></td>
+<td style="text-align: left;">Eq. <a href="potential2.html#eq-fits-weight" class="quarto-xref"><span>3.16</span></a></td>
 </tr>
 <tr class="even">
 <td style="text-align: left;"><strong>Coherence</strong></td>
@@ -405,27 +408,27 @@ Table&nbsp;A.1: Notation
 <tr class="odd">
 <td style="text-align: left;"><span class="math inline">\(E^{\leftarrow}_{t,c}\)</span>, <span class="math inline">\(E^{\rightarrow}_{t,c}\)</span></td>
 <td style="text-align: left;">Incoming and outgoing embeddedness of technology <span class="math inline">\(t\)</span> in section <span class="math inline">\(c\)</span></td>
-<td style="text-align: left;"><a href="potential2.html#eq-emb-in" class="quarto-xref">Equation&nbsp;<span>3.17</span></a>, <a href="potential2.html#eq-emb-out" class="quarto-xref">Equation&nbsp;<span>3.18</span></a></td>
+<td style="text-align: left;">Eq. <a href="potential2.html#eq-emb-in" class="quarto-xref"><span>3.17</span></a>, <a href="potential2.html#eq-emb-out" class="quarto-xref"><span>3.18</span></a></td>
 </tr>
 <tr class="even">
 <td style="text-align: left;"><span class="math inline">\(S_{r,c}\)</span></td>
 <td style="text-align: left;">Technologies of section <span class="math inline">\(c\)</span> in which region <span class="math inline">\(r\)</span> specialises</td>
-<td style="text-align: left;"><a href="potential2.html#eq-region-set" class="quarto-xref">Equation&nbsp;<span>3.19</span></a></td>
+<td style="text-align: left;">Eq. <a href="potential2.html#eq-region-set" class="quarto-xref"><span>3.19</span></a></td>
 </tr>
 <tr class="odd">
 <td style="text-align: left;"><span class="math inline">\(E^{*\leftarrow}_{r,c}\)</span>, <span class="math inline">\(E^{*\rightarrow}_{r,c}\)</span></td>
 <td style="text-align: left;">Incoming and outgoing embeddedness of region <span class="math inline">\(r\)</span> in section <span class="math inline">\(c\)</span></td>
-<td style="text-align: left;"><a href="potential2.html#eq-region-emb-in" class="quarto-xref">Equation&nbsp;<span>3.20</span></a>, <a href="potential2.html#eq-region-emb-out" class="quarto-xref">Equation&nbsp;<span>3.21</span></a></td>
+<td style="text-align: left;">Eq. <a href="potential2.html#eq-region-emb-in" class="quarto-xref"><span>3.20</span></a>, <a href="potential2.html#eq-region-emb-out" class="quarto-xref"><span>3.21</span></a></td>
 </tr>
 <tr class="even">
 <td style="text-align: left;"><span class="math inline">\(\mathbf{v}_t\)</span>, <span class="math inline">\(\mathbf{v}_r\)</span></td>
 <td style="text-align: left;">Embeddedness profiles of the technology and the region</td>
-<td style="text-align: left;"><a href="potential2.html#eq-profile-tech" class="quarto-xref">Equation&nbsp;<span>3.23</span></a>, <a href="potential2.html#eq-profile-region" class="quarto-xref">Equation&nbsp;<span>3.24</span></a></td>
+<td style="text-align: left;">Eq. <a href="potential2.html#eq-profile-tech" class="quarto-xref"><span>3.23</span></a>, <a href="potential2.html#eq-profile-region" class="quarto-xref"><span>3.24</span></a></td>
 </tr>
 <tr class="odd">
 <td style="text-align: left;"><span class="math inline">\(\text{Coherence}_{r,t}\)</span></td>
 <td style="text-align: left;">Cosine similarity of the two profiles</td>
-<td style="text-align: left;"><a href="potential2.html#eq-coherence" class="quarto-xref">Equation&nbsp;<span>3.22</span></a></td>
+<td style="text-align: left;">Eq. <a href="potential2.html#eq-coherence" class="quarto-xref"><span>3.22</span></a></td>
 </tr>
 <tr class="even">
 <td style="text-align: left;"><strong>Empirical models</strong></td>
@@ -435,62 +438,62 @@ Table&nbsp;A.1: Notation
 <tr class="odd">
 <td style="text-align: left;"><span class="math inline">\(p^*_{r,t,y}\)</span></td>
 <td style="text-align: left;">Logit of potential</td>
-<td style="text-align: left;"><a href="empirical3.html#eq-logit-potential" class="quarto-xref">Equation&nbsp;<span>4.1</span></a></td>
+<td style="text-align: left;">Eq. <a href="empirical3.html#eq-logit-potential" class="quarto-xref"><span>4.1</span></a></td>
 </tr>
 <tr class="even">
 <td style="text-align: left;"><span class="math inline">\(P_{r,y}\)</span></td>
 <td style="text-align: left;">Average regional potential</td>
-<td style="text-align: left;"><a href="empirical3.html#eq-avg-potential" class="quarto-xref">Equation&nbsp;<span>4.2</span></a></td>
+<td style="text-align: left;">Eq. <a href="empirical3.html#eq-avg-potential" class="quarto-xref"><span>4.2</span></a></td>
 </tr>
 <tr class="odd">
 <td style="text-align: left;"><span class="math inline">\(\text{Entry}_{r,t,y+1}\)</span></td>
 <td style="text-align: left;">Entry into specialisation in the next period</td>
-<td style="text-align: left;"><a href="empirical3.html#eq-model0" class="quarto-xref">Equation&nbsp;<span>4.3</span></a></td>
+<td style="text-align: left;">Eq. <a href="empirical3.html#eq-model0" class="quarto-xref"><span>4.3</span></a></td>
 </tr>
 <tr class="even">
 <td style="text-align: left;"><span class="math inline">\(\mathbf{X}\)</span>, <span class="math inline">\(\boldsymbol{\beta}\)</span></td>
 <td style="text-align: left;">Covariates and their coefficients</td>
-<td style="text-align: left;"><a href="empirical3.html#eq-model1" class="quarto-xref">Equation&nbsp;<span>4.4</span></a></td>
+<td style="text-align: left;">Eq. <a href="empirical3.html#eq-model1" class="quarto-xref"><span>4.4</span></a></td>
 </tr>
 <tr class="odd">
 <td style="text-align: left;"><span class="math inline">\(\mathbf{Z}\)</span>, <span class="math inline">\(\boldsymbol{\gamma}\)</span></td>
 <td style="text-align: left;">Controls in Model 0 and their coefficients</td>
-<td style="text-align: left;"><a href="empirical3.html#eq-model0" class="quarto-xref">Equation&nbsp;<span>4.3</span></a></td>
+<td style="text-align: left;">Eq. <a href="empirical3.html#eq-model0" class="quarto-xref"><span>4.3</span></a></td>
 </tr>
 <tr class="even">
 <td style="text-align: left;"><span class="math inline">\(\alpha_r\)</span>, <span class="math inline">\(\alpha_y\)</span></td>
 <td style="text-align: left;">Region and year fixed effects</td>
-<td style="text-align: left;"><a href="empirical3.html#eq-model0" class="quarto-xref">Equation&nbsp;<span>4.3</span></a>, <a href="empirical3.html#eq-model1" class="quarto-xref">Equation&nbsp;<span>4.4</span></a></td>
+<td style="text-align: left;">Eq. <a href="empirical3.html#eq-model0" class="quarto-xref"><span>4.3</span></a>, <a href="empirical3.html#eq-model1" class="quarto-xref"><span>4.4</span></a></td>
 </tr>
 <tr class="odd">
 <td style="text-align: left;"><span class="math inline">\(\zeta_y\)</span></td>
 <td style="text-align: left;">Year effects in Models 2 and 3</td>
-<td style="text-align: left;"><a href="empirical3.html#eq-model2" class="quarto-xref">Equation&nbsp;<span>4.5</span></a>, <a href="empirical3.html#eq-sar" class="quarto-xref">Equation&nbsp;<span>4.7</span></a></td>
+<td style="text-align: left;">Eq. <a href="empirical3.html#eq-model2" class="quarto-xref"><span>4.5</span></a>, <a href="empirical3.html#eq-sar" class="quarto-xref"><span>4.7</span></a></td>
 </tr>
 <tr class="even">
 <td style="text-align: left;"><span class="math inline">\(u_c\)</span>, <span class="math inline">\(u_{r\mid c}\)</span></td>
 <td style="text-align: left;">Country and region-within-country random intercepts</td>
-<td style="text-align: left;"><a href="empirical3.html#eq-model2" class="quarto-xref">Equation&nbsp;<span>4.5</span></a></td>
+<td style="text-align: left;">Eq. <a href="empirical3.html#eq-model2" class="quarto-xref"><span>4.5</span></a></td>
 </tr>
 <tr class="odd">
 <td style="text-align: left;"><span class="math inline">\(w_{ij}\)</span>, <span class="math inline">\(\mathbf{W}\)</span></td>
 <td style="text-align: left;">Spatial weights (5 nearest neighbours) and the weights matrix in Model 3</td>
-<td style="text-align: left;"><a href="empirical3.html#eq-spatial-weights" class="quarto-xref">Equation&nbsp;<span>4.6</span></a>, <a href="empirical3.html#eq-sar" class="quarto-xref">Equation&nbsp;<span>4.7</span></a></td>
+<td style="text-align: left;">Eq. <a href="empirical3.html#eq-spatial-weights" class="quarto-xref"><span>4.6</span></a>, <a href="empirical3.html#eq-sar" class="quarto-xref"><span>4.7</span></a></td>
 </tr>
 <tr class="even">
 <td style="text-align: left;"><span class="math inline">\(\rho\)</span></td>
 <td style="text-align: left;">Spatial autoregressive parameter</td>
-<td style="text-align: left;"><a href="empirical3.html#eq-sar" class="quarto-xref">Equation&nbsp;<span>4.7</span></a></td>
+<td style="text-align: left;">Eq. <a href="empirical3.html#eq-sar" class="quarto-xref"><span>4.7</span></a></td>
 </tr>
 <tr class="odd">
 <td style="text-align: left;"><span class="math inline">\(\delta\)</span> (Model 3)</td>
 <td style="text-align: left;">Spatial error parameter</td>
-<td style="text-align: left;"><a href="empirical3.html#eq-sem" class="quarto-xref">Equation&nbsp;<span>4.8</span></a></td>
+<td style="text-align: left;">Eq. <a href="empirical3.html#eq-sem" class="quarto-xref"><span>4.8</span></a></td>
 </tr>
 <tr class="even">
 <td style="text-align: left;"><span class="math inline">\(\varepsilon\)</span></td>
 <td style="text-align: left;">Error term</td>
-<td style="text-align: left;"><a href="empirical3.html#eq-model1" class="quarto-xref">Equation&nbsp;<span>4.4</span></a></td>
+<td style="text-align: left;">Eq. <a href="empirical3.html#eq-model1" class="quarto-xref"><span>4.4</span></a></td>
 </tr>
 <tr class="odd">
 <td style="text-align: left;"><strong>Distance</strong></td>
@@ -500,17 +503,18 @@ Table&nbsp;A.1: Notation
 <tr class="even">
 <td style="text-align: left;"><span class="math inline">\(d(s,t)\)</span></td>
 <td style="text-align: left;">Distance between two technologies in FITS</td>
-<td style="text-align: left;"><a href="#eq-app-distance-pair" class="quarto-xref">Equation&nbsp;<span>A.1</span></a></td>
+<td style="text-align: left;">Eq. <a href="#eq-app-distance-pair" class="quarto-xref"><span>A.1</span></a></td>
 </tr>
 <tr class="odd">
 <td style="text-align: left;"><span class="math inline">\(\text{rawdist}_{r,t,y}\)</span></td>
 <td style="text-align: left;">Distance from the regional portfolio to technology <span class="math inline">\(t\)</span></td>
-<td style="text-align: left;"><a href="#eq-app-distance" class="quarto-xref">Equation&nbsp;<span>A.2</span></a></td>
+<td style="text-align: left;">Eq. <a href="#eq-app-distance" class="quarto-xref"><span>A.2</span></a></td>
 </tr>
 </tbody>
 </table>
 </div>
 </figure>
+</div>
 </div>
 </section>
 <section id="sec-app-rf-provenance" class="level2" data-number="A.2">
@@ -524,23 +528,23 @@ Table&nbsp;A.2: Provenance of the methodological claims in the Random Forest sec
 </figcaption>
 <div aria-describedby="tbl-rf-attribution-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
 <div class="cell-output-display">
-<div id="uhqxfwgyty" style="padding-left:0px;padding-right:0px;padding-top:10px;padding-bottom:10px;overflow-x:auto;overflow-y:auto;width:auto;height:auto;">
-<style>#uhqxfwgyty table {
+<div id="mupwuzphxs" style="padding-left:0px;padding-right:0px;padding-top:10px;padding-bottom:10px;overflow-x:auto;overflow-y:auto;width:auto;height:auto;">
+<style>#mupwuzphxs table {
   font-family: system-ui, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol', 'Noto Color Emoji';
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
 
-#uhqxfwgyty thead, #uhqxfwgyty tbody, #uhqxfwgyty tfoot, #uhqxfwgyty tr, #uhqxfwgyty td, #uhqxfwgyty th {
+#mupwuzphxs thead, #mupwuzphxs tbody, #mupwuzphxs tfoot, #mupwuzphxs tr, #mupwuzphxs td, #mupwuzphxs th {
   border-style: none;
 }
 
-#uhqxfwgyty p {
+#mupwuzphxs p {
   margin: 0;
   padding: 0;
 }
 
-#uhqxfwgyty .gt_table {
+#mupwuzphxs .gt_table {
   display: table;
   border-collapse: collapse;
   line-height: normal;
@@ -551,7 +555,7 @@ Table&nbsp;A.2: Provenance of the methodological claims in the Random Forest sec
   font-weight: normal;
   font-style: normal;
   background-color: #FFFFFF;
-  width: auto;
+  width: 100%;
   border-top-style: solid;
   border-top-width: 2px;
   border-top-color: #A8A8A8;
@@ -566,12 +570,12 @@ Table&nbsp;A.2: Provenance of the methodological claims in the Random Forest sec
   border-left-color: #D3D3D3;
 }
 
-#uhqxfwgyty .gt_caption {
+#mupwuzphxs .gt_caption {
   padding-top: 4px;
   padding-bottom: 4px;
 }
 
-#uhqxfwgyty .gt_title {
+#mupwuzphxs .gt_title {
   color: #333333;
   font-size: 125%;
   font-weight: initial;
@@ -583,7 +587,7 @@ Table&nbsp;A.2: Provenance of the methodological claims in the Random Forest sec
   border-bottom-width: 0;
 }
 
-#uhqxfwgyty .gt_subtitle {
+#mupwuzphxs .gt_subtitle {
   color: #333333;
   font-size: 85%;
   font-weight: initial;
@@ -595,7 +599,7 @@ Table&nbsp;A.2: Provenance of the methodological claims in the Random Forest sec
   border-top-width: 0;
 }
 
-#uhqxfwgyty .gt_heading {
+#mupwuzphxs .gt_heading {
   background-color: #FFFFFF;
   text-align: center;
   border-bottom-color: #FFFFFF;
@@ -607,13 +611,13 @@ Table&nbsp;A.2: Provenance of the methodological claims in the Random Forest sec
   border-right-color: #D3D3D3;
 }
 
-#uhqxfwgyty .gt_bottom_border {
+#mupwuzphxs .gt_bottom_border {
   border-bottom-style: solid;
   border-bottom-width: 2px;
   border-bottom-color: #D3D3D3;
 }
 
-#uhqxfwgyty .gt_col_headings {
+#mupwuzphxs .gt_col_headings {
   border-top-style: solid;
   border-top-width: 2px;
   border-top-color: #D3D3D3;
@@ -628,7 +632,7 @@ Table&nbsp;A.2: Provenance of the methodological claims in the Random Forest sec
   border-right-color: #D3D3D3;
 }
 
-#uhqxfwgyty .gt_col_heading {
+#mupwuzphxs .gt_col_heading {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -648,7 +652,7 @@ Table&nbsp;A.2: Provenance of the methodological claims in the Random Forest sec
   overflow-x: hidden;
 }
 
-#uhqxfwgyty .gt_column_spanner_outer {
+#mupwuzphxs .gt_column_spanner_outer {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -660,15 +664,15 @@ Table&nbsp;A.2: Provenance of the methodological claims in the Random Forest sec
   padding-right: 4px;
 }
 
-#uhqxfwgyty .gt_column_spanner_outer:first-child {
+#mupwuzphxs .gt_column_spanner_outer:first-child {
   padding-left: 0;
 }
 
-#uhqxfwgyty .gt_column_spanner_outer:last-child {
+#mupwuzphxs .gt_column_spanner_outer:last-child {
   padding-right: 0;
 }
 
-#uhqxfwgyty .gt_column_spanner {
+#mupwuzphxs .gt_column_spanner {
   border-bottom-style: solid;
   border-bottom-width: 2px;
   border-bottom-color: #D3D3D3;
@@ -680,11 +684,11 @@ Table&nbsp;A.2: Provenance of the methodological claims in the Random Forest sec
   width: 100%;
 }
 
-#uhqxfwgyty .gt_spanner_row {
+#mupwuzphxs .gt_spanner_row {
   border-bottom-style: hidden;
 }
 
-#uhqxfwgyty .gt_group_heading {
+#mupwuzphxs .gt_group_heading {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -710,7 +714,7 @@ Table&nbsp;A.2: Provenance of the methodological claims in the Random Forest sec
   text-align: left;
 }
 
-#uhqxfwgyty .gt_empty_group_heading {
+#mupwuzphxs .gt_empty_group_heading {
   padding: 0.5px;
   color: #333333;
   background-color: #FFFFFF;
@@ -725,15 +729,15 @@ Table&nbsp;A.2: Provenance of the methodological claims in the Random Forest sec
   vertical-align: middle;
 }
 
-#uhqxfwgyty .gt_from_md > :first-child {
+#mupwuzphxs .gt_from_md > :first-child {
   margin-top: 0;
 }
 
-#uhqxfwgyty .gt_from_md > :last-child {
+#mupwuzphxs .gt_from_md > :last-child {
   margin-bottom: 0;
 }
 
-#uhqxfwgyty .gt_row {
+#mupwuzphxs .gt_row {
   padding-top: 4px;
   padding-bottom: 4px;
   padding-left: 5px;
@@ -752,7 +756,7 @@ Table&nbsp;A.2: Provenance of the methodological claims in the Random Forest sec
   overflow-x: hidden;
 }
 
-#uhqxfwgyty .gt_stub {
+#mupwuzphxs .gt_stub {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -765,7 +769,7 @@ Table&nbsp;A.2: Provenance of the methodological claims in the Random Forest sec
   padding-right: 5px;
 }
 
-#uhqxfwgyty .gt_stub_row_group {
+#mupwuzphxs .gt_stub_row_group {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -779,15 +783,15 @@ Table&nbsp;A.2: Provenance of the methodological claims in the Random Forest sec
   vertical-align: top;
 }
 
-#uhqxfwgyty .gt_row_group_first td {
+#mupwuzphxs .gt_row_group_first td {
   border-top-width: 2px;
 }
 
-#uhqxfwgyty .gt_row_group_first th {
+#mupwuzphxs .gt_row_group_first th {
   border-top-width: 2px;
 }
 
-#uhqxfwgyty .gt_summary_row {
+#mupwuzphxs .gt_summary_row {
   color: #333333;
   background-color: #FFFFFF;
   text-transform: inherit;
@@ -797,16 +801,16 @@ Table&nbsp;A.2: Provenance of the methodological claims in the Random Forest sec
   padding-right: 5px;
 }
 
-#uhqxfwgyty .gt_first_summary_row {
+#mupwuzphxs .gt_first_summary_row {
   border-top-style: solid;
   border-top-color: #D3D3D3;
 }
 
-#uhqxfwgyty .gt_first_summary_row.thick {
+#mupwuzphxs .gt_first_summary_row.thick {
   border-top-width: 2px;
 }
 
-#uhqxfwgyty .gt_last_summary_row {
+#mupwuzphxs .gt_last_summary_row {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -816,7 +820,7 @@ Table&nbsp;A.2: Provenance of the methodological claims in the Random Forest sec
   border-bottom-color: #D3D3D3;
 }
 
-#uhqxfwgyty .gt_grand_summary_row {
+#mupwuzphxs .gt_grand_summary_row {
   color: #333333;
   background-color: #FFFFFF;
   text-transform: inherit;
@@ -826,7 +830,7 @@ Table&nbsp;A.2: Provenance of the methodological claims in the Random Forest sec
   padding-right: 5px;
 }
 
-#uhqxfwgyty .gt_first_grand_summary_row {
+#mupwuzphxs .gt_first_grand_summary_row {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -836,7 +840,7 @@ Table&nbsp;A.2: Provenance of the methodological claims in the Random Forest sec
   border-top-color: #D3D3D3;
 }
 
-#uhqxfwgyty .gt_last_grand_summary_row_top {
+#mupwuzphxs .gt_last_grand_summary_row_top {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -846,11 +850,11 @@ Table&nbsp;A.2: Provenance of the methodological claims in the Random Forest sec
   border-bottom-color: #D3D3D3;
 }
 
-#uhqxfwgyty .gt_striped {
+#mupwuzphxs .gt_striped {
   background-color: rgba(128, 128, 128, 0.05);
 }
 
-#uhqxfwgyty .gt_table_body {
+#mupwuzphxs .gt_table_body {
   border-top-style: solid;
   border-top-width: 2px;
   border-top-color: #D3D3D3;
@@ -859,7 +863,7 @@ Table&nbsp;A.2: Provenance of the methodological claims in the Random Forest sec
   border-bottom-color: #D3D3D3;
 }
 
-#uhqxfwgyty .gt_footnotes {
+#mupwuzphxs .gt_footnotes {
   color: #333333;
   background-color: #FFFFFF;
   border-bottom-style: none;
@@ -873,7 +877,7 @@ Table&nbsp;A.2: Provenance of the methodological claims in the Random Forest sec
   border-right-color: #D3D3D3;
 }
 
-#uhqxfwgyty .gt_footnote {
+#mupwuzphxs .gt_footnote {
   margin: 0px;
   font-size: 90%;
   padding-top: 4px;
@@ -882,7 +886,7 @@ Table&nbsp;A.2: Provenance of the methodological claims in the Random Forest sec
   padding-right: 5px;
 }
 
-#uhqxfwgyty .gt_sourcenotes {
+#mupwuzphxs .gt_sourcenotes {
   color: #333333;
   background-color: #FFFFFF;
   border-bottom-style: none;
@@ -896,7 +900,7 @@ Table&nbsp;A.2: Provenance of the methodological claims in the Random Forest sec
   border-right-color: #D3D3D3;
 }
 
-#uhqxfwgyty .gt_sourcenote {
+#mupwuzphxs .gt_sourcenote {
   font-size: 90%;
   padding-top: 4px;
   padding-bottom: 4px;
@@ -904,115 +908,129 @@ Table&nbsp;A.2: Provenance of the methodological claims in the Random Forest sec
   padding-right: 5px;
 }
 
-#uhqxfwgyty .gt_left {
+#mupwuzphxs .gt_left {
   text-align: left;
 }
 
-#uhqxfwgyty .gt_center {
+#mupwuzphxs .gt_center {
   text-align: center;
 }
 
-#uhqxfwgyty .gt_right {
+#mupwuzphxs .gt_right {
   text-align: right;
   font-variant-numeric: tabular-nums;
 }
 
-#uhqxfwgyty .gt_font_normal {
+#mupwuzphxs .gt_font_normal {
   font-weight: normal;
 }
 
-#uhqxfwgyty .gt_font_bold {
+#mupwuzphxs .gt_font_bold {
   font-weight: bold;
 }
 
-#uhqxfwgyty .gt_font_italic {
+#mupwuzphxs .gt_font_italic {
   font-style: italic;
 }
 
-#uhqxfwgyty .gt_super {
+#mupwuzphxs .gt_super {
   font-size: 65%;
 }
 
-#uhqxfwgyty .gt_footnote_marks {
+#mupwuzphxs .gt_footnote_marks {
   font-size: 75%;
   vertical-align: 0.4em;
   position: initial;
 }
 
-#uhqxfwgyty .gt_asterisk {
+#mupwuzphxs .gt_asterisk {
   font-size: 100%;
   vertical-align: 0;
 }
 
-#uhqxfwgyty .gt_indent_1 {
+#mupwuzphxs .gt_indent_1 {
   text-indent: 5px;
 }
 
-#uhqxfwgyty .gt_indent_2 {
+#mupwuzphxs .gt_indent_2 {
   text-indent: 10px;
 }
 
-#uhqxfwgyty .gt_indent_3 {
+#mupwuzphxs .gt_indent_3 {
   text-indent: 15px;
 }
 
-#uhqxfwgyty .gt_indent_4 {
+#mupwuzphxs .gt_indent_4 {
   text-indent: 20px;
 }
 
-#uhqxfwgyty .gt_indent_5 {
+#mupwuzphxs .gt_indent_5 {
   text-indent: 25px;
 }
 
-#uhqxfwgyty .katex-display {
+#mupwuzphxs .katex-display {
   display: inline-flex !important;
   margin-bottom: 0.75em !important;
 }
 
-#uhqxfwgyty div.Reactable > div.rt-table > div.rt-thead > div.rt-tr.rt-tr-group-header > div.rt-th-group:after {
+#mupwuzphxs div.Reactable > div.rt-table > div.rt-thead > div.rt-tr.rt-tr-group-header > div.rt-th-group:after {
   height: 0px !important;
 }
 </style>
 
 <table class="gt_table cell caption-top table table-sm table-striped small" data-quarto-bootstrap="false">
+<colgroup>
+<col style="width: 40%">
+<col style="width: 32%">
+<col style="width: 28%">
+</colgroup>
 <thead>
 <tr class="gt_col_headings header">
-<th id="Q" class="gt_col_heading gt_columns_bottom_border gt_left" data-quarto-table-cell-role="th" scope="col">Guiding question</th>
 <th id="ML" class="gt_col_heading gt_columns_bottom_border gt_left" data-quarto-table-cell-role="th" scope="col">Machine learning literature</th>
 <th id="Rel" class="gt_col_heading gt_columns_bottom_border gt_left" data-quarto-table-cell-role="th" scope="col">Relatedness literature</th>
 <th id="Own" class="gt_col_heading gt_columns_bottom_border gt_left" data-quarto-table-cell-role="th" scope="col">Our own claim</th>
 </tr>
 </thead>
 <tbody class="gt_table_body">
-<tr class="odd">
-<td class="gt_row gt_left" headers="Q" style="font-weight: bold">Can it handle sparse, high-dimensional portfolios?</td>
-<td class="gt_row gt_left" headers="ML">Feature subsampling at each split avoids the small-n, large-p problem (Breiman 2001)</td>
-<td class="gt_row gt_left" headers="Rel">Used on sparse export and patent baskets (Tacchella et al. 2023; Albora et al. 2023)</td>
-<td class="gt_row gt_left" headers="Own">That NUTS2 portfolios are sparse in exactly this way</td>
+<tr class="gt_group_heading_row odd">
+<th colspan="3" id="Can-it-handle-sparse,-high-dimensional-portfolios?" class="gt_group_heading" data-quarto-table-cell-role="th" style="font-style: italic; font-weight: bold" scope="colgroup">Can it handle sparse, high-dimensional portfolios?</th>
 </tr>
-<tr class="even">
-<td class="gt_row gt_left" headers="Q" style="font-weight: bold">Can it capture what linear aggregation cannot?</td>
-<td class="gt_row gt_left" headers="ML">Importance decomposes across all interaction terms (Louppe et al. 2013)</td>
-<td class="gt_row gt_left" headers="Rel">Summing pairwise relatedness is an oversimplification (Tacchella et al. 2023)</td>
-<td class="gt_row gt_left" headers="Own">Reading these interactions as capability complementarities</td>
+<tr class="gt_row_group_first even">
+<td class="gt_row gt_left" headers="Can-it-handle-sparse,-high-dimensional-portfolios?  ML">Feature subsampling at each split avoids the small-n, large-p problem (Breiman 2001)</td>
+<td class="gt_row gt_left" headers="Can-it-handle-sparse,-high-dimensional-portfolios?  Rel">Used on sparse export and patent baskets (Tacchella et al. 2023; Albora et al. 2023)</td>
+<td class="gt_row gt_left" headers="Can-it-handle-sparse,-high-dimensional-portfolios?  Own">That NUTS2 portfolios are sparse in exactly this way</td>
 </tr>
-<tr class="odd">
-<td class="gt_row gt_left" headers="Q" style="font-weight: bold">Can it stay interpretable?</td>
-<td class="gt_row gt_left" headers="ML">Importance aggregates each predictor's contribution across trees (Breiman 2001)</td>
-<td class="gt_row gt_left" headers="Rel">Importances can form a technology network (Fessina et al. 2024)</td>
-<td class="gt_row gt_left" headers="Own">Deriving both constructs from one estimation</td>
+<tr class="gt_group_heading_row odd">
+<th colspan="3" id="Can-it-capture-what-linear-aggregation-cannot?" class="gt_group_heading" data-quarto-table-cell-role="th" style="font-style: italic; font-weight: bold" scope="colgroup">Can it capture what linear aggregation cannot?</th>
 </tr>
-<tr class="even">
-<td class="gt_row gt_left" headers="Q" style="font-weight: bold">Is it stable at our sample size?</td>
-<td class="gt_row gt_left" headers="ML">Bagging reduces the variance of single trees (Breiman 1996)</td>
-<td class="gt_row gt_left" headers="Rel">—</td>
-<td class="gt_row gt_left" headers="Own">Moderate n per technology-year model</td>
+<tr class="gt_row_group_first even">
+<td class="gt_row gt_left" headers="Can-it-capture-what-linear-aggregation-cannot?  ML">Importance decomposes across all interaction terms (Louppe et al. 2013)</td>
+<td class="gt_row gt_left" headers="Can-it-capture-what-linear-aggregation-cannot?  Rel">Summing pairwise relatedness is an oversimplification (Tacchella et al. 2023)</td>
+<td class="gt_row gt_left" headers="Can-it-capture-what-linear-aggregation-cannot?  Own">Reading these interactions as capability complementarities</td>
 </tr>
-<tr class="odd">
-<td class="gt_row gt_left" headers="Q" style="font-weight: bold">What can it not do?</td>
-<td class="gt_row gt_left" headers="ML">Gini importance is biased; correlated features mask one another (Strobl et al. 2007; Louppe et al. 2013)</td>
-<td class="gt_row gt_left" headers="Rel">—</td>
-<td class="gt_row gt_left" headers="Own">A weak FITS edge may reflect masking, not absence of dependence</td>
+<tr class="gt_group_heading_row odd">
+<th colspan="3" id="Can-it-stay-interpretable?" class="gt_group_heading" data-quarto-table-cell-role="th" style="font-style: italic; font-weight: bold" scope="colgroup">Can it stay interpretable?</th>
+</tr>
+<tr class="gt_row_group_first even">
+<td class="gt_row gt_left" headers="Can-it-stay-interpretable?  ML">Importance aggregates each predictor's contribution across trees (Breiman 2001)</td>
+<td class="gt_row gt_left" headers="Can-it-stay-interpretable?  Rel">Importances can form a technology network (Fessina et al. 2024)</td>
+<td class="gt_row gt_left" headers="Can-it-stay-interpretable?  Own">Deriving both constructs from one estimation</td>
+</tr>
+<tr class="gt_group_heading_row odd">
+<th colspan="3" id="Is-it-stable-at-our-sample-size?" class="gt_group_heading" data-quarto-table-cell-role="th" style="font-style: italic; font-weight: bold" scope="colgroup">Is it stable at our sample size?</th>
+</tr>
+<tr class="gt_row_group_first even">
+<td class="gt_row gt_left" headers="Is-it-stable-at-our-sample-size?  ML">Bagging reduces the variance of single trees (Breiman 1996)</td>
+<td class="gt_row gt_left" headers="Is-it-stable-at-our-sample-size?  Rel">—</td>
+<td class="gt_row gt_left" headers="Is-it-stable-at-our-sample-size?  Own">Moderate n per technology-year model</td>
+</tr>
+<tr class="gt_group_heading_row odd">
+<th colspan="3" id="What-can-it-not-do?" class="gt_group_heading" data-quarto-table-cell-role="th" style="font-style: italic; font-weight: bold" scope="colgroup">What can it not do?</th>
+</tr>
+<tr class="gt_row_group_first even">
+<td class="gt_row gt_left" headers="What-can-it-not-do?  ML">Gini importance is biased; correlated features mask one another (Strobl et al. 2007; Louppe et al. 2013)</td>
+<td class="gt_row gt_left" headers="What-can-it-not-do?  Rel">—</td>
+<td class="gt_row gt_left" headers="What-can-it-not-do?  Own">A weak FITS edge may reflect masking, not absence of dependence</td>
 </tr>
 </tbody>
 </table>
@@ -1033,8 +1051,151 @@ Table&nbsp;A.2: Provenance of the methodological claims in the Random Forest sec
 <p><span id="eq-app-distance"><span class="math display">\[\text{rawdist}_{r,t,y} = \min_{s:\,\text{RTA}_{r,s,y} \geq 1} d(s,t) \tag{A.2}\]</span></span></p>
 <p>Keeping the shorter direction loses the information on which technology predicts which. We accept this to keep the later models tractable. When no path connects a technology to the regional portfolio, the distance is missing.</p>
 </section>
-<section id="sec-app-benchmark" class="level2" data-number="A.4">
-<h2 data-number="A.4" class="anchored" data-anchor-id="sec-app-benchmark"><span class="header-section-number">A.4</span> Entry benchmark: the part of potential that density does not explain</h2>
+<section id="sec-app-maps" class="level2" data-number="A.4">
+<h2 data-number="A.4" class="anchored" data-anchor-id="sec-app-maps"><span class="header-section-number">A.4</span> Geographic distribution of the covariates</h2>
+<p>The maps below show the geographic distribution of the covariates described in <a href="empirical3.html#sec-emp-data" class="quarto-xref"><span>Section 4.3</span></a>, for 2008 and 2018. The maps of average potential and patent count are shown in the main text (<a href="empirical3.html#fig-map-potential" class="quarto-xref">Figure&nbsp;<span>4.1</span></a> and <a href="empirical3.html#fig-map-avg-count" class="quarto-xref">Figure&nbsp;<span>4.2</span></a>).</p>
+<div class="landscape">
+<div class="quarto-layout-panel" data-layout="[[47,-6,47]]">
+<div class="quarto-layout-row">
+<div class="cell quarto-layout-cell" style="flex-basis: 47.0%;justify-content: flex-start;">
+<div id="fig-map-coherence" class="cell quarto-float quarto-figure quarto-figure-center anchored">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-map-coherence-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<div class="cell-output-display">
+<div id="fig-map-coherence" class="quarto-float quarto-figure quarto-figure-center anchored">
+<figure class="quarto-float quarto-subfloat-fig figure">
+<div aria-describedby="fig-map-coherence-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="appendix_files/figure-html/fig-map-coherence-1.png" style="height:9.5cm" data-ref-parent="fig-map-coherence" width="900" class="figure-img">
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-subfloat-caption quarto-subfloat-fig" id="fig-map-coherence-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+(a) This map shows the average coherence for each region in 2008 and 2018, the alignment between the industrial embeddedness of the region’s portfolio and that of technologies in FITS. High-coherence regions (bright yellow) have portfolios aligned with the industrial profiles of many technologies, while low-coherence regions (dark purple) are aligned with fewer.
+</figcaption>
+</figure>
+</div>
+</div>
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-map-coherence-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figure&nbsp;A.1: Average Coherence Across Regions (2008 vs 2018)
+</figcaption>
+</figure>
+</div>
+</div>
+<div class="quarto-figure-spacer quarto-layout-cell" style="flex-basis: 6.0%;justify-content: flex-start;">
+<p>&nbsp;</p>
+</div>
+<div class="cell quarto-layout-cell" style="flex-basis: 47.0%;justify-content: flex-start;">
+<div id="fig-map-avg-rd" class="cell quarto-float quarto-figure quarto-figure-center anchored">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-map-avg-rd-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<div class="cell-output-display">
+<div id="fig-map-avg-rd" class="quarto-float quarto-figure quarto-figure-center anchored">
+<figure class="quarto-float quarto-subfloat-fig figure">
+<div aria-describedby="fig-map-avg-rd-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="appendix_files/figure-html/fig-map-avg-rd-1.png" style="height:9.5cm" data-ref-parent="fig-map-avg-rd" width="900" class="figure-img">
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-subfloat-caption quarto-subfloat-fig" id="fig-map-avg-rd-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+(a) This map shows the average relatedness density for each region, computed as the mean density score across all non-specialised technologies. High density regions (bright colours) face a dense feasibility landscape with many related opportunities, while low density regions (dark colours) face sparser opportunity structures.
+</figcaption>
+</figure>
+</div>
+</div>
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-map-avg-rd-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figure&nbsp;A.2: Average Relatedness Density Across Regional Technology Portfolios
+</figcaption>
+</figure>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="landscape">
+<div class="quarto-layout-panel" data-layout="[[47,-6,47]]">
+<div class="quarto-layout-row">
+<div class="cell quarto-layout-cell" style="flex-basis: 47.0%;justify-content: flex-start;">
+<div id="fig-map-avg-bet" class="cell quarto-float quarto-figure quarto-figure-center anchored">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-map-avg-bet-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<div class="cell-output-display">
+<div id="fig-map-avg-bet" class="quarto-float quarto-figure quarto-figure-center anchored">
+<figure class="quarto-float quarto-subfloat-fig figure">
+<div aria-describedby="fig-map-avg-bet-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="appendix_files/figure-html/fig-map-avg-bet-1.png" style="height:9.5cm" data-ref-parent="fig-map-avg-bet" width="900" class="figure-img">
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-subfloat-caption quarto-subfloat-fig" id="fig-map-avg-bet-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+(a) This map displays the average betweenness centrality of regional technology portfolios, the extent to which regions specialise in bridge technologies in the FITS network. High betweenness regions (bright yellow) have portfolios rich in bridging technologies, while low betweenness regions (dark blue) concentrate in specialised endpoints or peripheral technologies.
+</figcaption>
+</figure>
+</div>
+</div>
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-map-avg-bet-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figure&nbsp;A.3: Average Betweenness Centrality of Regional Technology Portfolios
+</figcaption>
+</figure>
+</div>
+</div>
+<div class="quarto-figure-spacer quarto-layout-cell" style="flex-basis: 6.0%;justify-content: flex-start;">
+<p>&nbsp;</p>
+</div>
+<div class="cell quarto-layout-cell" style="flex-basis: 47.0%;justify-content: flex-start;">
+<div id="fig-map-avg-eig" class="cell quarto-float quarto-figure quarto-figure-center anchored">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-map-avg-eig-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<div class="cell-output-display">
+<div id="fig-map-avg-eig" class="quarto-float quarto-figure quarto-figure-center anchored">
+<figure class="quarto-float quarto-subfloat-fig figure">
+<div aria-describedby="fig-map-avg-eig-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="appendix_files/figure-html/fig-map-avg-eig-1.png" style="height:9.5cm" data-ref-parent="fig-map-avg-eig" width="900" class="figure-img">
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-subfloat-caption quarto-subfloat-fig" id="fig-map-avg-eig-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+(a) This map shows the average eigenvector centrality of technologies in which each region specialises, capturing the extent to which regional portfolios occupy the structural core of the FITS network. High eigenvector regions (red/pink) concentrate in central, highly interdependent technology domains, while low eigenvector regions (blue) specialise in peripheral or isolated technologies.
+</figcaption>
+</figure>
+</div>
+</div>
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-map-avg-eig-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figure&nbsp;A.4: Average Eigenvector Centrality of Regional Technology Portfolios
+</figcaption>
+</figure>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="landscape">
+<div class="quarto-layout-panel" data-layout-ncol="2">
+<div class="quarto-layout-row">
+<div class="cell quarto-layout-cell" style="flex-basis: 50.0%;justify-content: flex-start;">
+<div id="fig-map-avg-comp" class="cell quarto-float quarto-figure quarto-figure-center anchored">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-map-avg-comp-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<div class="cell-output-display">
+<div id="fig-map-avg-comp" class="quarto-float quarto-figure quarto-figure-center anchored">
+<figure class="quarto-float quarto-subfloat-fig figure">
+<div aria-describedby="fig-map-avg-comp-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="appendix_files/figure-html/fig-map-avg-comp-1.png" style="height:9.5cm" data-ref-parent="fig-map-avg-comp" width="900" class="figure-img">
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-subfloat-caption quarto-subfloat-fig" id="fig-map-avg-comp-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+(a) This map displays regional complexity, a measure of the sophistication and diversity of regional technological portfolios, across 345 European NUTS2 regions. Values are standardised and capped at 2 standard deviations; the pattern reveals a clear core-periphery divide.
+</figcaption>
+</figure>
+</div>
+</div>
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-map-avg-comp-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figure&nbsp;A.5: Geographic Distribution of Regional Complexity Across European NUTS2 Regions (2008 vs 2018)
+</figcaption>
+</figure>
+</div>
+</div>
+</div>
+</div>
+</div>
+</section>
+<section id="sec-app-benchmark" class="level2" data-number="A.5">
+<h2 data-number="A.5" class="anchored" data-anchor-id="sec-app-benchmark"><span class="header-section-number">A.5</span> Entry benchmark: the part of potential that density does not explain</h2>
 <p>This section reports two checks on the entry benchmark (Model 0). <a href="#tbl-bench-diag" class="quarto-xref">Table&nbsp;<span>A.3</span></a> shows how strongly potential and relatedness density are correlated, and whether their joint estimation is affected by collinearity. <a href="#tbl-bench-models" class="quarto-xref">Table&nbsp;<span>A.4</span></a> repeats the benchmark with the standardised residual from regressing potential on relatedness density (“Resid”), which is the part of potential that density does not explain.</p>
 <div class="cell" data-tbl-pos="H">
 <div id="tbl-bench-diag" class="cell quarto-float quarto-figure quarto-figure-center anchored" data-tbl-pos="H">
@@ -1044,23 +1205,23 @@ Table&nbsp;A.3: Collinearity diagnostics, Model 0
 </figcaption>
 <div aria-describedby="tbl-bench-diag-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
 <div class="cell-output-display">
-<div id="omlptpdmvk" style="padding-left:0px;padding-right:0px;padding-top:10px;padding-bottom:10px;overflow-x:auto;overflow-y:auto;width:auto;height:auto;">
-<style>#omlptpdmvk table {
+<div id="wyawixyqcf" style="padding-left:0px;padding-right:0px;padding-top:10px;padding-bottom:10px;overflow-x:auto;overflow-y:auto;width:auto;height:auto;">
+<style>#wyawixyqcf table {
   font-family: system-ui, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol', 'Noto Color Emoji';
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
 
-#omlptpdmvk thead, #omlptpdmvk tbody, #omlptpdmvk tfoot, #omlptpdmvk tr, #omlptpdmvk td, #omlptpdmvk th {
+#wyawixyqcf thead, #wyawixyqcf tbody, #wyawixyqcf tfoot, #wyawixyqcf tr, #wyawixyqcf td, #wyawixyqcf th {
   border-style: none;
 }
 
-#omlptpdmvk p {
+#wyawixyqcf p {
   margin: 0;
   padding: 0;
 }
 
-#omlptpdmvk .gt_table {
+#wyawixyqcf .gt_table {
   display: table;
   border-collapse: collapse;
   line-height: normal;
@@ -1086,12 +1247,12 @@ Table&nbsp;A.3: Collinearity diagnostics, Model 0
   border-left-color: #D3D3D3;
 }
 
-#omlptpdmvk .gt_caption {
+#wyawixyqcf .gt_caption {
   padding-top: 4px;
   padding-bottom: 4px;
 }
 
-#omlptpdmvk .gt_title {
+#wyawixyqcf .gt_title {
   color: #333333;
   font-size: 125%;
   font-weight: initial;
@@ -1103,7 +1264,7 @@ Table&nbsp;A.3: Collinearity diagnostics, Model 0
   border-bottom-width: 0;
 }
 
-#omlptpdmvk .gt_subtitle {
+#wyawixyqcf .gt_subtitle {
   color: #333333;
   font-size: 85%;
   font-weight: initial;
@@ -1115,7 +1276,7 @@ Table&nbsp;A.3: Collinearity diagnostics, Model 0
   border-top-width: 0;
 }
 
-#omlptpdmvk .gt_heading {
+#wyawixyqcf .gt_heading {
   background-color: #FFFFFF;
   text-align: center;
   border-bottom-color: #FFFFFF;
@@ -1127,13 +1288,13 @@ Table&nbsp;A.3: Collinearity diagnostics, Model 0
   border-right-color: #D3D3D3;
 }
 
-#omlptpdmvk .gt_bottom_border {
+#wyawixyqcf .gt_bottom_border {
   border-bottom-style: solid;
   border-bottom-width: 2px;
   border-bottom-color: #D3D3D3;
 }
 
-#omlptpdmvk .gt_col_headings {
+#wyawixyqcf .gt_col_headings {
   border-top-style: solid;
   border-top-width: 2px;
   border-top-color: #D3D3D3;
@@ -1148,7 +1309,7 @@ Table&nbsp;A.3: Collinearity diagnostics, Model 0
   border-right-color: #D3D3D3;
 }
 
-#omlptpdmvk .gt_col_heading {
+#wyawixyqcf .gt_col_heading {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -1168,7 +1329,7 @@ Table&nbsp;A.3: Collinearity diagnostics, Model 0
   overflow-x: hidden;
 }
 
-#omlptpdmvk .gt_column_spanner_outer {
+#wyawixyqcf .gt_column_spanner_outer {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -1180,15 +1341,15 @@ Table&nbsp;A.3: Collinearity diagnostics, Model 0
   padding-right: 4px;
 }
 
-#omlptpdmvk .gt_column_spanner_outer:first-child {
+#wyawixyqcf .gt_column_spanner_outer:first-child {
   padding-left: 0;
 }
 
-#omlptpdmvk .gt_column_spanner_outer:last-child {
+#wyawixyqcf .gt_column_spanner_outer:last-child {
   padding-right: 0;
 }
 
-#omlptpdmvk .gt_column_spanner {
+#wyawixyqcf .gt_column_spanner {
   border-bottom-style: solid;
   border-bottom-width: 2px;
   border-bottom-color: #D3D3D3;
@@ -1200,11 +1361,11 @@ Table&nbsp;A.3: Collinearity diagnostics, Model 0
   width: 100%;
 }
 
-#omlptpdmvk .gt_spanner_row {
+#wyawixyqcf .gt_spanner_row {
   border-bottom-style: hidden;
 }
 
-#omlptpdmvk .gt_group_heading {
+#wyawixyqcf .gt_group_heading {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -1230,7 +1391,7 @@ Table&nbsp;A.3: Collinearity diagnostics, Model 0
   text-align: left;
 }
 
-#omlptpdmvk .gt_empty_group_heading {
+#wyawixyqcf .gt_empty_group_heading {
   padding: 0.5px;
   color: #333333;
   background-color: #FFFFFF;
@@ -1245,15 +1406,15 @@ Table&nbsp;A.3: Collinearity diagnostics, Model 0
   vertical-align: middle;
 }
 
-#omlptpdmvk .gt_from_md > :first-child {
+#wyawixyqcf .gt_from_md > :first-child {
   margin-top: 0;
 }
 
-#omlptpdmvk .gt_from_md > :last-child {
+#wyawixyqcf .gt_from_md > :last-child {
   margin-bottom: 0;
 }
 
-#omlptpdmvk .gt_row {
+#wyawixyqcf .gt_row {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -1272,7 +1433,7 @@ Table&nbsp;A.3: Collinearity diagnostics, Model 0
   overflow-x: hidden;
 }
 
-#omlptpdmvk .gt_stub {
+#wyawixyqcf .gt_stub {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -1285,7 +1446,7 @@ Table&nbsp;A.3: Collinearity diagnostics, Model 0
   padding-right: 5px;
 }
 
-#omlptpdmvk .gt_stub_row_group {
+#wyawixyqcf .gt_stub_row_group {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -1299,15 +1460,15 @@ Table&nbsp;A.3: Collinearity diagnostics, Model 0
   vertical-align: top;
 }
 
-#omlptpdmvk .gt_row_group_first td {
+#wyawixyqcf .gt_row_group_first td {
   border-top-width: 2px;
 }
 
-#omlptpdmvk .gt_row_group_first th {
+#wyawixyqcf .gt_row_group_first th {
   border-top-width: 2px;
 }
 
-#omlptpdmvk .gt_summary_row {
+#wyawixyqcf .gt_summary_row {
   color: #333333;
   background-color: #FFFFFF;
   text-transform: inherit;
@@ -1317,16 +1478,16 @@ Table&nbsp;A.3: Collinearity diagnostics, Model 0
   padding-right: 5px;
 }
 
-#omlptpdmvk .gt_first_summary_row {
+#wyawixyqcf .gt_first_summary_row {
   border-top-style: solid;
   border-top-color: #D3D3D3;
 }
 
-#omlptpdmvk .gt_first_summary_row.thick {
+#wyawixyqcf .gt_first_summary_row.thick {
   border-top-width: 2px;
 }
 
-#omlptpdmvk .gt_last_summary_row {
+#wyawixyqcf .gt_last_summary_row {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -1336,7 +1497,7 @@ Table&nbsp;A.3: Collinearity diagnostics, Model 0
   border-bottom-color: #D3D3D3;
 }
 
-#omlptpdmvk .gt_grand_summary_row {
+#wyawixyqcf .gt_grand_summary_row {
   color: #333333;
   background-color: #FFFFFF;
   text-transform: inherit;
@@ -1346,7 +1507,7 @@ Table&nbsp;A.3: Collinearity diagnostics, Model 0
   padding-right: 5px;
 }
 
-#omlptpdmvk .gt_first_grand_summary_row {
+#wyawixyqcf .gt_first_grand_summary_row {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -1356,7 +1517,7 @@ Table&nbsp;A.3: Collinearity diagnostics, Model 0
   border-top-color: #D3D3D3;
 }
 
-#omlptpdmvk .gt_last_grand_summary_row_top {
+#wyawixyqcf .gt_last_grand_summary_row_top {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -1366,11 +1527,11 @@ Table&nbsp;A.3: Collinearity diagnostics, Model 0
   border-bottom-color: #D3D3D3;
 }
 
-#omlptpdmvk .gt_striped {
+#wyawixyqcf .gt_striped {
   background-color: rgba(128, 128, 128, 0.05);
 }
 
-#omlptpdmvk .gt_table_body {
+#wyawixyqcf .gt_table_body {
   border-top-style: solid;
   border-top-width: 2px;
   border-top-color: #D3D3D3;
@@ -1379,7 +1540,7 @@ Table&nbsp;A.3: Collinearity diagnostics, Model 0
   border-bottom-color: #D3D3D3;
 }
 
-#omlptpdmvk .gt_footnotes {
+#wyawixyqcf .gt_footnotes {
   color: #333333;
   background-color: #FFFFFF;
   border-bottom-style: none;
@@ -1393,7 +1554,7 @@ Table&nbsp;A.3: Collinearity diagnostics, Model 0
   border-right-color: #D3D3D3;
 }
 
-#omlptpdmvk .gt_footnote {
+#wyawixyqcf .gt_footnote {
   margin: 0px;
   font-size: 90%;
   padding-top: 4px;
@@ -1402,7 +1563,7 @@ Table&nbsp;A.3: Collinearity diagnostics, Model 0
   padding-right: 5px;
 }
 
-#omlptpdmvk .gt_sourcenotes {
+#wyawixyqcf .gt_sourcenotes {
   color: #333333;
   background-color: #FFFFFF;
   border-bottom-style: none;
@@ -1416,7 +1577,7 @@ Table&nbsp;A.3: Collinearity diagnostics, Model 0
   border-right-color: #D3D3D3;
 }
 
-#omlptpdmvk .gt_sourcenote {
+#wyawixyqcf .gt_sourcenote {
   font-size: 90%;
   padding-top: 4px;
   padding-bottom: 4px;
@@ -1424,72 +1585,72 @@ Table&nbsp;A.3: Collinearity diagnostics, Model 0
   padding-right: 5px;
 }
 
-#omlptpdmvk .gt_left {
+#wyawixyqcf .gt_left {
   text-align: left;
 }
 
-#omlptpdmvk .gt_center {
+#wyawixyqcf .gt_center {
   text-align: center;
 }
 
-#omlptpdmvk .gt_right {
+#wyawixyqcf .gt_right {
   text-align: right;
   font-variant-numeric: tabular-nums;
 }
 
-#omlptpdmvk .gt_font_normal {
+#wyawixyqcf .gt_font_normal {
   font-weight: normal;
 }
 
-#omlptpdmvk .gt_font_bold {
+#wyawixyqcf .gt_font_bold {
   font-weight: bold;
 }
 
-#omlptpdmvk .gt_font_italic {
+#wyawixyqcf .gt_font_italic {
   font-style: italic;
 }
 
-#omlptpdmvk .gt_super {
+#wyawixyqcf .gt_super {
   font-size: 65%;
 }
 
-#omlptpdmvk .gt_footnote_marks {
+#wyawixyqcf .gt_footnote_marks {
   font-size: 75%;
   vertical-align: 0.4em;
   position: initial;
 }
 
-#omlptpdmvk .gt_asterisk {
+#wyawixyqcf .gt_asterisk {
   font-size: 100%;
   vertical-align: 0;
 }
 
-#omlptpdmvk .gt_indent_1 {
+#wyawixyqcf .gt_indent_1 {
   text-indent: 5px;
 }
 
-#omlptpdmvk .gt_indent_2 {
+#wyawixyqcf .gt_indent_2 {
   text-indent: 10px;
 }
 
-#omlptpdmvk .gt_indent_3 {
+#wyawixyqcf .gt_indent_3 {
   text-indent: 15px;
 }
 
-#omlptpdmvk .gt_indent_4 {
+#wyawixyqcf .gt_indent_4 {
   text-indent: 20px;
 }
 
-#omlptpdmvk .gt_indent_5 {
+#wyawixyqcf .gt_indent_5 {
   text-indent: 25px;
 }
 
-#omlptpdmvk .katex-display {
+#wyawixyqcf .katex-display {
   display: inline-flex !important;
   margin-bottom: 0.75em !important;
 }
 
-#omlptpdmvk div.Reactable > div.rt-table > div.rt-thead > div.rt-tr.rt-tr-group-header > div.rt-th-group:after {
+#wyawixyqcf div.Reactable > div.rt-table > div.rt-thead > div.rt-tr.rt-tr-group-header > div.rt-th-group:after {
   height: 0px !important;
 }
 </style>
@@ -1545,25 +1706,25 @@ Table&nbsp;A.4: Entry benchmark with the orthogonal component of Potential
 
     <script>
       // Create table-specific functions using external factory
-      const tableFns_xvu4r3urgajx2p47uxds = TinyTable.createTableFunctions("tinytable_xvu4r3urgajx2p47uxds");
+      const tableFns_576e88vnu4hqrawr8iv8 = TinyTable.createTableFunctions("tinytable_576e88vnu4hqrawr8iv8");
       // tinytable span after
       window.addEventListener('load', function () {
           var cellsToStyle = [
             // tinytable style arrays after
-          { positions: [ { i: '15', j: 2 }, { i: '15', j: 3 }, { i: '15', j: 4 }, { i: '15', j: 5 } ], css_id: 'tinytable_css_zli52w760nst10x8apga',}, 
-          { positions: [ { i: '12', j: 2 }, { i: '12', j: 3 }, { i: '12', j: 4 }, { i: '12', j: 5 } ], css_id: 'tinytable_css_tes7td2qwjkdeug6k7ha',}, 
-          { positions: [ { i: '1', j: 2 }, { i: '2', j: 2 }, { i: '3', j: 2 }, { i: '4', j: 2 }, { i: '5', j: 2 }, { i: '6', j: 2 }, { i: '7', j: 2 }, { i: '8', j: 2 }, { i: '9', j: 2 }, { i: '10', j: 2 }, { i: '11', j: 2 }, { i: '13', j: 2 }, { i: '14', j: 2 }, { i: '1', j: 3 }, { i: '2', j: 3 }, { i: '3', j: 3 }, { i: '4', j: 3 }, { i: '5', j: 3 }, { i: '6', j: 3 }, { i: '7', j: 3 }, { i: '8', j: 3 }, { i: '9', j: 3 }, { i: '10', j: 3 }, { i: '11', j: 3 }, { i: '13', j: 3 }, { i: '14', j: 3 }, { i: '1', j: 4 }, { i: '2', j: 4 }, { i: '3', j: 4 }, { i: '4', j: 4 }, { i: '5', j: 4 }, { i: '6', j: 4 }, { i: '7', j: 4 }, { i: '8', j: 4 }, { i: '9', j: 4 }, { i: '10', j: 4 }, { i: '11', j: 4 }, { i: '13', j: 4 }, { i: '14', j: 4 }, { i: '1', j: 5 }, { i: '2', j: 5 }, { i: '3', j: 5 }, { i: '4', j: 5 }, { i: '5', j: 5 }, { i: '6', j: 5 }, { i: '7', j: 5 }, { i: '8', j: 5 }, { i: '9', j: 5 }, { i: '10', j: 5 }, { i: '11', j: 5 }, { i: '13', j: 5 }, { i: '14', j: 5 } ], css_id: 'tinytable_css_ul3x2bjovdiyzqisp7z1',}, 
-          { positions: [ { i: '0', j: 2 }, { i: '0', j: 3 }, { i: '0', j: 4 }, { i: '0', j: 5 } ], css_id: 'tinytable_css_6zvb977n1ajhk1sob39x',}, 
-          { positions: [ { i: '15', j: 1 } ], css_id: 'tinytable_css_bz8sysuwlrxsieoz9d6b',}, 
-          { positions: [ { i: '12', j: 1 } ], css_id: 'tinytable_css_34gcth7m5olb317skevz',}, 
-          { positions: [ { i: '1', j: 1 }, { i: '2', j: 1 }, { i: '3', j: 1 }, { i: '4', j: 1 }, { i: '5', j: 1 }, { i: '6', j: 1 }, { i: '7', j: 1 }, { i: '8', j: 1 }, { i: '9', j: 1 }, { i: '10', j: 1 }, { i: '11', j: 1 }, { i: '13', j: 1 }, { i: '14', j: 1 } ], css_id: 'tinytable_css_afma7oj642ezbb4zikk0',}, 
-          { positions: [ { i: '0', j: 1 } ], css_id: 'tinytable_css_r8yq42z98b4dr858kw69',}, 
+          { positions: [ { i: '15', j: 2 }, { i: '15', j: 3 }, { i: '15', j: 4 }, { i: '15', j: 5 } ], css_id: 'tinytable_css_w4ik223vrus32m3vvb6c',}, 
+          { positions: [ { i: '12', j: 2 }, { i: '12', j: 3 }, { i: '12', j: 4 }, { i: '12', j: 5 } ], css_id: 'tinytable_css_kqgitgy68b16h8lhte70',}, 
+          { positions: [ { i: '1', j: 2 }, { i: '2', j: 2 }, { i: '3', j: 2 }, { i: '4', j: 2 }, { i: '5', j: 2 }, { i: '6', j: 2 }, { i: '7', j: 2 }, { i: '8', j: 2 }, { i: '9', j: 2 }, { i: '10', j: 2 }, { i: '11', j: 2 }, { i: '13', j: 2 }, { i: '14', j: 2 }, { i: '1', j: 3 }, { i: '2', j: 3 }, { i: '3', j: 3 }, { i: '4', j: 3 }, { i: '5', j: 3 }, { i: '6', j: 3 }, { i: '7', j: 3 }, { i: '8', j: 3 }, { i: '9', j: 3 }, { i: '10', j: 3 }, { i: '11', j: 3 }, { i: '13', j: 3 }, { i: '14', j: 3 }, { i: '1', j: 4 }, { i: '2', j: 4 }, { i: '3', j: 4 }, { i: '4', j: 4 }, { i: '5', j: 4 }, { i: '6', j: 4 }, { i: '7', j: 4 }, { i: '8', j: 4 }, { i: '9', j: 4 }, { i: '10', j: 4 }, { i: '11', j: 4 }, { i: '13', j: 4 }, { i: '14', j: 4 }, { i: '1', j: 5 }, { i: '2', j: 5 }, { i: '3', j: 5 }, { i: '4', j: 5 }, { i: '5', j: 5 }, { i: '6', j: 5 }, { i: '7', j: 5 }, { i: '8', j: 5 }, { i: '9', j: 5 }, { i: '10', j: 5 }, { i: '11', j: 5 }, { i: '13', j: 5 }, { i: '14', j: 5 } ], css_id: 'tinytable_css_7tr93hg0pm6s3uy8zmwb',}, 
+          { positions: [ { i: '0', j: 2 }, { i: '0', j: 3 }, { i: '0', j: 4 }, { i: '0', j: 5 } ], css_id: 'tinytable_css_y41f2oelktz1aqeugj84',}, 
+          { positions: [ { i: '15', j: 1 } ], css_id: 'tinytable_css_2mbvq12l6t8xp4nmlkpo',}, 
+          { positions: [ { i: '12', j: 1 } ], css_id: 'tinytable_css_7zzn8zkwl0adhu2h7vc7',}, 
+          { positions: [ { i: '1', j: 1 }, { i: '2', j: 1 }, { i: '3', j: 1 }, { i: '4', j: 1 }, { i: '5', j: 1 }, { i: '6', j: 1 }, { i: '7', j: 1 }, { i: '8', j: 1 }, { i: '9', j: 1 }, { i: '10', j: 1 }, { i: '11', j: 1 }, { i: '13', j: 1 }, { i: '14', j: 1 } ], css_id: 'tinytable_css_kvfl00a413caqdvca38k',}, 
+          { positions: [ { i: '0', j: 1 } ], css_id: 'tinytable_css_xm6h3yutkfbreu7efhr5',}, 
           ];
 
           // Loop over the arrays to style the cells
           cellsToStyle.forEach(function (group) {
               group.positions.forEach(function (cell) {
-                  tableFns_xvu4r3urgajx2p47uxds.styleCell(cell.i, cell.j, group.css_id);
+                  tableFns_576e88vnu4hqrawr8iv8.styleCell(cell.i, cell.j, group.css_id);
               });
           });
       });
@@ -1572,17 +1733,17 @@ Table&nbsp;A.4: Entry benchmark with the orthogonal component of Potential
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/vincentarelbundock/tinytable@main/inst/tinytable.css">
     <style>
     /* tinytable css entries after */
-    #tinytable_xvu4r3urgajx2p47uxds td.tinytable_css_zli52w760nst10x8apga, #tinytable_xvu4r3urgajx2p47uxds th.tinytable_css_zli52w760nst10x8apga {  position: relative; --border-bottom: 1; --border-left: 0; --border-right: 0; --border-top: 0; --line-color-bottom: var(--tt-line-color); --line-color-left: var(--tt-line-color); --line-color-right: var(--tt-line-color); --line-color-top: var(--tt-line-color); --line-width-bottom: 0.08em; --line-width-left: 0.1em; --line-width-right: 0.1em; --line-width-top: 0.1em; --trim-bottom-left: 0%; --trim-bottom-right: 0%; --trim-left-bottom: 0%; --trim-left-top: 0%; --trim-right-bottom: 0%; --trim-right-top: 0%; --trim-top-left: 0%; --trim-top-right: 0%; ; text-align: center }
-    #tinytable_xvu4r3urgajx2p47uxds td.tinytable_css_tes7td2qwjkdeug6k7ha, #tinytable_xvu4r3urgajx2p47uxds th.tinytable_css_tes7td2qwjkdeug6k7ha {  position: relative; --border-bottom: 1; --border-left: 0; --border-right: 0; --border-top: 0; --line-color-bottom: var(--tt-line-color); --line-color-left: var(--tt-line-color); --line-color-right: var(--tt-line-color); --line-color-top: var(--tt-line-color); --line-width-bottom: 0.05em; --line-width-left: 0.1em; --line-width-right: 0.1em; --line-width-top: 0.1em; --trim-bottom-left: 0%; --trim-bottom-right: 0%; --trim-left-bottom: 0%; --trim-left-top: 0%; --trim-right-bottom: 0%; --trim-right-top: 0%; --trim-top-left: 0%; --trim-top-right: 0%; ; text-align: center }
-    #tinytable_xvu4r3urgajx2p47uxds td.tinytable_css_ul3x2bjovdiyzqisp7z1, #tinytable_xvu4r3urgajx2p47uxds th.tinytable_css_ul3x2bjovdiyzqisp7z1 { text-align: center }
-    #tinytable_xvu4r3urgajx2p47uxds td.tinytable_css_6zvb977n1ajhk1sob39x, #tinytable_xvu4r3urgajx2p47uxds th.tinytable_css_6zvb977n1ajhk1sob39x {  position: relative; --border-bottom: 1; --border-left: 0; --border-right: 0; --border-top: 1; --line-color-bottom: var(--tt-line-color); --line-color-left: var(--tt-line-color); --line-color-right: var(--tt-line-color); --line-color-top: var(--tt-line-color); --line-width-bottom: 0.05em; --line-width-left: 0.1em; --line-width-right: 0.1em; --line-width-top: 0.08em; --trim-bottom-left: 0%; --trim-bottom-right: 0%; --trim-left-bottom: 0%; --trim-left-top: 0%; --trim-right-bottom: 0%; --trim-right-top: 0%; --trim-top-left: 0%; --trim-top-right: 0%; ; text-align: center }
-    #tinytable_xvu4r3urgajx2p47uxds td.tinytable_css_bz8sysuwlrxsieoz9d6b, #tinytable_xvu4r3urgajx2p47uxds th.tinytable_css_bz8sysuwlrxsieoz9d6b {  position: relative; --border-bottom: 1; --border-left: 0; --border-right: 0; --border-top: 0; --line-color-bottom: var(--tt-line-color); --line-color-left: var(--tt-line-color); --line-color-right: var(--tt-line-color); --line-color-top: var(--tt-line-color); --line-width-bottom: 0.08em; --line-width-left: 0.1em; --line-width-right: 0.1em; --line-width-top: 0.1em; --trim-bottom-left: 0%; --trim-bottom-right: 0%; --trim-left-bottom: 0%; --trim-left-top: 0%; --trim-right-bottom: 0%; --trim-right-top: 0%; --trim-top-left: 0%; --trim-top-right: 0%; ; text-align: left }
-    #tinytable_xvu4r3urgajx2p47uxds td.tinytable_css_34gcth7m5olb317skevz, #tinytable_xvu4r3urgajx2p47uxds th.tinytable_css_34gcth7m5olb317skevz {  position: relative; --border-bottom: 1; --border-left: 0; --border-right: 0; --border-top: 0; --line-color-bottom: var(--tt-line-color); --line-color-left: var(--tt-line-color); --line-color-right: var(--tt-line-color); --line-color-top: var(--tt-line-color); --line-width-bottom: 0.05em; --line-width-left: 0.1em; --line-width-right: 0.1em; --line-width-top: 0.1em; --trim-bottom-left: 0%; --trim-bottom-right: 0%; --trim-left-bottom: 0%; --trim-left-top: 0%; --trim-right-bottom: 0%; --trim-right-top: 0%; --trim-top-left: 0%; --trim-top-right: 0%; ; text-align: left }
-    #tinytable_xvu4r3urgajx2p47uxds td.tinytable_css_afma7oj642ezbb4zikk0, #tinytable_xvu4r3urgajx2p47uxds th.tinytable_css_afma7oj642ezbb4zikk0 { text-align: left }
-    #tinytable_xvu4r3urgajx2p47uxds td.tinytable_css_r8yq42z98b4dr858kw69, #tinytable_xvu4r3urgajx2p47uxds th.tinytable_css_r8yq42z98b4dr858kw69 {  position: relative; --border-bottom: 1; --border-left: 0; --border-right: 0; --border-top: 1; --line-color-bottom: var(--tt-line-color); --line-color-left: var(--tt-line-color); --line-color-right: var(--tt-line-color); --line-color-top: var(--tt-line-color); --line-width-bottom: 0.05em; --line-width-left: 0.1em; --line-width-right: 0.1em; --line-width-top: 0.08em; --trim-bottom-left: 0%; --trim-bottom-right: 0%; --trim-left-bottom: 0%; --trim-left-top: 0%; --trim-right-bottom: 0%; --trim-right-top: 0%; --trim-top-left: 0%; --trim-top-right: 0%; ; text-align: left }
+    #tinytable_576e88vnu4hqrawr8iv8 td.tinytable_css_w4ik223vrus32m3vvb6c, #tinytable_576e88vnu4hqrawr8iv8 th.tinytable_css_w4ik223vrus32m3vvb6c {  position: relative; --border-bottom: 1; --border-left: 0; --border-right: 0; --border-top: 0; --line-color-bottom: var(--tt-line-color); --line-color-left: var(--tt-line-color); --line-color-right: var(--tt-line-color); --line-color-top: var(--tt-line-color); --line-width-bottom: 0.08em; --line-width-left: 0.1em; --line-width-right: 0.1em; --line-width-top: 0.1em; --trim-bottom-left: 0%; --trim-bottom-right: 0%; --trim-left-bottom: 0%; --trim-left-top: 0%; --trim-right-bottom: 0%; --trim-right-top: 0%; --trim-top-left: 0%; --trim-top-right: 0%; ; text-align: center }
+    #tinytable_576e88vnu4hqrawr8iv8 td.tinytable_css_kqgitgy68b16h8lhte70, #tinytable_576e88vnu4hqrawr8iv8 th.tinytable_css_kqgitgy68b16h8lhte70 {  position: relative; --border-bottom: 1; --border-left: 0; --border-right: 0; --border-top: 0; --line-color-bottom: var(--tt-line-color); --line-color-left: var(--tt-line-color); --line-color-right: var(--tt-line-color); --line-color-top: var(--tt-line-color); --line-width-bottom: 0.05em; --line-width-left: 0.1em; --line-width-right: 0.1em; --line-width-top: 0.1em; --trim-bottom-left: 0%; --trim-bottom-right: 0%; --trim-left-bottom: 0%; --trim-left-top: 0%; --trim-right-bottom: 0%; --trim-right-top: 0%; --trim-top-left: 0%; --trim-top-right: 0%; ; text-align: center }
+    #tinytable_576e88vnu4hqrawr8iv8 td.tinytable_css_7tr93hg0pm6s3uy8zmwb, #tinytable_576e88vnu4hqrawr8iv8 th.tinytable_css_7tr93hg0pm6s3uy8zmwb { text-align: center }
+    #tinytable_576e88vnu4hqrawr8iv8 td.tinytable_css_y41f2oelktz1aqeugj84, #tinytable_576e88vnu4hqrawr8iv8 th.tinytable_css_y41f2oelktz1aqeugj84 {  position: relative; --border-bottom: 1; --border-left: 0; --border-right: 0; --border-top: 1; --line-color-bottom: var(--tt-line-color); --line-color-left: var(--tt-line-color); --line-color-right: var(--tt-line-color); --line-color-top: var(--tt-line-color); --line-width-bottom: 0.05em; --line-width-left: 0.1em; --line-width-right: 0.1em; --line-width-top: 0.08em; --trim-bottom-left: 0%; --trim-bottom-right: 0%; --trim-left-bottom: 0%; --trim-left-top: 0%; --trim-right-bottom: 0%; --trim-right-top: 0%; --trim-top-left: 0%; --trim-top-right: 0%; ; text-align: center }
+    #tinytable_576e88vnu4hqrawr8iv8 td.tinytable_css_2mbvq12l6t8xp4nmlkpo, #tinytable_576e88vnu4hqrawr8iv8 th.tinytable_css_2mbvq12l6t8xp4nmlkpo {  position: relative; --border-bottom: 1; --border-left: 0; --border-right: 0; --border-top: 0; --line-color-bottom: var(--tt-line-color); --line-color-left: var(--tt-line-color); --line-color-right: var(--tt-line-color); --line-color-top: var(--tt-line-color); --line-width-bottom: 0.08em; --line-width-left: 0.1em; --line-width-right: 0.1em; --line-width-top: 0.1em; --trim-bottom-left: 0%; --trim-bottom-right: 0%; --trim-left-bottom: 0%; --trim-left-top: 0%; --trim-right-bottom: 0%; --trim-right-top: 0%; --trim-top-left: 0%; --trim-top-right: 0%; ; text-align: left }
+    #tinytable_576e88vnu4hqrawr8iv8 td.tinytable_css_7zzn8zkwl0adhu2h7vc7, #tinytable_576e88vnu4hqrawr8iv8 th.tinytable_css_7zzn8zkwl0adhu2h7vc7 {  position: relative; --border-bottom: 1; --border-left: 0; --border-right: 0; --border-top: 0; --line-color-bottom: var(--tt-line-color); --line-color-left: var(--tt-line-color); --line-color-right: var(--tt-line-color); --line-color-top: var(--tt-line-color); --line-width-bottom: 0.05em; --line-width-left: 0.1em; --line-width-right: 0.1em; --line-width-top: 0.1em; --trim-bottom-left: 0%; --trim-bottom-right: 0%; --trim-left-bottom: 0%; --trim-left-top: 0%; --trim-right-bottom: 0%; --trim-right-top: 0%; --trim-top-left: 0%; --trim-top-right: 0%; ; text-align: left }
+    #tinytable_576e88vnu4hqrawr8iv8 td.tinytable_css_kvfl00a413caqdvca38k, #tinytable_576e88vnu4hqrawr8iv8 th.tinytable_css_kvfl00a413caqdvca38k { text-align: left }
+    #tinytable_576e88vnu4hqrawr8iv8 td.tinytable_css_xm6h3yutkfbreu7efhr5, #tinytable_576e88vnu4hqrawr8iv8 th.tinytable_css_xm6h3yutkfbreu7efhr5 {  position: relative; --border-bottom: 1; --border-left: 0; --border-right: 0; --border-top: 1; --line-color-bottom: var(--tt-line-color); --line-color-left: var(--tt-line-color); --line-color-right: var(--tt-line-color); --line-color-top: var(--tt-line-color); --line-width-bottom: 0.05em; --line-width-left: 0.1em; --line-width-right: 0.1em; --line-width-top: 0.08em; --trim-bottom-left: 0%; --trim-bottom-right: 0%; --trim-left-bottom: 0%; --trim-left-top: 0%; --trim-right-bottom: 0%; --trim-right-top: 0%; --trim-top-left: 0%; --trim-top-right: 0%; ; text-align: left }
     </style>
     <div class="container">
-      <table class="tinytable" id="tinytable_xvu4r3urgajx2p47uxds" style="width: auto; margin-left: auto; margin-right: auto;" data-quarto-disable-processing="true">
+      <table class="tinytable" id="tinytable_576e88vnu4hqrawr8iv8" style="width: auto; margin-left: auto; margin-right: auto;" data-quarto-disable-processing="true">
         
         <thead>
               <tr>
@@ -1706,6 +1867,160 @@ Table&nbsp;A.4: Entry benchmark with the orthogonal component of Potential
     </div>
 <!-- hack to avoid NA insertion in last line -->
 </div>
+</div>
+</figure>
+</div>
+</div>
+</section>
+<section id="sec-app-revisions" class="level2" data-number="A.6">
+<h2 data-number="A.6" class="anchored" data-anchor-id="sec-app-revisions"><span class="header-section-number">A.6</span> Summary of revisions following the pre-review</h2>
+<p>This section summarises the revisions made in response to the pre-review of the dissertation. Reviewer 1’s comments concerned mainly the readability and structure of the manuscript, and Reviewer 2’s comments mainly the transparency of sources and methods. <a href="#tbl-app-revisions" class="quarto-xref">Table&nbsp;<span>A.5</span></a> lists each comment, the revision made, and where it can be found in the revised text.</p>
+<div class="landscape">
+<div id="tbl-app-revisions" class="quarto-float quarto-figure quarto-figure-center anchored">
+<figure class="quarto-float quarto-float-tbl figure">
+<figcaption class="quarto-float-caption-top quarto-float-caption quarto-float-tbl" id="tbl-app-revisions-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Table&nbsp;A.5: Summary of revisions following the pre-review
+</figcaption>
+<div aria-describedby="tbl-app-revisions-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<table class="caption-top table">
+<colgroup>
+<col style="width: 11%">
+<col style="width: 6%">
+<col style="width: 30%">
+<col style="width: 38%">
+<col style="width: 13%">
+</colgroup>
+<thead>
+<tr class="header">
+<th style="text-align: left;">Element</th>
+<th style="text-align: left;">Rev.</th>
+<th style="text-align: left;">Comment</th>
+<th style="text-align: left;">Revision</th>
+<th style="text-align: left;">Location</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: left;">Introduction</td>
+<td style="text-align: left;">1, 2</td>
+<td style="text-align: left;">Contribution not stated explicitly</td>
+<td style="text-align: left;">Dedicated section distinguishing what is adopted, adapted and new</td>
+<td style="text-align: left;"><a href="intro.html#sec-intro-contribution" class="quarto-xref"><span>Section 1.4</span></a></td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">Introduction</td>
+<td style="text-align: left;">1</td>
+<td style="text-align: left;">Argument compressed; overlap with later chapters</td>
+<td style="text-align: left;">Problem statement condensed; technical critique moved to Chapter 3</td>
+<td style="text-align: left;"><a href="intro.html#sec-intro-problem" class="quarto-xref"><span>Section 1.2</span></a></td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">Introduction</td>
+<td style="text-align: left;">2</td>
+<td style="text-align: left;">General claims lack references; European context appears late</td>
+<td style="text-align: left;">References added; European setting stated with the research questions</td>
+<td style="text-align: left;"><a href="intro.html#sec-intro-rq-hypotheses" class="quarto-xref"><span>Section 1.5</span></a></td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">Introduction</td>
+<td style="text-align: left;">1</td>
+<td style="text-align: left;">Structure and research-question links unclear</td>
+<td style="text-align: left;">Chapter functions described; each RQ refers to its literature section</td>
+<td style="text-align: left;"><a href="intro.html#sec-intro-structure" class="quarto-xref"><span>Section 1.6</span></a></td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">Literature review</td>
+<td style="text-align: left;">1, 2</td>
+<td style="text-align: left;">Not organised around the research questions; GEI not justified</td>
+<td style="text-align: left;">One section per research question; GEI justified; summary table</td>
+<td style="text-align: left;"><a href="lit_rev.html" class="quarto-xref"><span>Chapter 2</span></a>, <a href="lit_rev.html#sec-lit-national" class="quarto-xref"><span>Section 2.5</span></a>, <a href="lit_rev.html#sec-lit-summary" class="quarto-xref"><span>Section 2.7</span></a></td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">Methodology</td>
+<td style="text-align: left;">1, 2</td>
+<td style="text-align: left;">No clear structure or roadmap</td>
+<td style="text-align: left;">Chapter reorganised, with a roadmap and a narrative summary</td>
+<td style="text-align: left;"><a href="potential2.html#sec-meth-motivation" class="quarto-xref"><span>Section 3.1</span></a>, <a href="potential2.html#sec-meth-summary" class="quarto-xref"><span>Section 3.6</span></a></td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">Formulas and notation</td>
+<td style="text-align: left;">1, 2</td>
+<td style="text-align: left;">Coherence formula inconsistent; unused measures; unnumbered equations</td>
+<td style="text-align: left;">Formulas corrected; unused measures removed; equations numbered; notation table</td>
+<td style="text-align: left;"><a href="potential2.html#sec-meth-coherence" class="quarto-xref"><span>Section 3.5</span></a>, <a href="#sec-app-notation" class="quarto-xref"><span>Section A.1</span></a></td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">Sources of methods</td>
+<td style="text-align: left;">2</td>
+<td style="text-align: left;">Unclear what is taken, adapted or original</td>
+<td style="text-align: left;">Provenance stated in the text; provenance table; references added</td>
+<td style="text-align: left;"><a href="potential2.html#sec-meth-why-rf" class="quarto-xref"><span>Section 3.3.2</span></a>, <a href="#sec-app-rf-provenance" class="quarto-xref"><span>Section A.2</span></a></td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">Methodological choices</td>
+<td style="text-align: left;">2</td>
+<td style="text-align: left;">Patent data, zero links, simple averages insufficiently justified</td>
+<td style="text-align: left;">Each choice justified in the text</td>
+<td style="text-align: left;"><a href="potential2.html#sec-meth-data" class="quarto-xref"><span>Section 3.4.1</span></a>, <a href="potential2.html#sec-meth-coherence" class="quarto-xref"><span>Section 3.5</span></a></td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">Limits of Random Forest</td>
+<td style="text-align: left;">1, 2</td>
+<td style="text-align: left;">Limitations of the method not discussed</td>
+<td style="text-align: left;">Dedicated subsection on what the method cannot establish</td>
+<td style="text-align: left;"><a href="potential2.html#sec-meth-rf-limits" class="quarto-xref"><span>Section 3.3.4</span></a></td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">Empirical design</td>
+<td style="text-align: left;">1</td>
+<td style="text-align: left;">Dense chapter; causal language; spatial model questioned</td>
+<td style="text-align: left;">Roadmap and guiding questions; language of association; Model 3 justified</td>
+<td style="text-align: left;"><a href="empirical3.html#sec-emp-overview" class="quarto-xref"><span>Section 4.1</span></a>, <a href="empirical3.html#sec-emp-model3" class="quarto-xref"><span>Section 4.7</span></a></td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">Distance variable</td>
+<td style="text-align: left;">2</td>
+<td style="text-align: left;">Construction from network weights unclear</td>
+<td style="text-align: left;">Construction described</td>
+<td style="text-align: left;"><a href="#sec-app-distance" class="quarto-xref"><span>Section A.3</span></a></td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">Entry benchmark</td>
+<td style="text-align: left;">1, 2</td>
+<td style="text-align: left;">Density remains significant; collinearity not assessed</td>
+<td style="text-align: left;">Collinearity diagnostics; re-estimation with the orthogonal component of potential</td>
+<td style="text-align: left;"><a href="#sec-app-benchmark" class="quarto-xref"><span>Section A.5</span></a></td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">Results</td>
+<td style="text-align: left;">1</td>
+<td style="text-align: left;">Hard to follow; Models 2 and 3 appear contradictory</td>
+<td style="text-align: left;">Guiding questions at each transition; the two levels of measurement explained</td>
+<td style="text-align: left;"><a href="results2.html" class="quarto-xref"><span>Chapter 5</span></a>, <a href="results2.html#sec-res-space" class="quarto-xref"><span>Section 5.5</span></a></td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">Conclusion</td>
+<td style="text-align: left;">1, 2</td>
+<td style="text-align: left;">Limitations late and unstructured; summary list-like</td>
+<td style="text-align: left;">Limitations grouped by topic; each research question answered</td>
+<td style="text-align: left;"><a href="summary.html#sec-sum-methodology" class="quarto-xref"><span>Section 6.1.1</span></a>, <a href="summary.html#sec-sum-conclusion" class="quarto-xref"><span>Section 6.3</span></a></td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">Figures</td>
+<td style="text-align: left;">2</td>
+<td style="text-align: left;">Missing sources, references and panel labels; duplicated figure</td>
+<td style="text-align: left;">Sources, references and labels added; duplicate replaced</td>
+<td style="text-align: left;"><a href="potential2.html#fig-tachella" class="quarto-xref">Figure&nbsp;<span>3.1</span></a>, <a href="potential2.html#fig-d06q" class="quarto-xref">Figure&nbsp;<span>3.4</span></a>, <a href="potential2.html#fig-plot_eg" class="quarto-xref">Figure&nbsp;<span>3.5</span></a></td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">Typesetting</td>
+<td style="text-align: left;">1</td>
+<td style="text-align: left;">Overlapping figures; missing captions; tables beyond margins</td>
+<td style="text-align: left;">Maps resized and paired on landscape pages; tables resized</td>
+<td style="text-align: left;"><a href="empirical3.html#fig-map-potential" class="quarto-xref">Figure&nbsp;<span>4.1</span></a>, <a href="#sec-app-maps" class="quarto-xref"><span>Section A.4</span></a></td>
+</tr>
+</tbody>
+</table>
 </div>
 </figure>
 </div>

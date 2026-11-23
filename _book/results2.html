@@ -276,7 +276,7 @@ window.Quarto = {
 <section id="sec-res-benchmark" class="level2" data-number="5.1">
 <h2 data-number="5.1" class="anchored" data-anchor-id="sec-res-benchmark"><span class="header-section-number">5.1</span> Entry as a benchmark</h2>
 <p>Before decomposing potential, we first ask whether it is worth decomposing. Does potential tell us more about entry than relatedness density already does?</p>
-<p>In <a href="#tbl-entry-ols" class="quarto-xref">Table&nbsp;<span>5.1</span></a> we benchmark how much conventional relatedness density and potential (pred11) explain regional entry to a new technology. In the pooled specifications, both measures strongly predict entry: relatedness density is positive and precisely estimated (<span class="math inline">\(0.055\)</span>), while Potential is larger (<span class="math inline">\(0.081\)</span>). This is consistent with the interpretation that both capture diversification opportunities, however, Potential here is closer to a feasibility metric that’s learned from portfolio configurations than relatedness. Once we move to the fixed-effects designs and absorb region and year fixed effects, interpretation shifts to within-region changes over time, net of common year shocks. In this setting, relatedness density remains strongly positive (e.g., <span class="math inline">\(0.089\)</span> in the density-only fixed effects model), and Potential also remains strongly positive (<span class="math inline">\(0.089\)</span> in the Potential-only fixed effects model). The coefficient of relatedness increase significantly more than potential (which remains relatively at a stable value) when we account for within-group variation in which case both relatedness and potential contribute similarly to the probability of entry. Albeit, potential seems to improve the overall and within-group fit more than relatedness (within-<span class="math inline">\(R^2\)</span> rises from <span class="math inline">\(0.014\)</span> in the density-only fixed effects model to <span class="math inline">\(0.062\)</span> in the Potential-only fixed effects model). Moreover, when we include both metrics together, the dominance of potential influence becomes clear, the coefficient of relatedness density decrease from <span class="math inline">\(0.089\)</span> to<span class="math inline">\(0.028\)</span>, whereas the coefficient of potential remains stable at <span class="math inline">\(0.086\)</span>. In other words, Potential appears to be relatively the dominant predictor in this horse race, while density retains residual explanatory content that may reflect a simpler proximity component that survives beyond the non-linear feasibility signal embedded in Potential. Albeit, the evidence here is not conclusive since both potential and relatedness density display a similar influence on entry when treated separately, the dominance of potential when we include relatedness density indicates that it subsumes much of the linear relatedness signal since it captures a richer context and patterns by construction compared to the linear patterns captured in the relatedness metric. <a href="appendix.html#sec-app-benchmark" class="quarto-xref"><span>Section A.4</span></a> reports the collinearity diagnostics and repeats this benchmark with the part of Potential that relatedness density does not explain (<a href="appendix.html#tbl-bench-diag" class="quarto-xref">Table&nbsp;<span>A.3</span></a> and <a href="appendix.html#tbl-bench-models" class="quarto-xref">Table&nbsp;<span>A.4</span></a>).</p>
+<p>In <a href="#tbl-entry-ols" class="quarto-xref">Table&nbsp;<span>5.1</span></a> we benchmark how much conventional relatedness density and potential (pred11) explain regional entry to a new technology. In the pooled specifications, both measures strongly predict entry: relatedness density is positive and precisely estimated (<span class="math inline">\(0.055\)</span>), while Potential is larger (<span class="math inline">\(0.081\)</span>). This is consistent with the interpretation that both capture diversification opportunities, however, Potential here is closer to a feasibility metric that’s learned from portfolio configurations than relatedness. Once we move to the fixed-effects designs and absorb region and year fixed effects, interpretation shifts to within-region changes over time, net of common year shocks. In this setting, relatedness density remains strongly positive (e.g., <span class="math inline">\(0.089\)</span> in the density-only fixed effects model), and Potential also remains strongly positive (<span class="math inline">\(0.089\)</span> in the Potential-only fixed effects model). The coefficient of relatedness increase significantly more than potential (which remains relatively at a stable value) when we account for within-group variation in which case both relatedness and potential contribute similarly to the probability of entry. Albeit, potential seems to improve the overall and within-group fit more than relatedness (within-<span class="math inline">\(R^2\)</span> rises from <span class="math inline">\(0.014\)</span> in the density-only fixed effects model to <span class="math inline">\(0.062\)</span> in the Potential-only fixed effects model). Moreover, when we include both metrics together, the dominance of potential influence becomes clear, the coefficient of relatedness density decrease from <span class="math inline">\(0.089\)</span> to<span class="math inline">\(0.028\)</span>, whereas the coefficient of potential remains stable at <span class="math inline">\(0.086\)</span>. In other words, Potential appears to be relatively the dominant predictor in this horse race, while density retains residual explanatory content that may reflect a simpler proximity component that survives beyond the non-linear feasibility signal embedded in Potential. Albeit, the evidence here is not conclusive since both potential and relatedness density display a similar influence on entry when treated separately, the dominance of potential when we include relatedness density indicates that it subsumes much of the linear relatedness signal since it captures a richer context and patterns by construction compared to the linear patterns captured in the relatedness metric. <a href="appendix.html#sec-app-benchmark" class="quarto-xref"><span>Section A.5</span></a> reports the collinearity diagnostics and repeats this benchmark with the part of Potential that relatedness density does not explain (<a href="appendix.html#tbl-bench-diag" class="quarto-xref">Table&nbsp;<span>A.3</span></a> and <a href="appendix.html#tbl-bench-models" class="quarto-xref">Table&nbsp;<span>A.4</span></a>).</p>
 <p>This benchmark motivates the subsequent mechanism analysis: rather than treating relatedness as a sufficient summary statistic, we examine how portfolio alignment, network position, and accessibility structure feasibility. This move is consistent with the broader methodological critique that pairwise relatedness can miss higher-order portfolio information; for example, <span class="citation" data-cites="tacchella2023relatedness">Tacchella et al. (<a href="references.html#ref-tacchella2023relatedness" role="doc-biblioref">2023</a>)</span> argues that shifting from “two-product correlations” to information that captures richer configurations can improve predictive performance. This benchmark motivates our subsequent mechanism analysis: having established that Potential is relatively more informative than relatedness density in predicting entry, we now decompose Potential itself to examine how portfolio alignment (coherence), network position (betweenness, eigenvector), and national ecosystem structure feasibility.</p>
 <div class="landscape">
 <div class="cell">
@@ -287,23 +287,23 @@ Table&nbsp;5.1: Regional Potential vs Relatedness density – Entry(year + 1, LP
 </figcaption>
 <div aria-describedby="tbl-entry-ols-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
 <div class="cell-output-display">
-<div id="lhnxnuidkj" style="padding-left:0px;padding-right:0px;padding-top:10px;padding-bottom:10px;overflow-x:auto;overflow-y:auto;width:auto;height:auto;">
-<style>#lhnxnuidkj table {
+<div id="dbuxcukrpe" style="padding-left:0px;padding-right:0px;padding-top:10px;padding-bottom:10px;overflow-x:auto;overflow-y:auto;width:auto;height:auto;">
+<style>#dbuxcukrpe table {
   font-family: system-ui, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol', 'Noto Color Emoji';
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
 
-#lhnxnuidkj thead, #lhnxnuidkj tbody, #lhnxnuidkj tfoot, #lhnxnuidkj tr, #lhnxnuidkj td, #lhnxnuidkj th {
+#dbuxcukrpe thead, #dbuxcukrpe tbody, #dbuxcukrpe tfoot, #dbuxcukrpe tr, #dbuxcukrpe td, #dbuxcukrpe th {
   border-style: none;
 }
 
-#lhnxnuidkj p {
+#dbuxcukrpe p {
   margin: 0;
   padding: 0;
 }
 
-#lhnxnuidkj .gt_table {
+#dbuxcukrpe .gt_table {
   display: table;
   border-collapse: collapse;
   line-height: normal;
@@ -329,12 +329,12 @@ Table&nbsp;5.1: Regional Potential vs Relatedness density – Entry(year + 1, LP
   border-left-color: #D3D3D3;
 }
 
-#lhnxnuidkj .gt_caption {
+#dbuxcukrpe .gt_caption {
   padding-top: 4px;
   padding-bottom: 4px;
 }
 
-#lhnxnuidkj .gt_title {
+#dbuxcukrpe .gt_title {
   color: #333333;
   font-size: 125%;
   font-weight: initial;
@@ -346,7 +346,7 @@ Table&nbsp;5.1: Regional Potential vs Relatedness density – Entry(year + 1, LP
   border-bottom-width: 0;
 }
 
-#lhnxnuidkj .gt_subtitle {
+#dbuxcukrpe .gt_subtitle {
   color: #333333;
   font-size: 85%;
   font-weight: initial;
@@ -358,7 +358,7 @@ Table&nbsp;5.1: Regional Potential vs Relatedness density – Entry(year + 1, LP
   border-top-width: 0;
 }
 
-#lhnxnuidkj .gt_heading {
+#dbuxcukrpe .gt_heading {
   background-color: #FFFFFF;
   text-align: center;
   border-bottom-color: #FFFFFF;
@@ -370,13 +370,13 @@ Table&nbsp;5.1: Regional Potential vs Relatedness density – Entry(year + 1, LP
   border-right-color: #D3D3D3;
 }
 
-#lhnxnuidkj .gt_bottom_border {
+#dbuxcukrpe .gt_bottom_border {
   border-bottom-style: solid;
   border-bottom-width: 2px;
   border-bottom-color: #D3D3D3;
 }
 
-#lhnxnuidkj .gt_col_headings {
+#dbuxcukrpe .gt_col_headings {
   border-top-style: solid;
   border-top-width: 2px;
   border-top-color: #D3D3D3;
@@ -391,7 +391,7 @@ Table&nbsp;5.1: Regional Potential vs Relatedness density – Entry(year + 1, LP
   border-right-color: #D3D3D3;
 }
 
-#lhnxnuidkj .gt_col_heading {
+#dbuxcukrpe .gt_col_heading {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -411,7 +411,7 @@ Table&nbsp;5.1: Regional Potential vs Relatedness density – Entry(year + 1, LP
   overflow-x: hidden;
 }
 
-#lhnxnuidkj .gt_column_spanner_outer {
+#dbuxcukrpe .gt_column_spanner_outer {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -423,15 +423,15 @@ Table&nbsp;5.1: Regional Potential vs Relatedness density – Entry(year + 1, LP
   padding-right: 4px;
 }
 
-#lhnxnuidkj .gt_column_spanner_outer:first-child {
+#dbuxcukrpe .gt_column_spanner_outer:first-child {
   padding-left: 0;
 }
 
-#lhnxnuidkj .gt_column_spanner_outer:last-child {
+#dbuxcukrpe .gt_column_spanner_outer:last-child {
   padding-right: 0;
 }
 
-#lhnxnuidkj .gt_column_spanner {
+#dbuxcukrpe .gt_column_spanner {
   border-bottom-style: solid;
   border-bottom-width: 2px;
   border-bottom-color: #D3D3D3;
@@ -443,11 +443,11 @@ Table&nbsp;5.1: Regional Potential vs Relatedness density – Entry(year + 1, LP
   width: 100%;
 }
 
-#lhnxnuidkj .gt_spanner_row {
+#dbuxcukrpe .gt_spanner_row {
   border-bottom-style: hidden;
 }
 
-#lhnxnuidkj .gt_group_heading {
+#dbuxcukrpe .gt_group_heading {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -473,7 +473,7 @@ Table&nbsp;5.1: Regional Potential vs Relatedness density – Entry(year + 1, LP
   text-align: left;
 }
 
-#lhnxnuidkj .gt_empty_group_heading {
+#dbuxcukrpe .gt_empty_group_heading {
   padding: 0.5px;
   color: #333333;
   background-color: #FFFFFF;
@@ -488,15 +488,15 @@ Table&nbsp;5.1: Regional Potential vs Relatedness density – Entry(year + 1, LP
   vertical-align: middle;
 }
 
-#lhnxnuidkj .gt_from_md > :first-child {
+#dbuxcukrpe .gt_from_md > :first-child {
   margin-top: 0;
 }
 
-#lhnxnuidkj .gt_from_md > :last-child {
+#dbuxcukrpe .gt_from_md > :last-child {
   margin-bottom: 0;
 }
 
-#lhnxnuidkj .gt_row {
+#dbuxcukrpe .gt_row {
   padding-top: 1px;
   padding-bottom: 1px;
   padding-left: 5px;
@@ -515,7 +515,7 @@ Table&nbsp;5.1: Regional Potential vs Relatedness density – Entry(year + 1, LP
   overflow-x: hidden;
 }
 
-#lhnxnuidkj .gt_stub {
+#dbuxcukrpe .gt_stub {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -528,7 +528,7 @@ Table&nbsp;5.1: Regional Potential vs Relatedness density – Entry(year + 1, LP
   padding-right: 5px;
 }
 
-#lhnxnuidkj .gt_stub_row_group {
+#dbuxcukrpe .gt_stub_row_group {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -542,15 +542,15 @@ Table&nbsp;5.1: Regional Potential vs Relatedness density – Entry(year + 1, LP
   vertical-align: top;
 }
 
-#lhnxnuidkj .gt_row_group_first td {
+#dbuxcukrpe .gt_row_group_first td {
   border-top-width: 2px;
 }
 
-#lhnxnuidkj .gt_row_group_first th {
+#dbuxcukrpe .gt_row_group_first th {
   border-top-width: 2px;
 }
 
-#lhnxnuidkj .gt_summary_row {
+#dbuxcukrpe .gt_summary_row {
   color: #333333;
   background-color: #FFFFFF;
   text-transform: inherit;
@@ -560,16 +560,16 @@ Table&nbsp;5.1: Regional Potential vs Relatedness density – Entry(year + 1, LP
   padding-right: 5px;
 }
 
-#lhnxnuidkj .gt_first_summary_row {
+#dbuxcukrpe .gt_first_summary_row {
   border-top-style: solid;
   border-top-color: #D3D3D3;
 }
 
-#lhnxnuidkj .gt_first_summary_row.thick {
+#dbuxcukrpe .gt_first_summary_row.thick {
   border-top-width: 2px;
 }
 
-#lhnxnuidkj .gt_last_summary_row {
+#dbuxcukrpe .gt_last_summary_row {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -579,7 +579,7 @@ Table&nbsp;5.1: Regional Potential vs Relatedness density – Entry(year + 1, LP
   border-bottom-color: #D3D3D3;
 }
 
-#lhnxnuidkj .gt_grand_summary_row {
+#dbuxcukrpe .gt_grand_summary_row {
   color: #333333;
   background-color: #FFFFFF;
   text-transform: inherit;
@@ -589,7 +589,7 @@ Table&nbsp;5.1: Regional Potential vs Relatedness density – Entry(year + 1, LP
   padding-right: 5px;
 }
 
-#lhnxnuidkj .gt_first_grand_summary_row {
+#dbuxcukrpe .gt_first_grand_summary_row {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -599,7 +599,7 @@ Table&nbsp;5.1: Regional Potential vs Relatedness density – Entry(year + 1, LP
   border-top-color: #D3D3D3;
 }
 
-#lhnxnuidkj .gt_last_grand_summary_row_top {
+#dbuxcukrpe .gt_last_grand_summary_row_top {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -609,11 +609,11 @@ Table&nbsp;5.1: Regional Potential vs Relatedness density – Entry(year + 1, LP
   border-bottom-color: #D3D3D3;
 }
 
-#lhnxnuidkj .gt_striped {
+#dbuxcukrpe .gt_striped {
   background-color: rgba(128, 128, 128, 0.05);
 }
 
-#lhnxnuidkj .gt_table_body {
+#dbuxcukrpe .gt_table_body {
   border-top-style: solid;
   border-top-width: 2px;
   border-top-color: #D3D3D3;
@@ -622,7 +622,7 @@ Table&nbsp;5.1: Regional Potential vs Relatedness density – Entry(year + 1, LP
   border-bottom-color: #D3D3D3;
 }
 
-#lhnxnuidkj .gt_footnotes {
+#dbuxcukrpe .gt_footnotes {
   color: #333333;
   background-color: #FFFFFF;
   border-bottom-style: none;
@@ -636,7 +636,7 @@ Table&nbsp;5.1: Regional Potential vs Relatedness density – Entry(year + 1, LP
   border-right-color: #D3D3D3;
 }
 
-#lhnxnuidkj .gt_footnote {
+#dbuxcukrpe .gt_footnote {
   margin: 0px;
   font-size: 90%;
   padding-top: 4px;
@@ -645,7 +645,7 @@ Table&nbsp;5.1: Regional Potential vs Relatedness density – Entry(year + 1, LP
   padding-right: 5px;
 }
 
-#lhnxnuidkj .gt_sourcenotes {
+#dbuxcukrpe .gt_sourcenotes {
   color: #333333;
   background-color: #FFFFFF;
   border-bottom-style: none;
@@ -659,7 +659,7 @@ Table&nbsp;5.1: Regional Potential vs Relatedness density – Entry(year + 1, LP
   border-right-color: #D3D3D3;
 }
 
-#lhnxnuidkj .gt_sourcenote {
+#dbuxcukrpe .gt_sourcenote {
   font-size: 90%;
   padding-top: 4px;
   padding-bottom: 4px;
@@ -667,72 +667,72 @@ Table&nbsp;5.1: Regional Potential vs Relatedness density – Entry(year + 1, LP
   padding-right: 5px;
 }
 
-#lhnxnuidkj .gt_left {
+#dbuxcukrpe .gt_left {
   text-align: left;
 }
 
-#lhnxnuidkj .gt_center {
+#dbuxcukrpe .gt_center {
   text-align: center;
 }
 
-#lhnxnuidkj .gt_right {
+#dbuxcukrpe .gt_right {
   text-align: right;
   font-variant-numeric: tabular-nums;
 }
 
-#lhnxnuidkj .gt_font_normal {
+#dbuxcukrpe .gt_font_normal {
   font-weight: normal;
 }
 
-#lhnxnuidkj .gt_font_bold {
+#dbuxcukrpe .gt_font_bold {
   font-weight: bold;
 }
 
-#lhnxnuidkj .gt_font_italic {
+#dbuxcukrpe .gt_font_italic {
   font-style: italic;
 }
 
-#lhnxnuidkj .gt_super {
+#dbuxcukrpe .gt_super {
   font-size: 65%;
 }
 
-#lhnxnuidkj .gt_footnote_marks {
+#dbuxcukrpe .gt_footnote_marks {
   font-size: 75%;
   vertical-align: 0.4em;
   position: initial;
 }
 
-#lhnxnuidkj .gt_asterisk {
+#dbuxcukrpe .gt_asterisk {
   font-size: 100%;
   vertical-align: 0;
 }
 
-#lhnxnuidkj .gt_indent_1 {
+#dbuxcukrpe .gt_indent_1 {
   text-indent: 5px;
 }
 
-#lhnxnuidkj .gt_indent_2 {
+#dbuxcukrpe .gt_indent_2 {
   text-indent: 10px;
 }
 
-#lhnxnuidkj .gt_indent_3 {
+#dbuxcukrpe .gt_indent_3 {
   text-indent: 15px;
 }
 
-#lhnxnuidkj .gt_indent_4 {
+#dbuxcukrpe .gt_indent_4 {
   text-indent: 20px;
 }
 
-#lhnxnuidkj .gt_indent_5 {
+#dbuxcukrpe .gt_indent_5 {
   text-indent: 25px;
 }
 
-#lhnxnuidkj .katex-display {
+#dbuxcukrpe .katex-display {
   display: inline-flex !important;
   margin-bottom: 0.75em !important;
 }
 
-#lhnxnuidkj div.Reactable > div.rt-table > div.rt-thead > div.rt-tr.rt-tr-group-header > div.rt-th-group:after {
+#dbuxcukrpe div.Reactable > div.rt-table > div.rt-thead > div.rt-tr.rt-tr-group-header > div.rt-th-group:after {
   height: 0px !important;
 }
 </style>
@@ -958,23 +958,23 @@ Table&nbsp;5.2: Network Interactions – Regional Potential (with fixed effects)
 </figcaption>
 <div aria-describedby="tbl-potential-fe-ols-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
 <div class="cell-output-display">
-<div id="stbrjrboma" style="padding-left:0px;padding-right:0px;padding-top:10px;padding-bottom:10px;overflow-x:auto;overflow-y:auto;width:auto;height:auto;">
-<style>#stbrjrboma table {
+<div id="fpxajvuhht" style="padding-left:0px;padding-right:0px;padding-top:10px;padding-bottom:10px;overflow-x:auto;overflow-y:auto;width:auto;height:auto;">
+<style>#fpxajvuhht table {
   font-family: system-ui, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol', 'Noto Color Emoji';
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
 
-#stbrjrboma thead, #stbrjrboma tbody, #stbrjrboma tfoot, #stbrjrboma tr, #stbrjrboma td, #stbrjrboma th {
+#fpxajvuhht thead, #fpxajvuhht tbody, #fpxajvuhht tfoot, #fpxajvuhht tr, #fpxajvuhht td, #fpxajvuhht th {
   border-style: none;
 }
 
-#stbrjrboma p {
+#fpxajvuhht p {
   margin: 0;
   padding: 0;
 }
 
-#stbrjrboma .gt_table {
+#fpxajvuhht .gt_table {
   display: table;
   border-collapse: collapse;
   line-height: normal;
@@ -1000,12 +1000,12 @@ Table&nbsp;5.2: Network Interactions – Regional Potential (with fixed effects)
   border-left-color: #D3D3D3;
 }
 
-#stbrjrboma .gt_caption {
+#fpxajvuhht .gt_caption {
   padding-top: 4px;
   padding-bottom: 4px;
 }
 
-#stbrjrboma .gt_title {
+#fpxajvuhht .gt_title {
   color: #333333;
   font-size: 125%;
   font-weight: initial;
@@ -1017,7 +1017,7 @@ Table&nbsp;5.2: Network Interactions – Regional Potential (with fixed effects)
   border-bottom-width: 0;
 }
 
-#stbrjrboma .gt_subtitle {
+#fpxajvuhht .gt_subtitle {
   color: #333333;
   font-size: 85%;
   font-weight: initial;
@@ -1029,7 +1029,7 @@ Table&nbsp;5.2: Network Interactions – Regional Potential (with fixed effects)
   border-top-width: 0;
 }
 
-#stbrjrboma .gt_heading {
+#fpxajvuhht .gt_heading {
   background-color: #FFFFFF;
   text-align: center;
   border-bottom-color: #FFFFFF;
@@ -1041,13 +1041,13 @@ Table&nbsp;5.2: Network Interactions – Regional Potential (with fixed effects)
   border-right-color: #D3D3D3;
 }
 
-#stbrjrboma .gt_bottom_border {
+#fpxajvuhht .gt_bottom_border {
   border-bottom-style: solid;
   border-bottom-width: 2px;
   border-bottom-color: #D3D3D3;
 }
 
-#stbrjrboma .gt_col_headings {
+#fpxajvuhht .gt_col_headings {
   border-top-style: solid;
   border-top-width: 2px;
   border-top-color: #D3D3D3;
@@ -1062,7 +1062,7 @@ Table&nbsp;5.2: Network Interactions – Regional Potential (with fixed effects)
   border-right-color: #D3D3D3;
 }
 
-#stbrjrboma .gt_col_heading {
+#fpxajvuhht .gt_col_heading {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -1082,7 +1082,7 @@ Table&nbsp;5.2: Network Interactions – Regional Potential (with fixed effects)
   overflow-x: hidden;
 }
 
-#stbrjrboma .gt_column_spanner_outer {
+#fpxajvuhht .gt_column_spanner_outer {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -1094,15 +1094,15 @@ Table&nbsp;5.2: Network Interactions – Regional Potential (with fixed effects)
   padding-right: 4px;
 }
 
-#stbrjrboma .gt_column_spanner_outer:first-child {
+#fpxajvuhht .gt_column_spanner_outer:first-child {
   padding-left: 0;
 }
 
-#stbrjrboma .gt_column_spanner_outer:last-child {
+#fpxajvuhht .gt_column_spanner_outer:last-child {
   padding-right: 0;
 }
 
-#stbrjrboma .gt_column_spanner {
+#fpxajvuhht .gt_column_spanner {
   border-bottom-style: solid;
   border-bottom-width: 2px;
   border-bottom-color: #D3D3D3;
@@ -1114,11 +1114,11 @@ Table&nbsp;5.2: Network Interactions – Regional Potential (with fixed effects)
   width: 100%;
 }
 
-#stbrjrboma .gt_spanner_row {
+#fpxajvuhht .gt_spanner_row {
   border-bottom-style: hidden;
 }
 
-#stbrjrboma .gt_group_heading {
+#fpxajvuhht .gt_group_heading {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -1144,7 +1144,7 @@ Table&nbsp;5.2: Network Interactions – Regional Potential (with fixed effects)
   text-align: left;
 }
 
-#stbrjrboma .gt_empty_group_heading {
+#fpxajvuhht .gt_empty_group_heading {
   padding: 0.5px;
   color: #333333;
   background-color: #FFFFFF;
@@ -1159,15 +1159,15 @@ Table&nbsp;5.2: Network Interactions – Regional Potential (with fixed effects)
   vertical-align: middle;
 }
 
-#stbrjrboma .gt_from_md > :first-child {
+#fpxajvuhht .gt_from_md > :first-child {
   margin-top: 0;
 }
 
-#stbrjrboma .gt_from_md > :last-child {
+#fpxajvuhht .gt_from_md > :last-child {
   margin-bottom: 0;
 }
 
-#stbrjrboma .gt_row {
+#fpxajvuhht .gt_row {
   padding-top: 1px;
   padding-bottom: 1px;
   padding-left: 5px;
@@ -1186,7 +1186,7 @@ Table&nbsp;5.2: Network Interactions – Regional Potential (with fixed effects)
   overflow-x: hidden;
 }
 
-#stbrjrboma .gt_stub {
+#fpxajvuhht .gt_stub {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -1199,7 +1199,7 @@ Table&nbsp;5.2: Network Interactions – Regional Potential (with fixed effects)
   padding-right: 5px;
 }
 
-#stbrjrboma .gt_stub_row_group {
+#fpxajvuhht .gt_stub_row_group {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -1213,15 +1213,15 @@ Table&nbsp;5.2: Network Interactions – Regional Potential (with fixed effects)
   vertical-align: top;
 }
 
-#stbrjrboma .gt_row_group_first td {
+#fpxajvuhht .gt_row_group_first td {
   border-top-width: 2px;
 }
 
-#stbrjrboma .gt_row_group_first th {
+#fpxajvuhht .gt_row_group_first th {
   border-top-width: 2px;
 }
 
-#stbrjrboma .gt_summary_row {
+#fpxajvuhht .gt_summary_row {
   color: #333333;
   background-color: #FFFFFF;
   text-transform: inherit;
@@ -1231,16 +1231,16 @@ Table&nbsp;5.2: Network Interactions – Regional Potential (with fixed effects)
   padding-right: 5px;
 }
 
-#stbrjrboma .gt_first_summary_row {
+#fpxajvuhht .gt_first_summary_row {
   border-top-style: solid;
   border-top-color: #D3D3D3;
 }
 
-#stbrjrboma .gt_first_summary_row.thick {
+#fpxajvuhht .gt_first_summary_row.thick {
   border-top-width: 2px;
 }
 
-#stbrjrboma .gt_last_summary_row {
+#fpxajvuhht .gt_last_summary_row {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -1250,7 +1250,7 @@ Table&nbsp;5.2: Network Interactions – Regional Potential (with fixed effects)
   border-bottom-color: #D3D3D3;
 }
 
-#stbrjrboma .gt_grand_summary_row {
+#fpxajvuhht .gt_grand_summary_row {
   color: #333333;
   background-color: #FFFFFF;
   text-transform: inherit;
@@ -1260,7 +1260,7 @@ Table&nbsp;5.2: Network Interactions – Regional Potential (with fixed effects)
   padding-right: 5px;
 }
 
-#stbrjrboma .gt_first_grand_summary_row {
+#fpxajvuhht .gt_first_grand_summary_row {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -1270,7 +1270,7 @@ Table&nbsp;5.2: Network Interactions – Regional Potential (with fixed effects)
   border-top-color: #D3D3D3;
 }
 
-#stbrjrboma .gt_last_grand_summary_row_top {
+#fpxajvuhht .gt_last_grand_summary_row_top {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -1280,11 +1280,11 @@ Table&nbsp;5.2: Network Interactions – Regional Potential (with fixed effects)
   border-bottom-color: #D3D3D3;
 }
 
-#stbrjrboma .gt_striped {
+#fpxajvuhht .gt_striped {
   background-color: rgba(128, 128, 128, 0.05);
 }
 
-#stbrjrboma .gt_table_body {
+#fpxajvuhht .gt_table_body {
   border-top-style: solid;
   border-top-width: 2px;
   border-top-color: #D3D3D3;
@@ -1293,7 +1293,7 @@ Table&nbsp;5.2: Network Interactions – Regional Potential (with fixed effects)
   border-bottom-color: #D3D3D3;
 }
 
-#stbrjrboma .gt_footnotes {
+#fpxajvuhht .gt_footnotes {
   color: #333333;
   background-color: #FFFFFF;
   border-bottom-style: none;
@@ -1307,7 +1307,7 @@ Table&nbsp;5.2: Network Interactions – Regional Potential (with fixed effects)
   border-right-color: #D3D3D3;
 }
 
-#stbrjrboma .gt_footnote {
+#fpxajvuhht .gt_footnote {
   margin: 0px;
   font-size: 90%;
   padding-top: 4px;
@@ -1316,7 +1316,7 @@ Table&nbsp;5.2: Network Interactions – Regional Potential (with fixed effects)
   padding-right: 5px;
 }
 
-#stbrjrboma .gt_sourcenotes {
+#fpxajvuhht .gt_sourcenotes {
   color: #333333;
   background-color: #FFFFFF;
   border-bottom-style: none;
@@ -1330,7 +1330,7 @@ Table&nbsp;5.2: Network Interactions – Regional Potential (with fixed effects)
   border-right-color: #D3D3D3;
 }
 
-#stbrjrboma .gt_sourcenote {
+#fpxajvuhht .gt_sourcenote {
   font-size: 90%;
   padding-top: 4px;
   padding-bottom: 4px;
@@ -1338,72 +1338,72 @@ Table&nbsp;5.2: Network Interactions – Regional Potential (with fixed effects)
   padding-right: 5px;
 }
 
-#stbrjrboma .gt_left {
+#fpxajvuhht .gt_left {
   text-align: left;
 }
 
-#stbrjrboma .gt_center {
+#fpxajvuhht .gt_center {
   text-align: center;
 }
 
-#stbrjrboma .gt_right {
+#fpxajvuhht .gt_right {
   text-align: right;
   font-variant-numeric: tabular-nums;
 }
 
-#stbrjrboma .gt_font_normal {
+#fpxajvuhht .gt_font_normal {
   font-weight: normal;
 }
 
-#stbrjrboma .gt_font_bold {
+#fpxajvuhht .gt_font_bold {
   font-weight: bold;
 }
 
-#stbrjrboma .gt_font_italic {
+#fpxajvuhht .gt_font_italic {
   font-style: italic;
 }
 
-#stbrjrboma .gt_super {
+#fpxajvuhht .gt_super {
   font-size: 65%;
 }
 
-#stbrjrboma .gt_footnote_marks {
+#fpxajvuhht .gt_footnote_marks {
   font-size: 75%;
   vertical-align: 0.4em;
   position: initial;
 }
 
-#stbrjrboma .gt_asterisk {
+#fpxajvuhht .gt_asterisk {
   font-size: 100%;
   vertical-align: 0;
 }
 
-#stbrjrboma .gt_indent_1 {
+#fpxajvuhht .gt_indent_1 {
   text-indent: 5px;
 }
 
-#stbrjrboma .gt_indent_2 {
+#fpxajvuhht .gt_indent_2 {
   text-indent: 10px;
 }
 
-#stbrjrboma .gt_indent_3 {
+#fpxajvuhht .gt_indent_3 {
   text-indent: 15px;
 }
 
-#stbrjrboma .gt_indent_4 {
+#fpxajvuhht .gt_indent_4 {
   text-indent: 20px;
 }
 
-#stbrjrboma .gt_indent_5 {
+#fpxajvuhht .gt_indent_5 {
   text-indent: 25px;
 }
 
-#stbrjrboma .katex-display {
+#fpxajvuhht .katex-display {
   display: inline-flex !important;
   margin-bottom: 0.75em !important;
 }
 
-#stbrjrboma div.Reactable > div.rt-table > div.rt-thead > div.rt-tr.rt-tr-group-header > div.rt-th-group:after {
+#fpxajvuhht div.Reactable > div.rt-table > div.rt-thead > div.rt-tr.rt-tr-group-header > div.rt-th-group:after {
   height: 0px !important;
 }
 </style>
@@ -1841,23 +1841,23 @@ Table&nbsp;5.3: Network Interactions and National Ecosystem – Regional Potenti
 </figcaption>
 <div aria-describedby="tbl-potential-fe-ols-h-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
 <div class="cell-output-display">
-<div id="rekmskvlbl" style="padding-left:0px;padding-right:0px;padding-top:10px;padding-bottom:10px;overflow-x:auto;overflow-y:auto;width:auto;height:auto;">
-<style>#rekmskvlbl table {
+<div id="nzyeommhss" style="padding-left:0px;padding-right:0px;padding-top:10px;padding-bottom:10px;overflow-x:auto;overflow-y:auto;width:auto;height:auto;">
+<style>#nzyeommhss table {
   font-family: system-ui, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol', 'Noto Color Emoji';
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
 
-#rekmskvlbl thead, #rekmskvlbl tbody, #rekmskvlbl tfoot, #rekmskvlbl tr, #rekmskvlbl td, #rekmskvlbl th {
+#nzyeommhss thead, #nzyeommhss tbody, #nzyeommhss tfoot, #nzyeommhss tr, #nzyeommhss td, #nzyeommhss th {
   border-style: none;
 }
 
-#rekmskvlbl p {
+#nzyeommhss p {
   margin: 0;
   padding: 0;
 }
 
-#rekmskvlbl .gt_table {
+#nzyeommhss .gt_table {
   display: table;
   border-collapse: collapse;
   line-height: normal;
@@ -1883,12 +1883,12 @@ Table&nbsp;5.3: Network Interactions and National Ecosystem – Regional Potenti
   border-left-color: #D3D3D3;
 }
 
-#rekmskvlbl .gt_caption {
+#nzyeommhss .gt_caption {
   padding-top: 4px;
   padding-bottom: 4px;
 }
 
-#rekmskvlbl .gt_title {
+#nzyeommhss .gt_title {
   color: #333333;
   font-size: 125%;
   font-weight: initial;
@@ -1900,7 +1900,7 @@ Table&nbsp;5.3: Network Interactions and National Ecosystem – Regional Potenti
   border-bottom-width: 0;
 }
 
-#rekmskvlbl .gt_subtitle {
+#nzyeommhss .gt_subtitle {
   color: #333333;
   font-size: 85%;
   font-weight: initial;
@@ -1912,7 +1912,7 @@ Table&nbsp;5.3: Network Interactions and National Ecosystem – Regional Potenti
   border-top-width: 0;
 }
 
-#rekmskvlbl .gt_heading {
+#nzyeommhss .gt_heading {
   background-color: #FFFFFF;
   text-align: center;
   border-bottom-color: #FFFFFF;
@@ -1924,13 +1924,13 @@ Table&nbsp;5.3: Network Interactions and National Ecosystem – Regional Potenti
   border-right-color: #D3D3D3;
 }
 
-#rekmskvlbl .gt_bottom_border {
+#nzyeommhss .gt_bottom_border {
   border-bottom-style: solid;
   border-bottom-width: 2px;
   border-bottom-color: #D3D3D3;
 }
 
-#rekmskvlbl .gt_col_headings {
+#nzyeommhss .gt_col_headings {
   border-top-style: solid;
   border-top-width: 2px;
   border-top-color: #D3D3D3;
@@ -1945,7 +1945,7 @@ Table&nbsp;5.3: Network Interactions and National Ecosystem – Regional Potenti
   border-right-color: #D3D3D3;
 }
 
-#rekmskvlbl .gt_col_heading {
+#nzyeommhss .gt_col_heading {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -1965,7 +1965,7 @@ Table&nbsp;5.3: Network Interactions and National Ecosystem – Regional Potenti
   overflow-x: hidden;
 }
 
-#rekmskvlbl .gt_column_spanner_outer {
+#nzyeommhss .gt_column_spanner_outer {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -1977,15 +1977,15 @@ Table&nbsp;5.3: Network Interactions and National Ecosystem – Regional Potenti
   padding-right: 4px;
 }
 
-#rekmskvlbl .gt_column_spanner_outer:first-child {
+#nzyeommhss .gt_column_spanner_outer:first-child {
   padding-left: 0;
 }
 
-#rekmskvlbl .gt_column_spanner_outer:last-child {
+#nzyeommhss .gt_column_spanner_outer:last-child {
   padding-right: 0;
 }
 
-#rekmskvlbl .gt_column_spanner {
+#nzyeommhss .gt_column_spanner {
   border-bottom-style: solid;
   border-bottom-width: 2px;
   border-bottom-color: #D3D3D3;
@@ -1997,11 +1997,11 @@ Table&nbsp;5.3: Network Interactions and National Ecosystem – Regional Potenti
   width: 100%;
 }
 
-#rekmskvlbl .gt_spanner_row {
+#nzyeommhss .gt_spanner_row {
   border-bottom-style: hidden;
 }
 
-#rekmskvlbl .gt_group_heading {
+#nzyeommhss .gt_group_heading {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 0px;
@@ -2027,7 +2027,7 @@ Table&nbsp;5.3: Network Interactions and National Ecosystem – Regional Potenti
   text-align: left;
 }
 
-#rekmskvlbl .gt_empty_group_heading {
+#nzyeommhss .gt_empty_group_heading {
   padding: 0.5px;
   color: #333333;
   background-color: #FFFFFF;
@@ -2042,15 +2042,15 @@ Table&nbsp;5.3: Network Interactions and National Ecosystem – Regional Potenti
   vertical-align: middle;
 }
 
-#rekmskvlbl .gt_from_md > :first-child {
+#nzyeommhss .gt_from_md > :first-child {
   margin-top: 0;
 }
 
-#rekmskvlbl .gt_from_md > :last-child {
+#nzyeommhss .gt_from_md > :last-child {
   margin-bottom: 0;
 }
 
-#rekmskvlbl .gt_row {
+#nzyeommhss .gt_row {
   padding-top: 1px;
   padding-bottom: 1px;
   padding-left: 5px;
@@ -2069,7 +2069,7 @@ Table&nbsp;5.3: Network Interactions and National Ecosystem – Regional Potenti
   overflow-x: hidden;
 }
 
-#rekmskvlbl .gt_stub {
+#nzyeommhss .gt_stub {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -2082,7 +2082,7 @@ Table&nbsp;5.3: Network Interactions and National Ecosystem – Regional Potenti
   padding-right: 5px;
 }
 
-#rekmskvlbl .gt_stub_row_group {
+#nzyeommhss .gt_stub_row_group {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -2096,15 +2096,15 @@ Table&nbsp;5.3: Network Interactions and National Ecosystem – Regional Potenti
   vertical-align: top;
 }
 
-#rekmskvlbl .gt_row_group_first td {
+#nzyeommhss .gt_row_group_first td {
   border-top-width: 2px;
 }
 
-#rekmskvlbl .gt_row_group_first th {
+#nzyeommhss .gt_row_group_first th {
   border-top-width: 2px;
 }
 
-#rekmskvlbl .gt_summary_row {
+#nzyeommhss .gt_summary_row {
   color: #333333;
   background-color: #FFFFFF;
   text-transform: inherit;
@@ -2114,16 +2114,16 @@ Table&nbsp;5.3: Network Interactions and National Ecosystem – Regional Potenti
   padding-right: 5px;
 }
 
-#rekmskvlbl .gt_first_summary_row {
+#nzyeommhss .gt_first_summary_row {
   border-top-style: solid;
   border-top-color: #D3D3D3;
 }
 
-#rekmskvlbl .gt_first_summary_row.thick {
+#nzyeommhss .gt_first_summary_row.thick {
   border-top-width: 2px;
 }
 
-#rekmskvlbl .gt_last_summary_row {
+#nzyeommhss .gt_last_summary_row {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -2133,7 +2133,7 @@ Table&nbsp;5.3: Network Interactions and National Ecosystem – Regional Potenti
   border-bottom-color: #D3D3D3;
 }
 
-#rekmskvlbl .gt_grand_summary_row {
+#nzyeommhss .gt_grand_summary_row {
   color: #333333;
   background-color: #FFFFFF;
   text-transform: inherit;
@@ -2143,7 +2143,7 @@ Table&nbsp;5.3: Network Interactions and National Ecosystem – Regional Potenti
   padding-right: 5px;
 }
 
-#rekmskvlbl .gt_first_grand_summary_row {
+#nzyeommhss .gt_first_grand_summary_row {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -2153,7 +2153,7 @@ Table&nbsp;5.3: Network Interactions and National Ecosystem – Regional Potenti
   border-top-color: #D3D3D3;
 }
 
-#rekmskvlbl .gt_last_grand_summary_row_top {
+#nzyeommhss .gt_last_grand_summary_row_top {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -2163,11 +2163,11 @@ Table&nbsp;5.3: Network Interactions and National Ecosystem – Regional Potenti
   border-bottom-color: #D3D3D3;
 }
 
-#rekmskvlbl .gt_striped {
+#nzyeommhss .gt_striped {
   background-color: rgba(128, 128, 128, 0.05);
 }
 
-#rekmskvlbl .gt_table_body {
+#nzyeommhss .gt_table_body {
   border-top-style: solid;
   border-top-width: 2px;
   border-top-color: #D3D3D3;
@@ -2176,7 +2176,7 @@ Table&nbsp;5.3: Network Interactions and National Ecosystem – Regional Potenti
   border-bottom-color: #D3D3D3;
 }
 
-#rekmskvlbl .gt_footnotes {
+#nzyeommhss .gt_footnotes {
   color: #333333;
   background-color: #FFFFFF;
   border-bottom-style: none;
@@ -2190,7 +2190,7 @@ Table&nbsp;5.3: Network Interactions and National Ecosystem – Regional Potenti
   border-right-color: #D3D3D3;
 }
 
-#rekmskvlbl .gt_footnote {
+#nzyeommhss .gt_footnote {
   margin: 0px;
   font-size: 90%;
   padding-top: 4px;
@@ -2199,7 +2199,7 @@ Table&nbsp;5.3: Network Interactions and National Ecosystem – Regional Potenti
   padding-right: 5px;
 }
 
-#rekmskvlbl .gt_sourcenotes {
+#nzyeommhss .gt_sourcenotes {
   color: #333333;
   background-color: #FFFFFF;
   border-bottom-style: none;
@@ -2213,7 +2213,7 @@ Table&nbsp;5.3: Network Interactions and National Ecosystem – Regional Potenti
   border-right-color: #D3D3D3;
 }
 
-#rekmskvlbl .gt_sourcenote {
+#nzyeommhss .gt_sourcenote {
   font-size: 90%;
   padding-top: 4px;
   padding-bottom: 4px;
@@ -2221,72 +2221,72 @@ Table&nbsp;5.3: Network Interactions and National Ecosystem – Regional Potenti
   padding-right: 5px;
 }
 
-#rekmskvlbl .gt_left {
+#nzyeommhss .gt_left {
   text-align: left;
 }
 
-#rekmskvlbl .gt_center {
+#nzyeommhss .gt_center {
   text-align: center;
 }
 
-#rekmskvlbl .gt_right {
+#nzyeommhss .gt_right {
   text-align: right;
   font-variant-numeric: tabular-nums;
 }
 
-#rekmskvlbl .gt_font_normal {
+#nzyeommhss .gt_font_normal {
   font-weight: normal;
 }
 
-#rekmskvlbl .gt_font_bold {
+#nzyeommhss .gt_font_bold {
   font-weight: bold;
 }
 
-#rekmskvlbl .gt_font_italic {
+#nzyeommhss .gt_font_italic {
   font-style: italic;
 }
 
-#rekmskvlbl .gt_super {
+#nzyeommhss .gt_super {
   font-size: 65%;
 }
 
-#rekmskvlbl .gt_footnote_marks {
+#nzyeommhss .gt_footnote_marks {
   font-size: 75%;
   vertical-align: 0.4em;
   position: initial;
 }
 
-#rekmskvlbl .gt_asterisk {
+#nzyeommhss .gt_asterisk {
   font-size: 100%;
   vertical-align: 0;
 }
 
-#rekmskvlbl .gt_indent_1 {
+#nzyeommhss .gt_indent_1 {
   text-indent: 5px;
 }
 
-#rekmskvlbl .gt_indent_2 {
+#nzyeommhss .gt_indent_2 {
   text-indent: 10px;
 }
 
-#rekmskvlbl .gt_indent_3 {
+#nzyeommhss .gt_indent_3 {
   text-indent: 15px;
 }
 
-#rekmskvlbl .gt_indent_4 {
+#nzyeommhss .gt_indent_4 {
   text-indent: 20px;
 }
 
-#rekmskvlbl .gt_indent_5 {
+#nzyeommhss .gt_indent_5 {
   text-indent: 25px;
 }
 
-#rekmskvlbl .katex-display {
+#nzyeommhss .katex-display {
   display: inline-flex !important;
   margin-bottom: 0.75em !important;
 }
 
-#rekmskvlbl div.Reactable > div.rt-table > div.rt-thead > div.rt-tr.rt-tr-group-header > div.rt-th-group:after {
+#nzyeommhss div.Reactable > div.rt-table > div.rt-thead > div.rt-tr.rt-tr-group-header > div.rt-th-group:after {
   height: 0px !important;
 }
 </style>
@@ -2773,23 +2773,23 @@ Table&nbsp;5.4: Hierarchical Random Effects Model – Regional Potential
 </figcaption>
 <div aria-describedby="tbl-potential-re-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
 <div class="cell-output-display">
-<div id="grjrjsvaow" style="padding-left:0px;padding-right:0px;padding-top:10px;padding-bottom:10px;overflow-x:auto;overflow-y:auto;width:auto;height:auto;">
-<style>#grjrjsvaow table {
+<div id="zsenochjod" style="padding-left:0px;padding-right:0px;padding-top:10px;padding-bottom:10px;overflow-x:auto;overflow-y:auto;width:auto;height:auto;">
+<style>#zsenochjod table {
   font-family: system-ui, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol', 'Noto Color Emoji';
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
 
-#grjrjsvaow thead, #grjrjsvaow tbody, #grjrjsvaow tfoot, #grjrjsvaow tr, #grjrjsvaow td, #grjrjsvaow th {
+#zsenochjod thead, #zsenochjod tbody, #zsenochjod tfoot, #zsenochjod tr, #zsenochjod td, #zsenochjod th {
   border-style: none;
 }
 
-#grjrjsvaow p {
+#zsenochjod p {
   margin: 0;
   padding: 0;
 }
 
-#grjrjsvaow .gt_table {
+#zsenochjod .gt_table {
   display: table;
   border-collapse: collapse;
   line-height: normal;
@@ -2815,12 +2815,12 @@ Table&nbsp;5.4: Hierarchical Random Effects Model – Regional Potential
   border-left-color: #D3D3D3;
 }
 
-#grjrjsvaow .gt_caption {
+#zsenochjod .gt_caption {
   padding-top: 4px;
   padding-bottom: 4px;
 }
 
-#grjrjsvaow .gt_title {
+#zsenochjod .gt_title {
   color: #333333;
   font-size: 125%;
   font-weight: initial;
@@ -2832,7 +2832,7 @@ Table&nbsp;5.4: Hierarchical Random Effects Model – Regional Potential
   border-bottom-width: 0;
 }
 
-#grjrjsvaow .gt_subtitle {
+#zsenochjod .gt_subtitle {
   color: #333333;
   font-size: 85%;
   font-weight: initial;
@@ -2844,7 +2844,7 @@ Table&nbsp;5.4: Hierarchical Random Effects Model – Regional Potential
   border-top-width: 0;
 }
 
-#grjrjsvaow .gt_heading {
+#zsenochjod .gt_heading {
   background-color: #FFFFFF;
   text-align: center;
   border-bottom-color: #FFFFFF;
@@ -2856,13 +2856,13 @@ Table&nbsp;5.4: Hierarchical Random Effects Model – Regional Potential
   border-right-color: #D3D3D3;
 }
 
-#grjrjsvaow .gt_bottom_border {
+#zsenochjod .gt_bottom_border {
   border-bottom-style: solid;
   border-bottom-width: 2px;
   border-bottom-color: #D3D3D3;
 }
 
-#grjrjsvaow .gt_col_headings {
+#zsenochjod .gt_col_headings {
   border-top-style: solid;
   border-top-width: 2px;
   border-top-color: #D3D3D3;
@@ -2877,7 +2877,7 @@ Table&nbsp;5.4: Hierarchical Random Effects Model – Regional Potential
   border-right-color: #D3D3D3;
 }
 
-#grjrjsvaow .gt_col_heading {
+#zsenochjod .gt_col_heading {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -2897,7 +2897,7 @@ Table&nbsp;5.4: Hierarchical Random Effects Model – Regional Potential
   overflow-x: hidden;
 }
 
-#grjrjsvaow .gt_column_spanner_outer {
+#zsenochjod .gt_column_spanner_outer {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -2909,15 +2909,15 @@ Table&nbsp;5.4: Hierarchical Random Effects Model – Regional Potential
   padding-right: 4px;
 }
 
-#grjrjsvaow .gt_column_spanner_outer:first-child {
+#zsenochjod .gt_column_spanner_outer:first-child {
   padding-left: 0;
 }
 
-#grjrjsvaow .gt_column_spanner_outer:last-child {
+#zsenochjod .gt_column_spanner_outer:last-child {
   padding-right: 0;
 }
 
-#grjrjsvaow .gt_column_spanner {
+#zsenochjod .gt_column_spanner {
   border-bottom-style: solid;
   border-bottom-width: 2px;
   border-bottom-color: #D3D3D3;
@@ -2929,11 +2929,11 @@ Table&nbsp;5.4: Hierarchical Random Effects Model – Regional Potential
   width: 100%;
 }
 
-#grjrjsvaow .gt_spanner_row {
+#zsenochjod .gt_spanner_row {
   border-bottom-style: hidden;
 }
 
-#grjrjsvaow .gt_group_heading {
+#zsenochjod .gt_group_heading {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 0px;
@@ -2959,7 +2959,7 @@ Table&nbsp;5.4: Hierarchical Random Effects Model – Regional Potential
   text-align: left;
 }
 
-#grjrjsvaow .gt_empty_group_heading {
+#zsenochjod .gt_empty_group_heading {
   padding: 0.5px;
   color: #333333;
   background-color: #FFFFFF;
@@ -2974,15 +2974,15 @@ Table&nbsp;5.4: Hierarchical Random Effects Model – Regional Potential
   vertical-align: middle;
 }
 
-#grjrjsvaow .gt_from_md > :first-child {
+#zsenochjod .gt_from_md > :first-child {
   margin-top: 0;
 }
 
-#grjrjsvaow .gt_from_md > :last-child {
+#zsenochjod .gt_from_md > :last-child {
   margin-bottom: 0;
 }
 
-#grjrjsvaow .gt_row {
+#zsenochjod .gt_row {
   padding-top: 0px;
   padding-bottom: 0px;
   padding-left: 5px;
@@ -3001,7 +3001,7 @@ Table&nbsp;5.4: Hierarchical Random Effects Model – Regional Potential
   overflow-x: hidden;
 }
 
-#grjrjsvaow .gt_stub {
+#zsenochjod .gt_stub {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -3014,7 +3014,7 @@ Table&nbsp;5.4: Hierarchical Random Effects Model – Regional Potential
   padding-right: 5px;
 }
 
-#grjrjsvaow .gt_stub_row_group {
+#zsenochjod .gt_stub_row_group {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -3028,15 +3028,15 @@ Table&nbsp;5.4: Hierarchical Random Effects Model – Regional Potential
   vertical-align: top;
 }
 
-#grjrjsvaow .gt_row_group_first td {
+#zsenochjod .gt_row_group_first td {
   border-top-width: 2px;
 }
 
-#grjrjsvaow .gt_row_group_first th {
+#zsenochjod .gt_row_group_first th {
   border-top-width: 2px;
 }
 
-#grjrjsvaow .gt_summary_row {
+#zsenochjod .gt_summary_row {
   color: #333333;
   background-color: #FFFFFF;
   text-transform: inherit;
@@ -3046,16 +3046,16 @@ Table&nbsp;5.4: Hierarchical Random Effects Model – Regional Potential
   padding-right: 5px;
 }
 
-#grjrjsvaow .gt_first_summary_row {
+#zsenochjod .gt_first_summary_row {
   border-top-style: solid;
   border-top-color: #D3D3D3;
 }
 
-#grjrjsvaow .gt_first_summary_row.thick {
+#zsenochjod .gt_first_summary_row.thick {
   border-top-width: 2px;
 }
 
-#grjrjsvaow .gt_last_summary_row {
+#zsenochjod .gt_last_summary_row {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -3065,7 +3065,7 @@ Table&nbsp;5.4: Hierarchical Random Effects Model – Regional Potential
   border-bottom-color: #D3D3D3;
 }
 
-#grjrjsvaow .gt_grand_summary_row {
+#zsenochjod .gt_grand_summary_row {
   color: #333333;
   background-color: #FFFFFF;
   text-transform: inherit;
@@ -3075,7 +3075,7 @@ Table&nbsp;5.4: Hierarchical Random Effects Model – Regional Potential
   padding-right: 5px;
 }
 
-#grjrjsvaow .gt_first_grand_summary_row {
+#zsenochjod .gt_first_grand_summary_row {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -3085,7 +3085,7 @@ Table&nbsp;5.4: Hierarchical Random Effects Model – Regional Potential
   border-top-color: #D3D3D3;
 }
 
-#grjrjsvaow .gt_last_grand_summary_row_top {
+#zsenochjod .gt_last_grand_summary_row_top {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -3095,11 +3095,11 @@ Table&nbsp;5.4: Hierarchical Random Effects Model – Regional Potential
   border-bottom-color: #D3D3D3;
 }
 
-#grjrjsvaow .gt_striped {
+#zsenochjod .gt_striped {
   background-color: rgba(128, 128, 128, 0.05);
 }
 
-#grjrjsvaow .gt_table_body {
+#zsenochjod .gt_table_body {
   border-top-style: solid;
   border-top-width: 2px;
   border-top-color: #D3D3D3;
@@ -3108,7 +3108,7 @@ Table&nbsp;5.4: Hierarchical Random Effects Model – Regional Potential
   border-bottom-color: #D3D3D3;
 }
 
-#grjrjsvaow .gt_footnotes {
+#zsenochjod .gt_footnotes {
   color: #333333;
   background-color: #FFFFFF;
   border-bottom-style: none;
@@ -3122,7 +3122,7 @@ Table&nbsp;5.4: Hierarchical Random Effects Model – Regional Potential
   border-right-color: #D3D3D3;
 }
 
-#grjrjsvaow .gt_footnote {
+#zsenochjod .gt_footnote {
   margin: 0px;
   font-size: 90%;
   padding-top: 4px;
@@ -3131,7 +3131,7 @@ Table&nbsp;5.4: Hierarchical Random Effects Model – Regional Potential
   padding-right: 5px;
 }
 
-#grjrjsvaow .gt_sourcenotes {
+#zsenochjod .gt_sourcenotes {
   color: #333333;
   background-color: #FFFFFF;
   border-bottom-style: none;
@@ -3145,7 +3145,7 @@ Table&nbsp;5.4: Hierarchical Random Effects Model – Regional Potential
   border-right-color: #D3D3D3;
 }
 
-#grjrjsvaow .gt_sourcenote {
+#zsenochjod .gt_sourcenote {
   font-size: 90%;
   padding-top: 4px;
   padding-bottom: 4px;
@@ -3153,72 +3153,72 @@ Table&nbsp;5.4: Hierarchical Random Effects Model – Regional Potential
   padding-right: 5px;
 }
 
-#grjrjsvaow .gt_left {
+#zsenochjod .gt_left {
   text-align: left;
 }
 
-#grjrjsvaow .gt_center {
+#zsenochjod .gt_center {
   text-align: center;
 }
 
-#grjrjsvaow .gt_right {
+#zsenochjod .gt_right {
   text-align: right;
   font-variant-numeric: tabular-nums;
 }
 
-#grjrjsvaow .gt_font_normal {
+#zsenochjod .gt_font_normal {
   font-weight: normal;
 }
 
-#grjrjsvaow .gt_font_bold {
+#zsenochjod .gt_font_bold {
   font-weight: bold;
 }
 
-#grjrjsvaow .gt_font_italic {
+#zsenochjod .gt_font_italic {
   font-style: italic;
 }
 
-#grjrjsvaow .gt_super {
+#zsenochjod .gt_super {
   font-size: 65%;
 }
 
-#grjrjsvaow .gt_footnote_marks {
+#zsenochjod .gt_footnote_marks {
   font-size: 75%;
   vertical-align: 0.4em;
   position: initial;
 }
 
-#grjrjsvaow .gt_asterisk {
+#zsenochjod .gt_asterisk {
   font-size: 100%;
   vertical-align: 0;
 }
 
-#grjrjsvaow .gt_indent_1 {
+#zsenochjod .gt_indent_1 {
   text-indent: 5px;
 }
 
-#grjrjsvaow .gt_indent_2 {
+#zsenochjod .gt_indent_2 {
   text-indent: 10px;
 }
 
-#grjrjsvaow .gt_indent_3 {
+#zsenochjod .gt_indent_3 {
   text-indent: 15px;
 }
 
-#grjrjsvaow .gt_indent_4 {
+#zsenochjod .gt_indent_4 {
   text-indent: 20px;
 }
 
-#grjrjsvaow .gt_indent_5 {
+#zsenochjod .gt_indent_5 {
   text-indent: 25px;
 }
 
-#grjrjsvaow .katex-display {
+#zsenochjod .katex-display {
   display: inline-flex !important;
   margin-bottom: 0.75em !important;
 }
 
-#grjrjsvaow div.Reactable > div.rt-table > div.rt-thead > div.rt-tr.rt-tr-group-header > div.rt-th-group:after {
+#zsenochjod div.Reactable > div.rt-table > div.rt-thead > div.rt-tr.rt-tr-group-header > div.rt-th-group:after {
   height: 0px !important;
 }
 </style>
@@ -3780,7 +3780,7 @@ Table&nbsp;5.4: Hierarchical Random Effects Model – Regional Potential
 </section>
 <section id="sec-res-space" class="level2" data-number="5.5">
 <h2 data-number="5.5" class="anchored" data-anchor-id="sec-res-space"><span class="header-section-number">5.5</span> Role of space</h2>
-<p>Having established stable dyadic mechanisms at the technology–region level (<a href="#tbl-potential-fe-ols" class="quarto-xref">Table&nbsp;<span>5.2</span></a> and <a href="#tbl-potential-fe-ols-h" class="quarto-xref">Table&nbsp;<span>5.3</span></a>) and substantial between-place heterogeneity in the hierarchical models (<a href="#tbl-potential-re" class="quarto-xref">Table&nbsp;<span>5.4</span></a>), the question becomes whether regional potential exhibits spatial dependence: is a region’s potential related to that of its neighbours? We aggregate potential to region-year means and estimate spatial panel models with <span class="math inline">\(5\)</span>-nearest-neighbor weights matrices. In alignment with the robust Lagrange Multiplier tests presented in <a href="empirical3.html#tbl-spatial-diagnostics" class="quarto-xref">Table&nbsp;<span>4.9</span></a> in the previous chapter, we treat the SAR model as our main empirical assessment here and consider the SEM model for robustness. Essentially, this is also in alignment with the LISA map (<a href="#fig-lisa" class="quarto-xref">Figure&nbsp;<span>5.1</span></a>) which shows that most spatial autocorrelation is concentrated in the High-High and Low-Low quadrant of variations.</p>
+<p>Having established stable dyadic mechanisms at the technology–region level (<a href="#tbl-potential-fe-ols" class="quarto-xref">Table&nbsp;<span>5.2</span></a> and <a href="#tbl-potential-fe-ols-h" class="quarto-xref">Table&nbsp;<span>5.3</span></a>) and substantial between-place heterogeneity in the hierarchical models (<a href="#tbl-potential-re" class="quarto-xref">Table&nbsp;<span>5.4</span></a>), the question becomes whether regional potential exhibits spatial dependence: is a region’s potential related to that of its neighbours? We aggregate potential to region-year means and estimate spatial panel models with <span class="math inline">\(5\)</span>-nearest-neighbor weights matrices. In alignment with the robust Lagrange Multiplier tests presented in <a href="empirical3.html#tbl-spatial-diagnostics" class="quarto-xref">Table&nbsp;<span>4.8</span></a> in the previous chapter, we treat the SAR model as our main empirical assessment here and consider the SEM model for robustness. Essentially, this is also in alignment with the LISA map (<a href="#fig-lisa" class="quarto-xref">Figure&nbsp;<span>5.1</span></a>) which shows that most spatial autocorrelation is concentrated in the High-High and Low-Low quadrant of variations.</p>
 <p><a href="#tbl-spatial-sar" class="quarto-xref">Table&nbsp;<span>5.5</span></a> and <a href="#tbl-spatial-sem" class="quarto-xref">Table&nbsp;<span>5.8</span></a> reveal substantial spatial dependence. In the SAR model, the spatial autoregressive parameter <span class="math inline">\(\rho\)</span> is around <span class="math inline">\(0.376\)</span> in the interaction specification. This indicates that (average) regional potential is positively associated with neighboring regions’ outcomes. Albeit, the marginal effects of the covariates in this model should be observed in <a href="#tbl-sar-effects" class="quarto-xref">Table&nbsp;<span>5.7</span></a> which describes the details of the decomposition of effect type (indirect, direct, and total effects).</p>
 <p>In the SEM model, the spatial error parameter <span class="math inline">\(\delta\)</span> is around <span class="math inline">\(0.420\)</span> in the interaction specification, which indicates that spatial correlation could also be an unobserved components. These estimates are consistent with the interpretation that spatial context matters for regional feasibility landscapes, whether through spillovers or through correlated shocks and unobservables.</p>
 <p>The spatial interaction terms in both models, especially in SAR, point to the importance of space. These terms indicates that the regional feasibility landscape is spatially structured as we iterated previously when we discussed the results from the hierarchical model and the intuition behind it. However, these spatial parameters only capture correlation mechanisms and not causal structures.</p>
@@ -3792,23 +3792,23 @@ Table&nbsp;5.5: Spatial Autoregressive Model (SAR) - Regional Potential
 </figcaption>
 <div aria-describedby="tbl-spatial-sar-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
 <div class="cell-output-display">
-<div id="krujoswquc" style="padding-left:0px;padding-right:0px;padding-top:10px;padding-bottom:10px;overflow-x:auto;overflow-y:auto;width:auto;height:auto;">
-<style>#krujoswquc table {
+<div id="vlqejtsibe" style="padding-left:0px;padding-right:0px;padding-top:10px;padding-bottom:10px;overflow-x:auto;overflow-y:auto;width:auto;height:auto;">
+<style>#vlqejtsibe table {
   font-family: system-ui, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol', 'Noto Color Emoji';
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
 
-#krujoswquc thead, #krujoswquc tbody, #krujoswquc tfoot, #krujoswquc tr, #krujoswquc td, #krujoswquc th {
+#vlqejtsibe thead, #vlqejtsibe tbody, #vlqejtsibe tfoot, #vlqejtsibe tr, #vlqejtsibe td, #vlqejtsibe th {
   border-style: none;
 }
 
-#krujoswquc p {
+#vlqejtsibe p {
   margin: 0;
   padding: 0;
 }
 
-#krujoswquc .gt_table {
+#vlqejtsibe .gt_table {
   display: table;
   border-collapse: collapse;
   line-height: normal;
@@ -3834,12 +3834,12 @@ Table&nbsp;5.5: Spatial Autoregressive Model (SAR) - Regional Potential
   border-left-color: #D3D3D3;
 }
 
-#krujoswquc .gt_caption {
+#vlqejtsibe .gt_caption {
   padding-top: 4px;
   padding-bottom: 4px;
 }
 
-#krujoswquc .gt_title {
+#vlqejtsibe .gt_title {
   color: #333333;
   font-size: 125%;
   font-weight: initial;
@@ -3851,7 +3851,7 @@ Table&nbsp;5.5: Spatial Autoregressive Model (SAR) - Regional Potential
   border-bottom-width: 0;
 }
 
-#krujoswquc .gt_subtitle {
+#vlqejtsibe .gt_subtitle {
   color: #333333;
   font-size: 85%;
   font-weight: initial;
@@ -3863,7 +3863,7 @@ Table&nbsp;5.5: Spatial Autoregressive Model (SAR) - Regional Potential
   border-top-width: 0;
 }
 
-#krujoswquc .gt_heading {
+#vlqejtsibe .gt_heading {
   background-color: #FFFFFF;
   text-align: center;
   border-bottom-color: #FFFFFF;
@@ -3875,13 +3875,13 @@ Table&nbsp;5.5: Spatial Autoregressive Model (SAR) - Regional Potential
   border-right-color: #D3D3D3;
 }
 
-#krujoswquc .gt_bottom_border {
+#vlqejtsibe .gt_bottom_border {
   border-bottom-style: solid;
   border-bottom-width: 2px;
   border-bottom-color: #D3D3D3;
 }
 
-#krujoswquc .gt_col_headings {
+#vlqejtsibe .gt_col_headings {
   border-top-style: solid;
   border-top-width: 2px;
   border-top-color: #D3D3D3;
@@ -3896,7 +3896,7 @@ Table&nbsp;5.5: Spatial Autoregressive Model (SAR) - Regional Potential
   border-right-color: #D3D3D3;
 }
 
-#krujoswquc .gt_col_heading {
+#vlqejtsibe .gt_col_heading {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -3916,7 +3916,7 @@ Table&nbsp;5.5: Spatial Autoregressive Model (SAR) - Regional Potential
   overflow-x: hidden;
 }
 
-#krujoswquc .gt_column_spanner_outer {
+#vlqejtsibe .gt_column_spanner_outer {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -3928,15 +3928,15 @@ Table&nbsp;5.5: Spatial Autoregressive Model (SAR) - Regional Potential
   padding-right: 4px;
 }
 
-#krujoswquc .gt_column_spanner_outer:first-child {
+#vlqejtsibe .gt_column_spanner_outer:first-child {
   padding-left: 0;
 }
 
-#krujoswquc .gt_column_spanner_outer:last-child {
+#vlqejtsibe .gt_column_spanner_outer:last-child {
   padding-right: 0;
 }
 
-#krujoswquc .gt_column_spanner {
+#vlqejtsibe .gt_column_spanner {
   border-bottom-style: solid;
   border-bottom-width: 2px;
   border-bottom-color: #D3D3D3;
@@ -3948,11 +3948,11 @@ Table&nbsp;5.5: Spatial Autoregressive Model (SAR) - Regional Potential
   width: 100%;
 }
 
-#krujoswquc .gt_spanner_row {
+#vlqejtsibe .gt_spanner_row {
   border-bottom-style: hidden;
 }
 
-#krujoswquc .gt_group_heading {
+#vlqejtsibe .gt_group_heading {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -3978,7 +3978,7 @@ Table&nbsp;5.5: Spatial Autoregressive Model (SAR) - Regional Potential
   text-align: left;
 }
 
-#krujoswquc .gt_empty_group_heading {
+#vlqejtsibe .gt_empty_group_heading {
   padding: 0.5px;
   color: #333333;
   background-color: #FFFFFF;
@@ -3993,15 +3993,15 @@ Table&nbsp;5.5: Spatial Autoregressive Model (SAR) - Regional Potential
   vertical-align: middle;
 }
 
-#krujoswquc .gt_from_md > :first-child {
+#vlqejtsibe .gt_from_md > :first-child {
   margin-top: 0;
 }
 
-#krujoswquc .gt_from_md > :last-child {
+#vlqejtsibe .gt_from_md > :last-child {
   margin-bottom: 0;
 }
 
-#krujoswquc .gt_row {
+#vlqejtsibe .gt_row {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -4020,7 +4020,7 @@ Table&nbsp;5.5: Spatial Autoregressive Model (SAR) - Regional Potential
   overflow-x: hidden;
 }
 
-#krujoswquc .gt_stub {
+#vlqejtsibe .gt_stub {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -4033,7 +4033,7 @@ Table&nbsp;5.5: Spatial Autoregressive Model (SAR) - Regional Potential
   padding-right: 5px;
 }
 
-#krujoswquc .gt_stub_row_group {
+#vlqejtsibe .gt_stub_row_group {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -4047,15 +4047,15 @@ Table&nbsp;5.5: Spatial Autoregressive Model (SAR) - Regional Potential
   vertical-align: top;
 }
 
-#krujoswquc .gt_row_group_first td {
+#vlqejtsibe .gt_row_group_first td {
   border-top-width: 2px;
 }
 
-#krujoswquc .gt_row_group_first th {
+#vlqejtsibe .gt_row_group_first th {
   border-top-width: 2px;
 }
 
-#krujoswquc .gt_summary_row {
+#vlqejtsibe .gt_summary_row {
   color: #333333;
   background-color: #FFFFFF;
   text-transform: inherit;
@@ -4065,16 +4065,16 @@ Table&nbsp;5.5: Spatial Autoregressive Model (SAR) - Regional Potential
   padding-right: 5px;
 }
 
-#krujoswquc .gt_first_summary_row {
+#vlqejtsibe .gt_first_summary_row {
   border-top-style: solid;
   border-top-color: #D3D3D3;
 }
 
-#krujoswquc .gt_first_summary_row.thick {
+#vlqejtsibe .gt_first_summary_row.thick {
   border-top-width: 2px;
 }
 
-#krujoswquc .gt_last_summary_row {
+#vlqejtsibe .gt_last_summary_row {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -4084,7 +4084,7 @@ Table&nbsp;5.5: Spatial Autoregressive Model (SAR) - Regional Potential
   border-bottom-color: #D3D3D3;
 }
 
-#krujoswquc .gt_grand_summary_row {
+#vlqejtsibe .gt_grand_summary_row {
   color: #333333;
   background-color: #FFFFFF;
   text-transform: inherit;
@@ -4094,7 +4094,7 @@ Table&nbsp;5.5: Spatial Autoregressive Model (SAR) - Regional Potential
   padding-right: 5px;
 }
 
-#krujoswquc .gt_first_grand_summary_row {
+#vlqejtsibe .gt_first_grand_summary_row {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -4104,7 +4104,7 @@ Table&nbsp;5.5: Spatial Autoregressive Model (SAR) - Regional Potential
   border-top-color: #D3D3D3;
 }
 
-#krujoswquc .gt_last_grand_summary_row_top {
+#vlqejtsibe .gt_last_grand_summary_row_top {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -4114,11 +4114,11 @@ Table&nbsp;5.5: Spatial Autoregressive Model (SAR) - Regional Potential
   border-bottom-color: #D3D3D3;
 }
 
-#krujoswquc .gt_striped {
+#vlqejtsibe .gt_striped {
   background-color: rgba(128, 128, 128, 0.05);
 }
 
-#krujoswquc .gt_table_body {
+#vlqejtsibe .gt_table_body {
   border-top-style: solid;
   border-top-width: 2px;
   border-top-color: #D3D3D3;
@@ -4127,7 +4127,7 @@ Table&nbsp;5.5: Spatial Autoregressive Model (SAR) - Regional Potential
   border-bottom-color: #D3D3D3;
 }
 
-#krujoswquc .gt_footnotes {
+#vlqejtsibe .gt_footnotes {
   color: #333333;
   background-color: #FFFFFF;
   border-bottom-style: none;
@@ -4141,7 +4141,7 @@ Table&nbsp;5.5: Spatial Autoregressive Model (SAR) - Regional Potential
   border-right-color: #D3D3D3;
 }
 
-#krujoswquc .gt_footnote {
+#vlqejtsibe .gt_footnote {
   margin: 0px;
   font-size: 90%;
   padding-top: 4px;
@@ -4150,7 +4150,7 @@ Table&nbsp;5.5: Spatial Autoregressive Model (SAR) - Regional Potential
   padding-right: 5px;
 }
 
-#krujoswquc .gt_sourcenotes {
+#vlqejtsibe .gt_sourcenotes {
   color: #333333;
   background-color: #FFFFFF;
   border-bottom-style: none;
@@ -4164,7 +4164,7 @@ Table&nbsp;5.5: Spatial Autoregressive Model (SAR) - Regional Potential
   border-right-color: #D3D3D3;
 }
 
-#krujoswquc .gt_sourcenote {
+#vlqejtsibe .gt_sourcenote {
   font-size: 90%;
   padding-top: 4px;
   padding-bottom: 4px;
@@ -4172,72 +4172,72 @@ Table&nbsp;5.5: Spatial Autoregressive Model (SAR) - Regional Potential
   padding-right: 5px;
 }
 
-#krujoswquc .gt_left {
+#vlqejtsibe .gt_left {
   text-align: left;
 }
 
-#krujoswquc .gt_center {
+#vlqejtsibe .gt_center {
   text-align: center;
 }
 
-#krujoswquc .gt_right {
+#vlqejtsibe .gt_right {
   text-align: right;
   font-variant-numeric: tabular-nums;
 }
 
-#krujoswquc .gt_font_normal {
+#vlqejtsibe .gt_font_normal {
   font-weight: normal;
 }
 
-#krujoswquc .gt_font_bold {
+#vlqejtsibe .gt_font_bold {
   font-weight: bold;
 }
 
-#krujoswquc .gt_font_italic {
+#vlqejtsibe .gt_font_italic {
   font-style: italic;
 }
 
-#krujoswquc .gt_super {
+#vlqejtsibe .gt_super {
   font-size: 65%;
 }
 
-#krujoswquc .gt_footnote_marks {
+#vlqejtsibe .gt_footnote_marks {
   font-size: 75%;
   vertical-align: 0.4em;
   position: initial;
 }
 
-#krujoswquc .gt_asterisk {
+#vlqejtsibe .gt_asterisk {
   font-size: 100%;
   vertical-align: 0;
 }
 
-#krujoswquc .gt_indent_1 {
+#vlqejtsibe .gt_indent_1 {
   text-indent: 5px;
 }
 
-#krujoswquc .gt_indent_2 {
+#vlqejtsibe .gt_indent_2 {
   text-indent: 10px;
 }
 
-#krujoswquc .gt_indent_3 {
+#vlqejtsibe .gt_indent_3 {
   text-indent: 15px;
 }
 
-#krujoswquc .gt_indent_4 {
+#vlqejtsibe .gt_indent_4 {
   text-indent: 20px;
 }
 
-#krujoswquc .gt_indent_5 {
+#vlqejtsibe .gt_indent_5 {
   text-indent: 25px;
 }
 
-#krujoswquc .katex-display {
+#vlqejtsibe .katex-display {
   display: inline-flex !important;
   margin-bottom: 0.75em !important;
 }
 
-#krujoswquc div.Reactable > div.rt-table > div.rt-thead > div.rt-tr.rt-tr-group-header > div.rt-th-group:after {
+#vlqejtsibe div.Reactable > div.rt-table > div.rt-thead > div.rt-tr.rt-tr-group-header > div.rt-th-group:after {
   height: 0px !important;
 }
 </style>
@@ -4427,23 +4427,23 @@ Table&nbsp;5.6: Heterogeneity of average betweenness at different average cohere
 </figcaption>
 <div aria-describedby="tbl-eg_avg_coh-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
 <div class="cell-output-display">
-<div id="tranpqjmpm" style="padding-left:0px;padding-right:0px;padding-top:10px;padding-bottom:10px;overflow-x:auto;overflow-y:auto;width:auto;height:auto;">
-<style>#tranpqjmpm table {
+<div id="fwtagzpodz" style="padding-left:0px;padding-right:0px;padding-top:10px;padding-bottom:10px;overflow-x:auto;overflow-y:auto;width:auto;height:auto;">
+<style>#fwtagzpodz table {
   font-family: system-ui, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol', 'Noto Color Emoji';
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
 
-#tranpqjmpm thead, #tranpqjmpm tbody, #tranpqjmpm tfoot, #tranpqjmpm tr, #tranpqjmpm td, #tranpqjmpm th {
+#fwtagzpodz thead, #fwtagzpodz tbody, #fwtagzpodz tfoot, #fwtagzpodz tr, #fwtagzpodz td, #fwtagzpodz th {
   border-style: none;
 }
 
-#tranpqjmpm p {
+#fwtagzpodz p {
   margin: 0;
   padding: 0;
 }
 
-#tranpqjmpm .gt_table {
+#fwtagzpodz .gt_table {
   display: table;
   border-collapse: collapse;
   line-height: normal;
@@ -4469,12 +4469,12 @@ Table&nbsp;5.6: Heterogeneity of average betweenness at different average cohere
   border-left-color: #D3D3D3;
 }
 
-#tranpqjmpm .gt_caption {
+#fwtagzpodz .gt_caption {
   padding-top: 4px;
   padding-bottom: 4px;
 }
 
-#tranpqjmpm .gt_title {
+#fwtagzpodz .gt_title {
   color: #333333;
   font-size: 125%;
   font-weight: initial;
@@ -4486,7 +4486,7 @@ Table&nbsp;5.6: Heterogeneity of average betweenness at different average cohere
   border-bottom-width: 0;
 }
 
-#tranpqjmpm .gt_subtitle {
+#fwtagzpodz .gt_subtitle {
   color: #333333;
   font-size: 85%;
   font-weight: initial;
@@ -4498,7 +4498,7 @@ Table&nbsp;5.6: Heterogeneity of average betweenness at different average cohere
   border-top-width: 0;
 }
 
-#tranpqjmpm .gt_heading {
+#fwtagzpodz .gt_heading {
   background-color: #FFFFFF;
   text-align: center;
   border-bottom-color: #FFFFFF;
@@ -4510,13 +4510,13 @@ Table&nbsp;5.6: Heterogeneity of average betweenness at different average cohere
   border-right-color: #D3D3D3;
 }
 
-#tranpqjmpm .gt_bottom_border {
+#fwtagzpodz .gt_bottom_border {
   border-bottom-style: solid;
   border-bottom-width: 2px;
   border-bottom-color: #D3D3D3;
 }
 
-#tranpqjmpm .gt_col_headings {
+#fwtagzpodz .gt_col_headings {
   border-top-style: solid;
   border-top-width: 2px;
   border-top-color: #D3D3D3;
@@ -4531,7 +4531,7 @@ Table&nbsp;5.6: Heterogeneity of average betweenness at different average cohere
   border-right-color: #D3D3D3;
 }
 
-#tranpqjmpm .gt_col_heading {
+#fwtagzpodz .gt_col_heading {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -4551,7 +4551,7 @@ Table&nbsp;5.6: Heterogeneity of average betweenness at different average cohere
   overflow-x: hidden;
 }
 
-#tranpqjmpm .gt_column_spanner_outer {
+#fwtagzpodz .gt_column_spanner_outer {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -4563,15 +4563,15 @@ Table&nbsp;5.6: Heterogeneity of average betweenness at different average cohere
   padding-right: 4px;
 }
 
-#tranpqjmpm .gt_column_spanner_outer:first-child {
+#fwtagzpodz .gt_column_spanner_outer:first-child {
   padding-left: 0;
 }
 
-#tranpqjmpm .gt_column_spanner_outer:last-child {
+#fwtagzpodz .gt_column_spanner_outer:last-child {
   padding-right: 0;
 }
 
-#tranpqjmpm .gt_column_spanner {
+#fwtagzpodz .gt_column_spanner {
   border-bottom-style: solid;
   border-bottom-width: 2px;
   border-bottom-color: #D3D3D3;
@@ -4583,11 +4583,11 @@ Table&nbsp;5.6: Heterogeneity of average betweenness at different average cohere
   width: 100%;
 }
 
-#tranpqjmpm .gt_spanner_row {
+#fwtagzpodz .gt_spanner_row {
   border-bottom-style: hidden;
 }
 
-#tranpqjmpm .gt_group_heading {
+#fwtagzpodz .gt_group_heading {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -4613,7 +4613,7 @@ Table&nbsp;5.6: Heterogeneity of average betweenness at different average cohere
   text-align: left;
 }
 
-#tranpqjmpm .gt_empty_group_heading {
+#fwtagzpodz .gt_empty_group_heading {
   padding: 0.5px;
   color: #333333;
   background-color: #FFFFFF;
@@ -4628,15 +4628,15 @@ Table&nbsp;5.6: Heterogeneity of average betweenness at different average cohere
   vertical-align: middle;
 }
 
-#tranpqjmpm .gt_from_md > :first-child {
+#fwtagzpodz .gt_from_md > :first-child {
   margin-top: 0;
 }
 
-#tranpqjmpm .gt_from_md > :last-child {
+#fwtagzpodz .gt_from_md > :last-child {
   margin-bottom: 0;
 }
 
-#tranpqjmpm .gt_row {
+#fwtagzpodz .gt_row {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -4655,7 +4655,7 @@ Table&nbsp;5.6: Heterogeneity of average betweenness at different average cohere
   overflow-x: hidden;
 }
 
-#tranpqjmpm .gt_stub {
+#fwtagzpodz .gt_stub {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -4668,7 +4668,7 @@ Table&nbsp;5.6: Heterogeneity of average betweenness at different average cohere
   padding-right: 5px;
 }
 
-#tranpqjmpm .gt_stub_row_group {
+#fwtagzpodz .gt_stub_row_group {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -4682,15 +4682,15 @@ Table&nbsp;5.6: Heterogeneity of average betweenness at different average cohere
   vertical-align: top;
 }
 
-#tranpqjmpm .gt_row_group_first td {
+#fwtagzpodz .gt_row_group_first td {
   border-top-width: 2px;
 }
 
-#tranpqjmpm .gt_row_group_first th {
+#fwtagzpodz .gt_row_group_first th {
   border-top-width: 2px;
 }
 
-#tranpqjmpm .gt_summary_row {
+#fwtagzpodz .gt_summary_row {
   color: #333333;
   background-color: #FFFFFF;
   text-transform: inherit;
@@ -4700,16 +4700,16 @@ Table&nbsp;5.6: Heterogeneity of average betweenness at different average cohere
   padding-right: 5px;
 }
 
-#tranpqjmpm .gt_first_summary_row {
+#fwtagzpodz .gt_first_summary_row {
   border-top-style: solid;
   border-top-color: #D3D3D3;
 }
 
-#tranpqjmpm .gt_first_summary_row.thick {
+#fwtagzpodz .gt_first_summary_row.thick {
   border-top-width: 2px;
 }
 
-#tranpqjmpm .gt_last_summary_row {
+#fwtagzpodz .gt_last_summary_row {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -4719,7 +4719,7 @@ Table&nbsp;5.6: Heterogeneity of average betweenness at different average cohere
   border-bottom-color: #D3D3D3;
 }
 
-#tranpqjmpm .gt_grand_summary_row {
+#fwtagzpodz .gt_grand_summary_row {
   color: #333333;
   background-color: #FFFFFF;
   text-transform: inherit;
@@ -4729,7 +4729,7 @@ Table&nbsp;5.6: Heterogeneity of average betweenness at different average cohere
   padding-right: 5px;
 }
 
-#tranpqjmpm .gt_first_grand_summary_row {
+#fwtagzpodz .gt_first_grand_summary_row {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -4739,7 +4739,7 @@ Table&nbsp;5.6: Heterogeneity of average betweenness at different average cohere
   border-top-color: #D3D3D3;
 }
 
-#tranpqjmpm .gt_last_grand_summary_row_top {
+#fwtagzpodz .gt_last_grand_summary_row_top {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -4749,11 +4749,11 @@ Table&nbsp;5.6: Heterogeneity of average betweenness at different average cohere
   border-bottom-color: #D3D3D3;
 }
 
-#tranpqjmpm .gt_striped {
+#fwtagzpodz .gt_striped {
   background-color: rgba(128, 128, 128, 0.05);
 }
 
-#tranpqjmpm .gt_table_body {
+#fwtagzpodz .gt_table_body {
   border-top-style: solid;
   border-top-width: 2px;
   border-top-color: #D3D3D3;
@@ -4762,7 +4762,7 @@ Table&nbsp;5.6: Heterogeneity of average betweenness at different average cohere
   border-bottom-color: #D3D3D3;
 }
 
-#tranpqjmpm .gt_footnotes {
+#fwtagzpodz .gt_footnotes {
   color: #333333;
   background-color: #FFFFFF;
   border-bottom-style: none;
@@ -4776,7 +4776,7 @@ Table&nbsp;5.6: Heterogeneity of average betweenness at different average cohere
   border-right-color: #D3D3D3;
 }
 
-#tranpqjmpm .gt_footnote {
+#fwtagzpodz .gt_footnote {
   margin: 0px;
   font-size: 90%;
   padding-top: 4px;
@@ -4785,7 +4785,7 @@ Table&nbsp;5.6: Heterogeneity of average betweenness at different average cohere
   padding-right: 5px;
 }
 
-#tranpqjmpm .gt_sourcenotes {
+#fwtagzpodz .gt_sourcenotes {
   color: #333333;
   background-color: #FFFFFF;
   border-bottom-style: none;
@@ -4799,7 +4799,7 @@ Table&nbsp;5.6: Heterogeneity of average betweenness at different average cohere
   border-right-color: #D3D3D3;
 }
 
-#tranpqjmpm .gt_sourcenote {
+#fwtagzpodz .gt_sourcenote {
   font-size: 90%;
   padding-top: 4px;
   padding-bottom: 4px;
@@ -4807,80 +4807,89 @@ Table&nbsp;5.6: Heterogeneity of average betweenness at different average cohere
   padding-right: 5px;
 }
 
-#tranpqjmpm .gt_left {
+#fwtagzpodz .gt_left {
   text-align: left;
 }
 
-#tranpqjmpm .gt_center {
+#fwtagzpodz .gt_center {
   text-align: center;
 }
 
-#tranpqjmpm .gt_right {
+#fwtagzpodz .gt_right {
   text-align: right;
   font-variant-numeric: tabular-nums;
 }
 
-#tranpqjmpm .gt_font_normal {
+#fwtagzpodz .gt_font_normal {
   font-weight: normal;
 }
 
-#tranpqjmpm .gt_font_bold {
+#fwtagzpodz .gt_font_bold {
   font-weight: bold;
 }
 
-#tranpqjmpm .gt_font_italic {
+#fwtagzpodz .gt_font_italic {
   font-style: italic;
 }
 
-#tranpqjmpm .gt_super {
+#fwtagzpodz .gt_super {
   font-size: 65%;
 }
 
-#tranpqjmpm .gt_footnote_marks {
+#fwtagzpodz .gt_footnote_marks {
   font-size: 75%;
   vertical-align: 0.4em;
   position: initial;
 }
 
-#tranpqjmpm .gt_asterisk {
+#fwtagzpodz .gt_asterisk {
   font-size: 100%;
   vertical-align: 0;
 }
 
-#tranpqjmpm .gt_indent_1 {
+#fwtagzpodz .gt_indent_1 {
   text-indent: 5px;
 }
 
-#tranpqjmpm .gt_indent_2 {
+#fwtagzpodz .gt_indent_2 {
   text-indent: 10px;
 }
 
-#tranpqjmpm .gt_indent_3 {
+#fwtagzpodz .gt_indent_3 {
   text-indent: 15px;
 }
 
-#tranpqjmpm .gt_indent_4 {
+#fwtagzpodz .gt_indent_4 {
   text-indent: 20px;
 }
 
-#tranpqjmpm .gt_indent_5 {
+#fwtagzpodz .gt_indent_5 {
   text-indent: 25px;
 }
 
-#tranpqjmpm .katex-display {
+#fwtagzpodz .katex-display {
   display: inline-flex !important;
   margin-bottom: 0.75em !important;
 }
 
-#tranpqjmpm div.Reactable > div.rt-table > div.rt-thead > div.rt-tr.rt-tr-group-header > div.rt-th-group:after {
+#fwtagzpodz div.Reactable > div.rt-table > div.rt-thead > div.rt-tr.rt-tr-group-header > div.rt-th-group:after {
   height: 0px !important;
 }
 </style>
 
 <table class="gt_table cell caption-top table table-sm table-striped small" data-quarto-bootstrap="false">
+<colgroup>
+<col style="width: 10%">
+<col style="width: 15%">
+<col style="width: 15%">
+<col style="width: 15%">
+<col style="width: 15%">
+<col style="width: 15%">
+<col style="width: 15%">
+</colgroup>
 <thead>
 <tr class="gt_col_headings header">
-<th id="a::stub" class="gt_col_heading gt_columns_bottom_border gt_left" data-quarto-table-cell-role="th" scope="col"></th>
+<th id="region" class="gt_col_heading gt_columns_bottom_border gt_left" data-quarto-table-cell-role="th" scope="col">Region</th>
 <th id="reg_potential" class="gt_col_heading gt_columns_bottom_border gt_right" data-quarto-table-cell-role="th" scope="col">Avg. potential</th>
 <th id="avg_coherence" class="gt_col_heading gt_columns_bottom_border gt_right" data-quarto-table-cell-role="th" scope="col">Avg. coherence</th>
 <th id="avg_betweenness" class="gt_col_heading gt_columns_bottom_border gt_right" data-quarto-table-cell-role="th" scope="col">Avg. betweenness</th>
@@ -4894,61 +4903,61 @@ Table&nbsp;5.6: Heterogeneity of average betweenness at different average cohere
 <th colspan="7" id="above-coherence-threshold" class="gt_group_heading" data-quarto-table-cell-role="th" scope="colgroup">above coherence threshold</th>
 </tr>
 <tr class="gt_row_group_first even">
-<th id="stub_1_1" class="gt_row gt_left gt_stub" data-quarto-table-cell-role="th" scope="row">ITC4</th>
-<td class="gt_row gt_right" headers="above-coherence-threshold stub_1_1 reg_potential">0.60</td>
-<td class="gt_row gt_right" headers="above-coherence-threshold stub_1_1 avg_coherence">0.58</td>
-<td class="gt_row gt_right" headers="above-coherence-threshold stub_1_1 avg_betweenness">0.0038</td>
-<td class="gt_row gt_right" headers="above-coherence-threshold stub_1_1 decile-pot">9</td>
-<td class="gt_row gt_right" headers="above-coherence-threshold stub_1_1 decile-coh">9</td>
-<td class="gt_row gt_right" headers="above-coherence-threshold stub_1_1 decile-bet">3</td>
+<td class="gt_row gt_left" headers="above-coherence-threshold  region">ITC4</td>
+<td class="gt_row gt_right" headers="above-coherence-threshold  reg_potential">0.60</td>
+<td class="gt_row gt_right" headers="above-coherence-threshold  avg_coherence">0.58</td>
+<td class="gt_row gt_right" headers="above-coherence-threshold  avg_betweenness">0.0038</td>
+<td class="gt_row gt_right" headers="above-coherence-threshold  decile-pot">9</td>
+<td class="gt_row gt_right" headers="above-coherence-threshold  decile-coh">9</td>
+<td class="gt_row gt_right" headers="above-coherence-threshold  decile-bet">3</td>
 </tr>
 <tr class="odd">
-<th id="stub_1_2" class="gt_row gt_left gt_stub" data-quarto-table-cell-role="th" scope="row">DE92</th>
-<td class="gt_row gt_right" headers="above-coherence-threshold stub_1_2 reg_potential">0.60</td>
-<td class="gt_row gt_right" headers="above-coherence-threshold stub_1_2 avg_coherence">0.58</td>
-<td class="gt_row gt_right" headers="above-coherence-threshold stub_1_2 avg_betweenness">0.0042</td>
-<td class="gt_row gt_right" headers="above-coherence-threshold stub_1_2 decile-pot">9</td>
-<td class="gt_row gt_right" headers="above-coherence-threshold stub_1_2 decile-coh">10</td>
-<td class="gt_row gt_right" headers="above-coherence-threshold stub_1_2 decile-bet">4</td>
+<td class="gt_row gt_left" headers="above-coherence-threshold  region">DE92</td>
+<td class="gt_row gt_right" headers="above-coherence-threshold  reg_potential">0.60</td>
+<td class="gt_row gt_right" headers="above-coherence-threshold  avg_coherence">0.58</td>
+<td class="gt_row gt_right" headers="above-coherence-threshold  avg_betweenness">0.0042</td>
+<td class="gt_row gt_right" headers="above-coherence-threshold  decile-pot">9</td>
+<td class="gt_row gt_right" headers="above-coherence-threshold  decile-coh">10</td>
+<td class="gt_row gt_right" headers="above-coherence-threshold  decile-bet">4</td>
 </tr>
 <tr class="even">
-<th id="stub_1_3" class="gt_row gt_left gt_stub" data-quarto-table-cell-role="th" scope="row">FRL0</th>
-<td class="gt_row gt_right" headers="above-coherence-threshold stub_1_3 reg_potential">0.58</td>
-<td class="gt_row gt_right" headers="above-coherence-threshold stub_1_3 avg_coherence">0.57</td>
-<td class="gt_row gt_right" headers="above-coherence-threshold stub_1_3 avg_betweenness">0.0049</td>
-<td class="gt_row gt_right" headers="above-coherence-threshold stub_1_3 decile-pot">9</td>
-<td class="gt_row gt_right" headers="above-coherence-threshold stub_1_3 decile-coh">8</td>
-<td class="gt_row gt_right" headers="above-coherence-threshold stub_1_3 decile-bet">7</td>
+<td class="gt_row gt_left" headers="above-coherence-threshold  region">FRL0</td>
+<td class="gt_row gt_right" headers="above-coherence-threshold  reg_potential">0.58</td>
+<td class="gt_row gt_right" headers="above-coherence-threshold  avg_coherence">0.57</td>
+<td class="gt_row gt_right" headers="above-coherence-threshold  avg_betweenness">0.0049</td>
+<td class="gt_row gt_right" headers="above-coherence-threshold  decile-pot">9</td>
+<td class="gt_row gt_right" headers="above-coherence-threshold  decile-coh">8</td>
+<td class="gt_row gt_right" headers="above-coherence-threshold  decile-bet">7</td>
 </tr>
 <tr class="gt_group_heading_row odd">
 <th colspan="7" id="below-coherence-threshold" class="gt_group_heading" data-quarto-table-cell-role="th" scope="colgroup">below coherence threshold</th>
 </tr>
 <tr class="gt_row_group_first even">
-<th id="stub_1_4" class="gt_row gt_left gt_stub" data-quarto-table-cell-role="th" scope="row">CZ08</th>
-<td class="gt_row gt_right" headers="below-coherence-threshold stub_1_4 reg_potential">0.01</td>
-<td class="gt_row gt_right" headers="below-coherence-threshold stub_1_4 avg_coherence">0.52</td>
-<td class="gt_row gt_right" headers="below-coherence-threshold stub_1_4 avg_betweenness">0.0040</td>
-<td class="gt_row gt_right" headers="below-coherence-threshold stub_1_4 decile-pot">2</td>
-<td class="gt_row gt_right" headers="below-coherence-threshold stub_1_4 decile-coh">2</td>
-<td class="gt_row gt_right" headers="below-coherence-threshold stub_1_4 decile-bet">3</td>
+<td class="gt_row gt_left" headers="below-coherence-threshold  region">CZ08</td>
+<td class="gt_row gt_right" headers="below-coherence-threshold  reg_potential">0.01</td>
+<td class="gt_row gt_right" headers="below-coherence-threshold  avg_coherence">0.52</td>
+<td class="gt_row gt_right" headers="below-coherence-threshold  avg_betweenness">0.0040</td>
+<td class="gt_row gt_right" headers="below-coherence-threshold  decile-pot">2</td>
+<td class="gt_row gt_right" headers="below-coherence-threshold  decile-coh">2</td>
+<td class="gt_row gt_right" headers="below-coherence-threshold  decile-bet">3</td>
 </tr>
 <tr class="odd">
-<th id="stub_1_5" class="gt_row gt_left gt_stub" data-quarto-table-cell-role="th" scope="row">NL34</th>
-<td class="gt_row gt_right" headers="below-coherence-threshold stub_1_5 reg_potential">0.02</td>
-<td class="gt_row gt_right" headers="below-coherence-threshold stub_1_5 avg_coherence">0.51</td>
-<td class="gt_row gt_right" headers="below-coherence-threshold stub_1_5 avg_betweenness">0.0050</td>
-<td class="gt_row gt_right" headers="below-coherence-threshold stub_1_5 decile-pot">3</td>
-<td class="gt_row gt_right" headers="below-coherence-threshold stub_1_5 decile-coh">2</td>
-<td class="gt_row gt_right" headers="below-coherence-threshold stub_1_5 decile-bet">7</td>
+<td class="gt_row gt_left" headers="below-coherence-threshold  region">NL34</td>
+<td class="gt_row gt_right" headers="below-coherence-threshold  reg_potential">0.02</td>
+<td class="gt_row gt_right" headers="below-coherence-threshold  avg_coherence">0.51</td>
+<td class="gt_row gt_right" headers="below-coherence-threshold  avg_betweenness">0.0050</td>
+<td class="gt_row gt_right" headers="below-coherence-threshold  decile-pot">3</td>
+<td class="gt_row gt_right" headers="below-coherence-threshold  decile-coh">2</td>
+<td class="gt_row gt_right" headers="below-coherence-threshold  decile-bet">7</td>
 </tr>
 <tr class="even">
-<th id="stub_1_6" class="gt_row gt_left gt_stub" data-quarto-table-cell-role="th" scope="row">ES13</th>
-<td class="gt_row gt_right" headers="below-coherence-threshold stub_1_6 reg_potential">0.01</td>
-<td class="gt_row gt_right" headers="below-coherence-threshold stub_1_6 avg_coherence">0.52</td>
-<td class="gt_row gt_right" headers="below-coherence-threshold stub_1_6 avg_betweenness">0.0059</td>
-<td class="gt_row gt_right" headers="below-coherence-threshold stub_1_6 decile-pot">2</td>
-<td class="gt_row gt_right" headers="below-coherence-threshold stub_1_6 decile-coh">2</td>
-<td class="gt_row gt_right" headers="below-coherence-threshold stub_1_6 decile-bet">9</td>
+<td class="gt_row gt_left" headers="below-coherence-threshold  region">ES13</td>
+<td class="gt_row gt_right" headers="below-coherence-threshold  reg_potential">0.01</td>
+<td class="gt_row gt_right" headers="below-coherence-threshold  avg_coherence">0.52</td>
+<td class="gt_row gt_right" headers="below-coherence-threshold  avg_betweenness">0.0059</td>
+<td class="gt_row gt_right" headers="below-coherence-threshold  decile-pot">2</td>
+<td class="gt_row gt_right" headers="below-coherence-threshold  decile-coh">2</td>
+<td class="gt_row gt_right" headers="below-coherence-threshold  decile-bet">9</td>
 </tr>
 </tbody>
 </table>
@@ -4992,34 +5001,34 @@ Table&nbsp;5.7: SAR effect decomposition - Regional Potential
 </figcaption>
 <div aria-describedby="tbl-sar-effects-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
 <div class="cell-output-display">
-<div id="wvesxyhqkr" style="padding-left:0px;padding-right:0px;padding-top:10px;padding-bottom:10px;overflow-x:auto;overflow-y:auto;width:auto;height:auto;">
-<style>#wvesxyhqkr table {
+<div id="sciawzlwoc" style="padding-left:0px;padding-right:0px;padding-top:10px;padding-bottom:10px;overflow-x:auto;overflow-y:auto;width:auto;height:auto;">
+<style>#sciawzlwoc table {
   font-family: system-ui, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol', 'Noto Color Emoji';
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
 
-#wvesxyhqkr thead, #wvesxyhqkr tbody, #wvesxyhqkr tfoot, #wvesxyhqkr tr, #wvesxyhqkr td, #wvesxyhqkr th {
+#sciawzlwoc thead, #sciawzlwoc tbody, #sciawzlwoc tfoot, #sciawzlwoc tr, #sciawzlwoc td, #sciawzlwoc th {
   border-style: none;
 }
 
-#wvesxyhqkr p {
+#sciawzlwoc p {
   margin: 0;
   padding: 0;
 }
 
-#wvesxyhqkr .gt_table {
+#sciawzlwoc .gt_table {
   display: table;
   border-collapse: collapse;
   line-height: normal;
   margin-left: auto;
   margin-right: auto;
   color: #333333;
-  font-size: 16px;
+  font-size: 10px;
   font-weight: normal;
   font-style: normal;
   background-color: #FFFFFF;
-  width: auto;
+  width: 100%;
   border-top-style: solid;
   border-top-width: 2px;
   border-top-color: #A8A8A8;
@@ -5034,12 +5043,12 @@ Table&nbsp;5.7: SAR effect decomposition - Regional Potential
   border-left-color: #D3D3D3;
 }
 
-#wvesxyhqkr .gt_caption {
+#sciawzlwoc .gt_caption {
   padding-top: 4px;
   padding-bottom: 4px;
 }
 
-#wvesxyhqkr .gt_title {
+#sciawzlwoc .gt_title {
   color: #333333;
   font-size: 125%;
   font-weight: initial;
@@ -5051,7 +5060,7 @@ Table&nbsp;5.7: SAR effect decomposition - Regional Potential
   border-bottom-width: 0;
 }
 
-#wvesxyhqkr .gt_subtitle {
+#sciawzlwoc .gt_subtitle {
   color: #333333;
   font-size: 85%;
   font-weight: initial;
@@ -5063,7 +5072,7 @@ Table&nbsp;5.7: SAR effect decomposition - Regional Potential
   border-top-width: 0;
 }
 
-#wvesxyhqkr .gt_heading {
+#sciawzlwoc .gt_heading {
   background-color: #FFFFFF;
   text-align: center;
   border-bottom-color: #FFFFFF;
@@ -5075,13 +5084,13 @@ Table&nbsp;5.7: SAR effect decomposition - Regional Potential
   border-right-color: #D3D3D3;
 }
 
-#wvesxyhqkr .gt_bottom_border {
+#sciawzlwoc .gt_bottom_border {
   border-bottom-style: solid;
   border-bottom-width: 2px;
   border-bottom-color: #D3D3D3;
 }
 
-#wvesxyhqkr .gt_col_headings {
+#sciawzlwoc .gt_col_headings {
   border-top-style: solid;
   border-top-width: 2px;
   border-top-color: #D3D3D3;
@@ -5096,7 +5105,7 @@ Table&nbsp;5.7: SAR effect decomposition - Regional Potential
   border-right-color: #D3D3D3;
 }
 
-#wvesxyhqkr .gt_col_heading {
+#sciawzlwoc .gt_col_heading {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -5116,7 +5125,7 @@ Table&nbsp;5.7: SAR effect decomposition - Regional Potential
   overflow-x: hidden;
 }
 
-#wvesxyhqkr .gt_column_spanner_outer {
+#sciawzlwoc .gt_column_spanner_outer {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -5128,15 +5137,15 @@ Table&nbsp;5.7: SAR effect decomposition - Regional Potential
   padding-right: 4px;
 }
 
-#wvesxyhqkr .gt_column_spanner_outer:first-child {
+#sciawzlwoc .gt_column_spanner_outer:first-child {
   padding-left: 0;
 }
 
-#wvesxyhqkr .gt_column_spanner_outer:last-child {
+#sciawzlwoc .gt_column_spanner_outer:last-child {
   padding-right: 0;
 }
 
-#wvesxyhqkr .gt_column_spanner {
+#sciawzlwoc .gt_column_spanner {
   border-bottom-style: solid;
   border-bottom-width: 2px;
   border-bottom-color: #D3D3D3;
@@ -5148,11 +5157,11 @@ Table&nbsp;5.7: SAR effect decomposition - Regional Potential
   width: 100%;
 }
 
-#wvesxyhqkr .gt_spanner_row {
+#sciawzlwoc .gt_spanner_row {
   border-bottom-style: hidden;
 }
 
-#wvesxyhqkr .gt_group_heading {
+#sciawzlwoc .gt_group_heading {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -5178,7 +5187,7 @@ Table&nbsp;5.7: SAR effect decomposition - Regional Potential
   text-align: left;
 }
 
-#wvesxyhqkr .gt_empty_group_heading {
+#sciawzlwoc .gt_empty_group_heading {
   padding: 0.5px;
   color: #333333;
   background-color: #FFFFFF;
@@ -5193,17 +5202,17 @@ Table&nbsp;5.7: SAR effect decomposition - Regional Potential
   vertical-align: middle;
 }
 
-#wvesxyhqkr .gt_from_md > :first-child {
+#sciawzlwoc .gt_from_md > :first-child {
   margin-top: 0;
 }
 
-#wvesxyhqkr .gt_from_md > :last-child {
+#sciawzlwoc .gt_from_md > :last-child {
   margin-bottom: 0;
 }
 
-#wvesxyhqkr .gt_row {
-  padding-top: 8px;
-  padding-bottom: 8px;
+#sciawzlwoc .gt_row {
+  padding-top: 2px;
+  padding-bottom: 2px;
   padding-left: 5px;
   padding-right: 5px;
   margin: 10px;
@@ -5220,7 +5229,7 @@ Table&nbsp;5.7: SAR effect decomposition - Regional Potential
   overflow-x: hidden;
 }
 
-#wvesxyhqkr .gt_stub {
+#sciawzlwoc .gt_stub {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -5233,7 +5242,7 @@ Table&nbsp;5.7: SAR effect decomposition - Regional Potential
   padding-right: 5px;
 }
 
-#wvesxyhqkr .gt_stub_row_group {
+#sciawzlwoc .gt_stub_row_group {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -5247,15 +5256,15 @@ Table&nbsp;5.7: SAR effect decomposition - Regional Potential
   vertical-align: top;
 }
 
-#wvesxyhqkr .gt_row_group_first td {
+#sciawzlwoc .gt_row_group_first td {
   border-top-width: 2px;
 }
 
-#wvesxyhqkr .gt_row_group_first th {
+#sciawzlwoc .gt_row_group_first th {
   border-top-width: 2px;
 }
 
-#wvesxyhqkr .gt_summary_row {
+#sciawzlwoc .gt_summary_row {
   color: #333333;
   background-color: #FFFFFF;
   text-transform: inherit;
@@ -5265,16 +5274,16 @@ Table&nbsp;5.7: SAR effect decomposition - Regional Potential
   padding-right: 5px;
 }
 
-#wvesxyhqkr .gt_first_summary_row {
+#sciawzlwoc .gt_first_summary_row {
   border-top-style: solid;
   border-top-color: #D3D3D3;
 }
 
-#wvesxyhqkr .gt_first_summary_row.thick {
+#sciawzlwoc .gt_first_summary_row.thick {
   border-top-width: 2px;
 }
 
-#wvesxyhqkr .gt_last_summary_row {
+#sciawzlwoc .gt_last_summary_row {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -5284,7 +5293,7 @@ Table&nbsp;5.7: SAR effect decomposition - Regional Potential
   border-bottom-color: #D3D3D3;
 }
 
-#wvesxyhqkr .gt_grand_summary_row {
+#sciawzlwoc .gt_grand_summary_row {
   color: #333333;
   background-color: #FFFFFF;
   text-transform: inherit;
@@ -5294,7 +5303,7 @@ Table&nbsp;5.7: SAR effect decomposition - Regional Potential
   padding-right: 5px;
 }
 
-#wvesxyhqkr .gt_first_grand_summary_row {
+#sciawzlwoc .gt_first_grand_summary_row {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -5304,7 +5313,7 @@ Table&nbsp;5.7: SAR effect decomposition - Regional Potential
   border-top-color: #D3D3D3;
 }
 
-#wvesxyhqkr .gt_last_grand_summary_row_top {
+#sciawzlwoc .gt_last_grand_summary_row_top {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -5314,11 +5323,11 @@ Table&nbsp;5.7: SAR effect decomposition - Regional Potential
   border-bottom-color: #D3D3D3;
 }
 
-#wvesxyhqkr .gt_striped {
+#sciawzlwoc .gt_striped {
   background-color: rgba(128, 128, 128, 0.05);
 }
 
-#wvesxyhqkr .gt_table_body {
+#sciawzlwoc .gt_table_body {
   border-top-style: solid;
   border-top-width: 2px;
   border-top-color: #D3D3D3;
@@ -5327,7 +5336,7 @@ Table&nbsp;5.7: SAR effect decomposition - Regional Potential
   border-bottom-color: #D3D3D3;
 }
 
-#wvesxyhqkr .gt_footnotes {
+#sciawzlwoc .gt_footnotes {
   color: #333333;
   background-color: #FFFFFF;
   border-bottom-style: none;
@@ -5341,7 +5350,7 @@ Table&nbsp;5.7: SAR effect decomposition - Regional Potential
   border-right-color: #D3D3D3;
 }
 
-#wvesxyhqkr .gt_footnote {
+#sciawzlwoc .gt_footnote {
   margin: 0px;
   font-size: 90%;
   padding-top: 4px;
@@ -5350,7 +5359,7 @@ Table&nbsp;5.7: SAR effect decomposition - Regional Potential
   padding-right: 5px;
 }
 
-#wvesxyhqkr .gt_sourcenotes {
+#sciawzlwoc .gt_sourcenotes {
   color: #333333;
   background-color: #FFFFFF;
   border-bottom-style: none;
@@ -5364,7 +5373,7 @@ Table&nbsp;5.7: SAR effect decomposition - Regional Potential
   border-right-color: #D3D3D3;
 }
 
-#wvesxyhqkr .gt_sourcenote {
+#sciawzlwoc .gt_sourcenote {
   font-size: 90%;
   padding-top: 4px;
   padding-bottom: 4px;
@@ -5372,112 +5381,112 @@ Table&nbsp;5.7: SAR effect decomposition - Regional Potential
   padding-right: 5px;
 }
 
-#wvesxyhqkr .gt_left {
+#sciawzlwoc .gt_left {
   text-align: left;
 }
 
-#wvesxyhqkr .gt_center {
+#sciawzlwoc .gt_center {
   text-align: center;
 }
 
-#wvesxyhqkr .gt_right {
+#sciawzlwoc .gt_right {
   text-align: right;
   font-variant-numeric: tabular-nums;
 }
 
-#wvesxyhqkr .gt_font_normal {
+#sciawzlwoc .gt_font_normal {
   font-weight: normal;
 }
 
-#wvesxyhqkr .gt_font_bold {
+#sciawzlwoc .gt_font_bold {
   font-weight: bold;
 }
 
-#wvesxyhqkr .gt_font_italic {
+#sciawzlwoc .gt_font_italic {
   font-style: italic;
 }
 
-#wvesxyhqkr .gt_super {
+#sciawzlwoc .gt_super {
   font-size: 65%;
 }
 
-#wvesxyhqkr .gt_footnote_marks {
+#sciawzlwoc .gt_footnote_marks {
   font-size: 75%;
   vertical-align: 0.4em;
   position: initial;
 }
 
-#wvesxyhqkr .gt_asterisk {
+#sciawzlwoc .gt_asterisk {
   font-size: 100%;
   vertical-align: 0;
 }
 
-#wvesxyhqkr .gt_indent_1 {
+#sciawzlwoc .gt_indent_1 {
   text-indent: 5px;
 }
 
-#wvesxyhqkr .gt_indent_2 {
+#sciawzlwoc .gt_indent_2 {
   text-indent: 10px;
 }
 
-#wvesxyhqkr .gt_indent_3 {
+#sciawzlwoc .gt_indent_3 {
   text-indent: 15px;
 }
 
-#wvesxyhqkr .gt_indent_4 {
+#sciawzlwoc .gt_indent_4 {
   text-indent: 20px;
 }
 
-#wvesxyhqkr .gt_indent_5 {
+#sciawzlwoc .gt_indent_5 {
   text-indent: 25px;
 }
 
-#wvesxyhqkr .katex-display {
+#sciawzlwoc .katex-display {
   display: inline-flex !important;
   margin-bottom: 0.75em !important;
 }
 
-#wvesxyhqkr div.Reactable > div.rt-table > div.rt-thead > div.rt-tr.rt-tr-group-header > div.rt-th-group:after {
+#sciawzlwoc div.Reactable > div.rt-table > div.rt-thead > div.rt-tr.rt-tr-group-header > div.rt-th-group:after {
   height: 0px !important;
 }
 </style>
 
 <table class="gt_table cell caption-top table table-sm table-striped small" data-quarto-bootstrap="false">
 <colgroup>
-<col style="width: 10%">
-<col style="width: 10%">
-<col style="width: 10%">
-<col style="width: 10%">
-<col style="width: 10%">
-<col style="width: 10%">
-<col style="width: 10%">
-<col style="width: 10%">
-<col style="width: 10%">
-<col style="width: 10%">
+<col style="width: 19%">
+<col style="width: 9%">
+<col style="width: 9%">
+<col style="width: 9%">
+<col style="width: 9%">
+<col style="width: 9%">
+<col style="width: 9%">
+<col style="width: 9%">
+<col style="width: 9%">
+<col style="width: 9%">
 </colgroup>
 <thead>
 <tr class="gt_col_headings gt_spanner_row header">
-<th rowspan="2" id="a::stub" class="gt_col_heading gt_columns_bottom_border gt_left" data-quarto-table-cell-role="th" scope="col"></th>
-<th colspan="3" id="spanner-dir__Estimate" class="gt_center gt_columns_top_border gt_column_spanner_outer" data-quarto-table-cell-role="th" scope="colgroup"><div class="gt_column_spanner">
-dir
+<th rowspan="2" id="term" class="gt_col_heading gt_columns_bottom_border gt_left" data-quarto-table-cell-role="th" scope="col">Term</th>
+<th colspan="3" id="spanner-Direct__Est." class="gt_center gt_columns_top_border gt_column_spanner_outer" data-quarto-table-cell-role="th" scope="colgroup"><div class="gt_column_spanner">
+Direct
 </div></th>
-<th colspan="3" id="spanner-ind__Estimate" class="gt_center gt_columns_top_border gt_column_spanner_outer" data-quarto-table-cell-role="th" scope="colgroup"><div class="gt_column_spanner">
-ind
+<th colspan="3" id="spanner-Indirect__Est." class="gt_center gt_columns_top_border gt_column_spanner_outer" data-quarto-table-cell-role="th" scope="colgroup"><div class="gt_column_spanner">
+Indirect
 </div></th>
-<th colspan="3" id="spanner-tot__Estimate" class="gt_center gt_columns_top_border gt_column_spanner_outer" data-quarto-table-cell-role="th" scope="colgroup"><div class="gt_column_spanner">
-tot
+<th colspan="3" id="spanner-Total__Est." class="gt_center gt_columns_top_border gt_column_spanner_outer" data-quarto-table-cell-role="th" scope="colgroup"><div class="gt_column_spanner">
+Total
 </div></th>
 </tr>
 <tr class="gt_col_headings even">
-<th id="Estimate__dir" class="gt_col_heading gt_columns_bottom_border gt_right" data-quarto-table-cell-role="th" scope="col">Estimate</th>
-<th id="Std.-Error__dir" class="gt_col_heading gt_columns_bottom_border gt_right" data-quarto-table-cell-role="th" scope="col">Std. Error</th>
-<th id="Pr(>|t|)__dir" class="gt_col_heading gt_columns_bottom_border gt_right" data-quarto-table-cell-role="th" scope="col">Pr(&gt;|t|)</th>
-<th id="Estimate__ind" class="gt_col_heading gt_columns_bottom_border gt_right" data-quarto-table-cell-role="th" scope="col">Estimate</th>
-<th id="Std.-Error__ind" class="gt_col_heading gt_columns_bottom_border gt_right" data-quarto-table-cell-role="th" scope="col">Std. Error</th>
-<th id="Pr(>|t|)__ind" class="gt_col_heading gt_columns_bottom_border gt_right" data-quarto-table-cell-role="th" scope="col">Pr(&gt;|t|)</th>
-<th id="Estimate__tot" class="gt_col_heading gt_columns_bottom_border gt_right" data-quarto-table-cell-role="th" scope="col">Estimate</th>
-<th id="Std.-Error__tot" class="gt_col_heading gt_columns_bottom_border gt_right" data-quarto-table-cell-role="th" scope="col">Std. Error</th>
-<th id="Pr(>|t|)__tot" class="gt_col_heading gt_columns_bottom_border gt_right" data-quarto-table-cell-role="th" scope="col">Pr(&gt;|t|)</th>
+<th id="Est.__Direct" class="gt_col_heading gt_columns_bottom_border gt_right" data-quarto-table-cell-role="th" scope="col">Est.</th>
+<th id="SE__Direct" class="gt_col_heading gt_columns_bottom_border gt_right" data-quarto-table-cell-role="th" scope="col">SE</th>
+<th id="p__Direct" class="gt_col_heading gt_columns_bottom_border gt_right" data-quarto-table-cell-role="th" scope="col">p</th>
+<th id="Est.__Indirect" class="gt_col_heading gt_columns_bottom_border gt_right" data-quarto-table-cell-role="th" scope="col">Est.</th>
+<th id="SE__Indirect" class="gt_col_heading gt_columns_bottom_border gt_right" data-quarto-table-cell-role="th" scope="col">SE</th>
+<th id="p__Indirect" class="gt_col_heading gt_columns_bottom_border gt_right" data-quarto-table-cell-role="th" scope="col">p</th>
+<th id="Est.__Total" class="gt_col_heading gt_columns_bottom_border gt_right" data-quarto-table-cell-role="th" scope="col">Est.</th>
+<th id="SE__Total" class="gt_col_heading gt_columns_bottom_border gt_right" data-quarto-table-cell-role="th" scope="col">SE</th>
+<th id="p__Total" class="gt_col_heading gt_columns_bottom_border gt_right" data-quarto-table-cell-role="th" scope="col">p</th>
 </tr>
 </thead>
 <tbody class="gt_table_body">
@@ -5485,178 +5494,178 @@ tot
 <th colspan="10" id="baseline" class="gt_group_heading" data-quarto-table-cell-role="th" scope="colgroup">baseline</th>
 </tr>
 <tr class="gt_row_group_first even">
-<th id="stub_1_1" class="gt_row gt_left gt_stub" data-quarto-table-cell-role="th" scope="row">reg_comp</th>
-<td class="gt_row gt_right" headers="baseline stub_1_1 Estimate__dir">0.063</td>
-<td class="gt_row gt_right" headers="baseline stub_1_1 Std.-Error__dir">0.003</td>
-<td class="gt_row gt_right" headers="baseline stub_1_1 Pr(>|t|)__dir">0.000</td>
-<td class="gt_row gt_right" headers="baseline stub_1_1 Estimate__ind">0.050</td>
-<td class="gt_row gt_right" headers="baseline stub_1_1 Std.-Error__ind">0.004</td>
-<td class="gt_row gt_right" headers="baseline stub_1_1 Pr(>|t|)__ind">0.000</td>
-<td class="gt_row gt_right" headers="baseline stub_1_1 Estimate__tot">0.113</td>
-<td class="gt_row gt_right" headers="baseline stub_1_1 Std.-Error__tot">0.006</td>
-<td class="gt_row gt_right" headers="baseline stub_1_1 Pr(>|t|)__tot">0.000</td>
+<td class="gt_row gt_left" headers="baseline  term">reg_comp</td>
+<td class="gt_row gt_right" headers="baseline  Est.__Direct">0.063</td>
+<td class="gt_row gt_right" headers="baseline  SE__Direct">0.003</td>
+<td class="gt_row gt_right" headers="baseline  p__Direct">0.000</td>
+<td class="gt_row gt_right" headers="baseline  Est.__Indirect">0.050</td>
+<td class="gt_row gt_right" headers="baseline  SE__Indirect">0.004</td>
+<td class="gt_row gt_right" headers="baseline  p__Indirect">0.000</td>
+<td class="gt_row gt_right" headers="baseline  Est.__Total">0.113</td>
+<td class="gt_row gt_right" headers="baseline  SE__Total">0.006</td>
+<td class="gt_row gt_right" headers="baseline  p__Total">0.000</td>
 </tr>
 <tr class="odd">
-<th id="stub_1_2" class="gt_row gt_left gt_stub" data-quarto-table-cell-role="th" scope="row">patent_count</th>
-<td class="gt_row gt_right" headers="baseline stub_1_2 Estimate__dir">0.080</td>
-<td class="gt_row gt_right" headers="baseline stub_1_2 Std.-Error__dir">0.003</td>
-<td class="gt_row gt_right" headers="baseline stub_1_2 Pr(>|t|)__dir">0.000</td>
-<td class="gt_row gt_right" headers="baseline stub_1_2 Estimate__ind">0.063</td>
-<td class="gt_row gt_right" headers="baseline stub_1_2 Std.-Error__ind">0.004</td>
-<td class="gt_row gt_right" headers="baseline stub_1_2 Pr(>|t|)__ind">0.000</td>
-<td class="gt_row gt_right" headers="baseline stub_1_2 Estimate__tot">0.143</td>
-<td class="gt_row gt_right" headers="baseline stub_1_2 Std.-Error__tot">0.006</td>
-<td class="gt_row gt_right" headers="baseline stub_1_2 Pr(>|t|)__tot">0.000</td>
+<td class="gt_row gt_left" headers="baseline  term">patent_count</td>
+<td class="gt_row gt_right" headers="baseline  Est.__Direct">0.080</td>
+<td class="gt_row gt_right" headers="baseline  SE__Direct">0.003</td>
+<td class="gt_row gt_right" headers="baseline  p__Direct">0.000</td>
+<td class="gt_row gt_right" headers="baseline  Est.__Indirect">0.063</td>
+<td class="gt_row gt_right" headers="baseline  SE__Indirect">0.004</td>
+<td class="gt_row gt_right" headers="baseline  p__Indirect">0.000</td>
+<td class="gt_row gt_right" headers="baseline  Est.__Total">0.143</td>
+<td class="gt_row gt_right" headers="baseline  SE__Total">0.006</td>
+<td class="gt_row gt_right" headers="baseline  p__Total">0.000</td>
 </tr>
 <tr class="gt_group_heading_row even">
 <th colspan="10" id="network" class="gt_group_heading" data-quarto-table-cell-role="th" scope="colgroup">network</th>
 </tr>
 <tr class="gt_row_group_first odd">
-<th id="stub_1_3" class="gt_row gt_left gt_stub" data-quarto-table-cell-role="th" scope="row">reg_comp</th>
-<td class="gt_row gt_right" headers="network stub_1_3 Estimate__dir">0.056</td>
-<td class="gt_row gt_right" headers="network stub_1_3 Std.-Error__dir">0.003</td>
-<td class="gt_row gt_right" headers="network stub_1_3 Pr(>|t|)__dir">0.000</td>
-<td class="gt_row gt_right" headers="network stub_1_3 Estimate__ind">0.032</td>
-<td class="gt_row gt_right" headers="network stub_1_3 Std.-Error__ind">0.003</td>
-<td class="gt_row gt_right" headers="network stub_1_3 Pr(>|t|)__ind">0.000</td>
-<td class="gt_row gt_right" headers="network stub_1_3 Estimate__tot">0.088</td>
-<td class="gt_row gt_right" headers="network stub_1_3 Std.-Error__tot">0.005</td>
-<td class="gt_row gt_right" headers="network stub_1_3 Pr(>|t|)__tot">0.000</td>
+<td class="gt_row gt_left" headers="network  term">reg_comp</td>
+<td class="gt_row gt_right" headers="network  Est.__Direct">0.056</td>
+<td class="gt_row gt_right" headers="network  SE__Direct">0.003</td>
+<td class="gt_row gt_right" headers="network  p__Direct">0.000</td>
+<td class="gt_row gt_right" headers="network  Est.__Indirect">0.032</td>
+<td class="gt_row gt_right" headers="network  SE__Indirect">0.003</td>
+<td class="gt_row gt_right" headers="network  p__Indirect">0.000</td>
+<td class="gt_row gt_right" headers="network  Est.__Total">0.088</td>
+<td class="gt_row gt_right" headers="network  SE__Total">0.005</td>
+<td class="gt_row gt_right" headers="network  p__Total">0.000</td>
 </tr>
 <tr class="even">
-<th id="stub_1_4" class="gt_row gt_left gt_stub" data-quarto-table-cell-role="th" scope="row">patent_count</th>
-<td class="gt_row gt_right" headers="network stub_1_4 Estimate__dir">0.064</td>
-<td class="gt_row gt_right" headers="network stub_1_4 Std.-Error__dir">0.003</td>
-<td class="gt_row gt_right" headers="network stub_1_4 Pr(>|t|)__dir">0.000</td>
-<td class="gt_row gt_right" headers="network stub_1_4 Estimate__ind">0.036</td>
-<td class="gt_row gt_right" headers="network stub_1_4 Std.-Error__ind">0.003</td>
-<td class="gt_row gt_right" headers="network stub_1_4 Pr(>|t|)__ind">0.000</td>
-<td class="gt_row gt_right" headers="network stub_1_4 Estimate__tot">0.100</td>
-<td class="gt_row gt_right" headers="network stub_1_4 Std.-Error__tot">0.005</td>
-<td class="gt_row gt_right" headers="network stub_1_4 Pr(>|t|)__tot">0.000</td>
+<td class="gt_row gt_left" headers="network  term">patent_count</td>
+<td class="gt_row gt_right" headers="network  Est.__Direct">0.064</td>
+<td class="gt_row gt_right" headers="network  SE__Direct">0.003</td>
+<td class="gt_row gt_right" headers="network  p__Direct">0.000</td>
+<td class="gt_row gt_right" headers="network  Est.__Indirect">0.036</td>
+<td class="gt_row gt_right" headers="network  SE__Indirect">0.003</td>
+<td class="gt_row gt_right" headers="network  p__Indirect">0.000</td>
+<td class="gt_row gt_right" headers="network  Est.__Total">0.100</td>
+<td class="gt_row gt_right" headers="network  SE__Total">0.005</td>
+<td class="gt_row gt_right" headers="network  p__Total">0.000</td>
 </tr>
 <tr class="odd">
-<th id="stub_1_5" class="gt_row gt_left gt_stub" data-quarto-table-cell-role="th" scope="row">avg_coherence</th>
-<td class="gt_row gt_right" headers="network stub_1_5 Estimate__dir">0.056</td>
-<td class="gt_row gt_right" headers="network stub_1_5 Std.-Error__dir">0.003</td>
-<td class="gt_row gt_right" headers="network stub_1_5 Pr(>|t|)__dir">0.000</td>
-<td class="gt_row gt_right" headers="network stub_1_5 Estimate__ind">0.032</td>
-<td class="gt_row gt_right" headers="network stub_1_5 Std.-Error__ind">0.003</td>
-<td class="gt_row gt_right" headers="network stub_1_5 Pr(>|t|)__ind">0.000</td>
-<td class="gt_row gt_right" headers="network stub_1_5 Estimate__tot">0.088</td>
-<td class="gt_row gt_right" headers="network stub_1_5 Std.-Error__tot">0.005</td>
-<td class="gt_row gt_right" headers="network stub_1_5 Pr(>|t|)__tot">0.000</td>
+<td class="gt_row gt_left" headers="network  term">avg_coherence</td>
+<td class="gt_row gt_right" headers="network  Est.__Direct">0.056</td>
+<td class="gt_row gt_right" headers="network  SE__Direct">0.003</td>
+<td class="gt_row gt_right" headers="network  p__Direct">0.000</td>
+<td class="gt_row gt_right" headers="network  Est.__Indirect">0.032</td>
+<td class="gt_row gt_right" headers="network  SE__Indirect">0.003</td>
+<td class="gt_row gt_right" headers="network  p__Indirect">0.000</td>
+<td class="gt_row gt_right" headers="network  Est.__Total">0.088</td>
+<td class="gt_row gt_right" headers="network  SE__Total">0.005</td>
+<td class="gt_row gt_right" headers="network  p__Total">0.000</td>
 </tr>
 <tr class="even">
-<th id="stub_1_6" class="gt_row gt_left gt_stub" data-quarto-table-cell-role="th" scope="row">avg_betweenness</th>
-<td class="gt_row gt_right" headers="network stub_1_6 Estimate__dir">−0.009</td>
-<td class="gt_row gt_right" headers="network stub_1_6 Std.-Error__dir">0.003</td>
-<td class="gt_row gt_right" headers="network stub_1_6 Pr(>|t|)__dir">0.002</td>
-<td class="gt_row gt_right" headers="network stub_1_6 Estimate__ind">−0.005</td>
-<td class="gt_row gt_right" headers="network stub_1_6 Std.-Error__ind">0.002</td>
-<td class="gt_row gt_right" headers="network stub_1_6 Pr(>|t|)__ind">0.003</td>
-<td class="gt_row gt_right" headers="network stub_1_6 Estimate__tot">−0.014</td>
-<td class="gt_row gt_right" headers="network stub_1_6 Std.-Error__tot">0.005</td>
-<td class="gt_row gt_right" headers="network stub_1_6 Pr(>|t|)__tot">0.002</td>
+<td class="gt_row gt_left" headers="network  term">avg_betweenness</td>
+<td class="gt_row gt_right" headers="network  Est.__Direct">−0.009</td>
+<td class="gt_row gt_right" headers="network  SE__Direct">0.003</td>
+<td class="gt_row gt_right" headers="network  p__Direct">0.002</td>
+<td class="gt_row gt_right" headers="network  Est.__Indirect">−0.005</td>
+<td class="gt_row gt_right" headers="network  SE__Indirect">0.002</td>
+<td class="gt_row gt_right" headers="network  p__Indirect">0.003</td>
+<td class="gt_row gt_right" headers="network  Est.__Total">−0.014</td>
+<td class="gt_row gt_right" headers="network  SE__Total">0.005</td>
+<td class="gt_row gt_right" headers="network  p__Total">0.002</td>
 </tr>
 <tr class="odd">
-<th id="stub_1_7" class="gt_row gt_left gt_stub" data-quarto-table-cell-role="th" scope="row">avg_eigenvector</th>
-<td class="gt_row gt_right" headers="network stub_1_7 Estimate__dir">0.018</td>
-<td class="gt_row gt_right" headers="network stub_1_7 Std.-Error__dir">0.003</td>
-<td class="gt_row gt_right" headers="network stub_1_7 Pr(>|t|)__dir">0.000</td>
-<td class="gt_row gt_right" headers="network stub_1_7 Estimate__ind">0.010</td>
-<td class="gt_row gt_right" headers="network stub_1_7 Std.-Error__ind">0.002</td>
-<td class="gt_row gt_right" headers="network stub_1_7 Pr(>|t|)__ind">0.000</td>
-<td class="gt_row gt_right" headers="network stub_1_7 Estimate__tot">0.028</td>
-<td class="gt_row gt_right" headers="network stub_1_7 Std.-Error__tot">0.004</td>
-<td class="gt_row gt_right" headers="network stub_1_7 Pr(>|t|)__tot">0.000</td>
+<td class="gt_row gt_left" headers="network  term">avg_eigenvector</td>
+<td class="gt_row gt_right" headers="network  Est.__Direct">0.018</td>
+<td class="gt_row gt_right" headers="network  SE__Direct">0.003</td>
+<td class="gt_row gt_right" headers="network  p__Direct">0.000</td>
+<td class="gt_row gt_right" headers="network  Est.__Indirect">0.010</td>
+<td class="gt_row gt_right" headers="network  SE__Indirect">0.002</td>
+<td class="gt_row gt_right" headers="network  p__Indirect">0.000</td>
+<td class="gt_row gt_right" headers="network  Est.__Total">0.028</td>
+<td class="gt_row gt_right" headers="network  SE__Total">0.004</td>
+<td class="gt_row gt_right" headers="network  p__Total">0.000</td>
 </tr>
 <tr class="gt_group_heading_row even">
 <th colspan="10" id="interaction" class="gt_group_heading" data-quarto-table-cell-role="th" scope="colgroup">interaction</th>
 </tr>
 <tr class="gt_row_group_first odd">
-<th id="stub_1_8" class="gt_row gt_left gt_stub" data-quarto-table-cell-role="th" scope="row">reg_comp</th>
-<td class="gt_row gt_right" headers="interaction stub_1_8 Estimate__dir">0.056</td>
-<td class="gt_row gt_right" headers="interaction stub_1_8 Std.-Error__dir">0.003</td>
-<td class="gt_row gt_right" headers="interaction stub_1_8 Pr(>|t|)__dir">0.000</td>
-<td class="gt_row gt_right" headers="interaction stub_1_8 Estimate__ind">0.031</td>
-<td class="gt_row gt_right" headers="interaction stub_1_8 Std.-Error__ind">0.003</td>
-<td class="gt_row gt_right" headers="interaction stub_1_8 Pr(>|t|)__ind">0.000</td>
-<td class="gt_row gt_right" headers="interaction stub_1_8 Estimate__tot">0.087</td>
-<td class="gt_row gt_right" headers="interaction stub_1_8 Std.-Error__tot">0.005</td>
-<td class="gt_row gt_right" headers="interaction stub_1_8 Pr(>|t|)__tot">0.000</td>
+<td class="gt_row gt_left" headers="interaction  term">reg_comp</td>
+<td class="gt_row gt_right" headers="interaction  Est.__Direct">0.056</td>
+<td class="gt_row gt_right" headers="interaction  SE__Direct">0.003</td>
+<td class="gt_row gt_right" headers="interaction  p__Direct">0.000</td>
+<td class="gt_row gt_right" headers="interaction  Est.__Indirect">0.031</td>
+<td class="gt_row gt_right" headers="interaction  SE__Indirect">0.003</td>
+<td class="gt_row gt_right" headers="interaction  p__Indirect">0.000</td>
+<td class="gt_row gt_right" headers="interaction  Est.__Total">0.087</td>
+<td class="gt_row gt_right" headers="interaction  SE__Total">0.005</td>
+<td class="gt_row gt_right" headers="interaction  p__Total">0.000</td>
 </tr>
 <tr class="even">
-<th id="stub_1_9" class="gt_row gt_left gt_stub" data-quarto-table-cell-role="th" scope="row">patent_count</th>
-<td class="gt_row gt_right" headers="interaction stub_1_9 Estimate__dir">0.064</td>
-<td class="gt_row gt_right" headers="interaction stub_1_9 Std.-Error__dir">0.003</td>
-<td class="gt_row gt_right" headers="interaction stub_1_9 Pr(>|t|)__dir">0.000</td>
-<td class="gt_row gt_right" headers="interaction stub_1_9 Estimate__ind">0.036</td>
-<td class="gt_row gt_right" headers="interaction stub_1_9 Std.-Error__ind">0.003</td>
-<td class="gt_row gt_right" headers="interaction stub_1_9 Pr(>|t|)__ind">0.000</td>
-<td class="gt_row gt_right" headers="interaction stub_1_9 Estimate__tot">0.100</td>
-<td class="gt_row gt_right" headers="interaction stub_1_9 Std.-Error__tot">0.005</td>
-<td class="gt_row gt_right" headers="interaction stub_1_9 Pr(>|t|)__tot">0.000</td>
+<td class="gt_row gt_left" headers="interaction  term">patent_count</td>
+<td class="gt_row gt_right" headers="interaction  Est.__Direct">0.064</td>
+<td class="gt_row gt_right" headers="interaction  SE__Direct">0.003</td>
+<td class="gt_row gt_right" headers="interaction  p__Direct">0.000</td>
+<td class="gt_row gt_right" headers="interaction  Est.__Indirect">0.036</td>
+<td class="gt_row gt_right" headers="interaction  SE__Indirect">0.003</td>
+<td class="gt_row gt_right" headers="interaction  p__Indirect">0.000</td>
+<td class="gt_row gt_right" headers="interaction  Est.__Total">0.100</td>
+<td class="gt_row gt_right" headers="interaction  SE__Total">0.005</td>
+<td class="gt_row gt_right" headers="interaction  p__Total">0.000</td>
 </tr>
 <tr class="odd">
-<th id="stub_1_10" class="gt_row gt_left gt_stub" data-quarto-table-cell-role="th" scope="row">avg_coherence</th>
-<td class="gt_row gt_right" headers="interaction stub_1_10 Estimate__dir">0.067</td>
-<td class="gt_row gt_right" headers="interaction stub_1_10 Std.-Error__dir">0.004</td>
-<td class="gt_row gt_right" headers="interaction stub_1_10 Pr(>|t|)__dir">0.000</td>
-<td class="gt_row gt_right" headers="interaction stub_1_10 Estimate__ind">0.038</td>
-<td class="gt_row gt_right" headers="interaction stub_1_10 Std.-Error__ind">0.003</td>
-<td class="gt_row gt_right" headers="interaction stub_1_10 Pr(>|t|)__ind">0.000</td>
-<td class="gt_row gt_right" headers="interaction stub_1_10 Estimate__tot">0.104</td>
-<td class="gt_row gt_right" headers="interaction stub_1_10 Std.-Error__tot">0.006</td>
-<td class="gt_row gt_right" headers="interaction stub_1_10 Pr(>|t|)__tot">0.000</td>
+<td class="gt_row gt_left" headers="interaction  term">avg_coherence</td>
+<td class="gt_row gt_right" headers="interaction  Est.__Direct">0.067</td>
+<td class="gt_row gt_right" headers="interaction  SE__Direct">0.004</td>
+<td class="gt_row gt_right" headers="interaction  p__Direct">0.000</td>
+<td class="gt_row gt_right" headers="interaction  Est.__Indirect">0.038</td>
+<td class="gt_row gt_right" headers="interaction  SE__Indirect">0.003</td>
+<td class="gt_row gt_right" headers="interaction  p__Indirect">0.000</td>
+<td class="gt_row gt_right" headers="interaction  Est.__Total">0.104</td>
+<td class="gt_row gt_right" headers="interaction  SE__Total">0.006</td>
+<td class="gt_row gt_right" headers="interaction  p__Total">0.000</td>
 </tr>
 <tr class="even">
-<th id="stub_1_11" class="gt_row gt_left gt_stub" data-quarto-table-cell-role="th" scope="row">avg_betweenness</th>
-<td class="gt_row gt_right" headers="interaction stub_1_11 Estimate__dir">0.009</td>
-<td class="gt_row gt_right" headers="interaction stub_1_11 Std.-Error__dir">0.004</td>
-<td class="gt_row gt_right" headers="interaction stub_1_11 Pr(>|t|)__dir">0.030</td>
-<td class="gt_row gt_right" headers="interaction stub_1_11 Estimate__ind">0.005</td>
-<td class="gt_row gt_right" headers="interaction stub_1_11 Std.-Error__ind">0.002</td>
-<td class="gt_row gt_right" headers="interaction stub_1_11 Pr(>|t|)__ind">0.033</td>
-<td class="gt_row gt_right" headers="interaction stub_1_11 Estimate__tot">0.014</td>
-<td class="gt_row gt_right" headers="interaction stub_1_11 Std.-Error__tot">0.006</td>
-<td class="gt_row gt_right" headers="interaction stub_1_11 Pr(>|t|)__tot">0.030</td>
+<td class="gt_row gt_left" headers="interaction  term">avg_betweenness</td>
+<td class="gt_row gt_right" headers="interaction  Est.__Direct">0.009</td>
+<td class="gt_row gt_right" headers="interaction  SE__Direct">0.004</td>
+<td class="gt_row gt_right" headers="interaction  p__Direct">0.030</td>
+<td class="gt_row gt_right" headers="interaction  Est.__Indirect">0.005</td>
+<td class="gt_row gt_right" headers="interaction  SE__Indirect">0.002</td>
+<td class="gt_row gt_right" headers="interaction  p__Indirect">0.033</td>
+<td class="gt_row gt_right" headers="interaction  Est.__Total">0.014</td>
+<td class="gt_row gt_right" headers="interaction  SE__Total">0.006</td>
+<td class="gt_row gt_right" headers="interaction  p__Total">0.030</td>
 </tr>
 <tr class="odd">
-<th id="stub_1_12" class="gt_row gt_left gt_stub" data-quarto-table-cell-role="th" scope="row">avg_eigenvector</th>
-<td class="gt_row gt_right" headers="interaction stub_1_12 Estimate__dir">0.023</td>
-<td class="gt_row gt_right" headers="interaction stub_1_12 Std.-Error__dir">0.003</td>
-<td class="gt_row gt_right" headers="interaction stub_1_12 Pr(>|t|)__dir">0.000</td>
-<td class="gt_row gt_right" headers="interaction stub_1_12 Estimate__ind">0.013</td>
-<td class="gt_row gt_right" headers="interaction stub_1_12 Std.-Error__ind">0.002</td>
-<td class="gt_row gt_right" headers="interaction stub_1_12 Pr(>|t|)__ind">0.000</td>
-<td class="gt_row gt_right" headers="interaction stub_1_12 Estimate__tot">0.035</td>
-<td class="gt_row gt_right" headers="interaction stub_1_12 Std.-Error__tot">0.005</td>
-<td class="gt_row gt_right" headers="interaction stub_1_12 Pr(>|t|)__tot">0.000</td>
+<td class="gt_row gt_left" headers="interaction  term">avg_eigenvector</td>
+<td class="gt_row gt_right" headers="interaction  Est.__Direct">0.023</td>
+<td class="gt_row gt_right" headers="interaction  SE__Direct">0.003</td>
+<td class="gt_row gt_right" headers="interaction  p__Direct">0.000</td>
+<td class="gt_row gt_right" headers="interaction  Est.__Indirect">0.013</td>
+<td class="gt_row gt_right" headers="interaction  SE__Indirect">0.002</td>
+<td class="gt_row gt_right" headers="interaction  p__Indirect">0.000</td>
+<td class="gt_row gt_right" headers="interaction  Est.__Total">0.035</td>
+<td class="gt_row gt_right" headers="interaction  SE__Total">0.005</td>
+<td class="gt_row gt_right" headers="interaction  p__Total">0.000</td>
 </tr>
 <tr class="even">
-<th id="stub_1_13" class="gt_row gt_left gt_stub" data-quarto-table-cell-role="th" scope="row">avg_coherence:avg_betweenness</th>
-<td class="gt_row gt_right" headers="interaction stub_1_13 Estimate__dir">0.013</td>
-<td class="gt_row gt_right" headers="interaction stub_1_13 Std.-Error__dir">0.003</td>
-<td class="gt_row gt_right" headers="interaction stub_1_13 Pr(>|t|)__dir">0.000</td>
-<td class="gt_row gt_right" headers="interaction stub_1_13 Estimate__ind">0.007</td>
-<td class="gt_row gt_right" headers="interaction stub_1_13 Std.-Error__ind">0.002</td>
-<td class="gt_row gt_right" headers="interaction stub_1_13 Pr(>|t|)__ind">0.000</td>
-<td class="gt_row gt_right" headers="interaction stub_1_13 Estimate__tot">0.021</td>
-<td class="gt_row gt_right" headers="interaction stub_1_13 Std.-Error__tot">0.004</td>
-<td class="gt_row gt_right" headers="interaction stub_1_13 Pr(>|t|)__tot">0.000</td>
+<td class="gt_row gt_left" headers="interaction  term">avg_coherence:avg_betweenness</td>
+<td class="gt_row gt_right" headers="interaction  Est.__Direct">0.013</td>
+<td class="gt_row gt_right" headers="interaction  SE__Direct">0.003</td>
+<td class="gt_row gt_right" headers="interaction  p__Direct">0.000</td>
+<td class="gt_row gt_right" headers="interaction  Est.__Indirect">0.007</td>
+<td class="gt_row gt_right" headers="interaction  SE__Indirect">0.002</td>
+<td class="gt_row gt_right" headers="interaction  p__Indirect">0.000</td>
+<td class="gt_row gt_right" headers="interaction  Est.__Total">0.021</td>
+<td class="gt_row gt_right" headers="interaction  SE__Total">0.004</td>
+<td class="gt_row gt_right" headers="interaction  p__Total">0.000</td>
 </tr>
 <tr class="odd">
-<th id="stub_1_14" class="gt_row gt_left gt_stub" data-quarto-table-cell-role="th" scope="row">avg_coherence:avg_eigenvector</th>
-<td class="gt_row gt_right" headers="interaction stub_1_14 Estimate__dir">0.006</td>
-<td class="gt_row gt_right" headers="interaction stub_1_14 Std.-Error__dir">0.002</td>
-<td class="gt_row gt_right" headers="interaction stub_1_14 Pr(>|t|)__dir">0.000</td>
-<td class="gt_row gt_right" headers="interaction stub_1_14 Estimate__ind">0.004</td>
-<td class="gt_row gt_right" headers="interaction stub_1_14 Std.-Error__ind">0.001</td>
-<td class="gt_row gt_right" headers="interaction stub_1_14 Pr(>|t|)__ind">0.001</td>
-<td class="gt_row gt_right" headers="interaction stub_1_14 Estimate__tot">0.010</td>
-<td class="gt_row gt_right" headers="interaction stub_1_14 Std.-Error__tot">0.003</td>
-<td class="gt_row gt_right" headers="interaction stub_1_14 Pr(>|t|)__tot">0.000</td>
+<td class="gt_row gt_left" headers="interaction  term">avg_coherence:avg_eigenvector</td>
+<td class="gt_row gt_right" headers="interaction  Est.__Direct">0.006</td>
+<td class="gt_row gt_right" headers="interaction  SE__Direct">0.002</td>
+<td class="gt_row gt_right" headers="interaction  p__Direct">0.000</td>
+<td class="gt_row gt_right" headers="interaction  Est.__Indirect">0.004</td>
+<td class="gt_row gt_right" headers="interaction  SE__Indirect">0.001</td>
+<td class="gt_row gt_right" headers="interaction  p__Indirect">0.001</td>
+<td class="gt_row gt_right" headers="interaction  Est.__Total">0.010</td>
+<td class="gt_row gt_right" headers="interaction  SE__Total">0.003</td>
+<td class="gt_row gt_right" headers="interaction  p__Total">0.000</td>
 </tr>
 </tbody><tfoot>
 <tr class="gt_sourcenotes odd">
@@ -5682,23 +5691,23 @@ Table&nbsp;5.8: Spatial Error Model (SEM) - Regional Potential
 </figcaption>
 <div aria-describedby="tbl-spatial-sem-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
 <div class="cell-output-display">
-<div id="mscnvlhzco" style="padding-left:0px;padding-right:0px;padding-top:10px;padding-bottom:10px;overflow-x:auto;overflow-y:auto;width:auto;height:auto;">
-<style>#mscnvlhzco table {
+<div id="stvngzkraf" style="padding-left:0px;padding-right:0px;padding-top:10px;padding-bottom:10px;overflow-x:auto;overflow-y:auto;width:auto;height:auto;">
+<style>#stvngzkraf table {
   font-family: system-ui, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol', 'Noto Color Emoji';
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
 
-#mscnvlhzco thead, #mscnvlhzco tbody, #mscnvlhzco tfoot, #mscnvlhzco tr, #mscnvlhzco td, #mscnvlhzco th {
+#stvngzkraf thead, #stvngzkraf tbody, #stvngzkraf tfoot, #stvngzkraf tr, #stvngzkraf td, #stvngzkraf th {
   border-style: none;
 }
 
-#mscnvlhzco p {
+#stvngzkraf p {
   margin: 0;
   padding: 0;
 }
 
-#mscnvlhzco .gt_table {
+#stvngzkraf .gt_table {
   display: table;
   border-collapse: collapse;
   line-height: normal;
@@ -5724,12 +5733,12 @@ Table&nbsp;5.8: Spatial Error Model (SEM) - Regional Potential
   border-left-color: #D3D3D3;
 }
 
-#mscnvlhzco .gt_caption {
+#stvngzkraf .gt_caption {
   padding-top: 4px;
   padding-bottom: 4px;
 }
 
-#mscnvlhzco .gt_title {
+#stvngzkraf .gt_title {
   color: #333333;
   font-size: 125%;
   font-weight: initial;
@@ -5741,7 +5750,7 @@ Table&nbsp;5.8: Spatial Error Model (SEM) - Regional Potential
   border-bottom-width: 0;
 }
 
-#mscnvlhzco .gt_subtitle {
+#stvngzkraf .gt_subtitle {
   color: #333333;
   font-size: 85%;
   font-weight: initial;
@@ -5753,7 +5762,7 @@ Table&nbsp;5.8: Spatial Error Model (SEM) - Regional Potential
   border-top-width: 0;
 }
 
-#mscnvlhzco .gt_heading {
+#stvngzkraf .gt_heading {
   background-color: #FFFFFF;
   text-align: center;
   border-bottom-color: #FFFFFF;
@@ -5765,13 +5774,13 @@ Table&nbsp;5.8: Spatial Error Model (SEM) - Regional Potential
   border-right-color: #D3D3D3;
 }
 
-#mscnvlhzco .gt_bottom_border {
+#stvngzkraf .gt_bottom_border {
   border-bottom-style: solid;
   border-bottom-width: 2px;
   border-bottom-color: #D3D3D3;
 }
 
-#mscnvlhzco .gt_col_headings {
+#stvngzkraf .gt_col_headings {
   border-top-style: solid;
   border-top-width: 2px;
   border-top-color: #D3D3D3;
@@ -5786,7 +5795,7 @@ Table&nbsp;5.8: Spatial Error Model (SEM) - Regional Potential
   border-right-color: #D3D3D3;
 }
 
-#mscnvlhzco .gt_col_heading {
+#stvngzkraf .gt_col_heading {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -5806,7 +5815,7 @@ Table&nbsp;5.8: Spatial Error Model (SEM) - Regional Potential
   overflow-x: hidden;
 }
 
-#mscnvlhzco .gt_column_spanner_outer {
+#stvngzkraf .gt_column_spanner_outer {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -5818,15 +5827,15 @@ Table&nbsp;5.8: Spatial Error Model (SEM) - Regional Potential
   padding-right: 4px;
 }
 
-#mscnvlhzco .gt_column_spanner_outer:first-child {
+#stvngzkraf .gt_column_spanner_outer:first-child {
   padding-left: 0;
 }
 
-#mscnvlhzco .gt_column_spanner_outer:last-child {
+#stvngzkraf .gt_column_spanner_outer:last-child {
   padding-right: 0;
 }
 
-#mscnvlhzco .gt_column_spanner {
+#stvngzkraf .gt_column_spanner {
   border-bottom-style: solid;
   border-bottom-width: 2px;
   border-bottom-color: #D3D3D3;
@@ -5838,11 +5847,11 @@ Table&nbsp;5.8: Spatial Error Model (SEM) - Regional Potential
   width: 100%;
 }
 
-#mscnvlhzco .gt_spanner_row {
+#stvngzkraf .gt_spanner_row {
   border-bottom-style: hidden;
 }
 
-#mscnvlhzco .gt_group_heading {
+#stvngzkraf .gt_group_heading {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -5868,7 +5877,7 @@ Table&nbsp;5.8: Spatial Error Model (SEM) - Regional Potential
   text-align: left;
 }
 
-#mscnvlhzco .gt_empty_group_heading {
+#stvngzkraf .gt_empty_group_heading {
   padding: 0.5px;
   color: #333333;
   background-color: #FFFFFF;
@@ -5883,15 +5892,15 @@ Table&nbsp;5.8: Spatial Error Model (SEM) - Regional Potential
   vertical-align: middle;
 }
 
-#mscnvlhzco .gt_from_md > :first-child {
+#stvngzkraf .gt_from_md > :first-child {
   margin-top: 0;
 }
 
-#mscnvlhzco .gt_from_md > :last-child {
+#stvngzkraf .gt_from_md > :last-child {
   margin-bottom: 0;
 }
 
-#mscnvlhzco .gt_row {
+#stvngzkraf .gt_row {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -5910,7 +5919,7 @@ Table&nbsp;5.8: Spatial Error Model (SEM) - Regional Potential
   overflow-x: hidden;
 }
 
-#mscnvlhzco .gt_stub {
+#stvngzkraf .gt_stub {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -5923,7 +5932,7 @@ Table&nbsp;5.8: Spatial Error Model (SEM) - Regional Potential
   padding-right: 5px;
 }
 
-#mscnvlhzco .gt_stub_row_group {
+#stvngzkraf .gt_stub_row_group {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -5937,15 +5946,15 @@ Table&nbsp;5.8: Spatial Error Model (SEM) - Regional Potential
   vertical-align: top;
 }
 
-#mscnvlhzco .gt_row_group_first td {
+#stvngzkraf .gt_row_group_first td {
   border-top-width: 2px;
 }
 
-#mscnvlhzco .gt_row_group_first th {
+#stvngzkraf .gt_row_group_first th {
   border-top-width: 2px;
 }
 
-#mscnvlhzco .gt_summary_row {
+#stvngzkraf .gt_summary_row {
   color: #333333;
   background-color: #FFFFFF;
   text-transform: inherit;
@@ -5955,16 +5964,16 @@ Table&nbsp;5.8: Spatial Error Model (SEM) - Regional Potential
   padding-right: 5px;
 }
 
-#mscnvlhzco .gt_first_summary_row {
+#stvngzkraf .gt_first_summary_row {
   border-top-style: solid;
   border-top-color: #D3D3D3;
 }
 
-#mscnvlhzco .gt_first_summary_row.thick {
+#stvngzkraf .gt_first_summary_row.thick {
   border-top-width: 2px;
 }
 
-#mscnvlhzco .gt_last_summary_row {
+#stvngzkraf .gt_last_summary_row {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -5974,7 +5983,7 @@ Table&nbsp;5.8: Spatial Error Model (SEM) - Regional Potential
   border-bottom-color: #D3D3D3;
 }
 
-#mscnvlhzco .gt_grand_summary_row {
+#stvngzkraf .gt_grand_summary_row {
   color: #333333;
   background-color: #FFFFFF;
   text-transform: inherit;
@@ -5984,7 +5993,7 @@ Table&nbsp;5.8: Spatial Error Model (SEM) - Regional Potential
   padding-right: 5px;
 }
 
-#mscnvlhzco .gt_first_grand_summary_row {
+#stvngzkraf .gt_first_grand_summary_row {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -5994,7 +6003,7 @@ Table&nbsp;5.8: Spatial Error Model (SEM) - Regional Potential
   border-top-color: #D3D3D3;
 }
 
-#mscnvlhzco .gt_last_grand_summary_row_top {
+#stvngzkraf .gt_last_grand_summary_row_top {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -6004,11 +6013,11 @@ Table&nbsp;5.8: Spatial Error Model (SEM) - Regional Potential
   border-bottom-color: #D3D3D3;
 }
 
-#mscnvlhzco .gt_striped {
+#stvngzkraf .gt_striped {
   background-color: rgba(128, 128, 128, 0.05);
 }
 
-#mscnvlhzco .gt_table_body {
+#stvngzkraf .gt_table_body {
   border-top-style: solid;
   border-top-width: 2px;
   border-top-color: #D3D3D3;
@@ -6017,7 +6026,7 @@ Table&nbsp;5.8: Spatial Error Model (SEM) - Regional Potential
   border-bottom-color: #D3D3D3;
 }
 
-#mscnvlhzco .gt_footnotes {
+#stvngzkraf .gt_footnotes {
   color: #333333;
   background-color: #FFFFFF;
   border-bottom-style: none;
@@ -6031,7 +6040,7 @@ Table&nbsp;5.8: Spatial Error Model (SEM) - Regional Potential
   border-right-color: #D3D3D3;
 }
 
-#mscnvlhzco .gt_footnote {
+#stvngzkraf .gt_footnote {
   margin: 0px;
   font-size: 90%;
   padding-top: 4px;
@@ -6040,7 +6049,7 @@ Table&nbsp;5.8: Spatial Error Model (SEM) - Regional Potential
   padding-right: 5px;
 }
 
-#mscnvlhzco .gt_sourcenotes {
+#stvngzkraf .gt_sourcenotes {
   color: #333333;
   background-color: #FFFFFF;
   border-bottom-style: none;
@@ -6054,7 +6063,7 @@ Table&nbsp;5.8: Spatial Error Model (SEM) - Regional Potential
   border-right-color: #D3D3D3;
 }
 
-#mscnvlhzco .gt_sourcenote {
+#stvngzkraf .gt_sourcenote {
   font-size: 90%;
   padding-top: 4px;
   padding-bottom: 4px;
@@ -6062,72 +6071,72 @@ Table&nbsp;5.8: Spatial Error Model (SEM) - Regional Potential
   padding-right: 5px;
 }
 
-#mscnvlhzco .gt_left {
+#stvngzkraf .gt_left {
   text-align: left;
 }
 
-#mscnvlhzco .gt_center {
+#stvngzkraf .gt_center {
   text-align: center;
 }
 
-#mscnvlhzco .gt_right {
+#stvngzkraf .gt_right {
   text-align: right;
   font-variant-numeric: tabular-nums;
 }
 
-#mscnvlhzco .gt_font_normal {
+#stvngzkraf .gt_font_normal {
   font-weight: normal;
 }
 
-#mscnvlhzco .gt_font_bold {
+#stvngzkraf .gt_font_bold {
   font-weight: bold;
 }
 
-#mscnvlhzco .gt_font_italic {
+#stvngzkraf .gt_font_italic {
   font-style: italic;
 }
 
-#mscnvlhzco .gt_super {
+#stvngzkraf .gt_super {
   font-size: 65%;
 }
 
-#mscnvlhzco .gt_footnote_marks {
+#stvngzkraf .gt_footnote_marks {
   font-size: 75%;
   vertical-align: 0.4em;
   position: initial;
 }
 
-#mscnvlhzco .gt_asterisk {
+#stvngzkraf .gt_asterisk {
   font-size: 100%;
   vertical-align: 0;
 }
 
-#mscnvlhzco .gt_indent_1 {
+#stvngzkraf .gt_indent_1 {
   text-indent: 5px;
 }
 
-#mscnvlhzco .gt_indent_2 {
+#stvngzkraf .gt_indent_2 {
   text-indent: 10px;
 }
 
-#mscnvlhzco .gt_indent_3 {
+#stvngzkraf .gt_indent_3 {
   text-indent: 15px;
 }
 
-#mscnvlhzco .gt_indent_4 {
+#stvngzkraf .gt_indent_4 {
   text-indent: 20px;
 }
 
-#mscnvlhzco .gt_indent_5 {
+#stvngzkraf .gt_indent_5 {
   text-indent: 25px;
 }
 
-#mscnvlhzco .katex-display {
+#stvngzkraf .katex-display {
   display: inline-flex !important;
   margin-bottom: 0.75em !important;
 }
 
-#mscnvlhzco div.Reactable > div.rt-table > div.rt-thead > div.rt-tr.rt-tr-group-header > div.rt-th-group:after {
+#stvngzkraf div.Reactable > div.rt-table > div.rt-thead > div.rt-tr.rt-tr-group-header > div.rt-th-group:after {
   height: 0px !important;
 }
 </style>

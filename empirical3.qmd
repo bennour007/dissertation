@@ -134,7 +134,7 @@ $$P_{r,y} = \frac{1}{|\mathcal{T}|} \sum_{t \in \mathcal{T}} p_{r,t,y}$$ {#eq-av
 
 ::: {.landscape}
 
-::: {layout-ncol=2}
+::: {layout="[[47,-6,47]]"}
 
 ```{r fig-map-potential, echo=FALSE}
 #| fig-width: 6

@@ -169,7 +169,7 @@ The maps of average potential and patent count are shown in the main text (@fig-
 
 ::: {.landscape}
 
-::: {layout-ncol=2}
+::: {layout="[[47,-6,47]]"}
 
 ```{r fig-map-coherence, echo=FALSE}
 #| fig-width: 6
@@ -240,7 +240,7 @@ map_avg_rd +
 
 ::: {.landscape}
 
-::: {layout-ncol=2}
+::: {layout="[[47,-6,47]]"}
 
 ```{r fig-map-avg-bet, echo=FALSE}
 #| fig-width: 6
@@ -399,3 +399,45 @@ modelsummary::modelsummary(
   notes = "All models include region and year fixed effects; standard errors clustered by region and technology. 'Resid' is the standardised residual from regressing Potential on relatedness density."
 )
 ```
+
+
+
+## Summary of revisions following the pre-review {#sec-app-revisions}
+
+This section summarises the revisions made in response to the pre-review of the dissertation.
+Reviewer 1's comments concerned mainly the readability and structure of the manuscript, and Reviewer 2's comments mainly the transparency of sources and methods.
+@tbl-app-revisions lists each comment, the revision made, and where it can be found in the revised text.
+
+::: {.landscape}
+
+```{=latex}
+\begingroup\small\setstretch{1}
+```
+
+| Element | Rev. | Comment | Revision | Location |
+|:--------|:----|:------------------------|:------------------------------|:----------|
+| Introduction | 1, 2 | Contribution not stated explicitly | Dedicated section distinguishing what is adopted, adapted and new | @sec-intro-contribution |
+| Introduction | 1 | Argument compressed; overlap with later chapters | Problem statement condensed; technical critique moved to Chapter 3 | @sec-intro-problem |
+| Introduction | 2 | General claims lack references; European context appears late | References added; European setting stated with the research questions | @sec-intro-rq-hypotheses |
+| Introduction | 1 | Structure and research-question links unclear | Chapter functions described; each RQ refers to its literature section | @sec-intro-structure |
+| Literature review | 1, 2 | Not organised around the research questions; GEI not justified | One section per research question; GEI justified; summary table | @sec-lit, @sec-lit-national, @sec-lit-summary |
+| Methodology | 1, 2 | No clear structure or roadmap | Chapter reorganised, with a roadmap and a narrative summary | @sec-meth-motivation, @sec-meth-summary |
+| Formulas and notation | 1, 2 | Coherence formula inconsistent; unused measures; unnumbered equations | Formulas corrected; unused measures removed; equations numbered; notation table | @sec-meth-coherence, @sec-app-notation |
+| Sources of methods | 2 | Unclear what is taken, adapted or original | Provenance stated in the text; provenance table; references added | @sec-meth-why-rf, @sec-app-rf-provenance |
+| Methodological choices | 2 | Patent data, zero links, simple averages insufficiently justified | Each choice justified in the text | @sec-meth-data, @sec-meth-coherence |
+| Limits of Random Forest | 1, 2 | Limitations of the method not discussed | Dedicated subsection on what the method cannot establish | @sec-meth-rf-limits |
+| Empirical design | 1 | Dense chapter; causal language; spatial model questioned | Roadmap and guiding questions; language of association; Model 3 justified | @sec-emp-overview, @sec-emp-model3 |
+| Distance variable | 2 | Construction from network weights unclear | Construction described | @sec-app-distance |
+| Entry benchmark | 1, 2 | Density remains significant; collinearity not assessed | Collinearity diagnostics; re-estimation with the orthogonal component of potential | @sec-app-benchmark |
+| Results | 1 | Hard to follow; Models 2 and 3 appear contradictory | Guiding questions at each transition; the two levels of measurement explained | @sec-res, @sec-res-space |
+| Conclusion | 1, 2 | Limitations late and unstructured; summary list-like | Limitations grouped by topic; each research question answered | @sec-sum-methodology, @sec-sum-conclusion |
+| Figures | 2 | Missing sources, references and panel labels; duplicated figure | Sources, references and labels added; duplicate replaced | @fig-tachella, @fig-d06q, @fig-plot_eg |
+| Typesetting | 1 | Overlapping figures; missing captions; tables beyond margins | Maps resized and paired on landscape pages; tables resized | @fig-map-potential, @sec-app-maps |
+
+: Summary of revisions following the pre-review {#tbl-app-revisions}
+
+```{=latex}
+\endgroup
+```
+
+:::

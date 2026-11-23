@@ -47,6 +47,7 @@ format:
     include-in-header:
       text: |
         \usepackage{pdfpages}
+        \captionsetup[subfigure]{labelformat=empty, justification=raggedright}
     include-before-body:
       text: |
         \includepdf[pages=1-2, fitpaper=true]{outside_inside_cover.pdf}

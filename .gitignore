@@ -15,3 +15,5 @@ index.out
 
 # Rendered book: uncomment only if the site is NOT served from _book/
 # _book/
+/.quarto/
+**/*.quarto_ipynb
