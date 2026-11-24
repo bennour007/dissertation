@@ -254,7 +254,7 @@ window.Quarto = {
   <li><a href="#sec-meth-ml-prediction" id="toc-sec-meth-ml-prediction" class="nav-link" data-scroll-target="#sec-meth-ml-prediction"><span class="header-section-number">3.3.1</span> Machine learning as a prediction framework</a></li>
   <li><a href="#sec-meth-why-rf" id="toc-sec-meth-why-rf" class="nav-link" data-scroll-target="#sec-meth-why-rf"><span class="header-section-number">3.3.2</span> Why Random Forest</a></li>
   <li><a href="#sec-meth-rf-algorithm" id="toc-sec-meth-rf-algorithm" class="nav-link" data-scroll-target="#sec-meth-rf-algorithm"><span class="header-section-number">3.3.3</span> The Random Forest algorithm</a></li>
-  <li><a href="#sec-meth-rf-limits" id="toc-sec-meth-rf-limits" class="nav-link" data-scroll-target="#sec-meth-rf-limits"><span class="header-section-number">3.3.4</span> What Random Forest cannot do</a></li>
+  <li><a href="#sec-meth-rf-limits" id="toc-sec-meth-rf-limits" class="nav-link" data-scroll-target="#sec-meth-rf-limits"><span class="header-section-number">3.3.4</span> Known limitations to the Random Forest algorithm that may apply to our approach</a></li>
   </ul></li>
   <li><a href="#sec-meth-application" id="toc-sec-meth-application" class="nav-link" data-scroll-target="#sec-meth-application"><span class="header-section-number">3.4</span> Application to European regional patent data</a>
   <ul class="collapse">
@@ -502,12 +502,12 @@ Figure&nbsp;3.1: Node correlation - Density vs ML approach (adapted from Tacchel
 <p>where the inner sum runs over all nodes <span class="math inline">\(\nu\)</span> of tree <span class="math inline">\(h_b\)</span> that split on technology <span class="math inline">\(s\)</span>, <span class="math inline">\(\Delta G(\nu)\)</span> is the impurity reduction achieved by that split, and <span class="math inline">\(n(\nu)/n_b\)</span> is the share of the tree’s bootstrap sample reaching the node. Higher values indicate features consistently creating purer partitions. Feature importance measures predictive association rather than causal effect, and exhibits bias toward high-cardinality features and correlated predictor sets. It ranks predictive relevance but requires caution in causal interpretation.</p>
 </section>
 <section id="sec-meth-rf-limits" class="level3" data-number="3.3.4">
-<h3 data-number="3.3.4" class="anchored" data-anchor-id="sec-meth-rf-limits"><span class="header-section-number">3.3.4</span> What Random Forest cannot do</h3>
-<p>The properties above explain why we use Random Forest. They also come with limits that matter for how its outputs should be read. What can a Random Forest not tell us? We list four limits below.</p>
-<p><strong>Importance is predictive, not causal.</strong> Feature importance measures how much a technology helps the model predict, not the effect of having that technology. It is also biased towards predictors that are correlated with one another and towards predictors with many possible split points. The direction of a FITS edge should therefore be read as a predictive pattern, not as a proven dependency (see also <a href="#sec-meth-fits" class="quarto-xref"><span>Section 3.4.4</span></a>).</p>
-<p><strong>Portfolio size may still leak in.</strong> Because each model is conditioned on the whole portfolio, it may still partly pick up the size of the portfolio, which is the nestedness problem raised against co-occurrence measures (<a href="#sec-meth-cooccurrence-limits" class="quarto-xref"><span>Section 3.2.2</span></a>). Normalising the importances within each model (<a href="#eq-fits-weight" class="quarto-xref">Equation&nbsp;<span>3.16</span></a>) corrects for this only in part.</p>
-<p><strong>One set of hyperparameters for all models.</strong> The hyperparameters were tuned on four technologies and applied to all 7,051 models, so the models for rare technologies are likely to fit less well.</p>
-<p><strong>Observed entries, not attempts.</strong> The models learn from entries that happened. They cannot tell whether a technology is rarely entered because it is hard to enter or because few regions try, so feasibility and frequency remain partly mixed.</p>
+<h3 data-number="3.3.4" class="anchored" data-anchor-id="sec-meth-rf-limits"><span class="header-section-number">3.3.4</span> Known limitations to the Random Forest algorithm that may apply to our approach</h3>
+<p>The properties above explain why we use Random Forest, how it works internally, and elaborates on the outputs we will rely on to develop our approach. However, they also come with known limits discussed in the literature of computer science. For this work, these limitation occupy a special focus especially as we plan to improve the approach further in future iterations.</p>
+<p>To that end, what can a Random Forest hide? We summarise a few in the following points</p>
+<p><strong>The Gini impurity importance carries two known biases.</strong> First, it favours predictors with many possible split points <span class="citation" data-cites="strobl2007bias">(<a href="references.html#ref-strobl2007bias" role="doc-biblioref">Strobl et al. 2007</a>)</span>. Our features are RTA values, and technologies that few regions patent in have mostly zeros and few distinct values, so they offer fewer splits and may receive less importance than their information warrants. Second, correlated predictors mask one another: when several technologies carry similar information, the trees tend to split on one of them, and the importance of the others is understated <span class="citation" data-cites="louppe2013understanding">(<a href="references.html#ref-louppe2013understanding" role="doc-biblioref">Louppe et al. 2013</a>)</span>. Masking does not arise when each split is made on a single randomly drawn feature, but it appears as soon as several features compete at each split, as in our models (mtry = 139). The direction of a FITS edge should therefore be read as a predictive pattern, not as a proven dependency, and a weak edge may reflect masking rather than the absence of a relationship.</p>
+<p><strong>Portfolio size may still carry bias in to the prediction.</strong> Because each model is conditioned/predicted on the whole portfolio of each observation, it may still partly pick up the size of the portfolio, which is the nestedness problem we briefly mentioned against co-occurrence measures (<a href="#sec-meth-cooccurrence-limits" class="quarto-xref"><span>Section 3.2.2</span></a>). Normalising the importances within each model (<a href="#eq-fits-weight" class="quarto-xref">Equation&nbsp;<span>3.16</span></a>) corrects for this only in part. In the limit of many fully grown trees, the importances in a model add up to the information the features carry about the target <span class="citation" data-cites="louppe2013understanding">(<a href="references.html#ref-louppe2013understanding" role="doc-biblioref">Louppe et al. 2013</a>)</span>, so normalising turns them into shares of what each model can predict. This makes models comparable across technologies, but it does not remove size bias leaks within a model.</p>
+<p><strong>One set of hyperparameters for all models.</strong> The hyperparameters were tuned on four technologies and applied to all 7,051 models, so the models for rare technologies are likely to fit less well. The accuracy of a forest depends on the strength of its trees and on how correlated they are <span class="citation" data-cites="breiman2001random">(<a href="references.html#ref-breiman2001random" role="doc-biblioref">Breiman 2001</a>)</span>. A high mtry (139, against a default of 25) makes each tree stronger but also makes the trees more alike, and this balance may differ between frequent and rare technologies.</p>
 </section>
 </section>
 <section id="sec-meth-application" class="level2" data-number="3.4">
@@ -632,23 +632,23 @@ Table&nbsp;3.2: Heterogeneity of coherence at similar potential deciles (2009)
 </figcaption>
 <div aria-describedby="tbl-tbl_eg-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
 <div class="cell-output-display">
-<div id="cjzmpquplf" style="padding-left:0px;padding-right:0px;padding-top:10px;padding-bottom:10px;overflow-x:auto;overflow-y:auto;width:auto;height:auto;">
-<style>#cjzmpquplf table {
+<div id="lbguqpqvtc" style="padding-left:0px;padding-right:0px;padding-top:10px;padding-bottom:10px;overflow-x:auto;overflow-y:auto;width:auto;height:auto;">
+<style>#lbguqpqvtc table {
   font-family: system-ui, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol', 'Noto Color Emoji';
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
 
-#cjzmpquplf thead, #cjzmpquplf tbody, #cjzmpquplf tfoot, #cjzmpquplf tr, #cjzmpquplf td, #cjzmpquplf th {
+#lbguqpqvtc thead, #lbguqpqvtc tbody, #lbguqpqvtc tfoot, #lbguqpqvtc tr, #lbguqpqvtc td, #lbguqpqvtc th {
   border-style: none;
 }
 
-#cjzmpquplf p {
+#lbguqpqvtc p {
   margin: 0;
   padding: 0;
 }
 
-#cjzmpquplf .gt_table {
+#lbguqpqvtc .gt_table {
   display: table;
   border-collapse: collapse;
   line-height: normal;
@@ -674,12 +674,12 @@ Table&nbsp;3.2: Heterogeneity of coherence at similar potential deciles (2009)
   border-left-color: #D3D3D3;
 }
 
-#cjzmpquplf .gt_caption {
+#lbguqpqvtc .gt_caption {
   padding-top: 4px;
   padding-bottom: 4px;
 }
 
-#cjzmpquplf .gt_title {
+#lbguqpqvtc .gt_title {
   color: #333333;
   font-size: 125%;
   font-weight: initial;
@@ -691,7 +691,7 @@ Table&nbsp;3.2: Heterogeneity of coherence at similar potential deciles (2009)
   border-bottom-width: 0;
 }
 
-#cjzmpquplf .gt_subtitle {
+#lbguqpqvtc .gt_subtitle {
   color: #333333;
   font-size: 85%;
   font-weight: initial;
@@ -703,7 +703,7 @@ Table&nbsp;3.2: Heterogeneity of coherence at similar potential deciles (2009)
   border-top-width: 0;
 }
 
-#cjzmpquplf .gt_heading {
+#lbguqpqvtc .gt_heading {
   background-color: #FFFFFF;
   text-align: center;
   border-bottom-color: #FFFFFF;
@@ -715,13 +715,13 @@ Table&nbsp;3.2: Heterogeneity of coherence at similar potential deciles (2009)
   border-right-color: #D3D3D3;
 }
 
-#cjzmpquplf .gt_bottom_border {
+#lbguqpqvtc .gt_bottom_border {
   border-bottom-style: solid;
   border-bottom-width: 2px;
   border-bottom-color: #D3D3D3;
 }
 
-#cjzmpquplf .gt_col_headings {
+#lbguqpqvtc .gt_col_headings {
   border-top-style: solid;
   border-top-width: 2px;
   border-top-color: #D3D3D3;
@@ -736,7 +736,7 @@ Table&nbsp;3.2: Heterogeneity of coherence at similar potential deciles (2009)
   border-right-color: #D3D3D3;
 }
 
-#cjzmpquplf .gt_col_heading {
+#lbguqpqvtc .gt_col_heading {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -756,7 +756,7 @@ Table&nbsp;3.2: Heterogeneity of coherence at similar potential deciles (2009)
   overflow-x: hidden;
 }
 
-#cjzmpquplf .gt_column_spanner_outer {
+#lbguqpqvtc .gt_column_spanner_outer {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -768,15 +768,15 @@ Table&nbsp;3.2: Heterogeneity of coherence at similar potential deciles (2009)
   padding-right: 4px;
 }
 
-#cjzmpquplf .gt_column_spanner_outer:first-child {
+#lbguqpqvtc .gt_column_spanner_outer:first-child {
   padding-left: 0;
 }
 
-#cjzmpquplf .gt_column_spanner_outer:last-child {
+#lbguqpqvtc .gt_column_spanner_outer:last-child {
   padding-right: 0;
 }
 
-#cjzmpquplf .gt_column_spanner {
+#lbguqpqvtc .gt_column_spanner {
   border-bottom-style: solid;
   border-bottom-width: 2px;
   border-bottom-color: #D3D3D3;
@@ -788,11 +788,11 @@ Table&nbsp;3.2: Heterogeneity of coherence at similar potential deciles (2009)
   width: 100%;
 }
 
-#cjzmpquplf .gt_spanner_row {
+#lbguqpqvtc .gt_spanner_row {
   border-bottom-style: hidden;
 }
 
-#cjzmpquplf .gt_group_heading {
+#lbguqpqvtc .gt_group_heading {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -818,7 +818,7 @@ Table&nbsp;3.2: Heterogeneity of coherence at similar potential deciles (2009)
   text-align: left;
 }
 
-#cjzmpquplf .gt_empty_group_heading {
+#lbguqpqvtc .gt_empty_group_heading {
   padding: 0.5px;
   color: #333333;
   background-color: #FFFFFF;
@@ -833,15 +833,15 @@ Table&nbsp;3.2: Heterogeneity of coherence at similar potential deciles (2009)
   vertical-align: middle;
 }
 
-#cjzmpquplf .gt_from_md > :first-child {
+#lbguqpqvtc .gt_from_md > :first-child {
   margin-top: 0;
 }
 
-#cjzmpquplf .gt_from_md > :last-child {
+#lbguqpqvtc .gt_from_md > :last-child {
   margin-bottom: 0;
 }
 
-#cjzmpquplf .gt_row {
+#lbguqpqvtc .gt_row {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -860,7 +860,7 @@ Table&nbsp;3.2: Heterogeneity of coherence at similar potential deciles (2009)
   overflow-x: hidden;
 }
 
-#cjzmpquplf .gt_stub {
+#lbguqpqvtc .gt_stub {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -873,7 +873,7 @@ Table&nbsp;3.2: Heterogeneity of coherence at similar potential deciles (2009)
   padding-right: 5px;
 }
 
-#cjzmpquplf .gt_stub_row_group {
+#lbguqpqvtc .gt_stub_row_group {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -887,15 +887,15 @@ Table&nbsp;3.2: Heterogeneity of coherence at similar potential deciles (2009)
   vertical-align: top;
 }
 
-#cjzmpquplf .gt_row_group_first td {
+#lbguqpqvtc .gt_row_group_first td {
   border-top-width: 2px;
 }
 
-#cjzmpquplf .gt_row_group_first th {
+#lbguqpqvtc .gt_row_group_first th {
   border-top-width: 2px;
 }
 
-#cjzmpquplf .gt_summary_row {
+#lbguqpqvtc .gt_summary_row {
   color: #333333;
   background-color: #FFFFFF;
   text-transform: inherit;
@@ -905,16 +905,16 @@ Table&nbsp;3.2: Heterogeneity of coherence at similar potential deciles (2009)
   padding-right: 5px;
 }
 
-#cjzmpquplf .gt_first_summary_row {
+#lbguqpqvtc .gt_first_summary_row {
   border-top-style: solid;
   border-top-color: #D3D3D3;
 }
 
-#cjzmpquplf .gt_first_summary_row.thick {
+#lbguqpqvtc .gt_first_summary_row.thick {
   border-top-width: 2px;
 }
 
-#cjzmpquplf .gt_last_summary_row {
+#lbguqpqvtc .gt_last_summary_row {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -924,7 +924,7 @@ Table&nbsp;3.2: Heterogeneity of coherence at similar potential deciles (2009)
   border-bottom-color: #D3D3D3;
 }
 
-#cjzmpquplf .gt_grand_summary_row {
+#lbguqpqvtc .gt_grand_summary_row {
   color: #333333;
   background-color: #FFFFFF;
   text-transform: inherit;
@@ -934,7 +934,7 @@ Table&nbsp;3.2: Heterogeneity of coherence at similar potential deciles (2009)
   padding-right: 5px;
 }
 
-#cjzmpquplf .gt_first_grand_summary_row {
+#lbguqpqvtc .gt_first_grand_summary_row {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -944,7 +944,7 @@ Table&nbsp;3.2: Heterogeneity of coherence at similar potential deciles (2009)
   border-top-color: #D3D3D3;
 }
 
-#cjzmpquplf .gt_last_grand_summary_row_top {
+#lbguqpqvtc .gt_last_grand_summary_row_top {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -954,11 +954,11 @@ Table&nbsp;3.2: Heterogeneity of coherence at similar potential deciles (2009)
   border-bottom-color: #D3D3D3;
 }
 
-#cjzmpquplf .gt_striped {
+#lbguqpqvtc .gt_striped {
   background-color: rgba(128, 128, 128, 0.05);
 }
 
-#cjzmpquplf .gt_table_body {
+#lbguqpqvtc .gt_table_body {
   border-top-style: solid;
   border-top-width: 2px;
   border-top-color: #D3D3D3;
@@ -967,7 +967,7 @@ Table&nbsp;3.2: Heterogeneity of coherence at similar potential deciles (2009)
   border-bottom-color: #D3D3D3;
 }
 
-#cjzmpquplf .gt_footnotes {
+#lbguqpqvtc .gt_footnotes {
   color: #333333;
   background-color: #FFFFFF;
   border-bottom-style: none;
@@ -981,7 +981,7 @@ Table&nbsp;3.2: Heterogeneity of coherence at similar potential deciles (2009)
   border-right-color: #D3D3D3;
 }
 
-#cjzmpquplf .gt_footnote {
+#lbguqpqvtc .gt_footnote {
   margin: 0px;
   font-size: 90%;
   padding-top: 4px;
@@ -990,7 +990,7 @@ Table&nbsp;3.2: Heterogeneity of coherence at similar potential deciles (2009)
   padding-right: 5px;
 }
 
-#cjzmpquplf .gt_sourcenotes {
+#lbguqpqvtc .gt_sourcenotes {
   color: #333333;
   background-color: #FFFFFF;
   border-bottom-style: none;
@@ -1004,7 +1004,7 @@ Table&nbsp;3.2: Heterogeneity of coherence at similar potential deciles (2009)
   border-right-color: #D3D3D3;
 }
 
-#cjzmpquplf .gt_sourcenote {
+#lbguqpqvtc .gt_sourcenote {
   font-size: 90%;
   padding-top: 4px;
   padding-bottom: 4px;
@@ -1012,72 +1012,72 @@ Table&nbsp;3.2: Heterogeneity of coherence at similar potential deciles (2009)
   padding-right: 5px;
 }
 
-#cjzmpquplf .gt_left {
+#lbguqpqvtc .gt_left {
   text-align: left;
 }
 
-#cjzmpquplf .gt_center {
+#lbguqpqvtc .gt_center {
   text-align: center;
 }
 
-#cjzmpquplf .gt_right {
+#lbguqpqvtc .gt_right {
   text-align: right;
   font-variant-numeric: tabular-nums;
 }
 
-#cjzmpquplf .gt_font_normal {
+#lbguqpqvtc .gt_font_normal {
   font-weight: normal;
 }
 
-#cjzmpquplf .gt_font_bold {
+#lbguqpqvtc .gt_font_bold {
   font-weight: bold;
 }
 
-#cjzmpquplf .gt_font_italic {
+#lbguqpqvtc .gt_font_italic {
   font-style: italic;
 }
 
-#cjzmpquplf .gt_super {
+#lbguqpqvtc .gt_super {
   font-size: 65%;
 }
 
-#cjzmpquplf .gt_footnote_marks {
+#lbguqpqvtc .gt_footnote_marks {
   font-size: 75%;
   vertical-align: 0.4em;
   position: initial;
 }
 
-#cjzmpquplf .gt_asterisk {
+#lbguqpqvtc .gt_asterisk {
   font-size: 100%;
   vertical-align: 0;
 }
 
-#cjzmpquplf .gt_indent_1 {
+#lbguqpqvtc .gt_indent_1 {
   text-indent: 5px;
 }
 
-#cjzmpquplf .gt_indent_2 {
+#lbguqpqvtc .gt_indent_2 {
   text-indent: 10px;
 }
 
-#cjzmpquplf .gt_indent_3 {
+#lbguqpqvtc .gt_indent_3 {
   text-indent: 15px;
 }
 
-#cjzmpquplf .gt_indent_4 {
+#lbguqpqvtc .gt_indent_4 {
   text-indent: 20px;
 }
 
-#cjzmpquplf .gt_indent_5 {
+#lbguqpqvtc .gt_indent_5 {
   text-indent: 25px;
 }
 
-#cjzmpquplf .katex-display {
+#lbguqpqvtc .katex-display {
   display: inline-flex !important;
   margin-bottom: 0.75em !important;
 }
 
-#cjzmpquplf div.Reactable > div.rt-table > div.rt-thead > div.rt-tr.rt-tr-group-header > div.rt-th-group:after {
+#lbguqpqvtc div.Reactable > div.rt-table > div.rt-thead > div.rt-tr.rt-tr-group-header > div.rt-th-group:after {
   height: 0px !important;
 }
 </style>
@@ -1177,23 +1177,23 @@ Table&nbsp;3.3: Research questions, gaps and measures
 </figcaption>
 <div aria-describedby="tbl-progress-meth-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
 <div class="cell-output-display">
-<div id="ayetcrwzdt" style="padding-left:0px;padding-right:0px;padding-top:10px;padding-bottom:10px;overflow-x:auto;overflow-y:auto;width:auto;height:auto;">
-<style>#ayetcrwzdt table {
+<div id="rpqjkcwukj" style="padding-left:0px;padding-right:0px;padding-top:10px;padding-bottom:10px;overflow-x:auto;overflow-y:auto;width:auto;height:auto;">
+<style>#rpqjkcwukj table {
   font-family: system-ui, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol', 'Noto Color Emoji';
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
 
-#ayetcrwzdt thead, #ayetcrwzdt tbody, #ayetcrwzdt tfoot, #ayetcrwzdt tr, #ayetcrwzdt td, #ayetcrwzdt th {
+#rpqjkcwukj thead, #rpqjkcwukj tbody, #rpqjkcwukj tfoot, #rpqjkcwukj tr, #rpqjkcwukj td, #rpqjkcwukj th {
   border-style: none;
 }
 
-#ayetcrwzdt p {
+#rpqjkcwukj p {
   margin: 0;
   padding: 0;
 }
 
-#ayetcrwzdt .gt_table {
+#rpqjkcwukj .gt_table {
   display: table;
   border-collapse: collapse;
   line-height: normal;
@@ -1219,12 +1219,12 @@ Table&nbsp;3.3: Research questions, gaps and measures
   border-left-color: #D3D3D3;
 }
 
-#ayetcrwzdt .gt_caption {
+#rpqjkcwukj .gt_caption {
   padding-top: 4px;
   padding-bottom: 4px;
 }
 
-#ayetcrwzdt .gt_title {
+#rpqjkcwukj .gt_title {
   color: #333333;
   font-size: 125%;
   font-weight: initial;
@@ -1236,7 +1236,7 @@ Table&nbsp;3.3: Research questions, gaps and measures
   border-bottom-width: 0;
 }
 
-#ayetcrwzdt .gt_subtitle {
+#rpqjkcwukj .gt_subtitle {
   color: #333333;
   font-size: 85%;
   font-weight: initial;
@@ -1248,7 +1248,7 @@ Table&nbsp;3.3: Research questions, gaps and measures
   border-top-width: 0;
 }
 
-#ayetcrwzdt .gt_heading {
+#rpqjkcwukj .gt_heading {
   background-color: #FFFFFF;
   text-align: center;
   border-bottom-color: #FFFFFF;
@@ -1260,13 +1260,13 @@ Table&nbsp;3.3: Research questions, gaps and measures
   border-right-color: #D3D3D3;
 }
 
-#ayetcrwzdt .gt_bottom_border {
+#rpqjkcwukj .gt_bottom_border {
   border-bottom-style: solid;
   border-bottom-width: 2px;
   border-bottom-color: #D3D3D3;
 }
 
-#ayetcrwzdt .gt_col_headings {
+#rpqjkcwukj .gt_col_headings {
   border-top-style: solid;
   border-top-width: 2px;
   border-top-color: #D3D3D3;
@@ -1281,7 +1281,7 @@ Table&nbsp;3.3: Research questions, gaps and measures
   border-right-color: #D3D3D3;
 }
 
-#ayetcrwzdt .gt_col_heading {
+#rpqjkcwukj .gt_col_heading {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -1301,7 +1301,7 @@ Table&nbsp;3.3: Research questions, gaps and measures
   overflow-x: hidden;
 }
 
-#ayetcrwzdt .gt_column_spanner_outer {
+#rpqjkcwukj .gt_column_spanner_outer {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -1313,15 +1313,15 @@ Table&nbsp;3.3: Research questions, gaps and measures
   padding-right: 4px;
 }
 
-#ayetcrwzdt .gt_column_spanner_outer:first-child {
+#rpqjkcwukj .gt_column_spanner_outer:first-child {
   padding-left: 0;
 }
 
-#ayetcrwzdt .gt_column_spanner_outer:last-child {
+#rpqjkcwukj .gt_column_spanner_outer:last-child {
   padding-right: 0;
 }
 
-#ayetcrwzdt .gt_column_spanner {
+#rpqjkcwukj .gt_column_spanner {
   border-bottom-style: solid;
   border-bottom-width: 2px;
   border-bottom-color: #D3D3D3;
@@ -1333,11 +1333,11 @@ Table&nbsp;3.3: Research questions, gaps and measures
   width: 100%;
 }
 
-#ayetcrwzdt .gt_spanner_row {
+#rpqjkcwukj .gt_spanner_row {
   border-bottom-style: hidden;
 }
 
-#ayetcrwzdt .gt_group_heading {
+#rpqjkcwukj .gt_group_heading {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -1363,7 +1363,7 @@ Table&nbsp;3.3: Research questions, gaps and measures
   text-align: left;
 }
 
-#ayetcrwzdt .gt_empty_group_heading {
+#rpqjkcwukj .gt_empty_group_heading {
   padding: 0.5px;
   color: #333333;
   background-color: #FFFFFF;
@@ -1378,15 +1378,15 @@ Table&nbsp;3.3: Research questions, gaps and measures
   vertical-align: middle;
 }
 
-#ayetcrwzdt .gt_from_md > :first-child {
+#rpqjkcwukj .gt_from_md > :first-child {
   margin-top: 0;
 }
 
-#ayetcrwzdt .gt_from_md > :last-child {
+#rpqjkcwukj .gt_from_md > :last-child {
   margin-bottom: 0;
 }
 
-#ayetcrwzdt .gt_row {
+#rpqjkcwukj .gt_row {
   padding-top: 2px;
   padding-bottom: 2px;
   padding-left: 5px;
@@ -1405,7 +1405,7 @@ Table&nbsp;3.3: Research questions, gaps and measures
   overflow-x: hidden;
 }
 
-#ayetcrwzdt .gt_stub {
+#rpqjkcwukj .gt_stub {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -1418,7 +1418,7 @@ Table&nbsp;3.3: Research questions, gaps and measures
   padding-right: 5px;
 }
 
-#ayetcrwzdt .gt_stub_row_group {
+#rpqjkcwukj .gt_stub_row_group {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -1432,15 +1432,15 @@ Table&nbsp;3.3: Research questions, gaps and measures
   vertical-align: top;
 }
 
-#ayetcrwzdt .gt_row_group_first td {
+#rpqjkcwukj .gt_row_group_first td {
   border-top-width: 2px;
 }
 
-#ayetcrwzdt .gt_row_group_first th {
+#rpqjkcwukj .gt_row_group_first th {
   border-top-width: 2px;
 }
 
-#ayetcrwzdt .gt_summary_row {
+#rpqjkcwukj .gt_summary_row {
   color: #333333;
   background-color: #FFFFFF;
   text-transform: inherit;
@@ -1450,16 +1450,16 @@ Table&nbsp;3.3: Research questions, gaps and measures
   padding-right: 5px;
 }
 
-#ayetcrwzdt .gt_first_summary_row {
+#rpqjkcwukj .gt_first_summary_row {
   border-top-style: solid;
   border-top-color: #D3D3D3;
 }
 
-#ayetcrwzdt .gt_first_summary_row.thick {
+#rpqjkcwukj .gt_first_summary_row.thick {
   border-top-width: 2px;
 }
 
-#ayetcrwzdt .gt_last_summary_row {
+#rpqjkcwukj .gt_last_summary_row {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -1469,7 +1469,7 @@ Table&nbsp;3.3: Research questions, gaps and measures
   border-bottom-color: #D3D3D3;
 }
 
-#ayetcrwzdt .gt_grand_summary_row {
+#rpqjkcwukj .gt_grand_summary_row {
   color: #333333;
   background-color: #FFFFFF;
   text-transform: inherit;
@@ -1479,7 +1479,7 @@ Table&nbsp;3.3: Research questions, gaps and measures
   padding-right: 5px;
 }
 
-#ayetcrwzdt .gt_first_grand_summary_row {
+#rpqjkcwukj .gt_first_grand_summary_row {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -1489,7 +1489,7 @@ Table&nbsp;3.3: Research questions, gaps and measures
   border-top-color: #D3D3D3;
 }
 
-#ayetcrwzdt .gt_last_grand_summary_row_top {
+#rpqjkcwukj .gt_last_grand_summary_row_top {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -1499,11 +1499,11 @@ Table&nbsp;3.3: Research questions, gaps and measures
   border-bottom-color: #D3D3D3;
 }
 
-#ayetcrwzdt .gt_striped {
+#rpqjkcwukj .gt_striped {
   background-color: rgba(128, 128, 128, 0.05);
 }
 
-#ayetcrwzdt .gt_table_body {
+#rpqjkcwukj .gt_table_body {
   border-top-style: solid;
   border-top-width: 2px;
   border-top-color: #D3D3D3;
@@ -1512,7 +1512,7 @@ Table&nbsp;3.3: Research questions, gaps and measures
   border-bottom-color: #D3D3D3;
 }
 
-#ayetcrwzdt .gt_footnotes {
+#rpqjkcwukj .gt_footnotes {
   color: #333333;
   background-color: #FFFFFF;
   border-bottom-style: none;
@@ -1526,7 +1526,7 @@ Table&nbsp;3.3: Research questions, gaps and measures
   border-right-color: #D3D3D3;
 }
 
-#ayetcrwzdt .gt_footnote {
+#rpqjkcwukj .gt_footnote {
   margin: 0px;
   font-size: 90%;
   padding-top: 4px;
@@ -1535,7 +1535,7 @@ Table&nbsp;3.3: Research questions, gaps and measures
   padding-right: 5px;
 }
 
-#ayetcrwzdt .gt_sourcenotes {
+#rpqjkcwukj .gt_sourcenotes {
   color: #333333;
   background-color: #FFFFFF;
   border-bottom-style: none;
@@ -1549,7 +1549,7 @@ Table&nbsp;3.3: Research questions, gaps and measures
   border-right-color: #D3D3D3;
 }
 
-#ayetcrwzdt .gt_sourcenote {
+#rpqjkcwukj .gt_sourcenote {
   font-size: 90%;
   padding-top: 4px;
   padding-bottom: 4px;
@@ -1557,72 +1557,72 @@ Table&nbsp;3.3: Research questions, gaps and measures
   padding-right: 5px;
 }
 
-#ayetcrwzdt .gt_left {
+#rpqjkcwukj .gt_left {
   text-align: left;
 }
 
-#ayetcrwzdt .gt_center {
+#rpqjkcwukj .gt_center {
   text-align: center;
 }
 
-#ayetcrwzdt .gt_right {
+#rpqjkcwukj .gt_right {
   text-align: right;
   font-variant-numeric: tabular-nums;
 }
 
-#ayetcrwzdt .gt_font_normal {
+#rpqjkcwukj .gt_font_normal {
   font-weight: normal;
 }
 
-#ayetcrwzdt .gt_font_bold {
+#rpqjkcwukj .gt_font_bold {
   font-weight: bold;
 }
 
-#ayetcrwzdt .gt_font_italic {
+#rpqjkcwukj .gt_font_italic {
   font-style: italic;
 }
 
-#ayetcrwzdt .gt_super {
+#rpqjkcwukj .gt_super {
   font-size: 65%;
 }
 
-#ayetcrwzdt .gt_footnote_marks {
+#rpqjkcwukj .gt_footnote_marks {
   font-size: 75%;
   vertical-align: 0.4em;
   position: initial;
 }
 
-#ayetcrwzdt .gt_asterisk {
+#rpqjkcwukj .gt_asterisk {
   font-size: 100%;
   vertical-align: 0;
 }
 
-#ayetcrwzdt .gt_indent_1 {
+#rpqjkcwukj .gt_indent_1 {
   text-indent: 5px;
 }
 
-#ayetcrwzdt .gt_indent_2 {
+#rpqjkcwukj .gt_indent_2 {
   text-indent: 10px;
 }
 
-#ayetcrwzdt .gt_indent_3 {
+#rpqjkcwukj .gt_indent_3 {
   text-indent: 15px;
 }
 
-#ayetcrwzdt .gt_indent_4 {
+#rpqjkcwukj .gt_indent_4 {
   text-indent: 20px;
 }
 
-#ayetcrwzdt .gt_indent_5 {
+#rpqjkcwukj .gt_indent_5 {
   text-indent: 25px;
 }
 
-#ayetcrwzdt .katex-display {
+#rpqjkcwukj .katex-display {
   display: inline-flex !important;
   margin-bottom: 0.75em !important;
 }
 
-#ayetcrwzdt div.Reactable > div.rt-table > div.rt-thead > div.rt-tr.rt-tr-group-header > div.rt-th-group:after {
+#rpqjkcwukj div.Reactable > div.rt-table > div.rt-thead > div.rt-tr.rt-tr-group-header > div.rt-th-group:after {
   height: 0px !important;
 }
 </style>
@@ -1771,10 +1771,10 @@ Boschma, Ron. 2017. <span>“Relatedness as Driver of Regional Diversification: 
 Boschma, Ron, Ernest Miguelez, Rosina Moreno, and Diego B Ocampo-Corrales. 2023. <span>“The Role of Relatedness and Unrelatedness for the Geography of Technological Breakthroughs in Europe.”</span> <em>Economic Geography</em> 99 (2): 117–39.
 </div>
 <div id="ref-breiman1996bagging" class="csl-entry" role="listitem">
-Breiman, Leo. 1996. <span>“Bagging Predictors.”</span> <em>Machine Learning</em> 24 (2): 123–40. <a href="https://doi.org/10.1007/BF00058655">https://doi.org/10.1007/BF00058655</a>.
+Breiman, Leo. 1996. <span>“Bagging Predictors.”</span> <em>Machine Learning</em> 24 (2): 123–40.
 </div>
 <div id="ref-breiman2001random" class="csl-entry" role="listitem">
-Breiman, Leo. 2001. <span>“Random Forests.”</span> <em>Machine Learning</em> 45 (1): 5–32. <a href="https://doi.org/10.1023/A:1010933404324">https://doi.org/10.1023/A:1010933404324</a>.
+Breiman, Leo. 2001. <span>“Random Forests.”</span> <em>Machine Learning</em> 45 (1): 5–32.
 </div>
 <div id="ref-bun2017cleaning" class="csl-entry" role="listitem">
 Bun, Joël, Jean-Philippe Bouchaud, and Marc Potters. 2017. <span>“Cleaning Large Correlation Matrices: Tools from Random Matrix Theory.”</span> <em>Physics Reports</em> 666: 1–109.
@@ -1822,7 +1822,7 @@ Lee, Changyong, Ohjin Kwon, Myeongjung Kim, and Daeil Kwon. 2018. <span>“Early
 Li, Yang, and Frank MH Neffke. 2024. <span>“Evaluating the Principle of Relatedness: Estimation, Drivers and Implications for Policy.”</span> <em>Research Policy</em> 53 (3): 104952.
 </div>
 <div id="ref-louppe2013understanding" class="csl-entry" role="listitem">
-Louppe, Gilles, Louis Wehenkel, Antonio Sutera, and Pierre Geurts. 2013. <span>“Understanding Variable Importances in Forests of Randomized Trees.”</span> <em>Advances in Neural Information Processing Systems 26</em>, 431–39.
+Louppe, Gilles, Louis Wehenkel, Antonio Sutera, and Pierre Geurts. 2013. <span>“Understanding Variable Importances in Forests of Randomized Trees.”</span> <em>Advances in Neural Information Processing Systems</em> 26.
 </div>
 <div id="ref-mariani2019nestedness" class="csl-entry" role="listitem">
 Mariani, Manuel Sebastian, Zhuo-Ming Ren, Jordi Bascompte, and Claudio Juan Tessone. 2019. <span>“Nestedness in Complex Networks: Observation, Emergence, and Implications.”</span> <em>Physics Reports</em> 813: 1–90.
@@ -1861,7 +1861,7 @@ Saracco, Fabio, Mika J Straka, Riccardo Di Clemente, Andrea Gabrielli, Guido Cal
 Straccamore, Matteo, Matteo Bruno, and Andrea Tacchella. 2025. <span>“Comparative Analysis of Technological Fitness and Coherence at Different Geographical Scales.”</span> <em>PLoS One</em> 20 (8): e0329746.
 </div>
 <div id="ref-strobl2007bias" class="csl-entry" role="listitem">
-Strobl, Carolin, Anne-Laure Boulesteix, Achim Zeileis, and Torsten Hothorn. 2007. <span>“Bias in Random Forest Variable Importance Measures: Illustrations, Sources and a Solution.”</span> <em>BMC Bioinformatics</em> 8 (1): 25. <a href="https://doi.org/10.1186/1471-2105-8-25">https://doi.org/10.1186/1471-2105-8-25</a>.
+Strobl, Carolin, Anne-Laure Boulesteix, Achim Zeileis, and Torsten Hothorn. 2007. <span>“Bias in Random Forest Variable Importance Measures: Illustrations, Sources and a Solution.”</span> <em>BMC Bioinformatics</em> 8 (1): 25.
 </div>
 <div id="ref-tacchella2023relatedness" class="csl-entry" role="listitem">
 Tacchella, Andrea, Andrea Zaccaria, Marco Miccheli, and Luciano Pietronero. 2023. <span>“Relatedness in the Era of Machine Learning.”</span> <em>Chaos, Solitons &amp; Fractals</em> 176: 114071.

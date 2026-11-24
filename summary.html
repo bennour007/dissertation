@@ -292,7 +292,8 @@ window.Quarto = {
 <p>On another note, in previous related work, <span class="citation" data-cites="hsin2026regional">Bennour (<a href="references.html#ref-hsin2026regional" role="doc-biblioref">2026</a>)</span> discuss other areas of limitation to the FITS network approach. One of the issues here is that the time horizon <span class="math inline">\(\delta\)</span> is relatively arbitrary. Although <span class="citation" data-cites="fessina2024identifying">Fessina et al. (<a href="references.html#ref-fessina2024identifying" role="doc-biblioref">2024</a>)</span>, <span class="citation" data-cites="albora2023product">Albora et al. (<a href="references.html#ref-albora2023product" role="doc-biblioref">2023</a>)</span>, and <span class="citation" data-cites="tacchella2023relatedness">Tacchella et al. (<a href="references.html#ref-tacchella2023relatedness" role="doc-biblioref">2023</a>)</span>, choose it empirically by testing the most adequate value, it remains a limitation. The reason for this is that with this training strategy, every technology is modeled independently, which means that the choice of <span class="math inline">\(\delta\)</span> should change with each model. This is to say, even when <span class="citation" data-cites="albora2023product">Albora et al. (<a href="references.html#ref-albora2023product" role="doc-biblioref">2023</a>)</span> showed that <span class="math inline">\(\delta = 5\)</span> is optimal when they assess the aggregate performance of their models, they, and consequently this work, still leave much more dynamic information on the table.</p>
 <p>The idea here is that as we opertionalise the argument in the literature that past capacities should predict future ones <span class="citation" data-cites="napolitano2018technology andreoni2019political martin2007complexity">(<a href="references.html#ref-napolitano2018technology" role="doc-biblioref">Napolitano et al. 2018</a>; <a href="references.html#ref-andreoni2019political" role="doc-biblioref">Andreoni and Chang 2019</a>; <a href="references.html#ref-martin2007complexity" role="doc-biblioref">Martin and Sunley 2007</a>)</span>, we do not know how much it takes for the past capabilities to transform into new ones. This prediction window should not logically be constant across technologies or activities that are heterogeneous in their complexity. For instance, the past capacities of a region that predict textile related technology, should not have the same time horizon as semiconductor technology or other highly complex technologies.</p>
 <p>This is one of the areas that where discussed in <span class="citation" data-cites="hidalgo2023policy">Hidalgo (<a href="references.html#ref-hidalgo2023policy" role="doc-biblioref">2023</a>)</span>: the 4Ws that drives policy implication of the REC literature (where, what, When and Who?). The question of When diversification occur was not properly addressed in the literature with the exception of <span class="citation" data-cites="alshamsi2018optimal">Alshamsi et al. (<a href="references.html#ref-alshamsi2018optimal" role="doc-biblioref">2018</a>)</span>. In their work, the authors formalise a dynamic graph model that essentially predict that on average, diversification is feasible when 10% to 15% of related capabilities exist in a location. Although this aligns relatively with known graph theory ideas, their assessment depends heavily on the symmetric activity space and its structure and orientation. Regardless, <span class="citation" data-cites="alshamsi2018optimal">Alshamsi et al. (<a href="references.html#ref-alshamsi2018optimal" role="doc-biblioref">2018</a>)</span>’s approach could be beneficial to address the time horizon limitation, and could result is a richer more granular contextualisation of the FITS network and regional technological potential.</p>
-<p>This work’s main limitation is that we don’t provide evidence of causality due to the endogeneity problem. Specifically mechanical circularity: coherence is built from the same lagged portfolio information that the Random Forest uses to generate potential. Within a given region–year, a technology with higher coherence will tend to resemble the portfolio patterns the RF associates with entry, which can inflate the coherence–potential link. This is not reverse causality in the usual sense, but shared data construction. The Two-way fixed effects mitigate this by absorbing time-invariant regional alignment, so identification relies on within-region changes over time. Furthermore, the results are similar in fixed- and random-effects models, and the key network-position variables are technology-specific rather than portfolio-derived. We therefore interpret coefficients as conditional associations describing the feasibility of diversification opportunities, not causal effects. This is a limitation that we will address in future iterations as it remains the bottleneck for actual informative policy recommendations.</p>
+<p>This work’s main limitation is that we don’t provide evidence of causality due to the endogeneity problem. One of the issues stems from the fact that the models learn from entries that happened. They cannot tell whether a technology is rarely entered because it is hard to enter or because few regions try, so feasibility and frequency remain partly mixed, and we did not account for the data censoring.</p>
+<p>Moreover, coherence is built from the same lagged portfolio information that the Random Forest uses to generate potential. Within a given region–year, a technology with higher coherence will tend to resemble the portfolio patterns the RF associates with entry, which can inflate the coherence–potential link. This is not reverse causality in the usual sense, but shared data construction. The Two-way fixed effects mitigate this by absorbing time-invariant regional alignment, so identification relies on within-region changes over time. Furthermore, the results are similar in fixed- and random-effects models, and the key network-position variables are technology-specific rather than portfolio-derived. We therefore interpret coefficients as conditional associations describing the feasibility of diversification opportunities, not causal effects. This is a limitation that we will address in future iterations as it remains the bottleneck for actual informative policy recommendations.</p>
 <p>Another issue here is that including the national ecosystem variables as predictors could have been more informative had we included and interaction term, but then the complexity of the interpretation forced us to not go in that direction for now, although with a country level analysis this can be addressed properly but we decided to leave that out for the purposes of this work.</p>
 <p>These and the other limits of the Random Forest models are discussed in <a href="potential2.html#sec-meth-rf-limits" class="quarto-xref"><span>Section 3.3.4</span></a>.</p>
 <p><strong>Scope.</strong> The empirical design in our work also has its own share of limitations. Our assessment posits that the regional technological potential is a proxy for diversification feasibility. However, there’s no clear indication in the literature that such framing is adequate since we are the first to adopt it. This is to say that potential might need to be assessed with a different interpretation than the one we adopted. Moreover, using network metrics of the technologies could have been better addressed with random graph models or other alternatives designed for this topic, but in our assessment, this was beyond the scope of the dissertation and thus we settled on a simpler approach.</p>
@@ -350,23 +351,23 @@ Table&nbsp;6.1: Research questions, hypotheses and findings
 </figcaption>
 <div aria-describedby="tbl-progress-summary-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
 <div class="cell-output-display">
-<div id="yqwnidjryr" style="padding-left:0px;padding-right:0px;padding-top:10px;padding-bottom:10px;overflow-x:auto;overflow-y:auto;width:auto;height:auto;">
-<style>#yqwnidjryr table {
+<div id="hmcblcuofi" style="padding-left:0px;padding-right:0px;padding-top:10px;padding-bottom:10px;overflow-x:auto;overflow-y:auto;width:auto;height:auto;">
+<style>#hmcblcuofi table {
   font-family: system-ui, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol', 'Noto Color Emoji';
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
 
-#yqwnidjryr thead, #yqwnidjryr tbody, #yqwnidjryr tfoot, #yqwnidjryr tr, #yqwnidjryr td, #yqwnidjryr th {
+#hmcblcuofi thead, #hmcblcuofi tbody, #hmcblcuofi tfoot, #hmcblcuofi tr, #hmcblcuofi td, #hmcblcuofi th {
   border-style: none;
 }
 
-#yqwnidjryr p {
+#hmcblcuofi p {
   margin: 0;
   padding: 0;
 }
 
-#yqwnidjryr .gt_table {
+#hmcblcuofi .gt_table {
   display: table;
   border-collapse: collapse;
   line-height: normal;
@@ -392,12 +393,12 @@ Table&nbsp;6.1: Research questions, hypotheses and findings
   border-left-color: #D3D3D3;
 }
 
-#yqwnidjryr .gt_caption {
+#hmcblcuofi .gt_caption {
   padding-top: 4px;
   padding-bottom: 4px;
 }
 
-#yqwnidjryr .gt_title {
+#hmcblcuofi .gt_title {
   color: #333333;
   font-size: 125%;
   font-weight: initial;
@@ -409,7 +410,7 @@ Table&nbsp;6.1: Research questions, hypotheses and findings
   border-bottom-width: 0;
 }
 
-#yqwnidjryr .gt_subtitle {
+#hmcblcuofi .gt_subtitle {
   color: #333333;
   font-size: 85%;
   font-weight: initial;
@@ -421,7 +422,7 @@ Table&nbsp;6.1: Research questions, hypotheses and findings
   border-top-width: 0;
 }
 
-#yqwnidjryr .gt_heading {
+#hmcblcuofi .gt_heading {
   background-color: #FFFFFF;
   text-align: center;
   border-bottom-color: #FFFFFF;
@@ -433,13 +434,13 @@ Table&nbsp;6.1: Research questions, hypotheses and findings
   border-right-color: #D3D3D3;
 }
 
-#yqwnidjryr .gt_bottom_border {
+#hmcblcuofi .gt_bottom_border {
   border-bottom-style: solid;
   border-bottom-width: 2px;
   border-bottom-color: #D3D3D3;
 }
 
-#yqwnidjryr .gt_col_headings {
+#hmcblcuofi .gt_col_headings {
   border-top-style: solid;
   border-top-width: 2px;
   border-top-color: #D3D3D3;
@@ -454,7 +455,7 @@ Table&nbsp;6.1: Research questions, hypotheses and findings
   border-right-color: #D3D3D3;
 }
 
-#yqwnidjryr .gt_col_heading {
+#hmcblcuofi .gt_col_heading {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -474,7 +475,7 @@ Table&nbsp;6.1: Research questions, hypotheses and findings
   overflow-x: hidden;
 }
 
-#yqwnidjryr .gt_column_spanner_outer {
+#hmcblcuofi .gt_column_spanner_outer {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -486,15 +487,15 @@ Table&nbsp;6.1: Research questions, hypotheses and findings
   padding-right: 4px;
 }
 
-#yqwnidjryr .gt_column_spanner_outer:first-child {
+#hmcblcuofi .gt_column_spanner_outer:first-child {
   padding-left: 0;
 }
 
-#yqwnidjryr .gt_column_spanner_outer:last-child {
+#hmcblcuofi .gt_column_spanner_outer:last-child {
   padding-right: 0;
 }
 
-#yqwnidjryr .gt_column_spanner {
+#hmcblcuofi .gt_column_spanner {
   border-bottom-style: solid;
   border-bottom-width: 2px;
   border-bottom-color: #D3D3D3;
@@ -506,11 +507,11 @@ Table&nbsp;6.1: Research questions, hypotheses and findings
   width: 100%;
 }
 
-#yqwnidjryr .gt_spanner_row {
+#hmcblcuofi .gt_spanner_row {
   border-bottom-style: hidden;
 }
 
-#yqwnidjryr .gt_group_heading {
+#hmcblcuofi .gt_group_heading {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -536,7 +537,7 @@ Table&nbsp;6.1: Research questions, hypotheses and findings
   text-align: left;
 }
 
-#yqwnidjryr .gt_empty_group_heading {
+#hmcblcuofi .gt_empty_group_heading {
   padding: 0.5px;
   color: #333333;
   background-color: #FFFFFF;
@@ -551,15 +552,15 @@ Table&nbsp;6.1: Research questions, hypotheses and findings
   vertical-align: middle;
 }
 
-#yqwnidjryr .gt_from_md > :first-child {
+#hmcblcuofi .gt_from_md > :first-child {
   margin-top: 0;
 }
 
-#yqwnidjryr .gt_from_md > :last-child {
+#hmcblcuofi .gt_from_md > :last-child {
   margin-bottom: 0;
 }
 
-#yqwnidjryr .gt_row {
+#hmcblcuofi .gt_row {
   padding-top: 2px;
   padding-bottom: 2px;
   padding-left: 5px;
@@ -578,7 +579,7 @@ Table&nbsp;6.1: Research questions, hypotheses and findings
   overflow-x: hidden;
 }
 
-#yqwnidjryr .gt_stub {
+#hmcblcuofi .gt_stub {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -591,7 +592,7 @@ Table&nbsp;6.1: Research questions, hypotheses and findings
   padding-right: 5px;
 }
 
-#yqwnidjryr .gt_stub_row_group {
+#hmcblcuofi .gt_stub_row_group {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -605,15 +606,15 @@ Table&nbsp;6.1: Research questions, hypotheses and findings
   vertical-align: top;
 }
 
-#yqwnidjryr .gt_row_group_first td {
+#hmcblcuofi .gt_row_group_first td {
   border-top-width: 2px;
 }
 
-#yqwnidjryr .gt_row_group_first th {
+#hmcblcuofi .gt_row_group_first th {
   border-top-width: 2px;
 }
 
-#yqwnidjryr .gt_summary_row {
+#hmcblcuofi .gt_summary_row {
   color: #333333;
   background-color: #FFFFFF;
   text-transform: inherit;
@@ -623,16 +624,16 @@ Table&nbsp;6.1: Research questions, hypotheses and findings
   padding-right: 5px;
 }
 
-#yqwnidjryr .gt_first_summary_row {
+#hmcblcuofi .gt_first_summary_row {
   border-top-style: solid;
   border-top-color: #D3D3D3;
 }
 
-#yqwnidjryr .gt_first_summary_row.thick {
+#hmcblcuofi .gt_first_summary_row.thick {
   border-top-width: 2px;
 }
 
-#yqwnidjryr .gt_last_summary_row {
+#hmcblcuofi .gt_last_summary_row {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -642,7 +643,7 @@ Table&nbsp;6.1: Research questions, hypotheses and findings
   border-bottom-color: #D3D3D3;
 }
 
-#yqwnidjryr .gt_grand_summary_row {
+#hmcblcuofi .gt_grand_summary_row {
   color: #333333;
   background-color: #FFFFFF;
   text-transform: inherit;
@@ -652,7 +653,7 @@ Table&nbsp;6.1: Research questions, hypotheses and findings
   padding-right: 5px;
 }
 
-#yqwnidjryr .gt_first_grand_summary_row {
+#hmcblcuofi .gt_first_grand_summary_row {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -662,7 +663,7 @@ Table&nbsp;6.1: Research questions, hypotheses and findings
   border-top-color: #D3D3D3;
 }
 
-#yqwnidjryr .gt_last_grand_summary_row_top {
+#hmcblcuofi .gt_last_grand_summary_row_top {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -672,11 +673,11 @@ Table&nbsp;6.1: Research questions, hypotheses and findings
   border-bottom-color: #D3D3D3;
 }
 
-#yqwnidjryr .gt_striped {
+#hmcblcuofi .gt_striped {
   background-color: rgba(128, 128, 128, 0.05);
 }
 
-#yqwnidjryr .gt_table_body {
+#hmcblcuofi .gt_table_body {
   border-top-style: solid;
   border-top-width: 2px;
   border-top-color: #D3D3D3;
@@ -685,7 +686,7 @@ Table&nbsp;6.1: Research questions, hypotheses and findings
   border-bottom-color: #D3D3D3;
 }
 
-#yqwnidjryr .gt_footnotes {
+#hmcblcuofi .gt_footnotes {
   color: #333333;
   background-color: #FFFFFF;
   border-bottom-style: none;
@@ -699,7 +700,7 @@ Table&nbsp;6.1: Research questions, hypotheses and findings
   border-right-color: #D3D3D3;
 }
 
-#yqwnidjryr .gt_footnote {
+#hmcblcuofi .gt_footnote {
   margin: 0px;
   font-size: 90%;
   padding-top: 4px;
@@ -708,7 +709,7 @@ Table&nbsp;6.1: Research questions, hypotheses and findings
   padding-right: 5px;
 }
 
-#yqwnidjryr .gt_sourcenotes {
+#hmcblcuofi .gt_sourcenotes {
   color: #333333;
   background-color: #FFFFFF;
   border-bottom-style: none;
@@ -722,7 +723,7 @@ Table&nbsp;6.1: Research questions, hypotheses and findings
   border-right-color: #D3D3D3;
 }
 
-#yqwnidjryr .gt_sourcenote {
+#hmcblcuofi .gt_sourcenote {
   font-size: 90%;
   padding-top: 4px;
   padding-bottom: 4px;
@@ -730,72 +731,72 @@ Table&nbsp;6.1: Research questions, hypotheses and findings
   padding-right: 5px;
 }
 
-#yqwnidjryr .gt_left {
+#hmcblcuofi .gt_left {
   text-align: left;
 }
 
-#yqwnidjryr .gt_center {
+#hmcblcuofi .gt_center {
   text-align: center;
 }
 
-#yqwnidjryr .gt_right {
+#hmcblcuofi .gt_right {
   text-align: right;
   font-variant-numeric: tabular-nums;
 }
 
-#yqwnidjryr .gt_font_normal {
+#hmcblcuofi .gt_font_normal {
   font-weight: normal;
 }
 
-#yqwnidjryr .gt_font_bold {
+#hmcblcuofi .gt_font_bold {
   font-weight: bold;
 }
 
-#yqwnidjryr .gt_font_italic {
+#hmcblcuofi .gt_font_italic {
   font-style: italic;
 }
 
-#yqwnidjryr .gt_super {
+#hmcblcuofi .gt_super {
   font-size: 65%;
 }
 
-#yqwnidjryr .gt_footnote_marks {
+#hmcblcuofi .gt_footnote_marks {
   font-size: 75%;
   vertical-align: 0.4em;
   position: initial;
 }
 
-#yqwnidjryr .gt_asterisk {
+#hmcblcuofi .gt_asterisk {
   font-size: 100%;
   vertical-align: 0;
 }
 
-#yqwnidjryr .gt_indent_1 {
+#hmcblcuofi .gt_indent_1 {
   text-indent: 5px;
 }
 
-#yqwnidjryr .gt_indent_2 {
+#hmcblcuofi .gt_indent_2 {
   text-indent: 10px;
 }
 
-#yqwnidjryr .gt_indent_3 {
+#hmcblcuofi .gt_indent_3 {
   text-indent: 15px;
 }
 
-#yqwnidjryr .gt_indent_4 {
+#hmcblcuofi .gt_indent_4 {
   text-indent: 20px;
 }
 
-#yqwnidjryr .gt_indent_5 {
+#hmcblcuofi .gt_indent_5 {
   text-indent: 25px;
 }
 
-#yqwnidjryr .katex-display {
+#hmcblcuofi .katex-display {
   display: inline-flex !important;
   margin-bottom: 0.75em !important;
 }
 
-#yqwnidjryr div.Reactable > div.rt-table > div.rt-thead > div.rt-tr.rt-tr-group-header > div.rt-th-group:after {
+#hmcblcuofi div.Reactable > div.rt-table > div.rt-thead > div.rt-tr.rt-tr-group-header > div.rt-th-group:after {
   height: 0px !important;
 }
 </style>
