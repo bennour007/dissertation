@@ -7,12 +7,10 @@ The chapter is organised around the dimensions that our research questions addre
 
 ## Regional diversification as capability recombination {#sec-lit-recombination}
 
-We start from a simple question that frames the rest of this chapter: how do regions adapt and diversify?
-In this section we review how evolutionary economic geography answers it, by treating regional diversification as the recombination of existing capabilities.
 
-Within the literature of evolutionary economic geography (EEG), @ballandboschma2015 summarize this turn toward resilience and highlight that, while interest has grown, "the resulting debate suggests [that economic geographers] are far from a common understanding".
+Within the literature of evolutionary economic geography (EEG), @ballandboschma2015 summarise this turn toward resilience and highlight that, while interest has grown, "the resulting debate suggests [that economic geographers] are far from a common understanding".
 This is to say that resilience as a concept is attracting more attention, however, there's still no consensus on a generalised ontological framework that drives further research in this area.
-The different studies that addressed this concept (eg: @christopherson2010regional; @fingleton2012recessionary; @martin2012regional; @pendall2010resilience; @pike2010resilience; @simmie2010economic) relatively converge in refuting equilibrium based approaches that consider resilience as an immediate reaction to shocks, and calling for further focus on an evolutionary approach.
+The different studies that addressed this concept (eg: @christopherson2010regional; @fingleton2012recessionary; @martin2012regional; @pendall2010resilience; @pike2010resilience; @simmie2010economic, to cite a few) relatively converge in refuting equilibrium based approaches that consider resilience as an immediate reaction to shocks, and calling for further focus on an evolutionary approach.
 The argument for this proposed agenda is related to robust results showing that precedent regional capabilities are recycled over time with different configuration driving different regional growth paths [@boschma2015relatedness; @neffke2011how].
 However, @ballandboschma2015 also criticises the literature in this context for ignoring key explanatory dimensions that are central to evolutionary accounts of regional change; technological relatedness, network structures, and institutions. 
 
@@ -52,14 +50,14 @@ Against this background, we adopt an evolutionary framing that treats diversific
 Empirically, this motivates a more contextualised assessment of regional capabilities and a decomposition of diversification drivers along three dimensions that the literature highlights as consequential: relatedness, network structure, and higher-level context (including national entrepreneurial ecosystems and spatial interdependence).
 This framing carries particular policy urgency: as @pinheiro2025 demonstrates, the dominant tools currently deployed to advise regional and national governments on diversification strategy-Relatedness and Economic Complexity (REC)-carry theoretical and empirical limitations that are consequential precisely in the kinds of catching-up or restructuring contexts where resilience is most needed.
 Crucially, this framing also carries methodological implications.
-If diversification is conditioned by portfolio-level configurations of capabilities rather than pairwise proximities, then measuring feasibility as a function of the whole capability basket-rather than as a sum of dyadic relatedness scores-is not merely a technical refinement but a theoretical necessity [@tacchella2023relatedness; @pinheiro2025].
+If diversification is conditioned by portfolio-level configurations of capabilities rather than pairwise proximities, then measuring feasibility as a function of the whole capability basket-rather than as a sum of dyadic relatedness scores-becomes not merely a technical refinement but a theoretical necessity [@tacchella2023relatedness; @pinheiro2025].
 This is the foundation on which the present study's empirical strategy rests.
-Understanding what shapes diversification feasibility in more granular context, therefore becomes not only an academic concern but also a critical policy question.
+Understanding what shapes diversification feasibility in more granular context, respond to both academic and policy concerns and challenges.
 
 ## Relatedness and its limitations {#sec-lit-relatedness}
 
-If diversification is the recombination of existing capabilities, the challenge becomes how to measure which recombinations are within reach of a region.
-Can the co-occurrence of activities tell us about the opportunity structure a region faces?
+We established that the call for a contextualised relatedness measures is based on both theoretical and policy challenges the literature faces. The theoretical aspect here stems from the idea that diversification is the recombination of existing capabilities. With that, the challenge becomes how to measure which recombinations are within reach of a region?
+And to what extent can the co-occurrence of activities tell us about the opportunity structure of a region?
 In this section we review the relatedness approach that answers this question, and its limitations.
 
 The agenda for assessing regional resilience through an evolutionary lens through relatedness, network structures and institutions, falls on the theoretical convergence that regional economies can be considered as capability systems [@hidalgo2009building; @hausmann2011network; @martin2007complexity] where a region’s economy can be represented as a structured set of complementary capabilities that constrain which new activities are feasible.
@@ -127,9 +125,8 @@ What remains unresolved is how to give network positions a directional meaning, 
 ## Why coherence matters {#sec-lit-coherence}
 
 Network position describes the technology.
-But the same technology may be more or less within reach depending on how the region's own portfolio is structured.
-Does the structure of the portfolio condition the role of a technology's network position?
-In this section we review the concept of coherence, which addresses this question.
+But the same technology may be more or less within reach depending on how the region's own portfolio is structured. A target technology may need to fit/align with the entirety of the region's portfolio. 
+This is akin to the idea of absorptive capacity, or how much embedded the technology is in the same areas the region is embedded in. 
 
 A further dimension absent from standard relatedness accounts is the coherence of the regional capability portfolio itself—the degree to which a region's existing specialisations form a structurally consistent bundle rather than an eclectic collection.
 @teece1994understanding introduced coherence in the context of firm diversification, defining it as the degree to which a firm's activities draw on a common underlying set of capabilities.
@@ -208,7 +205,7 @@ What remains unresolved is whether feasibility is spatially interdependent at th
 
 ## Summary: gaps, contributions and research questions {#sec-lit-summary}
 
-Taken together, these arguments motivate the core empirical move of this dissertation: a more contextualised assessment of diversification feasibility that keeps the strengths of the relatedness and network tradition—path dependence, structured opportunity sets, capability constraints—while explicitly incorporating the dimensions that this tradition has neglected.
+Taken together, these arguments motivate the core empirical move of this dissertation: a contextualised assessment of diversification feasibility that keeps the strengths of the relatedness and network tradition—path dependence, structured opportunity sets, capability constraints—while explicitly incorporating the dimensions that this tradition has neglected.
 The first of these is the measurement dimension: moving from pairwise co-occurrence proximity to portfolio-level, machine-learning-based feasibility assessment that captures higher-order capability configurations [@tacchella2023relatedness; @albora2023product].
 The second is the network architecture dimension: decomposing technology positions into bridging (betweenness) and enabling (eigenvector) roles that carry qualitatively different implications for which regions can access which diversification pathways.
 The third is the coherence dimension: treating portfolio-level structural consistency as a moderating condition that shapes how network positions translate into feasibility outcomes [@teece1994understanding].

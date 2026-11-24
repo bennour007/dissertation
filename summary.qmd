@@ -77,6 +77,7 @@ First, the complete process with grid search, tuning, and cross validation was n
 For that, we needed to sacrifice rigorous specification for feasibility.
 Second, @albora2023product benchmark their training strategy with and without tuning and they reported that even with default parameters, the random forest algorithms is a better predictor of future specialisation/diversification patterns than relatedness, raw RCA measure, etc. Their results in this context show that with cross validation the performance of the models does increase but even without it, random forest's performance remains superior to the benchmark.  
 
+
 On another note, in previous related work, @hsin2026regional discuss other areas of limitation to the FITS network approach.
 One of the issues here is that the time horizon $\delta$ is relatively arbitrary.
 Although @fessina2024identifying, @albora2023product, and @tacchella2023relatedness, choose it empirically by testing the most adequate value, it remains a limitation.
@@ -93,8 +94,11 @@ In their work, the authors formalise a dynamic graph model that essentially pred
 Although this aligns relatively with known graph theory ideas, their assessment depends heavily on the symmetric activity space and its structure and orientation.
 Regardless, @alshamsi2018optimal's approach could be beneficial to address the time horizon limitation, and could result is a richer more granular contextualisation of the FITS network and regional technological potential.
 
-This work's main limitation is that we don't provide evidence of causality due to the endogeneity problem.
-Specifically mechanical circularity: coherence is built from the same lagged portfolio information that the Random Forest uses to generate potential.
+This work's main limitation is that we don't provide evidence of causality due to the endogeneity problem. 
+One of the issues stems from the fact that the models learn from entries that happened.
+They cannot tell whether a technology is rarely entered because it is hard to enter or because few regions try, so feasibility and frequency remain partly mixed, and we did not account for the data censoring.
+
+Moreover, coherence is built from the same lagged portfolio information that the Random Forest uses to generate potential.
 Within a given region–year, a technology with higher coherence will tend to resemble the portfolio patterns the RF associates with entry, which can inflate the coherence–potential link.
 This is not reverse causality in the usual sense, but shared data construction.
 The Two-way fixed effects mitigate this by absorbing time-invariant regional alignment, so identification relies on within-region changes over time.
